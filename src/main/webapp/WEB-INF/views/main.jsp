@@ -6,256 +6,148 @@
       <title>Forty by HTML5 UP</title>
       <meta charset="UTF-8" />
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <link rel="stylesheet" href="assets/css/main.css" />
+      <link rel="stylesheet" href="assets/css/main.css">
    </head>
    <body>
-   ${user}
-      <!-- Wrapper -->
-         <div id="wrapper">
+    <div class="header">
+        <div class="menu-icon" onclick="openMenu()">
+            <img src="img/menu.png">
+        </div>
+        <div class="logo">
+            <img src="img/Re_Plogging_로고.png" alt="" />
+        </div>
+        <ul class="menu">
+            <li>플로코스</li>
+            <li>분리배출</li>
+            <li>커뮤니티</li>
+            <li>그린마켓</li>
+            <li onclick="openModal()">로그인</li>
+            <li class="menu-close" onclick="closeMenu()">X</li>
+        </ul>
 
-            <!-- Header -->
-               <header id="header" class="alt">
-                  <a href="index.html" class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a>
-                  <nav>
-                     <c:if test="${empty user}">
-                        <a href="#menu">로그인</a>
-                     </c:if>
-                     <c:if test="${!empty user}">
-                        <a href="list">게시판</a>
-                        <a href="update">개인정보수정</a>
-                        <a href="#">로그아웃</a>
-                     </c:if>
-                     <!--Ex07. 로그인 한 상태라면 '게시판'버튼과 '개인정보수정', '로그아웃' 버튼을 출력하시오. -->
-                  </nav>
-               </header>
+        <div class="user-icon" onclick="openModal()">
+            <img src="img/비로그인.png">
+        </div>
+    </div>
 
-            <!-- Menu -->
-               <nav id="menu">   
-                  <ul class="links">
-                     <%--Ex07. 로그인 기능 만들기 : 사용자에게 정보를 입력받아 회원인지 아닌지 조회하는 기능을 만들어 봅시다. --%>
-                     <li><h5>로그인</h5></li>
-                        <form action="login" method="post">
-                           <li><input name = "email" type="text"  placeholder="Email을 입력하세요"></li>
-                           <li><input name = "pw" type="password"  placeholder="Pw를 입력하세요"></li>
-                           <li><input type="submit" value="LogIn" class="button fit"></li>
-                        </form>
-                  </ul>
-                  <ul class="actions vertical">
-                     <%--Ex06. 회원가입 기능 만들기 : 사용자에게 정보를 입력받아 저장하는 기능을 만들어 봅시다. --%>
-                     <li><h5>회원가입</h5></li>
-                        <form action = "join" method = "post">
-                           <li><input id="emailInput" name="email" type="text"  placeholder="Email을 입력하세요"></li>
-                           <li id = "result"></li>
-                           <li><input name="pw" type="password"  placeholder="PW를 입력하세요"></li>
-                           <li><input name="tel" type="text"  placeholder="전화번호를 입력하세요"></li>
-                           <li><input name="address" type="text"  placeholder="집주소를 입력하세요"></li>
-                           <li><input type="submit" value="JoinUs" class="button fit"></li>
-                        </form>
-                  </ul>
-               </nav>         
-            <!-- Banner -->
-               <section id="banner" class="major">
-                  <div class="inner">
-                     <header class="major">
-                        <%--Ex07. 로그인 후 로그인 한 사용자의 세션아이디로 바꾸시오. ex)smart님 환영합니다 --%>
-                        <c:if test="${empty user}">
-                           <h1>로그인 한 세션아이디를 출력해주세요</h1>
-                        </c:if>
-                        <c:if test="${!empty user}">
-                           <h1>${user.email}</h1>
-                        </c:if>
-                     </header>
-                     <div class="content">
-                        <p>아래는 지금까지 배운 웹 기술들입니다.<br></p>
-                        <ul class="actions">
-                           <li><a href="#one" class="button next scrolly">확인하기</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </section>
+    <div class="container">
+        <div class="text">
+            <img src="img/왕관.png" alt="왕관">
+            <P class="normal">이달의 </P>
+            <P class="plo-point">플로킹!</P>
+        </div>
 
-            <!-- Main -->
-               <div id="main">
+        <div class="banner">
+            <p><span>오영희</span>님!</p>
+        </div>
+    </div>
 
-                  <!-- One -->
-                     <section id="one" class="tiles">
-                        <article>
-                           <span class="image">
-                              <img src="images/pic01.jpg" alt="" />
-                           </span>
-                           <header class="major">
-                              <h3><a href="#" class="link">HTML</a></h3>
-                              <p>홈페이지를 만드는 기초 언어</p>
-                           </header>
-                        </article>
-                        <article>
-                           <span class="image">
-                              <img src="images/pic02.jpg" alt="" />
-                           </span>
-                           <header class="major">
-                              <h3><a href="#" class="link">CSS</a></h3>
-                              <p>HTML을 디자인해주는 언어</p>
-                           </header>
-                        </article>
-                        <article>
-                           <span class="image">
-                              <img src="images/pic03.jpg" alt="" />
-                           </span>
-                           <header class="major">
-                              <h3><a href="#" class="link">Servlet/JSP</a></h3>
-                              <p>Java를 기본으로 한 웹 프로그래밍 언어/스크립트 언어</p>
-                           </header>
-                        </article>
-                        <article>
-                           <span class="image">
-                              <img src="images/pic04.jpg" alt="" />
-                           </span>
-                           <header class="major">
-                              <h3><a href="#" class="link">JavaScript</a></h3>
-                              <p>HTML에 기본적인 로직을 정의할 수 있는 언어</p>
-                           </header>
-                        </article>
-                        <article>
-                           <span class="image">
-                              <img src="images/pic05.jpg" alt="" />
-                           </span>
-                           <header class="major">
-                              <h3><a href="#" class="link">MVC</a></h3>
-                              <p>웹 프로젝트 중 가장 많이 사용하는 디자인패턴</p>
-                           </header>
-                        </article>
-                        <article>
-                           <span class="image">
-                              <img src="images/pic06.jpg" alt="" />
-                           </span>
-                           <header class="major">
-                              <h3><a href="#" class="link">Web Project</a></h3>
-                              <p>여러분의 최종프로젝트에 웹 기술을 활용하세요!</p>
-                           </header>
-                        </article>
-                     </section>
-               <!-- Two -->
-                     <section id="two">
-                        <div class="inner">
-                           <header class="major">
-                              <h2>메세지 확인하기</h2>
-                           </header>
-                           <%-- chatting 기능을 만들어 봅시다! --%>
-                           <div class="container chat">
-                           
-                              <div class="other">
-                                 <div class="username">
-                                    <span>admin</span>
-                                 </div>
-                                 <div class="text-message">
-                                    <p>안녕하세요~</p>
-                                 </div>
-                              </div>
-                              
-                              <div class="mychat">
-                                 <div class="text-message">
-                                    <p>안녕하세요~</p>
-                                 </div>
-                              </div>
-                              
-                              <div class="other">
-                                 <div class="username">
-                                    <span>admin</span>
-                                 </div>
-                                 <div class="text-message">
-                                    <p>안녕하세요~</p>
-                                 </div>
-                              </div>
-                              
-                              
-                           </div>
-                           <%-- 채팅창 끝! --%>
-                        </div>
-                     </section>
+    <div class="plogging_01">
+        <img src="img/메인_01.png" alt="Plogging Image">
+        <div class="plogging_01-TC">
+            <div id="plogging_01-title">
+                <p class="title">Plogging<span class="dot">.</span></p>
+            </div>
+            <div class="plogging_01-content">
+                <span>
+                    2016년에 스웨덴에서 시작된 플로깅은<br>
+                    스웨덴어 ‘줍다’라는 의미의 ‘플로카 우프’와<br>
+                    영어 ‘조깅’의 합성어로<br>
+                    <span class="point">조깅하면서 쓰레기를 줍는 행동</span>을 말합니다.
+                </span>
+            </div>
+        </div>
+    </div>
 
-               </div>
+        <div class="plogging_02 fade-in-right">
+            <img src="img/메인_02.png" alt="Plogging Image">
+            <div class="plogging_02-TC">
+                <div id="plogging_02-title">
+                    <p class="title">좋은점<span class="dot">.</span></p>
+                </div>
+                <div class="plogging_02-content">
+                    <span>
+                        달리기에 스쿼트 동작과 유사한 쓰레기 줍는 동작이 더해지면<br>
+                        운동 효과가 강화되고 칼로리 소모도 증가합니다.<br>
+                        이를 통해<span class="point">체력 단련과 건강 증진을 도모</span>할 수 있으며,<br>
+                        <span class="point">환경 보호 운동</span>으로 지역사회에 공헌도 할 수 있습니다.
+                    </span>
+                </div>
+            </div>
+        </div>
 
-            <!-- Contact -->
-               <section id="contact">
-                  <div class="inner">
-                     <section>
-                        <form>
-                           <div class="field">
-                              <label for="message">Message</label>
-                              <textarea  id="message" rows="6"></textarea>
-                           </div>
-                           <ul class="actions">
-                              <li><input id = "sendBtn" type="button" value="Send Message" class="special" /></li>
-                              <li><input type="reset" value="Clear" /></li>
-                           </ul>
-                        </form>
-                     </section>
-                     
-                     <%--Ex07. 로그인 한 사용자의 정보로 변경해 봅시다. --%>
-                     <section class="split">
-                        <section>
-                           <div class="contact-method">
-                              <span class="icon alt fa-envelope"></span>
-                              <h3>Email</h3>
-                              <c:if test="${!empty user}">
-                              <a href="#" id = "userEmail">${user.email}</a>
-                              </c:if>
-                           </div>
-                        </section>
-                        <section>
-                           <div class="contact-method">
-                              <span class="icon alt fa-phone"></span>
-                              <h3>Phone</h3>
-                              <c:if test="${!empty user}">
-                              <span>${user.tel}</span>
-                              </c:if>
-                           </div>
-                        </section>
-                        <section>
-                           <div class="contact-method">
-                              <span class="icon alt fa-home"></span>
-                              <h3>Address</h3>
-                              <c:if test="${!empty user}">
-                              <span>${user.address}</span>
-                              </c:if>
-                           </div>
-                        </section>
-                     </section>               
-                  </div>
-               </section>
 
-            <!-- Footer -->
-               <footer id="footer">
-                  <div class="inner">
-                     <ul class="icons">
-                        <li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
-                        <li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
-                        <li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
-                        <li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
-                        <li><a href="#" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                     </ul>
-                     <ul class="copyright">
-                        <li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-                     </ul>
-                  </div>
-               </footer>
+        <div class="plogging_03 fade-in-left">
+            <img src="img/메인_03.png" alt="Plogging Image">
+            <div class="plogging_03-TC">
+                <div id="plogging_03-title">
+                    <p class="title">참여방법<span class="dot">.</span></p>
+                </div>
+                <div class="plogging_03-content">
+                    <span>
+                        플로깅에 참여하려면,<br>
+                        쓰레기를 담을 튼튼한 <span class="point">봉투</span>와<br>손을 보호하기 위한 <span class="point">장갑</span>을 준비하세요.<br>
+                        또는, 쓰레기를 줍기 위한 <span class="point">집게</span>를 사용할 수도 있습니다.<br><br>
+                        <span class="point">친구</span>나 <span class="point">가족</span>과 함께 참여하면<br>
+                        더 즐겁고 효과적으로 플로깅을 즐길 수 있습니다.
+                    </span>
+                </div>
+            </div>
+        </div>
 
-         </div>
+        <div class="plogging_04 fade-in-right">
+            <img src="img/메인_04.png" alt="Plogging Image">
+            <div class="plogging_04-TC">
+                <div id="plogging_04-title">
+                    <p class="title">분리배출<span class="dot">.</span></p>
+                </div>
+                <div class="plogging_04-content">
+                    <span>
+                        분리배출을 어려워하는 여러분들을 위해 플로깅을 통해<br>
+                        수집한 쓰레기 이미지를 첨부하거나,<br>
+                        <span class="point">분리배출 탭</span>에서 배출방법을 안내해드립니다.<br>
+                        <p><a href="#" class="custom-button">분리배출 방법 보러가기</a></p>
+                    </span>
+                </div>
+            </div>
+        </div>
 
-      <!-- Scripts -->
-         <script src="assets/js/jquery.min.js"></script>
-         <script src="assets/js/jquery.scrolly.min.js"></script>
-         <script src="assets/js/jquery.scrollex.min.js"></script>
-         <script src="assets/js/skel.min.js"></script>
-         <script src="assets/js/util.js"></script>
-         <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-         <script src="assets/js/main.js"></script>
-         <!-- static == webapp 이기 때문에 기존에 적었던 것처럼 적으면 된다.-->
-         <script src="assets/js/check.js"></script>
-         <c:if test="${!empty user}">
-            <script src="assets/js/chat.js"></script>
-         </c:if>
 
+    <!-- 모달 오버레이 -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-container">
+            <img src="img/Re_Plogging_로고.png" alt="Re: Plogging Logo">
+            
+            <form id="loginForm" action="" method="post">
+                <input type="text" id="useremail" name="user_id" placeholder="ID@example.com">
+                <input type="password" id="password" name="user_pw" placeholder="비밀번호를 입력하세요.">
+                <div id="errorMessage" class="error-message">이메일 또는 비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다시 확인해주세요.</div>
+                
+                <button type="submit" class="login-button">로그인</button>
+                <div class="or">
+                    <div class="line"></div>
+                    <div>또는</div>
+                    <div class="line"></div>
+                </div>
+                <button class="kakao-login">Kakao 로그인</button>
+            </form>
+                
+                <div class="login-options">
+                    <a href="#">회원가입</a>
+                    <a href="#">비밀번호 찾기</a>
+                </div>
+            
+            <!-- 모달 닫기 버튼 -->
+            <div class="modal-close" onclick="closeModal()">닫기</div>
+        </div>
+    </div>
+
+    <footer>
+        © 2024 지구수호대 Korea Corporation All Rights Reserved.
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
    </body>
 </html>
 
