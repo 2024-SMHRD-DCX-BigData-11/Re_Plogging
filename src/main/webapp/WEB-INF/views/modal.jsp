@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -11,14 +11,15 @@
 </head>
 <body>
 	<!-- 로그인 모달 -->
-	<div class="modal-overlay" id="modal">
-		<div class="modal-container">
+	<div id="login-modal">
+		<div class="login-container">
 			<img src="img/Re_Plogging_로고.png" alt="Re: Plogging Logo">
 
 			<form id="loginForm" action="" method="post">
-				<input type="text" id="useremail" name="user_id"
-					placeholder="ID@example.com"> <input type="password"
-					id="password" name="user_pw" placeholder="비밀번호를 입력하세요.">
+				<input type="text" id="user_id" name="user_id"
+					class="login-id-input" placeholder="ID@example.com"> <input
+					type="password" id="user_pw" name="user_pw" class="login-pw-input"
+					placeholder="비밀번호를 입력하세요.">
 				<div id="errorMessage" class="error-message">
 					이메일 또는 비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다시 확인해주세요.
 				</div>
@@ -33,17 +34,71 @@
 			</form>
 
 			<div class="login-options">
-				<a href="#">회원가입</a> <a href="#">비밀번호 찾기</a>
+				<div id="join-link">회원가입</div>
+				<div id="">비밀번호 찾기</div>
 			</div>
 
 			<!-- 모달 닫기 버튼 -->
 			<div class="modal-close" onclick="closeModal()">닫기</div>
 		</div>
-		
-		<!-- 회원가입 모달 -->
-		
 	</div>
-	
+
+	<!-- 회원가입 모달 -->
+	<div id="join-modal">
+		<div class="join-container">
+			<img src="img/Re_Plogging_로고.png" alt="Re: Plogging Logo">
+
+			<form id="joinForm" action="" method="post">
+				<table>
+					<tr>
+						<th>아이디</th>
+						<td><input type="text" id="user_id" name="user_id"
+							class="join-id-input" placeholder="ID@example.com">
+							<span id="idMsg" class="idMsg">중복된 아이디 입니다.</span>
+						</td>
+					</tr>
+					<tr>
+						<th>비밀번호</th>
+						<td><input type="password" id="user_pw" name="user_pw"
+							class="join-pw-input" placeholder="비밀번호를 입력하세요."></td>
+					</tr>
+					<tr>
+						<th>비밀번호 확인</th>
+						<td><input type="password" id="user_pw_confirm"
+							name="user_pw_confirm" class="join-pw-confirm"></td>
+					<tr>
+					<tr>
+						<th>전화번호</th>
+						<td>
+							<div class="phone-container">
+								<select id="mobile1" name="mobile[]">
+									<option value="010">010</option>
+									<option value="011">011</option>
+									<option value="016">016</option>
+									<option value="017">017</option>
+									<option value="018">018</option>
+									<option value="019">019</option>
+								</select>
+								<input id="mobile2" name="mobile[]" value type="text">
+								<input id="mobile3" name="mobile[]" value type="text">
+							</div>
+								<a href="#"><span class="tel-confirm">인증하기</span></a>
+						</td>
+					<tr>
+					<tr>
+						<th>닉네임</th>
+						<td><input type="text" id="user_nick" name="user_nick"
+							class="join-nick-input">
+							<span id="nickMsg" class="nickMsg">중복된 닉네임 입니다.</span>
+						</td>
+					<tr>
+				</table>
+				<button type="submit" class="join-button">가입하기</button>
+			</form>
+			<div class="modal-close" onclick="closeJoinModal()">닫기</div>
+		</div>
+	</div>
+
 	<!-- Scripts -->
 	<script src="assets/js/modal.js"></script>
 </body>
