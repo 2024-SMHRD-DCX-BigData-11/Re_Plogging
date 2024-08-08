@@ -48,7 +48,7 @@ public class Mileage {
 	@Column(name = "created_at", columnDefinition = "datetime default now()", insertable = false, updatable = false)
 	private Timestamp created_at;
 	
-	@OneToOne // 일대일 관계
+	@OneToMany // 일대다 관계
 	@JoinColumn(name="user_idx") // Member클래스의 user_idx를 참조하는 외래키
 	private Member user_idx;
 }
