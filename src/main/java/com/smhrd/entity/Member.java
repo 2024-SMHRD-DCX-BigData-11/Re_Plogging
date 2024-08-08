@@ -1,16 +1,23 @@
 package com.smhrd.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.Data;
+import jakarta.validation.constraints.Size;
+import java.sql.Timestamp;
 
 
 @Entity	// JPA한테 이 DTO 객체가 테이블과 관련있는 객체임을 알려주는 장치 => ORM(Object Relational Mapping)를 사용하기 위함
 @Data
+@Table(name = "tb_user")
 public class Member {
 	
 	// JPA
@@ -20,40 +27,35 @@ public class Member {
 	// 개발 초기에 테이블, DTO를 변경하기 쉬움
 	// SQL문을 작성X >> but, 서버 시작 시간이 살~짝 길어짐
 	
+	// @Id	// PrimaryKey를 걸기위한 어노테이션, 반드시 하나는 존재해야 함. (그렇지 않으면 error)
+	// insertable = false 컬럼을 수정한 이후 들어오는 데이터를 막는 것
+	// updatable = false 컬럼을 수정한 이후 기존에 저장되어 있던 데이터를 수정할 수 없게끔 막는것
+	// GeneratedValue(strategy = GenerationType.IDENTITY) 기본키 생성을 DB에게 위임
 	
-	@Id	// PrimaryKey를 걸기위한 어노테이션, 반드시 하나는 존재해야 함. (그렇지 않으면 error)
-	private String email;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "user_idx", columnDefinition = "int", insertable = false, updatable = false)
+	private String user_idx;
 	
-	private String pw;
+	@Column(name = "user_id", columnDefinition = "varchar(50) nullable = false")
+	private String user_id;
 	
-	private String tel;
+	@Column(name = "user_pw", columnDefinition = "varchar(128) nullable = false")
+	private String user_pw;
 	
-	private String address;
+	@Column(name = "user_phone", columnDefinition = "varchar(20) nullable = false")
+	private String user_phone;
 	
-	@Column( columnDefinition = "varchar(50) default 'MEMber'", insertable = false, updatable = false )
-	private String role;
+	@Column(name = "user_nick", columnDefinition = "varchar(30) nullable = false")
+	private String user_nick;
 	
-	// 일대다 관계를 구현할 때, 새로운 변수를 선언해서 구현
-	// mappedBy 속성으로 어떤 컬럼과 FK 관계를 갖는지를 명시해야 함
-	@OneToMany( mappedBy = "writer" )
-	private List<Board> board;
+	@Column(name = "user_profile_img", columnDefinition = "varchar(1000) nullable = false")
+	private String user_profile_img;
 	
-	// 한 사람의 회원 정보와, 그 사람이 작성한 게시글들의 정보
-	/*
-	 * select m.email, m.pw, m.tel, m.address, b.idx, b.title...
-	 * from Member m, Board b
-	 * where m.email = b.writer
-	 * and m.email = :email
-	 */
+	@Column(name = "joined_at", columnDefinition = "datetime default now()", insertable = false, updatable = false)
+	private Timestamp joined_at;
 	
-	// 회원 조회 시, 해당 회원이 작성한 게시글을 같이 조회 > board 변수에 담김
-	// jackson databind 사용 시, JSON 변환이 제대로 이루어지지 않음
+	@Column(name = "mileage_amount", columnDefinition = "INTEGER default 300")
+	private int mileage_amount;
 	
-//	@OneToMany( mappedBy = "email" )
-//	private List<Chat> chatList;
-	
-	// 오버플로우 방지를 위해 toString 직접 오버라이딩
-	public String toString() {
-		return "MEMBER 객체";
-	}
 }
