@@ -35,27 +35,27 @@ public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_idx", columnDefinition = "int", insertable = false, updatable = false)
-	private String user_idx;
+	private int user_idx;
 	
-	@Column(name = "user_id", columnDefinition = "varchar(50) nullable = false")
+	@Column(name = "user_id", length = 50, nullable = false)
 	private String user_id;
 	
-	@Column(name = "user_pw", columnDefinition = "varchar(128) nullable = false")
+	@Column(name = "user_pw", length = 128, nullable = false)
 	private String user_pw;
 	
-	@Column(name = "user_phone", columnDefinition = "varchar(20) nullable = false")
+	@Column(name = "user_phone", length = 20, nullable = false)
 	private String user_phone;
 	
-	@Column(name = "user_nick", columnDefinition = "varchar(30) nullable = false")
+	@Column(name = "user_nick", length = 30, nullable = false)
 	private String user_nick;
 	
-	@Column(name = "user_profile_img", columnDefinition = "varchar(1000) nullable = false")
+	@Column(name = "user_profile_img", length = 1000, nullable = false)
 	private String user_profile_img;
 	
 	@Column(name = "joined_at", columnDefinition = "datetime default now()", insertable = false, updatable = false)
 	private Timestamp joined_at;
 	
-	@Column(name = "mileage_amount", columnDefinition = "INTEGER default 300")
+	@Column(name = "mileage_amount", columnDefinition = "integer default 500")
 	private int mileage_amount;
 	
 }
