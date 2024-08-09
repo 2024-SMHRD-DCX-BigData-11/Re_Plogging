@@ -10,7 +10,7 @@
 
 	<div>
 	    <h3>A코스 QR1번</h3>
-	    <a href="/qrSuccess">A-1 QR Success!</a>
+	    <a href="${pageContext.request.contextPath}/qrSuccess">A-1 QR Success!</a>
 	</div>
 
 </body>
