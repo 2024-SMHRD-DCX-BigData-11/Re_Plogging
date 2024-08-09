@@ -1,6 +1,6 @@
 package com.smhrd.entity;
 
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -10,11 +10,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
-import jakarta.validation.constraints.Size;
-import java.sql.Timestamp;
 
 
 @Entity	// JPA한테 이 DTO 객체가 테이블과 관련있는 객체임을 알려주는 장치 => ORM(Object Relational Mapping)를 사용하기 위함
@@ -42,7 +39,7 @@ public class Analysis {
 	
 	@OneToMany // 일대다 관계
 	@JoinColumn(name="file_idx") // UploadImg클래스의 file_idx를 참조하는 외래키
-	private UploadImg file_idx;
+	private List<UploadImg> file_idx;
 	
 	@Column(name = "anal_label", length = 100)
 	private String anal_label;

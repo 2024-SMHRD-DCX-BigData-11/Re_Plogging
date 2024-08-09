@@ -16,7 +16,6 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 	
 	// writer를 조건으로 게시물 조회
 	// FK로 참조가 걸려있는 컬럼을 조건으로 조회 시 컬럼명_참조하는 컬럼명 형식으로 적어야 함
-	// >> 컬럼(필드) 이름 작성 시에도 카멜 기법 사용
-	public List<Board> findByWriter_Email(String writer);
+	// >> 컬럼(필드) 이름 작성 시에도 카멜 기법 사용s
 	
 }

@@ -1,9 +1,16 @@
 package com.smhrd.entity;
 
 import java.util.Date;
+import java.util.List;
 
-import jakarta.persistence.*;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
@@ -18,7 +25,7 @@ public class Chat {
    
    @ManyToOne
    @JoinColumn(name = "comm_idx", nullable = false) // 원글과의 관계 설정 (외래 키)
-   private int community; // 원글 인덱스 (comm_idx)
+   private Board community; // 원글 인덱스 (comm_idx)
    
    @Column(name = "cmt_content", length = 900, nullable = false) // 댓글 내용
    private String message; // 댓글 내용 (cmt_content)

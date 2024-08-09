@@ -1,7 +1,6 @@
 package com.smhrd.entity;
 
-import java.util.Date;
-import java.util.List;
+import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,12 +8,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
-import jakarta.validation.constraints.Size;
-import java.sql.Timestamp;
 
 
 @Entity	// JPA한테 이 DTO 객체가 테이블과 관련있는 객체임을 알려주는 장치 => ORM(Object Relational Mapping)를 사용하기 위함
@@ -48,7 +44,7 @@ public class Mileage {
 	@Column(name = "created_at", columnDefinition = "datetime default now()", insertable = false, updatable = false)
 	private Timestamp created_at;
 	
-	@OneToMany // 일대다 관계
+	@ManyToOne // 다대일 관계
 	@JoinColumn(name="user_idx") // Member클래스의 user_idx를 참조하는 외래키
 	private Member user_idx;
 }
