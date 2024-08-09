@@ -24,7 +24,7 @@ public interface MemberRepository extends JpaRepository<Member, String> {
 	// - 카멜기법 : 단어가 바뀔 때, 대문자로 작성)
 	// - By... 을 이용해 조건(where과 같은 기능)을 걸고, 조건부에 넣기 위한 데이터를 매개변수로 넣어줘야 함.(JPA가 알아서 찾아줌)
 	// https://kim-oriental.tistory.com/34 (필요할 때 참고)
-//	public Member findByEmailAndPw( String user_id, String user_pw );
+	public Member findByUserIdAndUserPw( String userId, String userPw );
 	
 	
 	// 3. 직접 SQL문을 작성해 적용시키는 방법
@@ -37,13 +37,13 @@ public interface MemberRepository extends JpaRepository<Member, String> {
 	@Query("""
 			select u
 			from Member u
-			where u.user_id = :user_id
-			and u.user_pw = FUNCTION('SHA2', :user_pw, 512)
+			where u.userId = :userId
+			and u.userPw = FUNCTION('SHA2', :userPw, 512)
 			""")
 	
 	// @Query 이용해 독스트링으로 직접 Sql문 선언 ! (모두 소문자여야 함. 단, 테이블 이름만 첫 글자는 대문자)
 	// alias.컬럼명 = :email(바인드 변수(아래의 public ~ String email 필요 !)
-	public Member login( String user_id, String user_pw );
+	public Member login( String userId, String userPw );
 	
 	// 응답 처리 속도가 느려질 수 있음. 자동완성으로 쿼리를 만들어 내다 보니, 쿼리가 효율적이지 않을 수 있음
 	

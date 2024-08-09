@@ -49,10 +49,10 @@ public class MemberController {
 	
 	
 	@RequestMapping("/login")
-	public String login( String email, String pw, jakarta.servlet.http.HttpSession session ) {
+	public String login( String userId, String userPw, jakarta.servlet.http.HttpSession session ) {
 		// 1. 데이터 수집
 		// 2. 기능 실행
-		Member member = repo.findByEmailAndPw(email, pw);
+		Member member = repo.findByUserIdAndUserPw(userId, userPw);
 		
 		session.setAttribute("user", member);	// session에 user 이름으로 member 객체 저장
 		

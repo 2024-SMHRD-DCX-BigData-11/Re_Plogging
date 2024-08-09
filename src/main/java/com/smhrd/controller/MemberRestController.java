@@ -16,10 +16,10 @@ public class MemberRestController {
 	private MemberRepository repo;
 	
 	@RequestMapping("/check")
-	public String check( String email ) {
+	public String check( String userId ) {
 		// 1. 데이터 수집
 		// 2. 기능 실행(email을 기준으로 찾는 메서드)
-		Optional<Member> member = repo.findById(email);
+		Optional<Member> member = repo.findById(userId);
 		// Optional : 특별한 기능은 없음 ! 포장지 생각. why 감싸 ? => null 값을 처리하기 용이하게 하기 위한 객체임
 		
 		boolean check = member.isEmpty();	// 비어있니?
