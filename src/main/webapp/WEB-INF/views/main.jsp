@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ include file="header.jsp" %>
-<%@ include file="modal.jsp" %>
+<%@ include file="header.jsp"%>
+<%@ include file="modal.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <title>RE: PLOGGING</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,9 +74,9 @@
 			<div class="plogging_03-content">
 				<span> 플로깅에 참여하려면,<br> 쓰레기를 담을 튼튼한 <span class="point">봉투</span>와<br>손을
 					보호하기 위한 <span class="point">장갑</span>을 준비하세요.<br> 또는, 쓰레기를 줍기
-					위한 <span class="point">집게</span>를 사용할 수도 있습니다.<br>
-				<br> <span class="point">친구</span>나 <span class="point">가족</span>과
-					함께 참여하면<br> 더 즐겁고 효과적으로 플로깅을 즐길 수 있습니다.
+					위한 <span class="point">집게</span>를 사용할 수도 있습니다.<br> <br> <span
+					class="point">친구</span>나 <span class="point">가족</span>과 함께 참여하면<br>
+					더 즐겁고 효과적으로 플로깅을 즐길 수 있습니다.
 				</span>
 			</div>
 		</div>
@@ -104,7 +104,9 @@
 	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
 
 	<!-- Scripts -->
+	<script src="assets/js/header.js"></script>
+	<script src="assets/js/modal.js"></script>
 	<script src="assets/js/main.js"></script>
-	
+
 </body>
 </html>

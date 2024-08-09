@@ -38,7 +38,7 @@ public interface MemberRepository extends JpaRepository<Member, String> {
 			select u
 			from Member u
 			where u.user_id = :user_id
-			and u.user_pw = :user_pw
+			and u.user_pw = FUNCTION('SHA2', :user_pw, 512)
 			""")
 	
 	// @Query 이용해 독스트링으로 직접 Sql문 선언 ! (모두 소문자여야 함. 단, 테이블 이름만 첫 글자는 대문자)

@@ -16,8 +16,8 @@
 		<div class="login-container">
 			<img src="img/Re_Plogging_로고.png" alt="Re: Plogging Logo">
 
-			<form id="loginForm" action="" method="post">
-				<input type="text" id="user_id" name="user_id"
+			<form id="loginForm" action="login" method="post">
+				<input type="email" id="user_id" name="user_id"
 					class="login-id-input" placeholder="ID@example.com" autocomplete="off"> <input
 					type="password" id="user_pw" name="user_pw" class="login-pw-input"
 					placeholder="비밀번호를 입력하세요.">

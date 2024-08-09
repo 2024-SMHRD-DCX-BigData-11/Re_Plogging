@@ -1,19 +1,36 @@
+let scrollPosition = 0;
+
 // 로그인 모달 열기
 function openModal() {
-	document.getElementById('login-modal').style.display = 'flex';
+    scrollPosition = window.pageYOffset; // 현재 스크롤 위치 저장
+    document.getElementById('login-modal').style.display = 'flex';
+    document.body.style.overflowY = "hidden";
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.top = `-${scrollPosition}px`; // 스크롤 위치 유지
 }
 
 // 로그인 모달 닫기
 function closeModal() {
-	document.getElementById('login-modal').style.display = 'none';
+    document.getElementById('login-modal').style.display = 'none';
+    document.body.style.overflowY = "auto";
+    document.body.style.position = ''; // 위치 고정 해제
+    document.body.style.width = '';
+    document.body.style.top = ''; // 위치 초기화
+    window.scrollTo(0, scrollPosition); // 이전 스크롤 위치로 이동
 }
+
 
 // 회원가입 모달 열기
 function openJoinModal() {
     // 로그인 모달이 열려 있을 때만 회원가입 모달을 열 수 있음
     if (document.getElementById('login-modal').style.display === 'flex') {
         closeModal(); // 로그인 모달을 닫고
-        document.getElementById('join-modal').style.display = 'flex'; // 회원가입 모달을 열기 (block -> flex로 수정)
+        document.getElementById('join-modal').style.display = 'flex'; // 회원가입 모달을 열기
+	    document.body.style.overflowY = "hidden";
+	    document.body.style.position = 'fixed';
+	    document.body.style.width = '100%';
+	    document.body.style.top = `-${scrollPosition}px`; // 스크롤 위치 유지
     }
 }
 

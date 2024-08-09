@@ -29,6 +29,7 @@
          <li>커뮤니티</li>
          <li>그린마켓</li>
          <li onclick="openModal()">로그인</li>
+<!--          <li onclick="openModal()">마이페이지</li> -->
       </ul>
    </div>
    
@@ -36,6 +37,9 @@
    
    <div id="aside" class="aside">
       <div class="aside_inner_container">
+      <li>소희님</li>
+      <li>보유 마일리지: 1000p</li>
+      <div class="line"></div>
          <ul class="aside_category">
             <li>플로코스</li>
             <li>분리배출</li>
