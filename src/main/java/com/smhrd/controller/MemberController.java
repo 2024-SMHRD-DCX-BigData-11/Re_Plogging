@@ -28,6 +28,16 @@ public class MemberController {
 		return "main";
 	}
 	
+	@RequestMapping("/qrSuccess")
+	public String goqrSuccess() {
+		return "qrSuccess";
+	}
+	
+	@RequestMapping("/market")
+	public String goMarket(){
+	   return "market";
+	}
+	
 	@RequestMapping("/join")
 	public String join( Member member ) {
 		// 0. 사전 준비 : Dependency 추가 > DB 연결 설정까지
