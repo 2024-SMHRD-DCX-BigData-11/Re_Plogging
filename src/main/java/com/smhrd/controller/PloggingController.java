@@ -10,5 +10,12 @@ public class PloggingController {
 	public String goqrSuccess() {
 		return "qrSuccess";
 	}
+	
+	@RequestMapping("/myplogging")
+	public String gomyplogging() {
+		return "myplogging";
+	}
+	
+	
 
 }

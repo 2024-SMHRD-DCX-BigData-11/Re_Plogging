@@ -23,7 +23,7 @@ span {
 		<br>
 		<img src="img/grey-9026_512.gif" alt="Certification Complete" />
 		
-		<button type="button" class="btn text-white" onclick = "location.href = mypage" style="background-color: green;">나의 플로깅으로 이동</button>
+		<button type="button" class="btn text-white" onclick = "location.href='${pageContext.request.contextPath}/myplogging'" style="background-color: green;">나의 플로깅으로 이동</button>
 		
 	</div>
 
