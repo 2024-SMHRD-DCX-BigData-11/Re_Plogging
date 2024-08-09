@@ -16,7 +16,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "tb_comment") // 테이블 이름을 매핑
-public class Chat {
+public class Comment {
    
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class Chat {
    
    @ManyToOne
    @JoinColumn(name = "comm_idx", nullable = false) // 원글과의 관계 설정 (외래 키)
-   private Board community; // 원글 인덱스 (comm_idx)
+   private Community community; // 원글 인덱스 (comm_idx)
    
    @Column(name = "cmt_content", length = 900, nullable = false) // 댓글 내용
    private String message; // 댓글 내용 (cmt_content)

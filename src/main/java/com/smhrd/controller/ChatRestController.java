@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.smhrd.entity.Chat;
+import com.smhrd.entity.Comment;
 import com.smhrd.repository.ChatRepository;
 
 @RestController
@@ -16,10 +16,10 @@ public class ChatRestController {
    public ChatRepository repo;
    
    @RequestMapping("/load")
-   public List<Chat> load() {
+   public List<Comment> load() {
       // 1. 데이터 수집
       // 2. 기능실행
-      List<Chat> list = repo.findAll();
+      List<Comment> list = repo.findAll();
       // 3. 데이터 응답
       // jackson databind 사용 시, @OnToMany가 붙은 변수 때문에 문제가 되기 때문에
       // JSON으로 변환이 제대로 이루어지지 않음

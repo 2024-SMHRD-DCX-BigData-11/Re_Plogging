@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.smhrd.entity.Board;
+import com.smhrd.entity.Community;
 
 @Repository
-public interface BoardRepository extends JpaRepository<Board, Long> {
+public interface BoardRepository extends JpaRepository<Community, Long> {
 	// Long으로 선언한 이유 : 제너릭 안에는 참조 자료형이 들어감
 	// 기본 자료형에 대응하는 참조 자료형이 존재함
 	// int <---> Integer

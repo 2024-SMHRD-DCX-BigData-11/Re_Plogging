@@ -9,7 +9,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "tb_community") // 테이블 이름을 매핑
-public class Board {
+public class Community {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

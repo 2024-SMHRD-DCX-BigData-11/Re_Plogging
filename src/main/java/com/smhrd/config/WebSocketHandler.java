@@ -12,8 +12,8 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.google.gson.Gson;
-import com.smhrd.entity.Chat;
-import com.smhrd.entity.ChatDTO;
+import com.smhrd.entity.Comment;
+import com.smhrd.entity.Comment;
 import com.smhrd.entity.Member;
 import com.smhrd.repository.ChatRepository;
 
@@ -75,7 +75,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
       ChatDTO dto = gson.fromJson(json, ChatDTO.class);
       
       // ChatDTO ➡️ Chat 변환하는 과정 필요
-      Chat chat = new Chat();
+      Comment chat = new Comment();
       chat.setMessage( dto.getMessage() );
       
       Member member = new Member();

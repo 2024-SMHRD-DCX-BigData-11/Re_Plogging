@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.smhrd.entity.Board;
+import com.smhrd.entity.Community;
 import com.smhrd.repository.BoardRepository;
 
 @Controller
@@ -34,7 +34,7 @@ public class BoardController {
       
       // 1. 데이터 수집
       // 2. 기능 실행
-      List<Board> list =  repo.findAll();
+      List<Community> list =  repo.findAll();
       
       model.addAttribute("list", list);
       // 3. View 선택
@@ -48,7 +48,7 @@ public class BoardController {
    }
    
    @PostMapping("/write")
-   public String write( Board board, MultipartFile file ) {
+   public String write( Community board, MultipartFile file ) {
       // 1. 데이터 수집
       // Board writer 역시 잘 수집이 진행된다.
       // 수집과정에서 Member의 가장 상단에 선언된 변수에 자동으로 넣어주기 때문에
@@ -89,7 +89,7 @@ public class BoardController {
    public String view( Long idx, Model model ) {
 	   // 1. 데이터 수집
 	   // 2. 기능실행
-	   Optional<Board> board = repo.findById(idx);
+	   Optional<Community> board = repo.findById(idx);
 	   
 	   if ( board.isPresent() ) {
 		   model.addAttribute("board", board.get());
