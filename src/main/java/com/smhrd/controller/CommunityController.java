@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class CommunityController {
 	
-	@RequestMapping("/Commnunity")
+	@RequestMapping("/commnunity")
 	public String goCommnunity(){
-	   return "Commnunity";
+	   return "commnunity";
 	}
 
 }
