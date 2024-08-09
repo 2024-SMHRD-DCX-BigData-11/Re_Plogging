@@ -9,6 +9,7 @@
 }
 
 body, html {
+	position: fixed; 
 	font-family: 'S-CoreDream-3Light';
 	margin: 0;
 	padding: 0;
@@ -139,7 +140,7 @@ body, html {
 }
 
 .modal-close {
-	margin-top: 10px;
+	margin-top: 20px;
 	font-size: 12px;
 	color: #555;
 	cursor: pointer;
@@ -195,14 +196,6 @@ td {
     text-align: left;
 }
 
-#idMsg, #nickMsg {
-	display: none;
-	font-size: 11px;
-	color: red;
-	position: relative;
-    top: 5px;
-}
-
 .join-id-input,
 .join-pw-input,
 .join-pw-confirm,
@@ -213,6 +206,22 @@ td {
 	border: 1px solid #a1acbd;
 	border-radius: 4px;
 	box-sizing: border-box;
+}
+
+#idMsg {
+	display: none;
+	font-size: 11px;
+	color: red;
+	position: relative;
+    top: 5px;
+}
+
+#pwMsg {
+	display: none;
+	font-size: 11px;
+	color: red;
+	position: relative;
+    top: 5px;
 }
 
 .phone-container {
@@ -232,12 +241,68 @@ td {
     color: #000;
 }
 
-a {
-	text-decoration: none;
+.tel-confirm {
+    width: 100%;
+    height: 30px;
+    padding: 0 10px;
+    background-color: #a1acbd;
+    font-size: 13px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-.tel-confirm {
-    width: auto;
+.join-sns-input {
+    width: 100%;
+    height: 30px;
+	padding: 0px;
+	border: 1px solid #a1acbd;
+	border-radius: 4px;
+	box-sizing: border-box;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+#otp {
+    width: calc(100% - 40px); /* 타이머를 위한 공간 확보 */
+    height: 100%;
+    padding-right: 40px; /* 타이머와 겹치지 않도록 padding 설정 */
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: white;
+    color: #000;
+	
+}
+
+#countdown {
+	display: none;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: red;
+    background: none;
+    border: none;
+    pointer-events: none;
+}
+
+#nickMsg {
+	display: none;
+	font-size: 11px;
+	color: red;
+	position: relative;
+    top: 5px;
+}
+
+.btnSubmit {
+	width: 100%;
     height: 30px;
     padding: 0 10px;
     background-color: #a1acbd;
@@ -249,8 +314,8 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
-
 
 .join-button {
 	width: 100%;

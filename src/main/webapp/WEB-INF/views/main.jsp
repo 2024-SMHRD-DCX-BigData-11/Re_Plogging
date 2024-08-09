@@ -22,7 +22,7 @@
 
 		<div class="banner">
 			<p>
-				<span>오영희</span>님!
+				<span>지구수호대</span>님! 5회
 			</p>
 		</div>
 	</div>

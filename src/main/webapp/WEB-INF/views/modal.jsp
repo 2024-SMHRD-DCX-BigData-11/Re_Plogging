@@ -8,6 +8,7 @@
 <title>RE: PLOGGING</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="assets/css/modal.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 	<!-- 로그인 모달 -->
@@ -17,7 +18,7 @@
 
 			<form id="loginForm" action="" method="post">
 				<input type="text" id="user_id" name="user_id"
-					class="login-id-input" placeholder="ID@example.com"> <input
+					class="login-id-input" placeholder="ID@example.com" autocomplete="off"> <input
 					type="password" id="user_pw" name="user_pw" class="login-pw-input"
 					placeholder="비밀번호를 입력하세요.">
 				<div id="errorMessage" class="error-message">
@@ -52,8 +53,8 @@
 				<table>
 					<tr>
 						<th>아이디</th>
-						<td><input type="text" id="user_id" name="user_id"
-							class="join-id-input" placeholder="ID@example.com">
+						<td><input type="email" id="user_id" name="user_id"
+							class="join-id-input" placeholder="ID@example.com" autocomplete="off">
 							<span id="idMsg" class="idMsg">중복된 아이디 입니다.</span>
 						</td>
 					</tr>
@@ -65,10 +66,12 @@
 					<tr>
 						<th>비밀번호 확인</th>
 						<td><input type="password" id="user_pw_confirm"
-							name="user_pw_confirm" class="join-pw-confirm"></td>
+							name="user_pw_confirm" class="join-pw-confirm">
+							<span id="pwMsg" class="pwMsg">비밀번호가 일치하지 않습니다.</span>	
+						</td>
+					</tr>
 					<tr>
-					<tr>
-						<th>전화번호</th>
+						<th>휴대폰번호</th>
 						<td>
 							<div class="phone-container">
 								<select id="mobile1" name="mobile[]">
@@ -79,27 +82,36 @@
 									<option value="018">018</option>
 									<option value="019">019</option>
 								</select>
-								<input id="mobile2" name="mobile[]" value type="text">
-								<input id="mobile3" name="mobile[]" value type="text">
+								<input id="mobile2" name="mobile[]" type="tel">
+								<input id="mobile3" name="mobile[]" type="tel">
 							</div>
-								<a href="#"><span class="tel-confirm">인증하기</span></a>
+								<button type="button" id="telconfirm" class="tel-confirm" onclick="telconfirmButton();">인증</button>
 						</td>
+					</tr>
 					<tr>
+						<th>SNS 인증번호</th>
+						<td>
+						<div class="join-sns-input">
+							<input type="tel" id="otp" name="otp" class="otp" maxlength="6" placeholder="숫자 6자리 입력">
+								<span type="text" name="inputTime" id="countdown" class="countdown"></span>
+						</div>
+						<button type="button" id="btnSubmit" class="btnSubmit">확인</button>
+						</td>
+					</tr>
 					<tr>
 						<th>닉네임</th>
 						<td><input type="text" id="user_nick" name="user_nick"
 							class="join-nick-input">
 							<span id="nickMsg" class="nickMsg">중복된 닉네임 입니다.</span>
 						</td>
-					<tr>
+					</tr>
 				</table>
 				<button type="submit" class="join-button">가입하기</button>
 			</form>
 			<div class="modal-close" onclick="closeJoinModal()">닫기</div>
 		</div>
 	</div>
-
-	<!-- Scripts -->
+	
 	<script src="assets/js/modal.js"></script>
 </body>
 </html>

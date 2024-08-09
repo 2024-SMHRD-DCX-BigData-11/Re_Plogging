@@ -26,3 +26,60 @@ function closeJoinModal() {
 document.getElementById('join-link').addEventListener('click', function() {
     openJoinModal();
 });
+
+
+
+
+
+
+
+
+
+
+
+/*// 인증 버튼 교체
+function telconfirmButton() {
+    const telconfirm = document.getElementById('telconfirm');
+    
+    if (telconfirm.classList.contains('tel-confirm')) {
+        telconfirm.textContent = '재인증';
+    }
+}
+
+// 타이머
+window.onload = function() {
+    var duration = 180; // 3분 (180초)
+    var timer = duration, minutes, seconds;
+    var countdownElement = document.getElementById('countdown');
+
+    var interval = setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        countdownElement.value = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            clearInterval(interval);
+            countdownElement.value = "시간 초과";
+            // 타이머 종료 후 추가 동작 (예: 입력 필드 비활성화)
+            document.getElementById('otp').disabled = true;
+            document.getElementById('btnSubmit').disabled = true;
+        }
+    }, 1000);
+
+    // 인증번호 검증 예시
+    document.getElementById('btnSubmit').addEventListener('click', function() {
+        var userInput = document.getElementById('otp').value;
+        var correctOtp = "123456"; // 예시로 사용한 정답 OTP
+
+        if (userInput === correctOtp) {
+            alert("인증 성공!");
+            // 회원가입 절차로 이동
+        } else {
+            alert("잘못된 인증번호입니다.");
+        }
+    });
+};*/

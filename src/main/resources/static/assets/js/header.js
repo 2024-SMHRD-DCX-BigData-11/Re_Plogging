@@ -15,3 +15,42 @@ window.addEventListener('scroll', function() {
 
     lastScrollY = currentScrollY;
 });
+
+// 메뉴 버튼
+$(function(){
+    $("#menu-icon").click(function(){
+        if($("#burgur").hasClass("on")){
+            // 메뉴 버튼에 "on" 클래스가 있을 경우 해당 클래스를 제거
+            $("#burgur").removeClass("on");
+        } else {
+            // 메뉴 버튼에 "on" 클래스가 없을 경우 해당 클래스를 추가
+            $("#burgur").addClass("on");
+        }
+    });
+});
+
+// 슬라이더
+document.getElementById('menu-icon').addEventListener('click', function() {
+    const aside = document.getElementById('aside');
+    const overlay = document.getElementById('overlay');
+    const listItems = document.querySelectorAll('.aside_category li');
+
+    // 슬라이더 열기
+    aside.classList.toggle('open');
+    // 오버레이 표시
+    overlay.classList.toggle('show');
+
+    if (aside.classList.contains('open')) {
+        // 슬라이더가 열렸을 때, 리스트 아이템에 애니메이션 클래스 추가
+        listItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.classList.add('animate');
+            }, index * 300); // 각 아이템의 애니메이션이 순차적으로 실행되도록 딜레이 설정
+        });
+    } else {
+        // 슬라이더가 닫혔을 때, 애니메이션 클래스 제거
+        listItems.forEach(item => {
+            item.classList.remove('animate');
+        });
+    }
+});
