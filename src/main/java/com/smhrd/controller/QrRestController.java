@@ -19,7 +19,7 @@ import java.io.IOException;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-public class QrController {
+public class QrRestController {
 	
 	@GetMapping("/qrTest")
     public ResponseEntity<byte[]> qrToTistory() throws WriterException, IOException {

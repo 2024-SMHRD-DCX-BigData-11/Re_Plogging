@@ -28,15 +28,11 @@ public class MemberController {
 		return "main";
 	}
 	
-	@RequestMapping("/qrSuccess")
-	public String goqrSuccess() {
-		return "qrSuccess";
+	@RequestMapping("/mypage")
+	public String goMypage() {
+		return "mypage";
 	}
 	
-	@RequestMapping("/market")
-	public String goMarket(){
-	   return "market";
-	}
 	
 	@RequestMapping("/join")
 	public String join( Member member ) {
