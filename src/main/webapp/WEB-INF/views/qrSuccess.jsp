@@ -4,14 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>A코스 QR1번</title>
+<title>A코스 QR1번 인증완료 페이지</title>
 </head>
 <body>
 
-	<div>
-	    <h3>A코스 QR1번</h3>
-	    <a href="/qrSuccess">A-1 QR Success!</a>
-	</div>
+ <h1>A코스 QR1번 인증완료!!</h1>
 
 </body>
 </html>

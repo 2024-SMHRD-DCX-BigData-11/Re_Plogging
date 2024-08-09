@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.ByteArrayOutputStream;
@@ -25,7 +26,7 @@ public class QrController {
     	// QR 정보
         int width = 200;
         int height = 200;
-        String url = "https://lucas-owner.tistory.com/";
+        String url = "http://172.30.1.94:8096/boot/main";
 
         // QR Code - BitMatrix: qr code 정보 생성
         BitMatrix encode = new MultiFormatWriter()
@@ -48,5 +49,10 @@ public class QrController {
 
         return null;
     }
+    
+    @RequestMapping("/qrSuccess")
+	public String goqrSuccess() {
+		return "qrSuccess";
+	}
 }
 
