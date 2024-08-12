@@ -7,13 +7,44 @@
 	font-weight: 300;
 	font-style: normal;
 }
+
+body, html {
+	font-family: 'S-CoreDream-3Light';
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+
+.container {
+	width: 100%;
+	max-width: 1100px; /* 최대 너비 설정 */
+	margin: 125px auto;
+	position: relative;
+	padding: 0 20px; /* 좌우 여백 추가 */
+	box-sizing: border-box; /* padding을 포함하여 너비를 계산하도록 설정 */
+}
 .market_List_wrap {
 	
 }
 
-.market_card_photo {
-	border-radius: 10px;
+.market_List_option {
+	
+}
+
+.market_card_link {
     overflow: hidden;
     display: inline-block;
-    width: 100;
+    width: 320px;
+    height: 400px;
+}
+
+.market_card_photo {
+	width: 300px;
+	height: 300px;
+}
+
+.market_card_photo_image {
+	border-radius: 10px;
+	width: 300px;
+	height: 300px;
 }

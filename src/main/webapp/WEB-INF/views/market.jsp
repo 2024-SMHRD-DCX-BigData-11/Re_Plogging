@@ -15,7 +15,31 @@
 <body>
 	<div class="container">
 		<div class="market_List_wrap">
+		<div class="market_List_option">
+			<span>정렬</span>
+			<span>카테고리</span>
+		</div>
 			<div class="market_card">
+				<a class="market_card_link">
+					<div class="market_card_photo">
+						<img src="img/임시.png" alt="임시 상품 이미지" class="market_card_photo_image">
+					</div>
+					<div class="market_card_desc">
+						<div class="market_card_title">{상품명}</div>
+						<div class="market_card_price">{상품가격}</div>
+						<div class="market_card_writer">{판매자}</div>
+					</div>
+				</a>
+				<a class="market_card_link">
+					<div class="market_card_photo">
+						<img src="img/임시.png" alt="임시 상품 이미지" class="market_card_photo_image">
+					</div>
+					<div class="market_card_desc">
+						<div class="market_card_title">{상품명}</div>
+						<div class="market_card_price">{상품가격}</div>
+						<div class="market_card_writer">{판매자}</div>
+					</div>
+				</a>
 				<a class="market_card_link">
 					<div class="market_card_photo">
 						<img src="img/임시.png" alt="임시 상품 이미지" class="market_card_photo_image">
