@@ -16,7 +16,7 @@
          <img src="img/비로그인.png">
       </div>
       <div class="logo">
-         <a href="#"><img src="img/Re_Plogging_로고.png" alt=""></a>
+         <a href="${pageContext.request.contextPath}/main"><img src="img/Re_Plogging_로고.png" alt=""></a>
       </div>
       <button class="menu-icon" id="menu-icon">
          <span class="burgur" id="burgur">

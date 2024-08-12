@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>RE: PLOGGING</title>
+<title>RE:PLOGGING MYPAGE</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="assets/css/mypage.css">
@@ -17,7 +17,7 @@
 		<div class="profile-container">
 			<span>프로필</span>
 		</div>
-		<div class="line"></div>
+		<div class="profile-line"></div>
 		<div>
 			<div class="profile-container-inner">
 			<div class="pc-inner-left"><img src="img/기본_프로필.png" alt=""></div>
@@ -46,5 +46,7 @@
 			</ul>
 		</div>
 	</div>
+	
+	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
 </body>
 </html>
