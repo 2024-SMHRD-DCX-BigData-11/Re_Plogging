@@ -1,0 +1,19 @@
+@charset "EUC-KR";
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+		format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+.market_List_wrap {
+	
+}
+
+.market_card_photo {
+	border-radius: 10px;
+    overflow: hidden;
+    display: inline-block;
+    width: 100;
+}
