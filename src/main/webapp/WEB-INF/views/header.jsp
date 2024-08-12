@@ -26,7 +26,7 @@
       <ul class="menu">
          <li>플로코스</li>
          <li>분리배출</li>
-         <li>커뮤니티</li>
+         <li><a href="${pageContext.request.contextPath}/community" style="text-decoration: none; color: inherit;">커뮤니티</a></li>
          <li>그린마켓</li>
          <li onclick="openModal()">로그인</li>
 <!--          <li onclick="openModal()">마이페이지</li> -->
