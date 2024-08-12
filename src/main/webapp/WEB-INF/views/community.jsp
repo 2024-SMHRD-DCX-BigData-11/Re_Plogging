@@ -1,139 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="header.jsp"%>
-<!-- header.jsp 파일 포함 -->
-
-<!DOCTYPE html>
+<%@ include file="modal.jsp"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="UTF-8">
-<title>커뮤니티 페이지 입니다.</title>
-<style>
-body {
-	font-family: Arial, sans-serif;
-	margin: 20px;
-}
-
-.container {
-	max-width: 800px;
-	margin: 0 auto;
-	margin-top: 80px; /* 헤더와의 간격을 주기 위해 추가 */
-}
-
-h1 {
-	color: #333;
-}
-
-.table {
-	width: 100%;
-	border-collapse: collapse;
-	margin-top: 20px;
-}
-
-.table th, .table td {
-	border: 1px solid #ddd;
-	padding: 8px;
-	text-align: left;
-}
-
-.table th {
-	background-color: #f4f4f4;
-}
-
-.table tr:nth-child(even) {
-	background-color: #f9f9f9;
-}
-
-.btn {
-	display: inline-block;
-	padding: 10px 20px;
-	font-size: 14px;
-	cursor: pointer;
-	text-align: center;
-	text-decoration: none;
-	outline: none;
-	color: #fff;
-	background-color: #4CAF50;
-	border: none;
-	border-radius: 5px;
-}
-
-.btn:hover {
-	background-color: #45a049;
-}
-
-.page-header {
-	margin-bottom: 20px;
-}
-
-.pagination {
-	list-style: none;
-	display: flex;
-	justify-content: center;
-	padding: 0;
-}
-
-.pagination li {
-	margin: 0 5px;
-}
-
-.pagination a {
-	text-decoration: none;
-	padding: 8px 16px;
-	color: #333;
-	border: 1px solid #ddd;
-	border-radius: 4px;
-}
-
-.pagination a:hover {
-	background-color: #ddd;
-}
-
-.pagination .active a {
-	background-color: #4CAF50;
-	color: white;
-}
-
-.search-box {
-	margin-bottom: 20px;
-	display: flex;
-	align-items: center;
-	width: 100%;
-}
-
-.search-select, .search-input, .search-btn {
-	margin-right: 10px;
-}
-
-.search-select {
-	padding: 10px;
-	font-size: 14px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-}
-
-.search-input {
-	flex: 1;
-	padding: 10px;
-	font-size: 14px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-}
-
-.search-btn {
-	padding: 10px 20px;
-	font-size: 14px;
-	cursor: pointer;
-	background-color: #4CAF50;
-	color: white;
-	border: none;
-	border-radius: 4px;
-}
-
-.search-btn:hover {
-	background-color: #45a049;
-}
-</style>
+<title>RE:PLOGGING 커뮤니티 페이지</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="assets/css/community.css">
 </head>
 <body>
 	<div class="container">
@@ -158,8 +35,8 @@ h1 {
 			</form>
 		</div>
 		<div style="margin-bottom: 20px;">
-			<a href="${pageContext.request.contextPath}/communityWriter" class="btn">새
-				글 작성</a>
+			<a href="${pageContext.request.contextPath}/communityWriter"
+				class="btn">새 글 작성</a>
 		</div>
 		<table class="table">
 			<thead>
@@ -175,11 +52,13 @@ h1 {
 			<tbody>
 				<c:forEach items="${posts}" var="post">
 					<tr>
-						<td>${post.id}</td>
-						<td><a href="/community/${post.id}">${post.title}</a></td>
+						<td>${post.idx}</td>
+						<td><a href="/community/${post.idx}">${post.title}</a></td>
 						<td>${post.category}</td>
-						<td>${post.author}</td>
-						<td>${post.createdDate}</td>
+						<td>${post.writer.userName}</td>
+						<!-- 작성자 이름 -->
+						<td>${post.indate}</td>
+						<td>${post.count}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
