@@ -33,6 +33,11 @@ public class MemberController {
 		return "mypage";
 	}
 	
+	@RequestMapping("/userInfoModify")
+	public String goUserInfoModify() {
+		return "userInfoModify";
+	}
+	
 	@RequestMapping("/sms")
 	public String goSms() {
 		return "sms";

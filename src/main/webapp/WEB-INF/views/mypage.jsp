@@ -35,7 +35,7 @@
 				</div>
 			</div>
 			<ul>
-				<li><a href="#"><sapn>회원 정보 수정</sapn> <img
+				<li><a href="${pageContext.request.contextPath}/userInfoModify"><sapn>회원 정보 수정</sapn> <img
 						src="img/right-arrow.png" alt="Arrow"> </a></li>
 				<li><a href="#"><sapn>나의 플로깅</sapn> <img
 						src="img/right-arrow.png" alt="Arrow"> </a></li>
