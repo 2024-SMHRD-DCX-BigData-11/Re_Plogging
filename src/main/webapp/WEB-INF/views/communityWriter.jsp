@@ -6,92 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>글쓰기 페이지</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-        background-color: #f9f9f9;
-    }
-
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
-        margin-top: 80px;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-        color: #333;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-    }
-
-    label {
-        margin-bottom: 10px;
-        font-weight: bold;
-        color: #333;
-    }
-
-    input[type="text"],
-    select,
-    textarea {
-        padding: 10px;
-        font-size: 14px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    textarea {
-        resize: vertical;
-        min-height: 150px;
-    }
-
-    input[type="file"] {
-        margin-bottom: 20px;
-    }
-
-    .button-group {
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    .btn {
-        padding: 10px 20px;
-        font-size: 14px;
-        cursor: pointer;
-        text-align: center;
-        text-decoration: none;
-        outline: none;
-        color: #fff;
-        background-color: #4CAF50;
-        border: none;
-        border-radius: 5px;
-        margin-left: 10px;
-    }
-
-    .btn:hover {
-        background-color: #45a049;
-    }
-
-    .btn-cancel {
-        background-color: #f44336;
-    }
-
-    .btn-cancel:hover {
-        background-color: #e53935;
-    }
-</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="assets/css/communityWriter.css">
 </head>
 <body>
     <div class="container">
