@@ -21,6 +21,7 @@ body, html {
 	align-items: center;
 	margin: 125px auto 0 auto;
     width: 400px;
+    min-height: calc(100vh - 175px);
     box-sizing: border-box;
 }
 
@@ -46,7 +47,7 @@ body, html {
     align-self: flex-start;
     align-items: center;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
 
 .ic-inner-left img {
@@ -74,44 +75,156 @@ body, html {
     margin-bottom: 5px;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
+/* 수정 테이블 */
+
+#userInfo-form {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-label {
+#userInfo-form th, #userInfo-form td {
+    text-align: left;
+    padding: 8px;
+    vertical-align: middle;
+}
+
+#userInfo-form th {
+    width: 125px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+
+#userInfo-form td input[type="email"],
+#userInfo-form td input[type="text"],
+#userInfo-form td input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #a1acbd;
+    border-radius: 5px;
+    font-family: 'S-CoreDream-3Light';
+    font-size: 14px;  
+}
+
+/* 아이디, 휴대폰번호 선 제거 */
+#MuserId {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: none !important;
+    outline: none !important;
+    background-color: transparent !important;
+}
+
+#MuserPw {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: none !important;
+    outline: none !important;
+    background-color: transparent !important;
+}
+
+#MuserPhone {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: none !important;
+    outline: none !important;
+    background-color: transparent !important;
+}
+
+/* 비밀번호 필드와 버튼에만 적용 */
+.pw-field {
+    display: flex;
+    align-items: center;
+}
+
+.pw-field input {
+    width: calc(100% - 80px); /* 버튼 공간 확보 */
+    margin-right: 8px;
+}
+
+#change-pw-button {
+    padding: 5px 12px;
+    background-color: #a1acbd;
+    color: white;
+    border: 1px solid #a1acbd;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center; /* 텍스트 중앙 정렬 */
+    white-space: nowrap; /* 텍스트가 한 줄에 표시되도록 설정 */
+}
+
+
+#change-pw-section {
+    display: none;
     margin-top: 10px;
 }
 
-input[type="text"],
-input[type="password"] {
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+#userInfo-form td.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-button {
-    background-color: #008080;
-    color: #fff;
+#cancel-button, #save-button {
+    padding: 8px 12px;
     border: none;
-    padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px;
-}
-
-#change-password-button {
-    background-color: #008080;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 10px;
+    white-space: nowrap;
+    flex-grow: 1;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 #cancel-button {
-    background-color: #888;
-    margin-right: 10px;
+    background-color: #a1acbd;
+    color: white;
+}
+
+#save-button {
+    background-color: #08917c;
+    color: white;
+}
+
+#userInfo-form td.button-group {
+    display: flex;
+    justify-content: space-between; /* 버튼들 사이에 간격을 설정 */
+    gap: 10px; /* 버튼들 사이의 간격 설정 */
+}
+
+
+.Modify-button-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.Modify-button {
+    width: 45%;
+    background-color: #00a989;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.Modify-button:hover {
+    background-color: #08917c;
+}
+
+footer {
+	font-size: 13px;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 25px;
 }

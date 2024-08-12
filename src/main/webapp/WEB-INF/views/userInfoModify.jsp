@@ -13,53 +13,107 @@
 <link rel="stylesheet" href="assets/css/userInfoModify.css">
 </head>
 <body>
-    <div class="userInfoModify-container">
+	<div class="userInfoModify-container">
 		<div class="Info-container">
 			<span>회원 정보 수정</span>
 		</div>
 		<div class="Info-line"></div>
-        <div class="Info-container-inner">
-            <div class="ic-inner-left"><img src="img/기본_프로필.png" alt="프로필 이미지"></div>
-            <div class="ic-inner-right">
-            <span>나의 프로필</span>
-            <button class="upload-button">사진 업로드</button>
-			</div>            
-        </div>
-        <form id="user-info-form">
-            <label for="email">아이디</label>
-            <input type="email" id="email" value="o_o226@naver.com" readonly>
-            
-            <div id="password-section">
-                <label for="password">비밀번호</label>
-                <input type="password" id="password" value="**********" readonly>
-                <button type="button" id="change-password-button">변경</button>
-            </div>
+		<div class="Info-container-inner">
+			<div class="ic-inner-left">
+				<img src="img/기본_프로필.png" alt="프로필 이미지">
+			</div>
+			<div class="ic-inner-right">
+				<span>나의 프로필</span>
+				<button class="upload-button">사진 업로드</button>
+			</div>
+		</div>
+		<form id="userInfo-form" action="" method="post" autocomplete="off">
+			<table id="user-info-table">
+				<tr>
+					<th>아이디</th>
+					<td><input type="email" id="MuserId" name="userId" value="o_o226@naver.com"
+						readonly></td>
+				</tr>
+				<tr id="pw-row">
+				    <th>비밀번호</th>
+				    <td class="pw-field">
+				        <input type="password" id="MuserPw" name="userPw" value="**********" readonly>
+				        <button type="button" id="change-pw-button">변경</button>
+				    </td>
+				</tr>
+				<tbody id="change-pw-section" >
+				<tr>
+					<th>현재 비밀번호</th>
+					<td><input type="password" id="current-Mpw" placeholder="현재 비밀번호"></td>
+				</tr>
+				<tr>
+					<th>새 비밀번호</th>
+					<td><input type="password" id="confirm-Mpw" placeholder="새 비밀번호"></td>
+				</tr>
+				<tr>
+					<th>새 비밀번호 확인</th>
+					<td><input type="password" id="new-confirm-Mpw" placeholder="새 비밀번호 확인"></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td class="button-group">
+						<button type="button" id="cancel-button">취소</button>
+						<button type="button" id="save-button">변경사항 저장</button>
+					</td>
+				</tr>
+				</tbody>
+				<tr>
+					<th>휴대폰번호</th>
+					<td><input type="text" id="MuserPhone" name="userPhone" value="010-XXXX-XXXX"
+						readonly></td>
+				</tr>
+				<tr>
+					<th>닉네임</th>
+					<td><input type="text" id="MuserNick" name="userNick" value="지구수호대"></td>
+				</tr>
+			</table>
+			<div class="Modify-button-wrapper">
+				<button type="submit" class="Modify-button">확인</button>
+			</div>
+		</form>
+	</div>
+		<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved.
+		</footer>
 
-            <div id="change-password-section" style="display: none;">
-                <label for="current-password">현재 비밀번호</label>
-                <input type="password" id="current-password">
+		<script src="assets/js/userInfoModify.js"></script>
+				<!-- 		<form id="user-info-form">
+			<div id="id-section">
+				<label for="email">아이디</label> <input type="email" id="email"
+					value="o_o226@naver.com" readonly>
+			</div>
 
-                <label for="new-password">새 비밀번호</label>
-                <input type="password" id="new-password">
+			<div id="pw-section">
+				<label for="password">비밀번호</label> <input type="password"
+					id="password" value="**********" readonly>
+				<button type="button" id="change-password-button">변경</button>
+			</div>
 
-                <label for="confirm-password">새 비밀번호 확인</label>
-                <input type="password" id="confirm-password">
+			<div id="change-password-section" style="display: none;">
+				<label for="current-password">현재 비밀번호</label> <input type="password"
+					id="current-password"> <label for="new-password">새
+					비밀번호</label> <input type="password" id="new-password"> <label
+					for="confirm-password">새 비밀번호 확인</label> <input type="password"
+					id="confirm-password">
 
-                <button type="button" id="cancel-button">취소</button>
-                <button type="button" id="save-changes-button">변경사항 저장</button>
-            </div>
+				<button type="button" id="cancel-button">취소</button>
+				<button type="button" id="save-changes-button">변경사항 저장</button>
+			</div>
 
-            <label for="phone">전화번호</label>
-            <input type="text" id="phone" value="010-XXXX-XXXX" readonly>
+			<div id="phone-section">
+				<label for="phone">전화번호</label> <input type="text" id="phone"
+					value="010-XXXX-XXXX" readonly>
+			</div>
+			<div id="nick-section">
+				<label for="nickname">닉네임</label> <input type="text" id="nickname"
+					value="지구수호대">
+			</div>
 
-            <label for="nickname">닉네임</label>
-            <input type="text" id="nickname" value="지구수호대">
-            
-            <button type="submit">확인</button>
-        </form>
-    </div>
-	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
-	
-    <script src="assets/js/userInfoModify.js"></script>
+			<button type="submit">확인</button>
+		</form> -->
 </body>
 </html>
