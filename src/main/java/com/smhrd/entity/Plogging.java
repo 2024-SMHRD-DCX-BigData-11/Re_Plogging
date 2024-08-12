@@ -9,7 +9,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "tb_plogging_list") // 테이블 이름을 매핑
-public class PloggingList {
+public class Plogging {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

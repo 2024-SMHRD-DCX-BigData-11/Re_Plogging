@@ -33,6 +33,11 @@ public class MemberController {
 		return "mypage";
 	}
 	
+	@RequestMapping("/sms")
+	public String goSms() {
+		return "sms";
+	}
+	
 	
 	@RequestMapping("/join")
 	public String join( Member member ) {
