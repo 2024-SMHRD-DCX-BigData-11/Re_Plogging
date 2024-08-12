@@ -26,7 +26,7 @@ public class QrRestController {
     	// QR 정보
         int width = 200;
         int height = 200;
-        String url = "http://192.168.55.56:8096/boot/qrSuccess";
+        String url = "http://172.23.0.1:8096/boot/qrSuccess";
 
         // QR Code - BitMatrix: qr code 정보 생성
         BitMatrix encode = new MultiFormatWriter()

@@ -38,12 +38,6 @@ public class MemberController {
 		return "userInfoModify";
 	}
 	
-	@RequestMapping("/sms")
-	public String goSms() {
-		return "sms";
-	}
-	
-	
 	@RequestMapping("/join")
 	public String join( Member member ) {
 		// 0. 사전 준비 : Dependency 추가 > DB 연결 설정까지

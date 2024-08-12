@@ -7,7 +7,7 @@
     try {
            String apiUrl =  "https://sslsms.cafe24.com/smsSenderPhone.php";
             String userAgent = "Mozilla/5.0";
-            String postParams = "userId=********&passwd=********";
+            String postParams = "userId=iworks2018&passwd=ac48f9ab4e7200e10b27c5b7b5fc633b";
             URL obj = new URL(apiUrl);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             con.setRequestMethod("POST");

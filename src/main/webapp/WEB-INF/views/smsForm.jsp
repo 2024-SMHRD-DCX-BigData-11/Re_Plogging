@@ -16,7 +16,7 @@
             }
 
             function loadJSON() {
-                var data_file = "/calljson.jsp";
+                var data_file = "/shipping2";
                 var http_request = new XMLHttpRequest();
                 try {
                     // Opera 8.0+, Firefox, Chrome, Safari
@@ -64,7 +64,7 @@
     </head>
 
     <body onload="loadJSON()">
-    <form method="post" name="smsForm" action="발송처리URL">
+    <form method="post" name="smsForm" action="/shipping1">
     <input type="hidden" name="action" value="go"> 발송타입
         <span>
           <input type="radio" name="smsType" value="S">단문(SMS)</span>
