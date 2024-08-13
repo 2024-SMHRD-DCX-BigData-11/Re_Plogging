@@ -108,8 +108,8 @@ body, html {
 
 .menu-icon, .user-icon {
    display: none;
-   width: 30px;
-   height: 30px;
+   width: 25px;
+   height: 25px;
    position: absolute;
 }
 
@@ -128,13 +128,13 @@ body, html {
 /* 햄버거 아이콘 기본 스타일 */
 .burgur {
    position: relative;
-   width: 30px;
+   width: 25px;
    height: 3px;
    background: #08917c;
 }
 
 .burgur .top-line, .burgur .bot-line {
-   width: 30px;
+   width: 25px;
    height: 3px;
    background-color: #08917c;
    position: absolute;
@@ -190,6 +190,11 @@ body, html {
     box-shadow: none; /* 기본 상태에서 그림자를 숨김 */
     transition: left 0.8s ease; /* 슬라이드 효과 */
     z-index: 1000;
+}
+
+#aside .aside_inner_container p,
+#aside .aside_inner_container span {
+	padding: 10px;
 }
 
 #aside ul {
@@ -260,26 +265,28 @@ body, html {
     animation: slideDown 0.9s ease forwards;
 }
 
-
 /* 미디어 쿼리 */
 @media ( max-width : 768px) {
-   .menu {
-      display: none; /* 기본적으로는 보이게 설정 */
-   }
-   .menu-icon, .user-icon {
-      display: inline-block; /* 화면이 좁을 때 표시 */
-   }
-   .menu-icon {
-      cursor: pointer;
-   }
-   .burgur {
-      display: inline-block;
-   }
-   .header {
-      justify-content: center; /* 모든 요소를 가운데 정렬 */
-      padding: 0;
-   }
-   .header .logo {
-      margin: 0; /* 여백 제거 */
-   }
+	.menu {
+		display: none; /* 기본적으로는 보이게 설정 */
+	}
+	.menu-icon, .user-icon {
+		display: inline-block; /* 화면이 좁을 때 표시 */
+	}
+	.menu-icon {
+		cursor: pointer;
+	}
+	.burgur {
+		display: inline-block;
+	}
+	.header {
+		justify-content: center; /* 모든 요소를 가운데 정렬 */
+		padding: 0;
+	}
+	.header .logo {
+		margin: 0; /* 여백 제거 */
+	}
+	.header .logo img {
+		height: 90%;
+	}
 }

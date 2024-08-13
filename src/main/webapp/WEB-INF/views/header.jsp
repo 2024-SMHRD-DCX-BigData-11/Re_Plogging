@@ -44,8 +44,8 @@
 
 	<div id="aside" class="aside">
 		<div class="aside_inner_container">
-			<li>소희님</li>
-			<li>보유 마일리지: 1000p</li>
+			<p>소희님</p>
+			<span>보유 마일리지: {$mileages}p</span>
 			<div class="line"></div>
 			<ul class="aside_category">
 				<li>플로코스</li>
