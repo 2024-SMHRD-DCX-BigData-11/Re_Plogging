@@ -68,6 +68,10 @@ public class Member {
         if (this.userProfileImg == null || this.userProfileImg.isEmpty()) {
             this.userProfileImg = "./src/main/resources/static/img/기본_프로필.png"; // 기본 이미지 경로
         }
+        
+        if (this.mileageAmount == 0) {
+            this.mileageAmount = 500; // 기본 마일리지 설정
+        }
     }
 	
 }

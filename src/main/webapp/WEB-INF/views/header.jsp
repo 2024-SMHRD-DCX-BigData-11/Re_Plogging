@@ -29,14 +29,12 @@
 			<li><a href="#">분리배출</a></li>
 			<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
 			<li><a href="#">그린마켓</a></li>
-			<c:choose>
-				<c:when test="${loginSuccess}">
-					<li><a href="${pageContext.request.contextPath}/mypage">마이페이지</a></li>
-				</c:when>
-				<c:otherwise>
-					<li><a href="#" onclick="openModal()">로그인</a></li>
-				</c:otherwise>
-			</c:choose>
+		<c:if test="${empty user}">
+			<li><a href="#" onclick="openModal()">로그인</a></li>
+		</c:if>
+		<c:if test="${!empty user}">
+			<h1>${user.userId}</h1>
+		</c:if>
 		</ul>
 	</div>
 

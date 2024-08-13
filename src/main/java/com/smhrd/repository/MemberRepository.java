@@ -47,4 +47,5 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
 	
 	// 응답 처리 속도가 느려질 수 있음. 자동완성으로 쿼리를 만들어 내다 보니, 쿼리가 효율적이지 않을 수 있음
 	
+	
 }

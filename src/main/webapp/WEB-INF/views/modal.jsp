@@ -17,9 +17,9 @@
 			<img src="img/Re_Plogging_로고.png" alt="Re: Plogging Logo">
 
 			<form id="loginForm" action="login" method="post">
-				<input type="email" id="user_id" name="user_id"
+				<input type="email" id="user_id" name="userId"
 					class="login-id-input" placeholder="ID@example.com" autocomplete="off"> <input
-					type="password" id="user_pw" name="user_pw" class="login-pw-input"
+					type="password" id="user_pw" name="userPw" class="login-pw-input"
 					placeholder="비밀번호를 입력하세요.">
 				<div id="errorMessage" class="error-message">
 					이메일 또는 비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다시 확인해주세요.
