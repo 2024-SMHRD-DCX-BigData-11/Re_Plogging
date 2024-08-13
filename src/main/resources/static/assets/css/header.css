@@ -61,13 +61,17 @@ body, html {
    list-style-type: none;
    margin: 0;
    padding: 0;
-   color: #08917c;
    font-size: 20px;
 }
 
 .menu li {
-   position: relative;
    margin-right: 40px;
+}
+
+.menu a {
+   position: relative;
+   color: #08917c;
+   text-decoration: none;
    cursor: pointer;
    transition: 0.35s;
 }
@@ -78,26 +82,26 @@ body, html {
 }
 
 /* ¸Þ´º ÅÇ È£¹ö */
-.menu li:before, .menu li:after {
+.menu a:before, .menu a:after {
    display: inline-block;
    opacity: 0;
    transition: transform 0.3s, opacity 0.2s;
 }
 
-.menu li:before {
+.menu a:before {
    margin-right: 10px;
    content: '[';
    transform: translateX(20px);
 }
 
-.menu li:after {
+.menu a:after {
    margin-left: 10px;
    content: ']';
    transform: translateX(-20px);
 }
 
-.menu li:hover:before, .menu li:hover:after, .menu li:focus:before,
-   .menu li:focus:after {
+.menu a:hover:before, .menu a:hover:after, .menu a:focus:before,
+   .menu a:focus:after {
    opacity: 1;
    transform: translateX(0px);
 }
