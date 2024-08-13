@@ -1,4 +1,4 @@
-package com.smhrd.controller;
+package com.smhrd.restController;
 
 import java.util.Optional;
 

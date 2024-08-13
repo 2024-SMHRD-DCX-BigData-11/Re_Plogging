@@ -64,7 +64,7 @@
     </head>
 
     <body onload="loadJSON()">
-    <form method="post" name="smsForm" action="/shipping1">
+    <form method="post" name="smsForm" action="${pageContext.request.contextPath}/shipping123">
     <input type="hidden" name="action" value="go"> 발송타입
         <span>
           <input type="radio" name="smsType" value="S">단문(SMS)</span>
