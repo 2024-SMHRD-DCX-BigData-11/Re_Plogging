@@ -23,18 +23,22 @@
 			<div class="pc-inner-left"><img src="img/기본_프로필.png" alt=""></div>
 				<div class="pc-inner-right">
 					<div class="profile-nick">
-						<span>지구수호대</span><span>님</span>
+						<span>${user.userNick }</span><span>님</span>
+						    <div class="logout-container" id="logoutButton">
+						        <span class="logout-text">로그아웃</span>
+						        <img src="img/로그아웃.png" alt="" class="icon">
+						    </div>
 					</div>
 					<div class="profile-info">
 						<span>리플로깅과 함께</span><br> <span>오늘도 활기찬 하루 보내세요♥</span>
 					</div>
 					<div class="profile-activity">
 						<span>완료한 플로깅</span> <span class="point">5회</span><br>
-						<span>그린 마일리지</span> <span class="point">50p</span>
+						<span>그린 마일리지</span> <span class="point">${user.mileageAmount}p</span>
 					</div>
 				</div>
 			</div>
-			<ul>
+			<ul class="mypage-ul">
 				<li><a href="${pageContext.request.contextPath}/userInfoModify"><sapn>회원 정보 수정</sapn> <img
 						src="img/right-arrow.png" alt="Arrow"> </a></li>
 				<li><a href="#"><sapn>나의 플로깅</sapn> <img
@@ -48,5 +52,7 @@
 	</div>
 	
 	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
+	
+	<script src="assets/js/mypage.js"></script>
 </body>
 </html>

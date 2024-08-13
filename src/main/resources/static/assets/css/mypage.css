@@ -1,4 +1,5 @@
 @charset "EUC-KR";
+
 @font-face {
 	font-family: 'S-CoreDream-3Light';
 	src:
@@ -20,10 +21,9 @@ body, html {
 	flex-direction: column;
 	align-items: center;
 	margin: 125px auto 0 auto;
-    width: 400px;
-    box-sizing: border-box;
+	width: 400px;
+	box-sizing: border-box;
 }
-
 
 .profile-container {
 	width: 100%;
@@ -35,84 +35,115 @@ body, html {
 }
 
 .profile-line {
-    border-bottom: 2px solid #a1acbd;
-    width: 100%;
-    margin: 0 auto;
-    margin-bottom: 20px;
+	border-bottom: 2px solid #a1acbd;
+	width: 100%;
+	margin: 0 auto;
+	margin-bottom: 20px;
 }
 
 .profile-container-inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 50px;
 }
 
 .pc-inner-left img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
 }
 
 .pc-inner-right {
-    text-align: left;
-    margin-left: 20px;
+	text-align: left;
+	margin-left: 20px;
 }
 
-.profile-nick span:first-child {
-    font-size: 18px;
-    font-weight: bold;
+.profile-nick {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
 }
 
-.profile-nick span:last-child {
-    font-size: 18px;
+.profile-nick>span:first-child {
+	font-size: 18px;
+	font-weight: bold;
+	margin-right: 2px;
+}
+
+.profile-nick>span:last-child {
+	font-size: 18px;
+}
+
+/* 로그아웃 버튼 */
+.logout-container {
+	display: inline-flex;
+	align-items: center;
+	padding: 2px 6px;
+	border: 1px solid #a1acbd;
+	border-radius: 50px;
+	cursor: pointer;
+	background-color: white;
+	margin-left: auto;
+}
+
+.logout-text {
+	margin-right: 5px;
+	font-size: 13px;
+	font-weight: bold;
+	color: #a1acbd;
+}
+
+.logout-container img.icon {
+	width: 20px;
+	height: 20px;
 }
 
 .profile-info {
-    margin-top: 10px;
-    color: #666;
-    font-size: 15px;
+	margin-top: 10px;
+	color: #666;
+	font-size: 15px;
 }
 
 .profile-activity {
-    margin-top: 10px;
+	margin-top: 10px;
 }
 
 .profile-activity span {
-    font-size: 16px;
+	font-size: 16px;
 }
 
 .profile-activity .point {
-    font-size: 16px;
-    color: #01875f;
+	font-size: 16px;
+	color: #01875f;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+.mypage-ul {
+	list-style: none;
+	padding: 0;
 }
 
-ul li {
-    text-align: left;
-    margin: 20px 0;
+.mypage-ul li {
+	text-align: left;
+	margin: 20px 0;
 }
 
-ul li a {
-    text-decoration: none;
-    color: #000;
-    font-size: 18px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.mypage-ul li a {
+	text-decoration: none;
+	color: #000;
+	font-size: 18px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
-ul li a:hover {
-    color: #01875f;
+.mypage-ul li a:hover {
+	color: #01875f;
 }
 
-ul li a img {
-    width: 20px;
-    height: 20px;
+.mypage-ul li a img {
+	width: 20px;
+	height: 20px;
 }
 
 footer {
@@ -122,69 +153,87 @@ footer {
 	margin-bottom: 25px;
 }
 
+@media
+screen
+and
+(max-width:
+768px)
+{
+.mypage-container {
+	width: 90%;
+	margin-top: 100px;
+	box-sizing: border-box;
+}
 
-@media screen and (max-width: 768px) {
-	.mypage-container {
-		width: 90%;
-		margin-top: 100px;
-	    box-sizing: border-box;
-	}
+.profile-container {
+	font-size: 24px;
+	margin-bottom: 10px;
+}
 
-	.profile-container {
-		font-size: 24px;
-		margin-bottom: 10px;
-	}
+.profile-container-inner {
+	margin-bottom: 40px;
+}
 
-	.profile-container-inner {
-		margin-bottom: 40px;
-	}
+.pc-inner-left img {
+	width: 150px; /* 이미지 크기 축소 */
+	height: 150px;
+}
 
-	.pc-inner-left img {
-		width: 150px; /* 이미지 크기 축소 */
-		height: 150px;
-	}
+.pc-inner-right {
+	margin-left: 0;
+	margin-top: 10px;
+}
 
-	.pc-inner-right {
-		margin-left: 0;
-		margin-top: 10px;
-	}
+.profile-nick > span:first-child {
+	font-size: 17px;
+}
 
-	.profile-nick span:first-child {
-		font-size: 17px;
-	}
+.profile-nick > span:last-child {
+	font-size: 17px;
+}
 
-	.profile-nick span:last-child {
-		font-size: 17px;
-	}
+.profile-info {
+	font-size: 13px;
+}
 
-	.profile-info {
-		font-size: 13px;
-	}
+.profile-activity span, .profile-activity .point {
+	font-size: 14px;
+}
 
-	.profile-activity span, .profile-activity .point {
-		font-size: 14px;
-	}
+/* 로그아웃 버튼 */
+.logout-container {
+	padding: 2px 5px;
+}
 
-	/* 리스트 항목 크기 조정 */
-	ul li {
-		margin: 20px 0;
-	}
+.logout-text {
+	font-size: 11px;
+}
 
-	ul li a {
-		font-size: 16px;
-	}
+.logout-container img.icon {
+	width: 20px;
+	height: 20px;
+}
 
-	ul li a img {
-		width: 18px;
-		height: 18px;
-	}
+/* 리스트 항목 크기 조정 */
+ul li {
+	margin: 20px 0;
+}
 
-	.line {
-		width: 100%; /* 선 너비를 컨테이너에 맞춤 */
-		margin-bottom: 10px; /* 선 아래의 마진 축소 */
-	}
-	
-	footer {
-		font-size: 11px;
-	}
+ul li a {
+	font-size: 16px;
+}
+
+ul li a img {
+	width: 18px;
+	height: 18px;
+}
+
+.line {
+	width: 100%; /* 선 너비를 컨테이너에 맞춤 */
+	margin-bottom: 10px; /* 선 아래의 마진 축소 */
+}
+
+footer {
+	font-size: 11px;
+}
 }
