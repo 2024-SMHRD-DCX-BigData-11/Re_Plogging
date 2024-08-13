@@ -21,7 +21,6 @@ body, html {
 	align-items: center;
 	margin: 125px auto 0 auto;
     width: 400px;
-    min-height: calc(100vh - 175px);
     box-sizing: border-box;
 }
 
@@ -119,7 +118,7 @@ ul li a img {
 footer {
 	font-size: 13px;
 	text-align: center;
-	margin-top: 0px;
+	margin-top: 100px;
 	margin-bottom: 25px;
 }
 
@@ -128,7 +127,6 @@ footer {
 	.mypage-container {
 		width: 90%;
 		margin-top: 100px;
-		min-height: calc(100vh - 250px);
 	    box-sizing: border-box;
 	}
 
@@ -138,7 +136,6 @@ footer {
 	}
 
 	.profile-container-inner {
-		text-align: center; /* 텍스트 가운데 정렬 */
 		margin-bottom: 40px;
 	}
 
@@ -153,15 +150,15 @@ footer {
 	}
 
 	.profile-nick span:first-child {
-		font-size: 18px;
+		font-size: 17px;
 	}
 
 	.profile-nick span:last-child {
-		font-size: 18px;
+		font-size: 17px;
 	}
 
 	.profile-info {
-		font-size: 14px;
+		font-size: 13px;
 	}
 
 	.profile-activity span, .profile-activity .point {

@@ -23,8 +23,9 @@
 				<img src="img/기본_프로필.png" alt="프로필 이미지">
 			</div>
 			<div class="ic-inner-right">
+				<input id="file-input" type="file" style="visibility: hidden;">
 				<span>나의 프로필</span>
-				<button class="upload-button">사진 업로드</button>
+				<button class="upload-button" onclick="onClickUpload();">사진 업로드</button>
 			</div>
 		</div>
 		<form id="userInfo-form" action="" method="post" autocomplete="off">
@@ -37,7 +38,7 @@
 				<tr id="pw-row">
 				    <th>비밀번호</th>
 				    <td class="pw-field">
-				        <input type="password" id="MuserPw" name="userPw" value="**********" readonly>
+				        <input type="password" id="MuserPw" name="userPw" value="*********" readonly>
 				        <button type="button" id="change-pw-button">변경</button>
 				    </td>
 				</tr>
@@ -79,41 +80,5 @@
 	</div>
 		<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved.
 		</footer>
-
 		<script src="assets/js/userInfoModify.js"></script>
-				<!-- 		<form id="user-info-form">
-			<div id="id-section">
-				<label for="email">아이디</label> <input type="email" id="email"
-					value="o_o226@naver.com" readonly>
-			</div>
-
-			<div id="pw-section">
-				<label for="password">비밀번호</label> <input type="password"
-					id="password" value="**********" readonly>
-				<button type="button" id="change-password-button">변경</button>
-			</div>
-
-			<div id="change-password-section" style="display: none;">
-				<label for="current-password">현재 비밀번호</label> <input type="password"
-					id="current-password"> <label for="new-password">새
-					비밀번호</label> <input type="password" id="new-password"> <label
-					for="confirm-password">새 비밀번호 확인</label> <input type="password"
-					id="confirm-password">
-
-				<button type="button" id="cancel-button">취소</button>
-				<button type="button" id="save-changes-button">변경사항 저장</button>
-			</div>
-
-			<div id="phone-section">
-				<label for="phone">전화번호</label> <input type="text" id="phone"
-					value="010-XXXX-XXXX" readonly>
-			</div>
-			<div id="nick-section">
-				<label for="nickname">닉네임</label> <input type="text" id="nickname"
-					value="지구수호대">
-			</div>
-
-			<button type="submit">확인</button>
-		</form> -->
-</body>
 </html>

@@ -8,6 +8,11 @@ document.getElementById('cancel-button').addEventListener('click', function() {
     document.getElementById('change-pw-section').style.display = 'none';
 });
 
+function onClickUpload() {
+            let fileInput = document.getElementById("file-input");
+            fileInput.click();
+        }
+
 /*document.getElementById("save-changes-button").addEventListener("click", function() {
     // 여기에 비밀번호 변경 로직 추가
     alert("비밀번호가 성공적으로 변경되었습니다.");
