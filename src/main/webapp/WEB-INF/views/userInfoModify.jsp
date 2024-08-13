@@ -32,7 +32,7 @@
 			<table id="user-info-table">
 				<tr>
 					<th>아이디</th>
-					<td><input type="email" id="MuserId" name="userId" value="o_o226@naver.com"
+					<td><input type="email" id="MuserId" name="userId" value="${user.userId}"
 						readonly></td>
 				</tr>
 				<tr id="pw-row">
@@ -65,12 +65,12 @@
 				</tbody>
 				<tr>
 					<th>휴대폰번호</th>
-					<td><input type="text" id="MuserPhone" name="userPhone" value="010-XXXX-XXXX"
+					<td><input type="text" id="MuserPhone" name="userPhone" value="${user.userPhone}"
 						readonly></td>
 				</tr>
 				<tr>
 					<th>닉네임</th>
-					<td><input type="text" id="MuserNick" name="userNick" value="지구수호대"></td>
+					<td><input type="text" id="MuserNick" name="userNick" value="${user.userNick}"></td>
 				</tr>
 			</table>
 			<div class="Modify-button-wrapper">

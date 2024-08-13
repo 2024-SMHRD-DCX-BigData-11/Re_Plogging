@@ -33,7 +33,7 @@
 			<li><a href="#" onclick="openModal()">로그인</a></li>
 		</c:if>
 		<c:if test="${!empty user}">
-			<h1>${user.userId}</h1>
+			<li><a href="${pageContext.request.contextPath}/mypage">마이페이지</a></li>
 		</c:if>
 		</ul>
 	</div>
