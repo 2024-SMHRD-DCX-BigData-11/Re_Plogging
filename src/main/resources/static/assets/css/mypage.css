@@ -56,22 +56,47 @@ body, html {
 
 .pc-inner-right {
 	text-align: left;
-	margin-left: 20px;
+	margin-left: 10px;
+}
+
+.profile-nContainer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between; /* 양쪽 끝으로 배치 */
+	width: 100%;
+	padding: 0;
+	white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+	overflow: hidden; /* 컨테이너 넘어가는 요소 숨김 */
 }
 
 .profile-nick {
-	display: flex;
+	display: inline-flex;
 	align-items: center;
-	justify-content: flex-start;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-right: 5px;
+	flex-shrink: 1;
 }
 
-.profile-nick>span:first-child {
+.logout-container {
+	display: inline-flex;
+	align-items: center;
+	padding: 5px 10px;
+	border: 1px solid #a1acbd;
+	border-radius: 50px;
+	cursor: pointer;
+	background-color: white;
+	flex-shrink: 0; /* 로그아웃 버튼은 크기 유지 */
+}
+
+.pro-usernick {
 	font-size: 18px;
 	font-weight: bold;
 	margin-right: 2px;
 }
 
-.profile-nick>span:last-child {
+.pro-nim {
 	font-size: 18px;
 }
 
@@ -79,7 +104,7 @@ body, html {
 .logout-container {
 	display: inline-flex;
 	align-items: center;
-	padding: 2px 6px;
+	padding: 2px 5px;
 	border: 1px solid #a1acbd;
 	border-radius: 50px;
 	cursor: pointer;
@@ -89,20 +114,20 @@ body, html {
 
 .logout-text {
 	margin-right: 5px;
-	font-size: 13px;
+	font-size: 11px;
 	font-weight: bold;
 	color: #a1acbd;
 }
 
 .logout-container img.icon {
-	width: 20px;
-	height: 20px;
+	width: 17px;
+	height: 17px;
 }
 
 .profile-info {
 	margin-top: 10px;
 	color: #666;
-	font-size: 15px;
+	font-size: 13px;
 }
 
 .profile-activity {
@@ -110,11 +135,11 @@ body, html {
 }
 
 .profile-activity span {
-	font-size: 16px;
+	font-size: 15px;
 }
 
 .profile-activity .point {
-	font-size: 16px;
+	font-size: 15px;
 	color: #01875f;
 }
 
@@ -153,87 +178,68 @@ footer {
 	margin-bottom: 25px;
 }
 
-@media
-screen
-and
-(max-width:
-768px)
-{
-.mypage-container {
-	width: 90%;
-	margin-top: 100px;
-	box-sizing: border-box;
-}
+@media screen and (max-width: 768px) {
+	.mypage-container {
+		width: 90%;
+		margin-top: 100px;
+		box-sizing: border-box;
+	}
+	.profile-container {
+		font-size: 24px;
+		margin-bottom: 10px;
+	}
+	.profile-container-inner {
+		margin-bottom: 40px;
+	}
+	.pc-inner-right {
+		margin-left: 0;
+		margin-top: 10px;
+	}
+	.profile-nContainer {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.pro-usernick, .pro-nim {
+		font-size: 16px;
+	}
+	.profile-nick {
+		overflow: visible;
+		margin-right: 0;
+		flex-shrink: 0;
+	}
+	.logout-container {
+		margin-top: 3px; /* 닉네임 아래에 간격 추가 */
+		align-self: flex-star; /* 좌측 정렬 */
+		margin-left: 0;
+		padding: 1px 5px;
+	}
+	.logout-text {
+		font-size: 10px;
+	}
+	.profile-info {
+		font-size: 12px;
+	}
+	.profile-activity span, .profile-activity .point {
+		font-size: 14px;
+	}
 
-.profile-container {
-	font-size: 24px;
-	margin-bottom: 10px;
-}
-
-.profile-container-inner {
-	margin-bottom: 40px;
-}
-
-.pc-inner-left img {
-	width: 150px; /* 이미지 크기 축소 */
-	height: 150px;
-}
-
-.pc-inner-right {
-	margin-left: 0;
-	margin-top: 10px;
-}
-
-.profile-nick > span:first-child {
-	font-size: 17px;
-}
-
-.profile-nick > span:last-child {
-	font-size: 17px;
-}
-
-.profile-info {
-	font-size: 13px;
-}
-
-.profile-activity span, .profile-activity .point {
-	font-size: 14px;
-}
-
-/* 로그아웃 버튼 */
-.logout-container {
-	padding: 2px 5px;
-}
-
-.logout-text {
-	font-size: 11px;
-}
-
-.logout-container img.icon {
-	width: 20px;
-	height: 20px;
-}
-
-/* 리스트 항목 크기 조정 */
-ul li {
-	margin: 20px 0;
-}
-
-ul li a {
-	font-size: 16px;
-}
-
-ul li a img {
-	width: 18px;
-	height: 18px;
-}
-
-.line {
-	width: 100%; /* 선 너비를 컨테이너에 맞춤 */
-	margin-bottom: 10px; /* 선 아래의 마진 축소 */
-}
-
-footer {
-	font-size: 11px;
-}
+	/* 리스트 항목 크기 조정 */
+	.mypage-ul li {
+		margin: 20px 0;
+	}
+	.mypage-ul li a {
+		font-size: 16px;
+	}
+	.mypage-ul li a img {
+		width: 18px;
+		height: 18px;
+	}
+	.profile-line {
+		width: 100%; /* 선 너비를 컨테이너에 맞춤 */
+		margin-bottom: 10px; /* 선 아래의 마진 축소 */
+	}
+	footer {
+		font-size: 11px;
+	}
 }
