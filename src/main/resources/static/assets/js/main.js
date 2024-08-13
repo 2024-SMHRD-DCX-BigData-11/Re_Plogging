@@ -16,6 +16,9 @@ function handleScroll() {
 
 window.addEventListener('scroll', handleScroll);
 
+
+
+
 // 메뉴 슬라이더 효과
 function openMenu() {
 	const menu = document.querySelector('.menu');
@@ -26,3 +29,26 @@ function closeMenu() {
 	const menu = document.querySelector('.menu');
 	menu.classList.remove('open'); // 'open' 클래스 제거하여 메뉴를 숨김
 }
+
+
+
+
+// 로그인 실패_URL의 쿼리 파라미터 확인
+const urlParams = new URLSearchParams(window.location.search);
+const loginError = urlParams.get('loginError');
+
+// 로그인 모달을 열고 에러 메시지를 표시하는 함수
+function openLoginModalWithError() {
+    // 로그인 모달을 화면에 보이게 설정
+    document.getElementById('login-modal').style.display = 'flex';
+
+    // 에러 메시지를 보이게 설정
+    document.getElementById('errorMessage').style.display = 'block';
+}
+
+// 페이지 로드 시 loginError 파라미터가 있는지 확인하고, 있으면 모달을 띄움
+window.onload = function() {
+    if (loginError) {
+        openLoginModalWithError();
+    }
+};

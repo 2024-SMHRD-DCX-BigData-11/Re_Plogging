@@ -127,6 +127,12 @@
           <version>2.10.1</version>
       </dependency>
       
+      <dependency>
+	    <groupId>commons-codec</groupId>
+	    <artifactId>commons-codec</artifactId>
+	    <version>1.15</version> <!-- 버전은 필요에 따라 조정하세요 -->
+	  </dependency>
+      
       
    </dependencies>
 
