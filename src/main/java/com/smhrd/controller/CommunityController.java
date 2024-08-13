@@ -19,18 +19,18 @@ import java.util.List;
 
 @Controller
 public class CommunityController {
-
+	
     @Autowired
     private CommunityRepository communityRepository;
 
-    @GetMapping("/community")
+    @RequestMapping("/community")
     public ModelAndView goCommunity() {
         List<Community> posts = communityRepository.findAll();
         ModelAndView mv = new ModelAndView("community");
         mv.addObject("posts", posts);
         return mv;
     }
-
+    
     @GetMapping("/communityWriter")
     public String goWriter() {
         return "communityWriter";

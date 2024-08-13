@@ -32,13 +32,13 @@ public class Plogging {
 	@Column(name = "qr3", nullable = false, columnDefinition = "INT DEFAULT 0")
 	private int qr3; // QR3 (qr3)
 	
-	@Column(name = "qr1_time", nullable = false)
+	@Column(name = "qr1_time")
 	private Date qr1Time; // QR1 시간 (qr1_time)
 	
-	@Column(name = "qr2_time", nullable = false)
+	@Column(name = "qr2_time")
 	private Date qr2Time; // QR2 시간 (qr2_time)
 	
-	@Column(name = "qr3_time", nullable = false)
+	@Column(name = "qr3_time")
 	private Date qr3Time; // QR3 시간 (qr3_time)
 	
 	@Column(name = "started_at", insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
