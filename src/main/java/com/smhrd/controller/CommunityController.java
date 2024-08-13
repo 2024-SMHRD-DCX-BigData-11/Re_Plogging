@@ -35,6 +35,10 @@ public class CommunityController {
     public String goWriter() {
         return "communityWriter";
     }
+    @GetMapping("/communityRead")
+    public String goRead() {
+        return "communityRead";
+    }
 
     @PostMapping("/submitPost")
     public String submitPost(Community post, MultipartFile file) {

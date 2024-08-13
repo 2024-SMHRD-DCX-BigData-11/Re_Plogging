@@ -1,9 +1,7 @@
 @charset "EUC-KR";
 @font-face {
    font-family: 'S-CoreDream-3Light';
-   src:
-      url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
-      format('woff');
+   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
    font-weight: 300;
    font-style: normal;
 }
@@ -15,122 +13,126 @@ body, html {
    width: 100%;
 }
 
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
-        margin-top: 80px;
-    }
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 80px;
+}
 
-    h1 {
-        color: #333;
-    }
+h1 {
+    color: #333;
+}
 
-    .table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
 
-    .table th, .table td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-    }
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
 
-    .table th {
-        background-color: #f4f4f4;
-    }
+.table th {
+    background-color: #f4f4f4;
+}
 
-    .table tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
+.table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
 
-    .btn {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 14px;
-        cursor: pointer;
-        text-align: center;
-        text-decoration: none;
-        outline: none;
-        color: #fff;
-        background-color: #4CAF50;
-        border: none;
-        border-radius: 5px;
-    }
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
 
-    .btn:hover {
-        background-color: #45a049;
-    }
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+}
 
-    .page-header {
-        margin-bottom: 20px;
-    }
+.btn:hover {
+    background-color: #45a049;
+}
 
-    .pagination {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        padding: 0;
-    }
+.page-header {
+    margin-bottom: 20px;
+}
 
-    .pagination li {
-        margin: 0 5px;
-    }
+.pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
 
-    .pagination a {
-        text-decoration: none;
-        padding: 8px 16px;
-        color: #333;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-    }
+.pagination li {
+    margin: 0 5px;
+}
 
-    .pagination a:hover {
-        background-color: #ddd;
-    }
+.pagination a {
+    text-decoration: none;
+    padding: 8px 16px;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
 
-    .pagination .active a {
-        background-color: #4CAF50;
-        color: white;
-    }
+.pagination a:hover {
+    background-color: #ddd;
+}
 
-    .search-box {
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        width: 100%;
-    }
+.pagination .active a {
+    background-color: #4CAF50;
+    color: white;
+}
 
-    .search-select, .search-input, .search-btn {
-        margin-right: 10px;
-    }
+.search-box {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
 
-    .search-select {
-        padding: 10px;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
+.search-select, .search-input, .search-btn {
+    margin-right: 10px;
+}
 
-    .search-input {
-        flex: 1;
-        padding: 10px;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
+.search-select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
-    .search-btn {
-        padding: 10px 20px;
-        font-size: 14px;
-        cursor: pointer;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-    }
+.search-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
-    .search-btn:hover {
-        background-color: #45a049;
-    }
+.search-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.search-btn:hover {
+    background-color: #45a049;
+}

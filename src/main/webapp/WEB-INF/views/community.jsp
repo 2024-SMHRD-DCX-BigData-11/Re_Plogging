@@ -18,25 +18,19 @@
 			<h1>자유 게시판</h1>
 		</div>
 		<div class="search-box">
-			<form action="/community" method="get"
-				style="display: flex; width: 100%;">
+			<form action="/community" method="get" style="display: flex; width: 100%;">
 				<select name="category" class="search-select">
 					<option value="">전체 카테고리</option>
-					<option value="plogging"
-						${category eq 'plogging' ? 'selected' : ''}>플로깅</option>
-					<option value="separation"
-						${category eq 'separation' ? 'selected' : ''}>분리배출</option>
-					<option value="freeboard"
-						${category eq 'freeboard' ? 'selected' : ''}>자유게시판</option>
-
-				</select> <input type="text" name="keyword" class="search-input"
-					placeholder="검색어를 입력하세요" value="${keyword}">
+					<option value="plogging">플로깅</option>
+					<option value="separation">분리배출</option>
+					<option value="freeboard">자유게시판</option>
+				</select> 
+				<input type="text" name="keyword" class="search-input" placeholder="검색어를 입력하세요">
 				<button type="submit" class="search-btn">검색</button>
 			</form>
 		</div>
 		<div style="margin-bottom: 20px;">
-			<a href="${pageContext.request.contextPath}/communityWriter"
-				class="btn">새 글 작성</a>
+			<a href="${pageContext.request.contextPath}/communityWriter" class="btn">새 글 작성</a>
 		</div>
 		<table class="table">
 			<thead>
@@ -50,17 +44,46 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${posts}" var="post">
-					<tr>
-						<td>${post.idx}</td>
-						<td><a href="/community/${post.idx}">${post.title}</a></td>
-						<td>${post.category}</td>
-						<td>${post.writer.userName}</td>
-						<!-- 작성자 이름 -->
-						<td>${post.indate}</td>
-						<td>${post.count}</td>
-					</tr>
-				</c:forEach>
+				<tr>
+					<td>1</td>
+					<td><a href="${pageContext.request.contextPath}/communityRead">첫 번째 글입니다</a></td>
+					<td>플로깅</td>
+					<td>홍길동</td>
+					<td>2024-08-10</td>
+					<td>123</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td><a href="${pageContext.request.contextPath}/communityRead">두 번째 글입니다</a></td>
+					<td>분리배출</td>
+					<td>김철수</td>
+					<td>2024-08-11</td>
+					<td>98</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td><a href="${pageContext.request.contextPath}/communityRead">세 번째 글입니다</a></td>
+					<td>자유게시판</td>
+					<td>이영희</td>
+					<td>2024-08-12</td>
+					<td>45</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td><a href="${pageContext.request.contextPath}/communityRead">네 번째 글입니다</a></td>
+					<td>플로깅</td>
+					<td>박민수</td>
+					<td>2024-08-13</td>
+					<td>76</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td><a href="${pageContext.request.contextPath}/communityRead">다섯 번째 글입니다</a></td>
+					<td>자유게시판</td>
+					<td>최지우</td>
+					<td>2024-08-14</td>
+					<td>30</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
@@ -68,7 +91,6 @@
 	<nav aria-label="Page navigation" style="text-align: center;">
 		<ul class="pagination">
 			<li><a href="/community?page=1">&laquo;</a></li>
-			<!-- 여기에 페이지 네비게이션이 들어갈 것입니다. -->
 			<li><a href="#">&lsaquo;</a></li>
 			<li><a href="#">1</a></li>
 			<li><a href="#">2</a></li>

@@ -19,7 +19,7 @@
 
             <label for="category">카테고리</label>
             <select id="category" name="category" required>
-                <option value="plogging">플로깅</option>
+                <option value="plogging">플로깅</option>+
                 <option value="separation">분리배출</option>
                 <option value="freeboard">자유게시판</option>
             </select>
