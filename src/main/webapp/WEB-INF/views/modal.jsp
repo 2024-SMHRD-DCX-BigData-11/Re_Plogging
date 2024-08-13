@@ -49,18 +49,18 @@
 		<div class="join-container">
 			<img src="img/Re_Plogging_로고.png" alt="Re: Plogging Logo">
 
-			<form id="joinForm" action="" method="post">
+			<form id="joinForm" action="join" method="post">
 				<table>
 					<tr>
 						<th>아이디</th>
-						<td><input type="email" id="user_id" name="user_id"
+						<td><input type="email" id="user_id" name="userId"
 							class="join-id-input" placeholder="ID@example.com" autocomplete="off">
 							<span id="idMsg" class="idMsg">중복된 아이디 입니다.</span>
 						</td>
 					</tr>
 					<tr>
 						<th>비밀번호</th>
-						<td><input type="password" id="user_pw" name="user_pw"
+						<td><input type="password" id="user_pw" name="userPw"
 							class="join-pw-input" placeholder="비밀번호를 입력하세요."></td>
 					</tr>
 					<tr>
@@ -84,6 +84,7 @@
 								</select>
 								<input id="mobile2" name="mobile[]" type="tel">
 								<input id="mobile3" name="mobile[]" type="tel">
+								<input id="mobile4" name="userPhone" type="hidden" value = "">
 							</div>
 								<button type="button" id="telconfirm" class="tel-confirm" onclick="telconfirmButton();">인증</button>
 						</td>
@@ -100,7 +101,7 @@
 					</tr>
 					<tr>
 						<th>닉네임</th>
-						<td><input type="text" id="user_nick" name="user_nick"
+						<td><input type="text" id="user_nick" name="userNick"
 							class="join-nick-input">
 							<span id="nickMsg" class="nickMsg">중복된 닉네임 입니다.</span>
 						</td>

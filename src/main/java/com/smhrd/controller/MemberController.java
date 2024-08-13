@@ -2,6 +2,7 @@ package com.smhrd.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,10 +13,12 @@ import com.smhrd.repository.MemberRepository;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
+
 public class MemberController {
 	
 	@Autowired
 	private MemberRepository repo; // 레파지토리를 사용하기 위한 변수 선언
+	
 	
 	@RequestMapping("/test")
 	public String test() {

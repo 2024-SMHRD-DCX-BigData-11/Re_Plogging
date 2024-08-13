@@ -44,8 +44,19 @@ document.getElementById('join-link').addEventListener('click', function() {
     openJoinModal();
 });
 
-
-
+// 인증 버튼 누르면 mobile값 1개로 합치는 함수
+function telconfirmButton() {
+    // mobile1, mobile2, mobile3 값을 가져옴
+    var mobile1 = document.getElementById("mobile1").value;
+    var mobile2 = document.getElementById("mobile2").value;
+    var mobile3 = document.getElementById("mobile3").value;
+    
+    // 값을 합쳐서 하나의 전화번호로 만듦
+    var fullPhoneNumber = mobile1 + "-" + mobile2 + "-" + mobile3;
+    
+    // hidden input 필드의 value를 설정함
+    document.getElementById("mobile4").value = fullPhoneNumber;
+}
 
 
 

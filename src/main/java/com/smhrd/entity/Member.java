@@ -9,8 +9,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import jakarta.validation.constraints.Size;
 import java.sql.Timestamp;
 
@@ -18,6 +21,8 @@ import java.sql.Timestamp;
 @Entity	// JPA한테 이 DTO 객체가 테이블과 관련있는 객체임을 알려주는 장치 => ORM(Object Relational Mapping)를 사용하기 위함
 @Data
 @Table(name = "tb_user")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Member {
 	
 	// JPA
@@ -57,5 +62,12 @@ public class Member {
 	
 	@Column(name = "mileage_amount", columnDefinition = "integer default 500")
 	private int mileageAmount;
+	
+	@PrePersist
+    public void prePersist() {
+        if (this.userProfileImg == null || this.userProfileImg.isEmpty()) {
+            this.userProfileImg = "./src/main/resources/static/img/기본_프로필.png"; // 기본 이미지 경로
+        }
+    }
 	
 }

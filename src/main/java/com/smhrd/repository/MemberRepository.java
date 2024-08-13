@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.smhrd.entity.Member;
 
 @Repository
-public interface MemberRepository extends JpaRepository<Member, String> {
+public interface MemberRepository extends JpaRepository<Member, Integer> {
 	
 	// JpaRepository 인터페이스를 상속 받음.
 	// <Table과 연결된 Entity, ID(PK)가 붙은 필드(컬럼)의 자료형>
