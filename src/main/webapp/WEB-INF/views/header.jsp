@@ -12,9 +12,16 @@
 </head>
 <body>
 	<div class="header">
-		<div class="user-icon" onclick="openModal()">
-			<img src="img/비로그인.png">
-		</div>
+		<c:if test="${empty user}">
+			<div class="user-icon" onclick="openModal()">
+				<img src="img/비로그인.png" alt="">
+			</div>
+		</c:if>
+		<c:if test="${!empty user}">
+			<div class="user-icon">
+				<a href="${pageContext.request.contextPath}/mypage"><img src="img/로그인.png" alt=""></a>
+			</div>
+		</c:if>
 		<div class="logo">
 			<a href="${pageContext.request.contextPath}/main"><img
 				src="img/Re_Plogging_로고.png" alt=""></a>
