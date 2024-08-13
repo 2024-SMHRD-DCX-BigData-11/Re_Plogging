@@ -79,6 +79,16 @@ body, html {
 	flex-shrink: 1;
 }
 
+.pro-usernick {
+	font-size: 18px;
+	font-weight: bold;
+	margin-right: 2px;
+}
+
+.pro-nim {
+	font-size: 18px;
+}
+
 .logout-container {
 	display: inline-flex;
 	align-items: center;
@@ -88,16 +98,6 @@ body, html {
 	cursor: pointer;
 	background-color: white;
 	flex-shrink: 0; /* 로그아웃 버튼은 크기 유지 */
-}
-
-.pro-usernick {
-	font-size: 18px;
-	font-weight: bold;
-	margin-right: 2px;
-}
-
-.pro-nim {
-	font-size: 18px;
 }
 
 /* 로그아웃 버튼 */
