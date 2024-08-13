@@ -42,8 +42,8 @@
 
 	<div id="aside" class="aside">
 		<div class="aside_inner_container">
-			<p>소희님</p>
-			<span>보유 마일리지: {$mileages}p</span>
+			<p>${user.userNick}님</p>
+			<span>그린 마일리지 ${user.mileageAmount}p</span>
 			<div class="line"></div>
 			<ul class="aside_category">
 				<li>플로코스</li>
@@ -55,7 +55,7 @@
 		</ul>
 		<div class="aside_footer">
 			<div class="aside_innser_footer">
-				<li><a href="">로그아웃</a></li>
+				<li><a href="logout">로그아웃</a></li>
 			</div>
 		</div>
 	</div>
