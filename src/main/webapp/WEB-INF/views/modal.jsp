@@ -40,7 +40,7 @@
 			</div>
 
 			<!-- 모달 닫기 버튼 -->
-			<div class="modal-close" onclick="closeModal()">닫기</div>
+			<div class="modal-close" onclick="closeLoginModal()">닫기</div>
 		</div>
 	</div>
 

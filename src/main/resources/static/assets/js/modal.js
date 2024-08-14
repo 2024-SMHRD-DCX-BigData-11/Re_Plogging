@@ -11,7 +11,7 @@ function openModal() {
 }
 
 // 로그인 모달 닫기
-function closeModal() {
+function closeLoginModal() {
     document.getElementById('login-modal').style.display = 'none';
     document.body.style.overflowY = "auto";
     document.body.style.position = ''; // 위치 고정 해제
@@ -44,7 +44,7 @@ document.getElementById('join-link').addEventListener('click', function() {
     openJoinModal();
 });
 
-// 인증 버튼 누르면 mobile값 1개로 합치는 함수
+//*/ 인증 버튼 누르면 mobile값 1개로 합치는 함수
 function telconfirmButton() {
     // mobile1, mobile2, mobile3 값을 가져옴
     var mobile1 = document.getElementById("mobile1").value;
@@ -75,7 +75,7 @@ function telconfirmButton() {
 }
 
 // 인증번호 확인
-function closeModal() {
+function smsCheck() {
 	u_input = document.getElementById("otp").value;
 }
 
