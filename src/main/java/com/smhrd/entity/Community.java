@@ -3,11 +3,14 @@ package com.smhrd.entity;
 import java.util.Date;
 
 import jakarta.persistence.*;
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "tb_community") // 테이블 이름을 매핑
 public class Community {
 	
