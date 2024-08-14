@@ -254,14 +254,26 @@ public class SendRestController {
 		return "test";
 	}
 	
+//	@RequestMapping(value = "/shipping1234", method = RequestMethod.POST)
+//	public ResponseEntity<String> savesms() {
+//		
+//		int code = (int) (Math.random() * 900000 + 100000);
+//		
+//	
+//		
+//	}
+	
 	@RequestMapping(value = "/shipping123", method = RequestMethod.POST)
-	public ResponseEntity<String> sendsms(@RequestParam("phoneNumber") String phoneNumber) {
+	public ResponseEntity<String> sendsms(
+			@RequestParam( value= "phoneNumber") String phoneNumber,
+			@RequestParam( value= "code") int code
+			) {
 		try { 
 			String sms_url = "";
 			sms_url = "https://sslsms.cafe24.com/sms_sender.php"; // SMS 전송요청 URL
 			String user_id = base64Encode("iworks2018"); // SMS아이디
 			String secure = base64Encode("ac48f9ab4e7200e10b27c5b7b5fc633b");// 인증키
-			String msg = base64Encode(nullcheck("인증번호입니다.\r\n " + (int) (Math.random() * 900000 + 100000), ""));
+			String msg = base64Encode(nullcheck("인증번호입니다.\r\n " + code, ""));
 			String rphone = base64Encode(nullcheck(phoneNumber, ""));
 			String sphone1 = base64Encode(nullcheck("061", "")); // cafe24에 등록된 폰번호 010
 			String sphone2 = base64Encode(nullcheck("746", "")); // cafe24에 등록된 폰번호 1111
