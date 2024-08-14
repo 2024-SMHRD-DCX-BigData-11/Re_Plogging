@@ -75,9 +75,6 @@
             <a href="${pageContext.request.contextPath}/communityWriter"
                 class="commWirteBtn">글쓰기</a>
             </c:if>
-            <c:if test="${empty user}">
-            <a href="#" onclick="openModal()" class="commWirteBtn">글쓰기</a>
-            </c:if>
         </div>
     </div>
 
