@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.smhrd.entity.Community;
@@ -40,7 +41,17 @@ public class CommunityController {
     }
 
     @GetMapping("/communityRead")
-    public String goRead() {
+    public String goRead(@RequestParam("idx") int idx, Model model) {
+        // 특정 글을 가져오기
+        Community community = communityRepository.findById(idx).orElseThrow(() -> new IllegalArgumentException("Invalid community Id:" + idx));
+        
+        // 조회수 증가
+        community.setCount(community.getCount() + 1);
+        communityRepository.save(community);
+        
+        // 모델에 데이터를 추가하여 JSP로 전달
+        model.addAttribute("community", community);
+        
         return "communityRead";
     }
 }
