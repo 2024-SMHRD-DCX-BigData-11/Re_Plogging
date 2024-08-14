@@ -43,7 +43,7 @@ body, html {
 
 .market_card{
 	display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     width: 100%;
 }
@@ -51,8 +51,8 @@ body, html {
 .market_card_link {
     overflow: hidden;
     display: inline-block;
-    width: 320px;
-    height: 420px;
+    width: 240px;
+    height: 350px;
     margin: 10px auto;
     display: flex;
     flex-direction: column;
@@ -94,42 +94,7 @@ body, html {
 	color: grey;
 }
 
-.market_List_option2_content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    border: 1px solid #ddd;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    padding: 8px 0;
-    z-index: 1;
-}
 
-.market_List_option2_content ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.market_List_option2_content ul li {
-    padding: 8px 16px;
-    cursor: pointer;
-    color: #333;
-}
-
-.market_List_option2_content ul li:hover {
-    background-color: #f1f1f1;
-}
-
-/* 드롭다운 메뉴를 버튼 아래에 배치 */
-#market_List_option2 {
-    position: relative;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-.market_List_option2_content.show {
-    display: block;
-}
 
 @media screen and (max-width: 900px) {
     .market_card {
@@ -140,12 +105,12 @@ body, html {
 
 @media screen and (max-width: 600px) {
     .market_card {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
     
     .market_card_link {
-    width: 250px;
-    height: 315px;
+    width: 150px;
+    height: px;
 	}
 	
 	.market_card_desc h2 {
