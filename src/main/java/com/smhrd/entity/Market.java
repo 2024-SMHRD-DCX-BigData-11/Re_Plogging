@@ -1,6 +1,7 @@
 package com.smhrd.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -49,4 +50,9 @@ public class Market {
 	
 	@Column(name = "mk_status", nullable = true, length = 20)
 	private String status; // 판매 상태 (mk_status)
+
+	public void addAttribute(String string, List<Market> list) {
+		// TODO Auto-generated method stub
+		
+	}
 }

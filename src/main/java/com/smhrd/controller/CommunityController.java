@@ -14,11 +14,11 @@ import java.util.List;
 
 @Controller
 public class CommunityController {
-
+	
     @Autowired
     private CommunityRepository communityRepository;
 
-    @GetMapping("/community")
+    @RequestMapping("/community")
     public ModelAndView goCommunity() {
     	ModelAndView mav = new ModelAndView("community");
     	
@@ -33,7 +33,7 @@ public class CommunityController {
         // View 선택
         return mav;
     }
-
+    
     @GetMapping("/communityWriter")
     public String goWriter() {
         return "communityWriter";

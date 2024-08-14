@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.smhrd.entity.Member;
 import com.smhrd.repository.MemberRepository;
@@ -53,16 +54,29 @@ public class MemberController {
 	}
 
 	@RequestMapping("/login")
-	public String login(String userId, String userPw, jakarta.servlet.http.HttpSession session) {
-		// 1. 데이터 수집
-		// 2. 기능 실행
-		Member member = repo.findByUserIdAndUserPw(userId, userPw);
-
-		session.setAttribute("user", member); // session에 user 이름으로 member 객체 저장
-
-		// 3. View 선택(동기식이니까)
-		return "redirect:/main";
+	public String login(@RequestParam("userId") String userId, @RequestParam("userPw") String userPw, jakarta.servlet.http.HttpSession session) {
+		 // 1. 비밀번호를 암호화
+         String encryptedPassword = encryptPassword(userPw);
+         
+         // 2. 레포지토리에서 암호화된 비밀번호와 아이디로 사용자 조회
+         Member member = repo.findByUserIdAndUserPw(userId, encryptedPassword);
+         
+         // 3. 조회 결과에 따른 처리
+        if (member == null) {
+            // 로그인 실패 처리
+        	return "redirect:/main?loginError=true";
+        } else {
+            // 로그인 성공 처리 (세션에 사용자 정보 저장)
+            session.setAttribute("user", member);
+            return "redirect:/main";
+        }
 	}
+	
+    // 비밀번호 암호화 메소드 (SHA-512 방식)
+    private String encryptPassword(String password) {
+        return org.apache.commons.codec.digest.DigestUtils.sha512Hex(password);
+    }
+
 
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {

@@ -12,9 +12,16 @@
 </head>
 <body>
 	<div class="header">
-		<div class="user-icon" onclick="openModal()">
-			<img src="img/비로그인.png">
-		</div>
+		<c:if test="${empty user}">
+			<div class="user-icon" onclick="openModal()">
+				<img src="img/비로그인.png" alt="">
+			</div>
+		</c:if>
+		<c:if test="${!empty user}">
+			<div class="user-icon">
+				<a href="${pageContext.request.contextPath}/mypage"><img src="img/로그인.png" alt=""></a>
+			</div>
+		</c:if>
 		<div class="logo">
 			<a href="${pageContext.request.contextPath}/main"><img
 				src="img/Re_Plogging_로고.png" alt=""></a>
@@ -41,20 +48,21 @@
 	<div id="overlay"></div>
 
 	<div id="aside" class="aside">
-		<div class="aside_inner_container">
-			<p>${user.userNick}님</p>
-			<span>그린 마일리지 ${user.mileageAmount}p</span>
-			<div class="line"></div>
-			<ul class="aside_category">
-				<li>플로코스</li>
-				<li>분리배출</li>
-				<a href="${pageContext.request.contextPath}/community"
-					style="text-decoration: none; color: inherit;"><li>커뮤니티</li></a>
-				<li>그린마켓</li>
+		<div class="aside-inner-container">
+			<div class="aside-user">
+				<span class="aside-userNick">${user.userNick}</span><span class="asid-nim">님</span><br>
+				<span class="aside-mileage">그린 마일리지 ${user.mileageAmount}</span><span class="aside-p">p</span>
+			</div>
+				<div class="aside-line"></div>
+			<ul class="aside-category">
+			<li><a href="#">플로코스</a></li>
+			<li><a href="#">분리배출</a></li>
+			<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
+			<li><a href="#">그린마켓</a></li>
 		</div>
 		</ul>
-		<div class="aside_footer">
-			<div class="aside_innser_footer">
+		<div class="aside-footer">
+			<div class="aside-innser-footer">
 				<li><a href="logout">로그아웃</a></li>
 			</div>
 		</div>

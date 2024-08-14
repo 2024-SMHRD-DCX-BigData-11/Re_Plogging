@@ -22,8 +22,8 @@
 			<div class="profile-container-inner">
 			<div class="pc-inner-left"><img src="img/기본_프로필.png" alt=""></div>
 				<div class="pc-inner-right">
-					<div class="profile-nick">
-						<span>${user.userNick }</span><span>님</span>
+					<div class="profile-nContainer">
+						<div class="profile-nick"><span class="pro-usernick">${user.userNick }</span><span class="pro-nim">님</span></div>
 						    <div class="logout-container" id="logoutButton">
 						        <span class="logout-text">로그아웃</span>
 						        <img src="img/로그아웃.png" alt="" class="icon">

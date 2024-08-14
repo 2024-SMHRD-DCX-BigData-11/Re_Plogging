@@ -192,22 +192,60 @@ body, html {
     z-index: 1000;
 }
 
-#aside .aside_inner_container p,
-#aside .aside_inner_container span {
-	padding: 10px;
-}
-
-#aside ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#aside ul li {
+.aside-user {
     padding: 10px;
     text-align: left;
-    color: #08917c;
-    cursor: pointer;
+}
+
+.aside-userNick {
+    color: #000;
+    font-size: 20px;
+    margin: 0;
+}
+
+.asid-nim {
+    color: #000;
+    font-size:16px;
+    margin: 0;
+}
+
+.aside-mileage {
+    color: #000;
+    font-size: 15px;
+    margin: 5px 0;
+}
+
+.aside-p {
+	color: #000;
+    font-size: 15px;
+    margin: 5px 0;
+}
+
+.aside-line {
+    flex-grow: 1;
+    height: 0.5px;
+    background-color: #a1acbd;
+    margin: 10px 10px;
+}
+
+.aside-category {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
     font-size: 17px;
+}
+
+.aside-category li {
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.aside-category a {
+	position: relative;
+    color: #08917c;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 /* 슬라이더가 열렸을 때 */
@@ -220,50 +258,32 @@ body, html {
     display: block;
 }
 
-.aside_inner_container {
+.aside-inner-container {
     padding: 30px 20px 20px;
     height: calc(100% - 144px);
     overflow: auto;
 }
 
-.aside_footer {
+.aside-footer {
     position: absolute;
     bottom: 20px;
     width: 100%;
     text-align: center;
 }
 
-.aside_innser_footer li {
+.aside-footer li {
     padding: 0;
     list-style-type: none;
     font-size: 13px;
     color: #fff;
 }
 
-.aside_innser_footer li a{
+.aside-footer li a {
     color: #777;
+    text-decoration: none; /* 추가: 밑줄 제거 */
 }
 
-@keyframes slideDown {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-.aside_inner_container ul.aside_category li {
-    opacity: 0;
-    transform: translateY(-20px);
-    animation-fill-mode: forwards;
-}
-
-.aside_inner_container ul.aside_category li.animate {
-    animation: slideDown 0.9s ease forwards;
-}
 
 /* 미디어 쿼리 */
 @media ( max-width : 768px) {
