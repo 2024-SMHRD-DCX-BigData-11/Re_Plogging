@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.smhrd.entity.Market;
 import com.smhrd.repository.MarketRepository;
@@ -17,17 +19,25 @@ public class MarketController {
 	private MarketRepository repo;
 	
 	@RequestMapping("/market")
-	public String goMarket(){
-	   return "market";
+	public ModelAndView goMarket(){
+		List<Market> list = repo.findAll();
+        
+        ModelAndView mav = new ModelAndView("market");
+        
+        mav.addObject("list", list);
+        
+        return mav;
 	}
 	
-	@RequestMapping("/showMarket")
-    public String showMarket(Model model) {
-        List<Market> list =  repo.findAll();
-        
-        model.addAttribute("list", list);
-        
-        return "market";
+	@RequestMapping("/marketWrite")
+    public String goWrite() {
+        return "marketWrite";
     }
+
+    @RequestMapping("/marketRead")
+    public String goRead() {
+        return "marketRead";
+    }
+	
 
 }
