@@ -1,0 +1,25 @@
+@charset "EUC-KR";
+
+@font-face {
+   font-family: 'S-CoreDream-3Light';
+   src:
+      url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+      format('woff');
+   font-weight: 300;
+   font-style: normal;
+}
+
+body, html {
+   font-family: 'S-CoreDream-3Light';
+   margin: 0;
+   padding: 0;
+   overflow-x: hidden;
+}
+
+.plocourse-container {
+	width: 100%;
+}
+
+.btn text-white {
+	background-color: green;
+}
