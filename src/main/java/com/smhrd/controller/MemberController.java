@@ -69,7 +69,7 @@ public class MemberController {
 	 */
 
 	@RequestMapping("/login")
-	public String login(@RequestParam("userId") String userId, @RequestParam("userPw") String userPw, jakarta.servlet.http.HttpSession session) {
+	public String login(String userId, String userPw, jakarta.servlet.http.HttpSession session) {
 		 // 1. 비밀번호를 암호화
          String loginEncryptedPw = DigestUtils.sha512Hex(userPw);
          

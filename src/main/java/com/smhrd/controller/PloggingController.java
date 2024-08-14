@@ -38,7 +38,7 @@ public class PloggingController {
 	}
 	
 	public String loginMember( String userId, String userPw, String targetUrl, HttpSession session ) {
-    	Member member = repo.login( userId, userPw );
+    	Member member = repo.findByUserIdAndUserPw( userId, userPw );
     	if( member != null ) {
     		session.setAttribute("userId", userId );
     		return targetUrl;	

@@ -54,9 +54,31 @@ function telconfirmButton() {
     // 값을 합쳐서 하나의 전화번호로 만듦
     var fullPhoneNumber = mobile1 + "-" + mobile2 + "-" + mobile3;
     
-    // hidden input 필드의 value를 설정함
-    document.getElementById("mobile4").value = fullPhoneNumber;
+   	var formData = new FormData();
+    formData.append('phoneNumber', fullPhoneNumber);
+	
+	// AJAX 요청을 통해 서버로 fullPhoneNumber를 전달
+    fetch('shipping123', {
+        method: 'POST',
+ 		headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+        body: new URLSearchParams(formData)
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
+
+// 인증번호 확인
+function closeModal() {
+	u_input = document.getElementById("otp").value;
+}
+
 
 
 

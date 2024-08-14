@@ -8,16 +8,29 @@ import java.net.Socket;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Map;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.smhrd.entity.Member;
+import com.smhrd.repository.MemberRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Payload;
 
 @RestController
 public class SendRestController {
+	
+	@Autowired
+	private MemberRepository repo; // 레파지토리를 사용하기 위한 변수 선언
 
 	/**
 	 * ============================================================== Description :
@@ -240,16 +253,16 @@ public class SendRestController {
 		}
 		return "test";
 	}
-
-	@RequestMapping("/shipping123")
-	public static void sendsms() {
-		try {
+	
+	@RequestMapping(value = "/shipping123", method = RequestMethod.POST)
+	public ResponseEntity<String> sendsms(@RequestParam("phoneNumber") String phoneNumber) {
+		try { 
 			String sms_url = "";
 			sms_url = "https://sslsms.cafe24.com/sms_sender.php"; // SMS 전송요청 URL
 			String user_id = base64Encode("iworks2018"); // SMS아이디
 			String secure = base64Encode("ac48f9ab4e7200e10b27c5b7b5fc633b");// 인증키
 			String msg = base64Encode(nullcheck("인증번호입니다.\r\n " + (int) (Math.random() * 900000 + 100000), ""));
-			String rphone = base64Encode(nullcheck("010-5258-4937", ""));
+			String rphone = base64Encode(nullcheck(phoneNumber, ""));
 			String sphone1 = base64Encode(nullcheck("061", "")); // cafe24에 등록된 폰번호 010
 			String sphone2 = base64Encode(nullcheck("746", "")); // cafe24에 등록된 폰번호 1111
 			String sphone3 = base64Encode(nullcheck("0030", ""));// cafe24에 등록된 폰번호 1111
@@ -346,7 +359,10 @@ public class SendRestController {
 
 			System.out.println(data);
 			System.out.println(alert);
+			return ResponseEntity.ok("SMS 인증번호가 전송되었습니다.");
 		} catch (Exception ex) {
+			 ex.printStackTrace();
+		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("SMS 전송에 실패하였습니다.");
 
 		}
 	}
