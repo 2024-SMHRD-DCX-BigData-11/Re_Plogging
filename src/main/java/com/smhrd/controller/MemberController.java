@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import com.smhrd.entity.Member;
 import com.smhrd.repository.MemberRepository;
@@ -39,27 +40,41 @@ public class MemberController {
 	public String goUserInfoModify() {
 		return "userInfoModify";
 	}
-
+	
 	@RequestMapping("/join")
 	public String join(Member member) {
-		// 0. 사전 준비 : Dependency 추가 > DB 연결 설정까지
-		// Table, DTO, Mapper와 같은 파일들이 있어야 함
+	    // 사용자가 입력한 비밀번호를 가져옴
+	    String joinPw = member.getUserPw();
+	    
+	    // 비밀번호를 SHA-512 방식으로 암호화
+	    String joinEncryptedPw = DigestUtils.sha512Hex(joinPw);
+	    
+	    // 암호화된 비밀번호를 Member 객체에 설정
+	    member.setUserPw(joinEncryptedPw);
+	    
+	    repo.save(member);
 
-		// 1. 데이터 수집
-		// 2. 기능 실행 > 사용자가 입력한 정보를 DB에 저장 !
-		repo.save(member);
-
-		// 3. View 선택
-		return "redirect:/main";
+	    // 저장 후 메인 페이지로 리다이렉트
+	    return "redirect:/main";
 	}
+
+	/*
+	 * @RequestMapping("/join") public String join(Member member) { // 0. 사전 준비 :
+	 * Dependency 추가 > DB 연결 설정까지 // Table, DTO, Mapper와 같은 파일들이 있어야 함
+	 * 
+	 * System.out.println("회원가입 직전 비밀번호: " + member.getUserPw()); // 1. 데이터 수집 // 2.
+	 * 기능 실행 > 사용자가 입력한 정보를 DB에 저장 ! repo.save(member);
+	 * 
+	 * // 3. View 선택 return "redirect:/main"; }
+	 */
 
 	@RequestMapping("/login")
 	public String login(@RequestParam("userId") String userId, @RequestParam("userPw") String userPw, jakarta.servlet.http.HttpSession session) {
 		 // 1. 비밀번호를 암호화
-         String encryptedPassword = encryptPassword(userPw);
+         String loginEncryptedPw = DigestUtils.sha512Hex(userPw);
          
          // 2. 레포지토리에서 암호화된 비밀번호와 아이디로 사용자 조회
-         Member member = repo.findByUserIdAndUserPw(userId, encryptedPassword);
+         Member member = repo.findByUserIdAndUserPw(userId, loginEncryptedPw);
          
          // 3. 조회 결과에 따른 처리
         if (member == null) {
@@ -72,10 +87,10 @@ public class MemberController {
         }
 	}
 	
-    // 비밀번호 암호화 메소드 (SHA-512 방식)
-    private String encryptPassword(String password) {
-        return org.apache.commons.codec.digest.DigestUtils.sha512Hex(password);
-    }
+	/*
+	 * // 비밀번호 암호화 메소드 (SHA-512 방식) private String encryptPassword(String password)
+	 * { return org.apache.commons.codec.digest.DigestUtils.sha512Hex(password); }
+	 */
 
 
 	@RequestMapping("/logout")
