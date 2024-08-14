@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="header.jsp"%>
 <%@ include file="modal.jsp"%>
@@ -14,82 +15,82 @@
 <link rel="stylesheet" href="assets/css/community.css">
 </head>
 <body>
-	<div class="community-container">
-		<div class="page-header">
-			<h1>자유 게시판</h1>
-		</div>
-		<div class="search-box">
-			<form action="/community" method="get"
-				style="display: flex; width: 100%;">
-				<select name="category" class="search-select">
-					<option value="">전체 카테고리</option>
-					<option value="plogging">플로깅</option>
-					<option value="separation">분리배출</option>
-					<option value="freeboard">자유게시판</option>
-				</select> <input type="text" name="keyword" class="search-input"
-					placeholder="검색어를 입력하세요">
-				<button type="submit" class="search-btn">검색</button>
-			</form>
-		</div>
-		<table class="community-table">
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>카테고리</th>
-					<th>작성자</th>
-					<th>작성날짜</th>
-					<th>조회수</th>
-					<th>좋아요</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:choose>
-					<c:when test="${fn:length( list ) != 0 }">
-						<c:forEach var="community" items="${list }">
-							<tr>
-								<td>${community.idx}</td>
-								<td><a href="${pageContext.request.contextPath}/communityRead?idx=${community.idx}">${community.title}</a></td>
-								<td>${community.category}</td>
-								<td>${community.writer.userNick}</td>
-								<td>${community.indate}</td>
-								<td>${community.count}</td>
-								<td>${community.likes}</td>
-							</tr>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<tr>
-							<td colspan="1" >no data</td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
-			</tbody>
-		</table>
-		<div style="text-align: right;">
-			<a href="${pageContext.request.contextPath}/community"
-				class="commListBtn">목록</a>
-				
-			<c:if test="${!empty user}">
-			<a href="${pageContext.request.contextPath}/communityWriter"
-				class="commWirteBtn">글쓰기</a>
-			</c:if>
-			<c:if test="${empty user}">
-			<a href="#" onclick="openModal()" class="commWirteBtn">글쓰기</a>
-			</c:if>
-		</div>
-	</div>
+    <div class="community-container">
+        <div class="page-header">
+            <h1>자유 게시판</h1>
+        </div>
+        <div class="search-box">
+            <form action="/community" method="get"
+                style="display: flex; width: 100%;">
+                <select name="category" class="search-select">
+                    <option value="">전체 카테고리</option>
+                    <option value="plogging">플로깅</option>
+                    <option value="separation">분리배출</option>
+                    <option value="freeboard">자유게시판</option>
+                </select> <input type="text" name="keyword" class="search-input"
+                    placeholder="검색어를 입력하세요">
+                <button type="submit" class="search-btn">검색</button>
+            </form>
+        </div>
+        <table class="community-table">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>카테고리</th>
+                    <th>작성자</th>
+                    <th>작성날짜</th>
+                    <th>조회수</th>
+                    <th>좋아요</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:choose>
+                    <c:when test="${fn:length( list ) != 0 }">
+                        <c:forEach var="community" items="${list }">
+                            <tr>
+                                <td>${community.idx}</td>
+                                <td><a href="${pageContext.request.contextPath}/communityRead?idx=${community.idx}">${community.title}</a></td>
+                                <td>${community.category}</td>
+                                <td>${community.writer.userNick}</td>
+                                <td><fmt:formatDate value="${community.indate}" pattern="yyyy-MM-dd"/></td>
+                                <td>${community.count}</td>
+                                <td>${community.likes}</td>
+                            </tr>
+                        </c:forEach>
+                    </c:when>
+                    <c:otherwise>
+                        <tr>
+                            <td colspan="1" >no data</td>
+                        </tr>
+                    </c:otherwise>
+                </c:choose>
+            </tbody>
+        </table>
+        <div style="text-align: right;">
+            <a href="${pageContext.request.contextPath}/community"
+                class="commListBtn">목록</a>
+                
+            <c:if test="${!empty user}">
+            <a href="${pageContext.request.contextPath}/communityWriter"
+                class="commWirteBtn">글쓰기</a>
+            </c:if>
+            <c:if test="${empty user}">
+            <a href="#" onclick="openModal()" class="commWirteBtn">글쓰기</a>
+            </c:if>
+        </div>
+    </div>
 
-	<nav aria-label="Page navigation" style="text-align: center;">
-	<ul class="pagination">
-		<li><a href="/community?page=1">&laquo;</a></li>
-		<li><a href="#">&lsaquo;</a></li>
-		<li><a href="#">1</a></li>
-		<li><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">&rsaquo;</a></li>
-		<li><a href="#">&raquo;</a></li>
-	</ul>
-	</nav>
+    <nav aria-label="Page navigation" style="text-align: center;">
+    <ul class="pagination">
+        <li><a href="/community?page=1">&laquo;</a></li>
+        <li><a href="#">&lsaquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">&rsaquo;</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
+    </nav>
 </body>
 </html>

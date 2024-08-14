@@ -12,31 +12,21 @@ import com.smhrd.entity.Member;
 
 @Repository
 public interface CommunityRepository extends JpaRepository<Community, Integer> {
-    
-    // 카테고리별로 커뮤니티 글을 찾는 메소드
+
     List<Community> findByCategory(String category);
-    
-    // 작성자별로 커뮤니티 글을 찾는 메소드
+
     List<Community> findByWriter(Member writer);
 
-    // 제목에 특정 키워드가 포함된 글을 찾는 메소드 (LIKE 연산자 사용)
     List<Community> findByTitleContaining(String keyword);
-    
-    // 특정 조회수 이상의 글을 찾는 메소드
+
     List<Community> findByCountGreaterThanEqual(int count);
-    
-    // 작성일 기준으로 최신 글을 찾는 메소드
+
     List<Community> findByOrderByIndateDesc();
 
-    // 특정 기간 내에 작성된 글을 찾는 커스텀 쿼리
     @Query("""
             select c
             from Community c
             where c.indate between :startDate and :endDate
             """)
     List<Community> findAllByDateRange(Date startDate, Date endDate);
-
-    // 카테고리와 키워드로 글을 찾는 커스텀 쿼리 (주석 처리됨)
-    // @Query("select c from Community c where c.category = :category and c.title like %:keyword%")
-    // List<Community> findByCategoryAndTitleContainingCustom(@Param("category") String category, @Param("keyword") String keyword);
 }

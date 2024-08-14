@@ -19,7 +19,7 @@
 
             <label for="category">카테고리</label>
             <select id="category" name="category" required>
-                <option value="plogging">플로깅</option>+
+                <option value="plogging">플로깅</option>
                 <option value="separation">분리배출</option>
                 <option value="freeboard">자유게시판</option>
             </select>
@@ -30,7 +30,7 @@
             <label for="file">첨부파일</label>
             <input type="file" id="file" name="file">
 
-            <input type="hidden" name="writerId" value="${sessionScope.user.id}"> <!-- 실제 세션에서 가져와야 함 -->
+            <input type="hidden" name="writerId" value="${sessionScope.user.userIdx}">
 
             <div class="button-group">
                 <button type="submit" class="btn">저장</button>
