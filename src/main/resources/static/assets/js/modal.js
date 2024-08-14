@@ -25,7 +25,7 @@ function closeLoginModal() {
 function openJoinModal() {
     // 로그인 모달이 열려 있을 때만 회원가입 모달을 열 수 있음
     if (document.getElementById('login-modal').style.display === 'flex') {
-        closeModal(); // 로그인 모달을 닫고
+        closeLoginModal(); // 로그인 모달을 닫고
         document.getElementById('join-modal').style.display = 'flex'; // 회원가입 모달을 열기
 	    document.body.style.overflowY = "hidden";
 	    document.body.style.position = 'fixed';
