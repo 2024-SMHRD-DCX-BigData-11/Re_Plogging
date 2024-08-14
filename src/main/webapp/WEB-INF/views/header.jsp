@@ -32,7 +32,7 @@
 			</span>
 		</button>
 		<ul class="menu">
-			<li><a href="#">플로코스</a></li>
+			<li><a href="${pageContext.request.contextPath}/ploggingList">플로코스</a></li>
 			<li><a href="#">분리배출</a></li>
 			<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
 			<li><a href="#">그린마켓</a></li>
@@ -49,23 +49,27 @@
 
 	<div id="aside" class="aside">
 		<div class="aside-inner-container">
-			<div class="aside-user">
-				<span class="aside-userNick">${user.userNick}</span><span class="asid-nim">님</span><br>
-				<span class="aside-mileage">그린 마일리지 ${user.mileageAmount}</span><span class="aside-p">p</span>
-			</div>
-				<div class="aside-line"></div>
+            <c:if test="${!empty user}">
+                <div class="aside-user">
+                    <span class="aside-userNick">${user.userNick}</span><span class="asid-nim">님</span><br>
+                    <span class="aside-mileage">그린 마일리지<span class="aside-p"> ${user.mileageAmount}p</span>
+                </div>
+                <div class="aside-line"></div>
+            </c:if>
 			<ul class="aside-category">
-			<li><a href="#">플로코스</a></li>
+			<li><a href="${pageContext.request.contextPath}/ploggingList">플로코스</a></li>
 			<li><a href="#">분리배출</a></li>
 			<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
 			<li><a href="#">그린마켓</a></li>
 		</div>
 		</ul>
-		<div class="aside-footer">
-			<div class="aside-innser-footer">
-				<li><a href="logout">로그아웃</a></li>
-			</div>
-		</div>
+        <c:if test="${!empty user}">
+            <div class="aside-footer">
+                <div class="aside-inner-footer">
+                    <li><a href="logout">로그아웃</a></li>
+                </div>
+            </div>
+        </c:if>
 	</div>
 	<!-- Scripts -->
 	<script src="assets/js/header.js"></script>

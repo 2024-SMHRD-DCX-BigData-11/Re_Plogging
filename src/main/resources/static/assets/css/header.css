@@ -199,7 +199,8 @@ body, html {
 
 .aside-userNick {
     color: #000;
-    font-size: 20px;
+    font-size: 17px;
+    font-weight: bold;
     margin: 0;
 }
 
@@ -216,7 +217,7 @@ body, html {
 }
 
 .aside-p {
-	color: #000;
+	color: #08917c;
     font-size: 15px;
     margin: 5px 0;
 }
@@ -280,7 +281,6 @@ body, html {
 
 .aside-footer li a {
     color: #777;
-    text-decoration: none; /* 추가: 밑줄 제거 */
 }
 
 
