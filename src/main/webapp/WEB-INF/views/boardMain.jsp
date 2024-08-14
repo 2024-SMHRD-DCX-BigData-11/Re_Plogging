@@ -45,7 +45,7 @@
       <a href="write"><button id="writer">작성하러가기</button></a>
    </div>
 
-
+<jsp:include page="includes/lib.jsp" />
    <!-- Scripts -->
    <script src="assets/js/jquery.min.js"></script>
    <script src="assets/js/jquery.scrolly.min.js"></script>

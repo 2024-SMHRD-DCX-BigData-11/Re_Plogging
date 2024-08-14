@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -86,7 +87,7 @@
 								<input id="mobile3" name="mobile[]" type="tel">
 								<input id="mobile4" name="userPhone" type="hidden" value = "">
 							</div>
-								<button type="button" id="telconfirm" class="tel-confirm" onclick="telconfirmButton();">인증</button>
+								<button type="button" id="telconfirm" class="tel-confirm" onclick="telconfirmButton('${ctx }/rest/sms/shipping1234');">인증</button>
 						</td>
 					</tr>
 					<tr>
@@ -112,7 +113,7 @@
 			<div class="modal-close" onclick="closeJoinModal()">닫기</div>
 		</div>
 	</div>
-	
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="assets/js/modal.js"></script>
 </body>
 </html>

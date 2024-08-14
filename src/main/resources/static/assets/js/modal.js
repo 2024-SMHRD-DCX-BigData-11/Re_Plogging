@@ -45,7 +45,7 @@ document.getElementById('join-link').addEventListener('click', function() {
 });
 
 //*/ 인증 버튼 누르면 mobile값 1개로 합치는 함수
-function telconfirmButton() {
+function telconfirmButton( url ) {
     // mobile1, mobile2, mobile3 값을 가져옴
     var mobile1 = document.getElementById("mobile1").value;
     var mobile2 = document.getElementById("mobile2").value;
@@ -58,28 +58,57 @@ function telconfirmButton() {
     formData.append('phoneNumber', fullPhoneNumber);
 	
 	// AJAX 요청을 통해 서버로 fullPhoneNumber를 전달
-    fetch('shipping123', {
-        method: 'POST',
- 		headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    },
-        body: new URLSearchParams(formData)
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert(data);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+	$.ajax({
+		url : url,
+		type : "post",
+		data : formData,
+		processData: false,
+        contentType: false,
+		enctype: 'multipart/form-data',
+	}).done( function( response ) {
+		//결과 alert
+	});   
 }
-
 // 인증번호 확인
 function smsCheck() {
 	u_input = document.getElementById("otp").value;
 }
 
 
+commonAjax( "url", { idx : idx }, "post", function( response ) {
+	if( response.code == 200 ) {
+		alert( "success" );
+	}else {
+		alert( "fail" );
+	}
+})
+
+function commonAjax( url, data, type, callback ) {
+	$.ajax({
+		url : url,
+		data : data,
+		type : type
+	}).done( function( response ) {
+		if( callback != null ) {
+			callback( response );
+		}
+	});
+}
+
+function commonMultiAjax( url, data, type, callback ) {
+	$.ajax({
+		url : url,
+		type : "post",
+		data : data,
+		processData: false,
+        contentType: false,
+		enctype: 'multipart/form-data',
+	}).done( function( response ) {
+		if( callback != null ) {
+			callback( response );
+		}
+	});   
+}
 
 
 

@@ -8,29 +8,40 @@ import java.net.Socket;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.smhrd.entity.CommonDomain;
 import com.smhrd.entity.Member;
+import com.smhrd.entity.Sms;
 import com.smhrd.repository.MemberRepository;
+import com.smhrd.repository.SmsRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Payload;
 
 @RestController
+@RequestMapping("/rest/sms/")
 public class SendRestController {
 	
 	@Autowired
-	private MemberRepository repo; // 레파지토리를 사용하기 위한 변수 선언
+	private MemberRepository repo; // 멤버 레파지토리를 사용하기 위한 변수 선언
+	
+	@Autowired
+	private SmsRepository srepo; // SmsCheckRepository를 사용하기 위한 변수 선언
 
 	/**
 	 * ============================================================== Description :
@@ -254,20 +265,56 @@ public class SendRestController {
 		return "test";
 	}
 	
-//	@RequestMapping(value = "/shipping1234", method = RequestMethod.POST)
-//	public ResponseEntity<String> savesms() {
-//		
-//		int code = (int) (Math.random() * 900000 + 100000);
-//		
-//	
-//		
-//	}
+	@SuppressWarnings("unused")
+	@RequestMapping(value = "/shipping1234", method = RequestMethod.POST)
+	public CommonDomain savesms(
+			MultipartHttpServletRequest request
+			) {
+		
+		CommonDomain response = new CommonDomain();
+		
+		int code = (int)(Math.random() * 900000 + 100000);
+		String smsPhone = request.getParameter("phoneNumber").toString();
+		Sms sms = new Sms();
+		sms.setSmsCode(code);
+		sms.setSmsPhone( smsPhone );
+		
+		// sms check 조회 with smsPhone
+		int resultCode = 0;
+		Sms sms2 = srepo.findByPhoneNumber(smsPhone);
+		if (sms2 != null) {
+			sms2.setSmsCode(code);
+			srepo.save( sms2 );
+		} else {
+			srepo.save( sms );
+		}
+		
+		
+//		resultCode = srepo.save( sms );
+		
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("smsPhone", smsPhone );
+		resultMap.put("smsCode", code );
+		
+		if( resultCode != 1 ) {
+			CommonDomain sendResult = sendsms( smsPhone, code );
+			response.setCode( sendResult.getCode()); 		
+		} else {
+			response.setCode(-200);
+		}
+		
+		
+		
+		return response;
+	}
 	
-	@RequestMapping(value = "/shipping123", method = RequestMethod.POST)
-	public ResponseEntity<String> sendsms(
+	private CommonDomain sendsms(
 			@RequestParam( value= "phoneNumber") String phoneNumber,
 			@RequestParam( value= "code") int code
 			) {
+		CommonDomain response = new CommonDomain();
+		
+		
 		try { 
 			String sms_url = "";
 			sms_url = "https://sslsms.cafe24.com/sms_sender.php"; // SMS 전송요청 URL
@@ -371,11 +418,12 @@ public class SendRestController {
 
 			System.out.println(data);
 			System.out.println(alert);
-			return ResponseEntity.ok("SMS 인증번호가 전송되었습니다.");
+			
+			response.setCode(200);
 		} catch (Exception ex) {
 			 ex.printStackTrace();
-		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("SMS 전송에 실패하였습니다.");
-
+			 response.setCode(-100);
 		}
+		return response;
 	}
 }
