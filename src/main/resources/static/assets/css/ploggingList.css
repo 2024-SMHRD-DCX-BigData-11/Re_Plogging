@@ -1,6 +1,15 @@
 @charset "EUC-KR";
 
 @font-face {
+	font-family: 'TheJamsil5Bold';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2')
+		format('woff2');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
    font-family: 'S-CoreDream-3Light';
    src:
       url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
@@ -13,13 +22,218 @@ body, html {
    font-family: 'S-CoreDream-3Light';
    margin: 0;
    padding: 0;
-   overflow-x: hidden;
+   width: 100%;
 }
 
 .plocourse-container {
-	width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    margin-top: 125px;
+    max-width: 1280px; /* 최대 너비 설정 */
+    width: 100%;
+    margin-left: auto; /* 좌우 중앙 정렬 */
+    margin-right: auto;
 }
 
-.btn text-white {
-	background-color: green;
+.plocourseImg img {
+	display: inline-block;
+    width: 1280px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.plocourseInfo {
+	display: flex;
+	flex-direction: column;
+    margin: 200px 0;
+}
+
+.plocourseInfo-top {
+	display: inline-block;
+    font-family: 'TheJamsil5Bold';
+    font-weight: bold;
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.plocourseInfo-bottom {
+	display: inline-block;
+    font-size: 25px;
+    font-weight: bold;
+    color: #a1acbd;
+}
+
+.Acourse-container {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+	padding: 0 20px;
+	box-sizing: border-box;
+}
+
+.A-arrow-icon {
+    text-align: center;
+}
+
+.A-arrow-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+/* 코스 타이틀 */
+.AC-title {
+	display: flex;
+	flex-direction: column;
+    padding: 5px 30px;
+    border-radius: 75px;
+    margin-top: 150px;
+    margin-bottom: 100px;
+    text-align: center;
+    width: 150px;
+    color: #fff;
+    background-color: #a1acbd;
+}
+
+.AC-name {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.AC-place {
+    display: inline-block;
+    font-size: 20px;
+}
+
+.AC-img img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 40px;
+}
+
+.Ac-spot {
+	width: 100%;
+    margin-top: 40px;
+    align-self: flex-start;
+}
+
+.Ac-spot-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.Ac-spot-title img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.Acouse-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.Acourse-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 20px;
+    width: 150px;
+    height: 150px;
+    margin: 0 10px;
+	border: 1px solid #a1acbd;
+    position: relative;
+}
+
+.Acourse-innner {
+    position: absolute;
+    top: -10px;
+    left:-10px;
+    background-color: #4385c1;
+    color: white;
+    font-size: 15px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.Acourse-box img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.Acourse-box .QR {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+}
+
+.left-arrow {
+    font-size: 2rem;
+    color: #a1acbd;
+    margin: 0 10px;
+}
+
+.Ac-Info {
+	width: 100%;
+    align-self: flex-start;
+    margin: 40px 0;
+}
+
+.Ac-Info-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.Ac-Info-title img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.Acourse-Info {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: left;
+    align-self: flex-start;
+}
+
+button.Acourse-start {
+    margin: 30px 0;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #00a989;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.Acourse-start:hover {
+    background-color: #08917c;
+}
+
+footer {
+	font-size: 13px;
+	text-align: center;
+	margin-top: 100px;
+	margin-bottom: 25px;
 }
