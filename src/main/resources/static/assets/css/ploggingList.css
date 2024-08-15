@@ -67,6 +67,8 @@ body, html {
     color: #a1acbd;
 }
 
+/* A코스 */
+
 .Acourse-container {
 	display: flex;
     flex-direction: column;
@@ -76,20 +78,32 @@ body, html {
 	box-sizing: border-box;
 }
 
-.A-arrow-icon {
+/* B,C코스 */
+.Bcourse-container, .Ccourse-container {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+	padding: 0 20px;
+	margin-top: 300px;
+	box-sizing: border-box;
+}
+
+/* 코스 공통 */
+.arrow-icon {
     text-align: center;
 }
 
-.A-arrow-icon img {
+.arrow-icon img {
     width: 30px;
     height: 30px;
 }
 
 /* 코스 타이틀 */
-.AC-title {
+.course-title {
 	display: flex;
 	flex-direction: column;
-    padding: 5px 30px;
+    padding: 7px 35px;
     border-radius: 75px;
     margin-top: 150px;
     margin-bottom: 100px;
@@ -97,46 +111,55 @@ body, html {
     width: 150px;
     color: #fff;
     background-color: #a1acbd;
+    white-space: nowrap;
 }
 
-.AC-name {
+.course-name {
     display: inline-block;
     font-weight: bold;
     font-size: 25px;
 }
 
-.AC-place {
+.course-place {
     display: inline-block;
     font-size: 20px;
 }
 
-.AC-img img {
+.course-img img {
     max-width: 100%;
     height: auto;
     display: block;
     margin-bottom: 40px;
 }
 
-.Ac-spot {
+.course-spot {
 	width: 100%;
     margin-top: 40px;
     align-self: flex-start;
 }
 
-.Ac-spot-title {
+.spot-title {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
     text-align: left;
 }
 
-.Ac-spot-title img {
+.spot-title img {
     width: 30px;
     height: 30px;
     margin-right: 10px;
 }
 
-.Acouse-wrap {
+.spot-title h2 {
+    display: block;
+    margin: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+.couse-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -145,7 +168,7 @@ body, html {
     margin-top: 20px;
 }
 
-.Acourse-box {
+.course-box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -159,7 +182,7 @@ body, html {
     position: relative;
 }
 
-.Acourse-innner {
+.course-innner {
     position: absolute;
     top: -10px;
     left:-10px;
@@ -171,16 +194,19 @@ body, html {
     font-weight: bold;
 }
 
-.Acourse-box img {
+.course-box img {
     width: 40px;
     height: 40px;
     margin-bottom: 10px;
 }
 
-.Acourse-box .QR {
+.course-box .QR {
     font-size: 20px;
     font-weight: bold;
-    color: #000;
+}
+
+.course-box .QRNick {
+    font-size: 16px;
 }
 
 .left-arrow {
@@ -189,26 +215,34 @@ body, html {
     margin: 0 10px;
 }
 
-.Ac-Info {
+.course-Info {
 	width: 100%;
     align-self: flex-start;
     margin: 40px 0;
 }
 
-.Ac-Info-title {
+.Info-title {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
     text-align: left;
 }
 
-.Ac-Info-title img {
+.Info-title img {
     width: 30px;
     height: 30px;
     margin-right: 10px;
 }
 
-.Acourse-Info {
+.Info-title h2 {
+    display: block;
+    margin: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+.c-Info {
     font-size: 18px;
     line-height: 1.6;
     text-align: left;
@@ -218,7 +252,8 @@ body, html {
 button.Acourse-start {
     margin: 30px 0;
     padding: 10px 20px;
-    font-size: 1.2rem;
+    font-family: 'S-CoreDream-3Light';
+    font-size: 20px;
     background-color: #00a989;
     color: white;
     border: none;
@@ -231,6 +266,7 @@ button.Acourse-start:hover {
     background-color: #08917c;
 }
 
+/* footer */
 footer {
 	font-size: 13px;
 	text-align: center;
