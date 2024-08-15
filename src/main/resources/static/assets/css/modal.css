@@ -12,7 +12,6 @@ body, html {
 	font-family: 'S-CoreDream-3Light';
 	margin: 0;
 	padding: 0;
-	overflow-x: hidden;
 }
 
 #login-modal {
@@ -75,6 +74,7 @@ body, html {
 	font-size: 15px;
 	cursor: pointer;
 	margin-top: 10px;
+	transition: background-color 0.3s ease;
 }
 
 .login-button:hover {
@@ -113,6 +113,7 @@ body, html {
 	font-size: 15px;
 	cursor: pointer;
 	margin-bottom: 10px;
+	transition: background-color 0.3s ease;
 }
 
 .kakao-login:hover {
@@ -321,4 +322,9 @@ td {
 	border-radius: 4px;
 	font-size: 15px;
 	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.join-button:hover {
+	background-color: #08917c;
 }
