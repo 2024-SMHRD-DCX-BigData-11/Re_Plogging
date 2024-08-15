@@ -35,7 +35,7 @@
 			<li><a href="${pageContext.request.contextPath}/ploggingList">플로코스</a></li>
 			<li><a href="#">분리배출</a></li>
 			<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
-			<li><a href="#">그린마켓</a></li>
+			<li><a href="${pageContext.request.contextPath}/market">그린마켓</a></li>
 		<c:if test="${empty user}">
 			<li><a href="#" onclick="openModal()">로그인</a></li>
 		</c:if>

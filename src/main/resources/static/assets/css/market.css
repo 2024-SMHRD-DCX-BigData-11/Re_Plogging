@@ -1,97 +1,169 @@
 @charset "EUC-KR";
 @font-face {
-	font-family: 'S-CoreDream-3Light';
-	src:
-		url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
-		format('woff');
-	font-weight: 300;
-	font-style: normal;
+   font-family: 'S-CoreDream-3Light';
+   src:
+      url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+      format('woff');
+   font-weight: 300;
+   font-style: normal;
 }
 
 body, html {
-	font-family: 'S-CoreDream-3Light';
-	margin: 0;
-	padding: 0;
-	overflow-x: hidden;
+   font-family: 'S-CoreDream-3Light';
+   margin: 0;
+   padding: 0;
+   overflow-x: hidden;
 }
 
 .container {
-	width: 100%;
-	max-width: 1100px; /* 최대 너비 설정 */
-	margin: 125px auto;
-	position: relative;
-	padding: 0 20px; /* 좌우 여백 추가 */
-	box-sizing: border-box; /* padding을 포함하여 너비를 계산하도록 설정 */
+   width: 100%;
+   max-width: 1100px; /* 최대 너비 설정 */
+   margin: 125px auto;
+   position: relative;
+   padding: 0 20px; /* 좌우 여백 추가 */
+   box-sizing: border-box; /* padding을 포함하여 너비를 계산하도록 설정 */
 }
 .market_List_wrap {
-	
+   
+}
+
+.market_List_category {
+   padding: 0 0 20px;
+}
+
+.market_List_category h3 {
+   margin: 0;
+   padding: 0 0 10px;
+}
+
+.market_List_category_li {
+   display: inline-block;
+   width: auto;
+   padding: 0 10px 0 0;
 }
 
 .market_List_option {
-	text-align: right;
-	margin: 0 10px 15px;
+   text-align: right;
+   margin: 0 10px 15px;
 }
 
 .market_List_option button {
-	background-color: transparent;
+   background-color: transparent;
+   color: gray;
     border: none;
     cursor: pointer;
     margin: 5px auto;
     font-family: 'S-CoreDream-3Light';
-    font-size: 9;
+    font-size: 12px;
 }
 
-.market_card{
-	display: grid;
-    grid-template-columns: repeat(4, 1fr);
+.market_List_option_btn.active {
+    color: black;
+    font-weight: bold;
+}
+
+.market_card_wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4열 레이아웃 */
     gap: 20px;
-    width: 100%;
 }
 
-.market_card_link {
-    overflow: hidden;
-    display: inline-block;
-    width: 240px;
-    height: 350px;
-    margin: 10px auto;
+.market_card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: left;
+    justify-content: flex-start;
+}
+
+.market_card_link {
+    width: 100%; /* 부모의 너비에 맞게 */
+    height: auto; /* 높이를 자동으로 조절 */
     text-decoration: none;
+    color: inherit;
 }
 
 .market_card_photo {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: auto;
 }
 
 .market_card_photo_image {
-	border-radius: 10px;
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
 
 .market_card_desc {
-	width: 100%;
-	height: 100%;
-	align-items: left;	
-	color: black;
+   width: 100%;
+   height: 100%;
+   align-items: left;   
+   color: black;
 }
 
 .market_card_desc h2 {
-	font-family: 'S-CoreDream-3Light';
-	font-size: 18px;
-	margin: 5px;
+   font-family: 'S-CoreDream-3Light';
+   font-size: 18px;
+   margin: 5px;
 }
 
 .market_card_desc span {
-	font-size: 15px;
-	margin: 5px;
+   font-size: 15px;
+   margin: 5px;
+}
+
+.market_Wirte {
+   text-align: right;
 }
 
 .market_card_writer {
-	color: grey;
+   color: grey;
+}
+
+.market_no_data_message {
+   font-size: 18px;
+   text-align: center;
+   margin: 150px 50px 150px;
+}
+
+.market_Wirte_Btn {
+    display: inline-block;
+   background-color: #00a989;
+   color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-family: 'S-CoreDream-3Light';
+    text-decoration: none;
+}
+
+.market_pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.market_pagination li {
+    margin: 0 5px;
+}
+
+.market_pagination li a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #000;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}
+
+.market_pagination li a:hover {
+    background-color: #ddd;
+}
+
+.market_pagination li.active a {
+    background-color: #4CAF50;
+    color: white;
 }
 
 
@@ -111,16 +183,16 @@ body, html {
     .market_card_link {
     width: 150px;
     height: px;
-	}
-	
-	.market_card_desc h2 {
-	font-size: 15px;
-	margin: 5px;
+   }
+   
+   .market_card_desc h2 {
+   font-size: 15px;
+   margin: 5px;
 }
 
 .market_card_desc span {
-	font-size: 13px;
-	margin: 3px;
+   font-size: 13px;
+   margin: 3px;
 }
     
 }
