@@ -28,6 +28,65 @@ document.getElementById('join-link').addEventListener('click', function() {
     openJoinModal();
 });
 
+
+
+// 비밀번호 확인
+$( document ).ready( function() {
+        $('#user_pw_confirm').change(function() {
+			var p1 = $('#user_pw').val().trim();
+      		var p2 = $('#user_pw_confirm').val().trim();
+
+			if(p1 === p2) {
+				alert("비밀번호가 일치합니다");
+				return true;
+        		
+      	} else{
+        		alert("비밀번호가 일치 하지않습니다.");
+				return false;
+      }
+	
+        } );
+      } );
+
+
+
+// 닉네임 중복체크
+$( document ).ready( function() {
+        $( '#user_nick' ).change(function() {
+			var userNick = $('#user_nick').val().trim();
+			
+			if(userNick === ''){
+				alert("닉네임을 입력해주세요.");
+				return;
+			}
+			
+			$.ajax({
+				type : "POST",
+				url : '${ctx}/nickCheck',
+				data : {
+					userNick : userNick
+				},
+				success : function(data){
+					
+					if(data == 1){
+						alert("중복된 닉네임입니다.");
+						
+					}
+					else{
+						alert("사용할 수 있는 닉네임입니다.");
+					}
+				},
+				error:function(request, error){
+					alert("code : " + request.status+ "\n" + "message : " + request.reponseText + "\n" + "error : " + error);
+				}
+				
+			})
+	
+        } );
+      } );
+
+
+
 //*/ 인증 버튼 누르면 mobile값 1개로 합치는 함수
 function telconfirmButton( url ) {
     // mobile1, mobile2, mobile3 값을 가져옴
@@ -44,7 +103,7 @@ function telconfirmButton( url ) {
 	// AJAX 요청을 통해 서버로 fullPhoneNumber를 전달
 	$.ajax({
 		url : url,
-		type : "post",
+		type : "POST",
 		data : formData,
 		processData: false,
         contentType: false,
@@ -53,11 +112,30 @@ function telconfirmButton( url ) {
 		//결과 alert
 	});   
 }
-// 인증번호 확인
-function smsCheck() {
-	u_input = document.getElementById("otp").value;
-}
 
+/*// 인증번호 확인
+function smsCheck() {
+	
+	var u_input = $('#otp').val().trim();
+
+	
+	// AJAX 요청을 통해 서버로 사용자가 입력한 인증번호 전달
+    $.ajax({
+		url : '${ctx }/rest/sms2/smsCheck',
+		type : "post",
+		data : u_input,
+	}).done( function( response ) {
+		if( callback != null ) {
+			callback( response );
+			alert("인증성공!");
+		}
+		else{
+			alert("인증실패!");
+		}
+	});   
+	
+}
+*/
 
 commonAjax( "url", { idx : idx }, "post", function( response ) {
 	if( response.code == 200 ) {
@@ -93,6 +171,7 @@ function commonMultiAjax( url, data, type, callback ) {
 		}
 	});   
 }
+
 
 
 

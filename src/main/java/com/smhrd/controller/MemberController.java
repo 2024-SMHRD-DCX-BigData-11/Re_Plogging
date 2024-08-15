@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import com.smhrd.entity.Member;
@@ -99,6 +100,23 @@ public class MemberController {
 		session.invalidate();
 		
 		return "redirect:/main";
+		
+	}
+	
+	@RequestMapping("/nickCheck")
+	public int  nickCheck(@RequestParam String userNick) {
+		
+		Member member = repo.findByUserNick(userNick);
+		
+		if(member == null) {
+			//중복 안됨
+			return 0;
+		}
+		
+		else {
+			return 1;
+		}
+		
 		
 	}
 

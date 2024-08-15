@@ -23,7 +23,13 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
 		public Member findByUserIdAndUserPw(String userId, String userPw);
 	
 	
-//	public Member getMemberWithIdx(int userIdx);
+	@Query("""
+		    select u
+		    from Member u
+		    where u.userNick = :userNick
+		    """)
+	
+		public Member findByUserNick(@Param("userNick") String userNick);
 	
 	
 }
