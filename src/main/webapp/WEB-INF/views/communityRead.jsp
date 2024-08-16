@@ -50,6 +50,14 @@
                     <p><strong>${comment.user.userNick}</strong> - 
                     <fmt:formatDate value="${comment.indate}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
                     <p>${comment.message}</p>
+
+                    <!-- 삭제 버튼 (댓글 작성자와 로그인한 사용자가 동일한 경우에만 보임) -->
+                    <c:if test="${sessionScope.user != null && comment.user.userIdx == sessionScope.user.userIdx}">
+                        <form action="${pageContext.request.contextPath}/comments/deleteComment" method="post" style="display:inline;">
+                            <input type="hidden" name="commentId" value="${comment.idx}">
+                            <button type="submit" class="btn btn-red">삭제</button>
+                        </form>
+                    </c:if>
                 </div>
             </c:forEach>
             
@@ -70,15 +78,15 @@
             <div class="navigation-left">
                 <a href="${pageContext.request.contextPath}/communityWriter" class="btn btn-green">글쓰기</a>
                 <c:if test="${community.writer.userIdx == sessionScope.user.userIdx}">
-                	<a href="#" class="btn btn-gray">수정</a>
-                	<a href="#" class="btn btn-gray">삭제</a>
+                	<a href="${pageContext.request.contextPath}/editPost?idx=${community.idx}" class="btn btn-gray">수정</a>
+                	<a href="${pageContext.request.contextPath}/deletePost?idx=${community.idx}" class="btn btn-gray">삭제</a>
                 </c:if>
             </div>
             <div class="navigation-right">
                 <a href="${pageContext.request.contextPath}/community" class="btn btn-gray">목록</a>
             </div>
         </div>
-        </div>
+    </div>
     <script src="assets/js/communityRead.js"></script>
 </body>
 </html>

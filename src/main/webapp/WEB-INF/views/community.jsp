@@ -20,15 +20,16 @@
             <h1>자유 게시판</h1>
         </div>
         <div class="search-box">
-            <form action="/community" method="get"
+            <form action="${pageContext.request.contextPath}/community" method="get"
                 style="display: flex; width: 100%;">
                 <select name="category" class="search-select">
-                    <option value="">전체 카테고리</option>
-                    <option value="plogging">플로깅</option>
-                    <option value="separation">분리배출</option>
-                    <option value="freeboard">자유게시판</option>
-                </select> <input type="text" name="keyword" class="search-input"
-                    placeholder="검색어를 입력하세요">
+                    <option value="" ${selectedCategory == null ? 'selected' : ''}>전체 카테고리</option>
+                    <option value="plogging" ${selectedCategory == 'plogging' ? 'selected' : ''}>플로깅</option>
+                    <option value="separation" ${selectedCategory == 'separation' ? 'selected' : ''}>분리배출</option>
+                    <option value="freeboard" ${selectedCategory == 'freeboard' ? 'selected' : ''}>자유게시판</option>
+                </select> 
+                <input type="text" name="keyword" class="search-input"
+                    placeholder="검색어를 입력하세요" value="${keyword}">
                 <button type="submit" class="search-btn">검색</button>
             </form>
         </div>
@@ -46,8 +47,8 @@
             </thead>
             <tbody>
                 <c:choose>
-                    <c:when test="${fn:length( list ) != 0 }">
-                        <c:forEach var="community" items="${list }">
+                    <c:when test="${fn:length(list) != 0}">
+                        <c:forEach var="community" items="${list}">
                             <tr>
                                 <td>${community.idx}</td>
                                 <td>
@@ -66,7 +67,7 @@
                     </c:when>
                     <c:otherwise>
                         <tr>
-                            <td colspan="1" >no data</td>
+                            <td colspan="7">no data</td>
                         </tr>
                     </c:otherwise>
                 </c:choose>
@@ -84,15 +85,15 @@
     </div>
 
     <nav aria-label="Page navigation" style="text-align: center;">
-    <ul class="pagination">
-        <li><a href="/community?page=1">&laquo;</a></li>
-        <li><a href="#">&lsaquo;</a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">&rsaquo;</a></li>
-        <li><a href="#">&raquo;</a></li>
-    </ul>
+        <ul class="pagination">
+            <li><a href="/community?page=1">&laquo;</a></li>
+            <li><a href="#">&lsaquo;</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">&rsaquo;</a></li>
+            <li><a href="#">&raquo;</a></li>
+        </ul>
     </nav>
 </body>
 </html>

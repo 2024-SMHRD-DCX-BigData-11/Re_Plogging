@@ -3,20 +3,21 @@ package com.smhrd.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.smhrd.entity.Comment;
 import com.smhrd.entity.Community;
-import com.smhrd.entity.Member;
 import com.smhrd.repository.CommentRepository;
 import com.smhrd.repository.CommunityRepository;
 import com.smhrd.repository.MemberRepository;
 
-import jakarta.servlet.http.HttpSession;
-
-@RestController
+@Controller
 @RequestMapping("/comments")
 public class CommentController {
 
@@ -80,13 +81,13 @@ public class CommentController {
 
     // 댓글 삭제
     @PostMapping("/deleteComment")
-    public ResponseEntity<Void> deleteComment(@RequestParam("commentId") Integer commentId) {
+    public String deleteComment(@RequestParam("commentId") Integer commentId) {
         Comment comment = commentRepository.findById(commentId).orElse(null);
         if (comment == null) {
-            return ResponseEntity.notFound().build();
+            return "redirect:/community";
         }
         
         commentRepository.delete(comment);
-        return ResponseEntity.noContent().build();
+        return "redirect:/communityRead?idx=" + comment.getCommunity().getIdx();
     }
 }
