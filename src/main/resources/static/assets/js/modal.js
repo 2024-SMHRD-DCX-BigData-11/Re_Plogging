@@ -28,30 +28,22 @@ document.getElementById('join-link').addEventListener('click', function() {
     openJoinModal();
 });
 
-
-
-// 비밀번호 확인
-$( document ).ready( function() {
-        $('#user_pw_confirm').change(function() {
-			var p1 = $('#user_pw').val().trim();
-      		var p2 = $('#user_pw_confirm').val().trim();
-
-			if(p1 === p2) {
-				alert("비밀번호가 일치합니다");
-				return true;
-        		
-      	} else{
-        		alert("비밀번호가 일치 하지않습니다.");
-				return false;
-      }
+/*
+$('#user_pw_confirm').on( "focusout", function( event ) {
+	var pw = $("#user_pw").val();
+	var	cpw = $("#user_pw_confirm").val();
 	
-        } );
-      } );
-
-
+	
+	if( pw.match( cpw ) != null ) {
+		alert( "비밀번호가 일치합니다." );
+	} else {
+		alert( "비밀번호가 일치 하지않습니다." );
+	}
+	return false;
+});
+*/
 
 // 닉네임 중복체크
-$( document ).ready( function() {
         $( '#user_nick' ).change(function() {
 			var userNick = $('#user_nick').val().trim();
 			
@@ -83,7 +75,6 @@ $( document ).ready( function() {
 			})
 	
         } );
-      } );
 
 
 
@@ -110,40 +101,49 @@ function telconfirmButton( url ) {
 		enctype: 'multipart/form-data',
 	}).done( function( response ) {
 		//결과 alert
+		if(response.code == 200){
+			alert("인증번호 발송");
+		}
+		else{
+			alert("인증번호 발송 실패");
+		}
+		
+	}).fail( function( error ) {
+		console.log( error );
 	});   
 }
 
-/*// 인증번호 확인
-function smsCheck() {
+// 인증번호 확인
+function smsCheck( url ) {
 	
 	var u_input = $('#otp').val().trim();
 
 	
 	// AJAX 요청을 통해 서버로 사용자가 입력한 인증번호 전달
     $.ajax({
-		url : '${ctx }/rest/sms2/smsCheck',
-		type : "post",
-		data : u_input,
+		url : url,
+		type : "POST",
+		data : { code : u_input },
 	}).done( function( response ) {
-		if( callback != null ) {
-			callback( response );
+		if( response.code == 200 ) {
+			$("#telCheck").val( "1" );
 			alert("인증성공!");
-		}
-		else{
+		} else{
+			$("#telCheck").val( "0" );
 			alert("인증실패!");
 		}
 	});   
-	
+	return false;
 }
-*/
 
+/*
 commonAjax( "url", { idx : idx }, "post", function( response ) {
 	if( response.code == 200 ) {
 		alert( "success" );
 	}else {
 		alert( "fail" );
 	}
-})
+})*/
 
 function commonAjax( url, data, type, callback ) {
 	$.ajax({
@@ -157,7 +157,7 @@ function commonAjax( url, data, type, callback ) {
 	});
 }
 
-function commonMultiAjax( url, data, type, callback ) {
+function commonMultiAjax( url, data, callback ) {
 	$.ajax({
 		url : url,
 		type : "post",
@@ -171,10 +171,51 @@ function commonMultiAjax( url, data, type, callback ) {
 		}
 	});   
 }
-
-
-
-
+/*
+function join(formData, url){
+	
+	var user_id = $('#user_id').val();
+	var user_pw = $('#user_pw').val();
+	var user_pw_c = $('#user_pw_confirm').val();
+	var user_phone = $('#mobile4').val();
+	var sms_check = $('#otp').val();
+	var user_nick = $('#user_nick').val();
+	
+	
+	if( user_id.length == 0 ) {
+		erroAlert("이메일을 입력해주세요.1")
+	} else if ( user_pw.length == 0 ) {
+		erroAlert("비밀번호를 입력해주세요.")
+	} else if ( user_pw_c.length == 0 ) {
+		erroAlert("비밀번호 확인을 입력해주세요.")
+	} else if ( user_pw.match( user_pw_c ) == null ) {
+		erroAlert("비밀번호를 맞게 썼는지 확인해주세요.")
+	} else if ( user_phone.length == 0 ) {
+		erroAlert("전화번호를 입력해주세요.")
+	} else if (sms_check.length == 0){
+		erroAlert("이메일을 입력해주세요.2")
+	} else if ( user_nick.length == 0 ) {
+		erroAlert("닉네임을 입력해주세요.")
+	} else {
+		commonMultiAjax( url, formData, function( response ) {
+			if( response.code == 200 ) {
+				//등록 성공
+			} else if ( response.code == -100 ) {
+				//등록 실패
+			} else {
+				//email 중복
+			}
+		});
+		return false;
+	}
+	return false;
+}
+*/
+function erroAlert( msg, id ) {
+	alert( msg );
+	$("#" + id ).focuson();
+	return false;
+}
 
 
 

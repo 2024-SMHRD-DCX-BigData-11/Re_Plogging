@@ -265,7 +265,7 @@ public class SendRestController {
 		return "test";
 	}
 	
-	@SuppressWarnings("unused")
+
 	@RequestMapping(value = "/shipping1234", method = RequestMethod.POST)
 	public CommonDomain savesms(
 			MultipartHttpServletRequest request

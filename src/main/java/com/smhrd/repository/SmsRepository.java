@@ -21,11 +21,11 @@ public interface SmsRepository  extends JpaRepository<Sms, Integer> {
 	public Sms findByPhoneNumber( @Param("smsPhone") String smsPhone);
 	
 	
-//	@Query("""
-//		    select s
-//		    from Sms s
-//		    where s.smsCode = :smsCode
-//		    """)
-//	public Sms findByCode(@Param("smsCode") int smsCode);
+	@Query("""
+		    select s
+		    from Sms s
+		    where s.smsCode = :smsCode
+		    """)
+	public Sms findByCode(@Param("smsCode") int smsCode);
 
 }

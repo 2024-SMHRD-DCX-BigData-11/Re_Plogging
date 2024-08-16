@@ -9,7 +9,7 @@
 <title>RE: PLOGGING</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="assets/css/modal.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <body>
 	<!-- 로그인 모달 -->
@@ -50,18 +50,18 @@
 		<div class="join-container">
 			<img src="img/Re_Plogging_로고.png" alt="Re: Plogging Logo">
 
-			<form id="joinForm" action="join" method="post">
+			<form id="joinForm">
 				<table>
 					<tr>
 						<th>아이디</th>
-						<td><input type="email" id="user_id" name="userId"
+						<td><input type="email" id="join_user_id" name="userId"
 							class="join-id-input" placeholder="ID@example.com" autocomplete="off">
 							<span id="idMsg" class="idMsg">중복된 아이디 입니다.</span>
 						</td>
 					</tr>
 					<tr>
 						<th>비밀번호</th>
-						<td><input type="password" id="user_pw" name="userPw"
+						<td><input type="password" id="join_user_pw" name="userPw"
 							class="join-pw-input" placeholder="비밀번호를 입력하세요."></td>
 					</tr>
 					<tr>
@@ -87,7 +87,8 @@
 								<input id="mobile3" name="mobile[]" type="tel">
 								<input id="mobile4" name="userPhone" type="hidden" value = "">
 							</div>
-								<button type="button" id="telconfirm" class="tel-confirm" onclick="telconfirmButton('${ctx }/rest/sms/shipping1234');">인증</button>
+							<input type="hidden" id="telCheck" name="telCheck" value="0" />
+							<button type="button" id="telconfirm" class="tel-confirm" onclick="telconfirmButton('${ctx }/rest/sms/shipping1234');">인증</button>
 						</td>
 					</tr>
 					<tr>
@@ -113,7 +114,61 @@
 			<div class="modal-close" onclick="closeJoinModal()">닫기</div>
 		</div>
 	</div>
-	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<!-- <script  src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="assets/js/modal.js"></script>
+	<script type="text/javascript">
+		$(".join-button").on( "click", function( event ) {
+			$("#joinForm").submit();
+		});
+		
+		$("#joinForm").submit( function( event ) {
+			var $this = $(this),
+				formData = new FormData( $this[0] );
+		
+			var user_id = $('#join_user_id').val();
+			var user_pw = $('#join_user_pw').val();
+			var user_pw_c = $('#user_pw_confirm').val();
+			var user_phone = $('#mobile4').val();
+			var sms_check = $('#otp').val();
+			var user_nick = $('#user_nick').val();
+			
+			
+			if( user_id.length == 0 ) {
+				erroAlert("이메일을 입력해주세요.1")
+			} else if ( user_pw.length == 0 ) {
+				erroAlert("비밀번호를 입력해주세요.")
+			} else if ( user_pw_c.length == 0 ) {
+				erroAlert("비밀번호 확인을 입력해주세요.")
+			} else if ( user_pw.match( user_pw_c ) == null ) {
+				erroAlert("비밀번호를 맞게 썼는지 확인해주세요.")
+			} else if ( user_phone.length == 0 ) {
+				erroAlert("전화번호를 입력해주세요.")
+			} else if ( $("#telCheck").val() == "0" ) {
+				erroAlert("전화번로를 인증해주세요.")
+			}else if (sms_check.length == 0){
+				erroAlert("이메일을 입력해주세요.2")
+			} else if ( user_nick.length == 0 ) {
+				erroAlert("닉네임을 입력해주세요.")
+			} else {
+				commonMultiAjax( "${ctx }/rest/member/join", formData, function( response ) {
+					if( response.code == 200 ) {
+						//등록 성공
+					} else if ( response.code == -100 ) {
+						//등록 실패
+					} else {
+						//email 중복
+					}
+				});
+				return false;
+			}	
+			return false;
+		});
+		
+		$("#btnSubmit").on("click", function( event ) {
+			smsCheck('${ctx }/rest/sms2/smsCheck');
+		});
+		
+	</script>
 </body>
 </html>

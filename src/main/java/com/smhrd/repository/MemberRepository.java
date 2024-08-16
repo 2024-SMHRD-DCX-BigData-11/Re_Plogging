@@ -32,4 +32,13 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
 		public Member findByUserNick(@Param("userNick") String userNick);
 	
 	
+	@Query("""
+		    select u
+		    from Member u
+		    where u.userId = :userId
+		    """)
+	
+		public Member findByEmail(@Param("userId") String userId);
+	
+	
 }
