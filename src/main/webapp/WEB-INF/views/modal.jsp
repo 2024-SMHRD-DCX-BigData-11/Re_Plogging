@@ -135,21 +135,21 @@
 			
 			
 			if( user_id.length == 0 ) {
-				erroAlert("이메일을 입력해주세요.1")
+				$("#idMsg").css("display", "flex");
 			} else if ( user_pw.length == 0 ) {
 				erroAlert("비밀번호를 입력해주세요.")
 			} else if ( user_pw_c.length == 0 ) {
 				erroAlert("비밀번호 확인을 입력해주세요.")
 			} else if ( user_pw.match( user_pw_c ) == null ) {
-				erroAlert("비밀번호를 맞게 썼는지 확인해주세요.")
+				$("#pwMsg").css("display", "flex");
 			} else if ( user_phone.length == 0 ) {
 				erroAlert("전화번호를 입력해주세요.")
 			} else if ( $("#telCheck").val() == "0" ) {
-				erroAlert("전화번로를 인증해주세요.")
+				erroAlert("전화번호를 인증해주세요.")
 			}else if (sms_check.length == 0){
-				erroAlert("이메일을 입력해주세요.2")
+				erroAlert("이메일을 입력해주세요.")
 			} else if ( user_nick.length == 0 ) {
-				erroAlert("닉네임을 입력해주세요.")
+				$("#idMsg").css("display", "flex");
 			} else {
 				commonMultiAjax( "${ctx }/rest/member/join", formData, function( response ) {
 					if( response.code == 200 ) {
