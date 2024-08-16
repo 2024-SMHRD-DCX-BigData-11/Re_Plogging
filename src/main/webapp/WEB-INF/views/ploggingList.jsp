@@ -15,14 +15,14 @@
 	<body>
 		<div class="plocourse-container">
 			<div class="plocourseImg">
-				<img alt="" src="img/플로코스.png">
+				<img id="plocourseImage" alt="" src="img/플로코스.png">
 			</div>
 			<div class="plocourseInfo">
 				<span class="plocourseInfo-top">PLOCOURSE<br>DETAIL</span>
 				<span class="plocourseInfo-bottom">플로코스 안내</span>
 			</div>
 			
-			<div class="Acourse-container">
+			<div class="Acourse-container fade-up">
 		            <div class="arrow-icon"><img src="img/arrow.png"></div>
 		            <div class="course-title">
 			            <span class="course-name">A코스</span>
@@ -72,7 +72,7 @@
 		    </div>
 		    
 		    <!-- B코스 -->
-		    <div class="Bcourse-container">
+		    <div class="Bcourse-container fade-up">
 		            <div class="arrow-icon"><img src="img/arrow.png"></div>
 		            <div class="course-title">
 			            <span class="course-name">B코스</span>
@@ -122,7 +122,7 @@
 		    </div>
 		    
 		    <!-- C코스 -->
-		    <div class="Ccourse-container">
+		    <div class="Ccourse-container fade-up">
 		            <div class="arrow-icon"><img src="img/arrow.png"></div>
 		            <div class="course-title">
 			            <span class="course-name">C코스</span>
@@ -174,6 +174,7 @@
 		</div>
 		
 		<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
-	
+		
+		<script src="assets/js/ploggingList.js"></script>
 	</body>
 </html>
