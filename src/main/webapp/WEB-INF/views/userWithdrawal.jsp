@@ -45,5 +45,6 @@
 		<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved.
 		</footer>
 		<script src="assets/js/userWithdrawal.js"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

@@ -136,7 +136,7 @@ public class MemberController {
 	         session.invalidate();
 	         return "redirect:/main"; // 탈퇴 성공 시 메인으로 리다이렉트
 	      } else {
-	         return "redirect:/userWithdrawal";
+	    	  return "redirect:/userWithdrawal?deleteError=true";
 	      }
 	    }
 
