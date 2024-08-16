@@ -254,7 +254,7 @@ body, html {
 	align-self: flex-start;
 }
 
-button.Acourse-start {
+button.course-start {
 	margin: 30px 0;
 	padding: 10px 20px;
 	font-family: 'S-CoreDream-3Light';
@@ -267,7 +267,7 @@ button.Acourse-start {
 	transition: background-color 0.3s ease;
 }
 
-button.Acourse-start:hover {
+button.course-start:hover {
 	background-color: #08917c;
 }
 
@@ -366,7 +366,7 @@ footer {
 		font-size: 14px;
 		line-height: 1.4;
 	}
-	button.Acourse-start {
+	button.course-start {
 		margin: 30px 0;
 		padding: 8px 16px;
 		font-size: 16px;

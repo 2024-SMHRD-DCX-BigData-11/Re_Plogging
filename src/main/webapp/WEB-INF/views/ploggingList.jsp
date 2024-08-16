@@ -68,7 +68,7 @@
 		          			또한, 다양한 나라와의 교류 협정을 통해 국제적인 분위기를 느낄 수 있어, 플로깅을 하며 다문화적인 경험도 할 수 있는 곳입니다.</span>
 		          		</div>
 		            </div>
-			<button type="button" class="Acourse-start" onclick = "location.href='ploggingStart'">플로깅 시작</button>
+			<button type="button" class="course-start" onclick = "location.href='ploggingStartA'">플로깅 시작</button>
 		    </div>
 		    
 		    <!-- B코스 -->
@@ -118,7 +118,7 @@
 		          			또한, 정기적으로 열리는 문화 페스티벌과 소규모 바자회는 플로깅 후 다양한 즐길 거리를 제공해 줍니다.</span>
 		          		</div>
 		            </div>
-			<button type="button" class="Acourse-start" onclick = "location.href='ploggingStart'">플로깅 시작</button>
+			<button type="button" class="course-start" onclick = "location.href='ploggingStartB'">플로깅 시작</button>
 		    </div>
 		    
 		    <!-- C코스 -->
@@ -169,7 +169,7 @@
 		          			또한, 경관조명과 바닥분수 등 다양한 볼거리가 마련되어 있어 운동 중에도 지루하지 않게 주변 경관을 감상할 수 있습니다.</span>
 		          		</div>
 		            </div>
-			<button type="button" class="Acourse-start" onclick = "location.href='ploggingStart'">플로깅 시작</button>
+			<button type="button" class="course-start" onclick = "location.href='ploggingStartC'">플로깅 시작</button>
 		    </div>
 		</div>
 		
