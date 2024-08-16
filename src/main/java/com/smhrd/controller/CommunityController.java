@@ -1,6 +1,8 @@
 package com.smhrd.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.smhrd.entity.Comment;
 import com.smhrd.entity.Community;
 import com.smhrd.entity.Member;
+import com.smhrd.repository.CommentRepository;
 import com.smhrd.repository.CommunityRepository;
 import com.smhrd.repository.MemberRepository;
 
@@ -23,6 +27,9 @@ import java.util.List;
 
 @Controller
 public class CommunityController {
+
+    @Autowired
+    private CommentRepository commentRepository;
 
     @Autowired
     private CommunityRepository communityRepository;
@@ -116,6 +123,7 @@ public class CommunityController {
     public String likePost(@RequestParam("idx") int idx, HttpSession session, Model model) {
         Member loggedInUser = (Member) session.getAttribute("user");
         
+        
         if (loggedInUser == null) {
             // 로그인하지 않은 경우
             model.addAttribute("errorMessage", "로그인 후 좋아요를 누를 수 있습니다.");
@@ -130,5 +138,29 @@ public class CommunityController {
         communityRepository.save(community);
 
         return "redirect:/communityRead?idx=" + idx;
+    }
+    
+    // 야매
+    @PostMapping("/comments/addComment")
+    public String createComment(@RequestParam("communityId") Integer communityId,
+                                                 @RequestParam("commentContent") String commentContent,
+                                                 HttpSession session) {
+        Member user = (Member) session.getAttribute("user");
+        if (user == null) {
+            return "redirect:/main";
+        }
+
+        Community community = communityRepository.findById(communityId).orElse(null);
+        if (community == null) {
+            return "redirect:/main";
+        }
+
+        Comment comment = new Comment();
+        comment.setCommunity(community);
+        comment.setUser(user);
+        comment.setMessage(commentContent);
+
+        Comment savedComment = commentRepository.save(comment);
+        return "redirect:/communityRead?idx=" + communityId;
     }
 }
