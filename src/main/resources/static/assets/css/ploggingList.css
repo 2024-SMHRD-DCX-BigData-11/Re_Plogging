@@ -10,70 +10,69 @@
 }
 
 @font-face {
-   font-family: 'S-CoreDream-3Light';
-   src:
-      url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
-      format('woff');
-   font-weight: 300;
-   font-style: normal;
+	font-family: 'S-CoreDream-3Light';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+		format('woff');
+	font-weight: 300;
+	font-style: normal;
 }
 
 body, html {
-   font-family: 'S-CoreDream-3Light';
-   margin: 0;
-   padding: 0;
-   width: 100%;
+	font-family: 'S-CoreDream-3Light';
+	margin: 0;
+	padding: 0;
+	width: 100%;
 }
 
 .plocourse-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    box-sizing: border-box;
-    margin-top: 125px;
-    max-width: 1280px; /* 최대 너비 설정 */
-    width: 100%;
-    margin-left: auto; /* 좌우 중앙 정렬 */
-    margin-right: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	box-sizing: border-box;
+	margin-top: 125px;
+	max-width: 1280px; /* 최대 너비 설정 */
+	width: 100%;
+	margin-left: auto; /* 좌우 중앙 정렬 */
+	margin-right: auto;
 }
 
 .plocourseImg img {
 	display: inline-block;
-    width: 1280px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
+	width: 1280px;
+	height: auto;
+	display: block;
+	margin: 0 auto;
 }
 
 .plocourseInfo {
 	display: flex;
 	flex-direction: column;
-    margin: 200px 0;
+	margin: 200px 0;
 }
 
 .plocourseInfo-top {
 	display: inline-block;
-    font-family: 'TheJamsil5Bold';
-    font-weight: bold;
-    font-size: 45px;
-    margin-bottom: 10px;
+	font-family: 'TheJamsil5Bold';
+	font-weight: bold;
+	font-size: 45px;
+	margin-bottom: 10px;
 }
 
 .plocourseInfo-bottom {
 	display: inline-block;
-    font-size: 25px;
-    font-weight: bold;
-    color: #a1acbd;
+	font-size: 25px;
+	font-weight: bold;
+	color: #a1acbd;
 }
 
 /* A코스 */
-
 .Acourse-container {
 	display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
 	padding: 0 20px;
 	box-sizing: border-box;
 }
@@ -81,9 +80,9 @@ body, html {
 /* B,C코스 */
 .Bcourse-container, .Ccourse-container {
 	display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
 	padding: 0 20px;
 	margin-top: 300px;
 	box-sizing: border-box;
@@ -91,179 +90,185 @@ body, html {
 
 /* 코스 공통 */
 .arrow-icon {
-    text-align: center;
+	text-align: center;
 }
 
 .arrow-icon img {
-    width: 30px;
-    height: 30px;
+	width: 30px;
+	height: 30px;
 }
 
 /* 코스 타이틀 */
 .course-title {
 	display: flex;
 	flex-direction: column;
-    padding: 7px 35px;
-    border-radius: 75px;
-    margin-top: 150px;
-    margin-bottom: 100px;
-    text-align: center;
-    width: 150px;
-    color: #fff;
-    background-color: #a1acbd;
-    white-space: nowrap;
+	padding: 7px 35px;
+	border-radius: 75px;
+	margin-top: 150px;
+	margin-bottom: 100px;
+	text-align: center;
+	width: 150px;
+	color: #fff;
+	background-color: #a1acbd;
+	white-space: nowrap;
 }
 
 .course-name {
-    display: inline-block;
-    font-weight: bold;
-    font-size: 25px;
+	display: inline-block;
+	font-weight: bold;
+	font-size: 25px;
 }
 
 .course-place {
-    display: inline-block;
-    font-size: 20px;
+	display: inline-block;
+	font-size: 20px;
 }
 
 .course-img img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 40px;
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin-bottom: 40px;
 }
 
 .course-spot {
 	width: 100%;
-    margin-top: 40px;
-    align-self: flex-start;
+	margin-top: 40px;
+	align-self: flex-start;
 }
 
 .spot-title {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    text-align: left;
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	text-align: left;
 }
 
 .spot-title img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+	width: 30px;
+	height: 30px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-right: 10px;
 }
 
 .spot-title h2 {
-    display: block;
-    margin: 20px 0;
-    font-size: 24px;
-    font-weight: bold;
-    unicode-bidi: isolate;
+	display: block;
+	margin: 20px 0;
+	font-size: 24px;
+	font-weight: bold;
+	unicode-bidi: isolate;
 }
 
 .couse-wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	list-style: none;
+	padding: 0;
+	margin-top: 20px;
 }
 
 .course-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    padding: 20px;
-    width: 150px;
-    height: 150px;
-    margin: 0 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 8px;
+	padding: 20px;
+	width: 150px;
+	height: 150px;
+	margin: 0 10px;
 	border: 1px solid #a1acbd;
-    position: relative;
+	position: relative;
 }
 
 .course-innner {
-    position: absolute;
-    top: -10px;
-    left:-10px;
-    background-color: #4385c1;
-    color: white;
-    font-size: 15px;
-    padding: 5px 10px;
-    border-radius: 8px;
-    font-weight: bold;
+	position: absolute;
+	top: -10px;
+	left: -10px;
+	background-color: #4385c1;
+	color: white;
+	font-size: 15px;
+	padding: 5px 10px;
+	border-radius: 8px;
+	font-weight: bold;
 }
 
 .course-box img {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 10px;
+	width: 40px;
+	height: 40px;
+	margin-bottom: 10px;
 }
 
 .course-box .QR {
-    font-size: 20px;
-    font-weight: bold;
+	font-size: 20px;
+	font-weight: bold;
 }
 
 .course-box .QRNick {
-    font-size: 16px;
+	font-size: 16px;
+	white-space: nowrap;
+	margin-bottom: 5px
 }
 
 .left-arrow {
-    font-size: 2rem;
-    color: #a1acbd;
-    margin: 0 10px;
+	font-size: 2rem;
+	color: #a1acbd;
+	margin: 0 10px;
 }
 
 .course-Info {
 	width: 100%;
-    align-self: flex-start;
-    margin: 40px 0;
+	align-self: flex-start;
+	margin: 40px 0;
 }
 
 .Info-title {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    text-align: left;
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	text-align: left;
 }
 
 .Info-title img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+	width: 30px;
+	height: 30px;
+	margin-top: 20px; margin-bottom : 20px;
+	margin-right: 10px;
+	margin-bottom: 20px;
 }
 
 .Info-title h2 {
-    display: block;
-    margin: 20px 0;
-    font-size: 24px;
-    font-weight: bold;
-    unicode-bidi: isolate;
+	display: block;
+	margin: 20px 0;
+	font-size: 24px;
+	font-weight: bold;
+	unicode-bidi: isolate;
 }
 
 .c-Info {
-    font-size: 18px;
-    line-height: 1.6;
-    text-align: left;
-    align-self: flex-start;
+	font-size: 18px;
+	line-height: 1.6;
+	text-align: left;
+	align-self: flex-start;
 }
 
-button.Acourse-start {
-    margin: 30px 0;
-    padding: 10px 20px;
-    font-family: 'S-CoreDream-3Light';
-    font-size: 20px;
-    background-color: #00a989;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+button.course-start {
+	margin: 30px 0;
+	padding: 10px 20px;
+	font-family: 'S-CoreDream-3Light';
+	font-size: 20px;
+	background-color: #00a989;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
 }
 
-button.Acourse-start:hover {
-    background-color: #08917c;
+button.course-start:hover {
+	background-color: #08917c;
 }
 
 /* footer */
@@ -272,4 +277,103 @@ footer {
 	text-align: center;
 	margin-top: 100px;
 	margin-bottom: 25px;
+}
+
+/* 스크롤 애니메이션 */
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 미디어 쿼리 */
+@media ( max-width : 768px) {
+	.plocourseImg img {
+		display: inline-block;
+		width: 100%;
+		height: auto;
+		display: block;
+		margin: 0 auto;
+	}
+	.plocourseInfo-top {
+		font-size: 30px;
+	}
+	.plocourseInfo-bottom {
+		font-size: 15px;
+	}
+	.arrow-icon img {
+		width: 20px;
+		height: 20px;
+	}
+
+	/* 코스 타이틀 */
+	.course-title {
+		padding: 7px 20px;
+	}
+	.course-name {
+		font-size: 20px;
+	}
+	.course-place {
+		font-size: 15px;
+	}
+	.spot-title img {
+		width: 25px;
+		height: 25px;
+	}
+	.spot-title h2 {
+		font-size: 20px;
+	}
+	.course-box {
+		padding: 5px;
+		width: 100px;
+		height: 100px;
+	}
+	.course-innner {
+		font-size: 13px;
+		padding: 4px 8px;
+	}
+	.course-box img {
+		width: 30px;
+		height: 30px;
+	}
+	.course-box .QR {
+		font-size: 14px;
+	}
+	.course-box .QRNick {
+		font-size: 11px;
+	}
+	.left-arrow {
+		font-size: 22px;
+	}
+	.course-Info {
+		width: 100%;
+		align-self: flex-start;
+		margin: 40px 0;
+	}
+	.Info-title img {
+		width: 25px;
+		height: 25px;
+	}
+	.Info-title h2 {
+		font-size: 20px;
+	}
+	.c-Info {
+		font-size: 14px;
+		line-height: 1.4;
+	}
+	button.course-start {
+		margin: 30px 0;
+		padding: 8px 16px;
+		font-size: 16px;
+	}
+
+	/* footer */
+	footer {
+		font-size: 11px;
+	}
 }

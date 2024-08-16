@@ -16,6 +16,7 @@ import com.smhrd.repository.MemberRepository;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
+
 public class MemberController {
 
 	@Autowired
@@ -41,22 +42,27 @@ public class MemberController {
 		return "userInfoModify";
 	}
 	
-//	
-//	public String join(Member member) {
-//	    // 사용자가 입력한 비밀번호를 가져옴
-//	    String joinPw = member.getUserPw();
-//	    
-//	    // 비밀번호를 SHA-512 방식으로 암호화
-//	    String joinEncryptedPw = DigestUtils.sha512Hex(joinPw);
-//	    
-//	    // 암호화된 비밀번호를 Member 객체에 설정
-//	    member.setUserPw(joinEncryptedPw);
-//	    
-//	    repo.save(member);
-//
-//	    // 저장 후 메인 페이지로 리다이렉트
-//	    return "redirect:/main";
-//	}
+	@RequestMapping("/userWithdrawal")
+	public String goUserWithdrawal() {
+		return "userWithdrawal";
+	}
+	
+	@RequestMapping("/join")
+	public String join(Member member) {
+	    // 사용자가 입력한 비밀번호를 가져옴
+	    String joinPw = member.getUserPw();
+	    
+	    // 비밀번호를 SHA-512 방식으로 암호화
+	    String joinEncryptedPw = DigestUtils.sha512Hex(joinPw);
+	    
+	    // 암호화된 비밀번호를 Member 객체에 설정
+	    member.setUserPw(joinEncryptedPw);
+	    
+	    repo.save(member);
+
+	    // 저장 후 메인 페이지로 리다이렉트
+	    return "redirect:/main";
+	}
 
 	/*
 	 * @RequestMapping("/join") public String join(Member member) { // 0. 사전 준비 :

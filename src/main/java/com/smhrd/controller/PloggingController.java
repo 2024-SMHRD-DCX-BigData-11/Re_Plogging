@@ -59,13 +59,13 @@ public class PloggingController {
     	}
     }
 	
-	@RequestMapping("/ploggingStart")
-	public String ploggingStart( HttpSession session) {
+	@RequestMapping("/ploggingStartA")
+	public String ploggingStartA( HttpSession session) {
 		Member member = (Member) session.getAttribute("user");
 		if( member != null ) {
         	Plogging p = new Plogging();
         	p.setUser(member);
-        	p.setCourseName("테스트");
+        	p.setCourseName("A코스");
         	prepo.save(p);
     		return "myplogging";
     	} else {
@@ -74,12 +74,42 @@ public class PloggingController {
     		return "main";
     	}
 	}
+	
+	@RequestMapping("/ploggingStartB")
+	public String ploggingStartB( HttpSession session) {
+		Member member = (Member) session.getAttribute("user");
+		if( member != null ) {
+        	Plogging p = new Plogging();
+        	p.setUser(member);
+        	p.setCourseName("B코스");
+        	prepo.save(p);
+    		return "myplogging";
+    	} else {
+    		System.out.println("유저 없음.");
+    		logout( session );
+    		return "main";
+    	}
+	}
+	
+	@RequestMapping("/ploggingStartC")
+	public String ploggingStartC( HttpSession session) {
+		Member member = (Member) session.getAttribute("user");
+		if( member != null ) {
+        	Plogging p = new Plogging();
+        	p.setUser(member);
+        	p.setCourseName("C코스");
+        	prepo.save(p);
+    		return "myplogging";
+    	} else {
+    		System.out.println("유저 없음.");
+    		logout( session );
+    		return "main";
+    	}
+	}
+	
     
     public String logout( HttpSession session ) {
     	session.invalidate();
     	return "/boot/main";
     }
-	
-	
-
 }
