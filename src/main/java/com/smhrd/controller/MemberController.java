@@ -47,22 +47,19 @@ public class MemberController {
 		return "userWithdrawal";
 	}
 	
-	@RequestMapping("/join")
-	public String join(Member member) {
-	    // 사용자가 입력한 비밀번호를 가져옴
-	    String joinPw = member.getUserPw();
-	    
-	    // 비밀번호를 SHA-512 방식으로 암호화
-	    String joinEncryptedPw = DigestUtils.sha512Hex(joinPw);
-	    
-	    // 암호화된 비밀번호를 Member 객체에 설정
-	    member.setUserPw(joinEncryptedPw);
-	    
-	    repo.save(member);
-
-	    // 저장 후 메인 페이지로 리다이렉트
-	    return "redirect:/main";
-	}
+	/*
+	 * @RequestMapping("/join") public String join(Member member) { // 사용자가 입력한
+	 * 비밀번호를 가져옴 String joinPw = member.getUserPw();
+	 * 
+	 * // 비밀번호를 SHA-512 방식으로 암호화 String joinEncryptedPw =
+	 * DigestUtils.sha512Hex(joinPw);
+	 * 
+	 * // 암호화된 비밀번호를 Member 객체에 설정 member.setUserPw(joinEncryptedPw);
+	 * 
+	 * repo.save(member);
+	 * 
+	 * // 저장 후 메인 페이지로 리다이렉트 return "redirect:/main"; }
+	 */
 
 	/*
 	 * @RequestMapping("/join") public String join(Member member) { // 0. 사전 준비 :
@@ -122,10 +119,26 @@ public class MemberController {
 		
 		else {
 			return 1;
-		}
-		
-		
+		}	
 	}
+	
+	   @RequestMapping("/deleteMember")
+	    public String deleteMember(@RequestParam("userId") String userId,
+	            @RequestParam("userPw") String userPw, HttpSession session) {
+	       
+	       // 비밀번호를 SHA-512로 해시
+	        String deletePw = DigestUtils.sha512Hex(userPw);
+
+	        // 해시된 비밀번호를 사용하여 사용자 삭제 시도
+	      int deletedCount = repo.deleteByUserIdAndUserPw(userId, deletePw);
+	      
+	      if (deletedCount > 0) {
+	         session.invalidate();
+	         return "redirect:/main"; // 탈퇴 성공 시 메인으로 리다이렉트
+	      } else {
+	         return "redirect:/userWithdrawal";
+	      }
+	    }
 
 	// Get, Post Mapping 어노테이션을 이용해 URL 요청이 들어왔을 때, 요청 방식에 따라 다른 기능이 실행되게 할 수 있음.
 	// 즉, URL 매핑이 겹쳐도 사용할 수 있게 됨.
