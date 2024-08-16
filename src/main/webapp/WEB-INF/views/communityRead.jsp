@@ -28,11 +28,14 @@
                     조회수 ${community.count} | 
                     <form id="likeForm" action="${pageContext.request.contextPath}/likePost" method="post" style="display: inline;">
                         <input type="hidden" name="idx" value="${community.idx}" />
-                        <i class="fas fa-heart" onclick="likePost()"></i> ${community.likes}
+                        <i class="fas fa-heart" onclick="likePost(${sessionScope.user.userIdx})"></i> ${community.likes}
                     </form>
                 </div>
             </div>
             <div class="post-content">
+            	<c:if test="${!empty community.img}">
+            		<img src="${pageContext.request.contextPath}/image/${community.img}">
+            	</c:if>
                 <p>${community.content}</p>
             </div>
         </div>
@@ -42,7 +45,7 @@
             <h3>댓글</h3>
             
             <!-- Comment List -->
-            <c:forEach var="comment" items="${comments}">
+            <c:forEach var="comment" items="${community.comments}">
                 <div class="comment">
                     <p><strong>${comment.user.userNick}</strong> - 
                     <fmt:formatDate value="${comment.indate}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
@@ -52,7 +55,7 @@
             
             <!-- Comment Form -->
             <c:if test="${sessionScope.user != null}">
-                <form class="comment-form" action="${pageContext.request.contextPath}/addComment" method="post">
+                <form class="comment-form" action="${pageContext.request.contextPath}/comments/addComment" method="post">
                     <input type="hidden" name="communityId" value="${community.idx}">
                     <textarea name="commentContent" placeholder="댓글을 남겨보세요."></textarea>
                     <button type="submit">등록</button>
@@ -65,9 +68,11 @@
     </div>
         <div class="navigation">
             <div class="navigation-left">
-                <a href="#" class="btn btn-green">글쓰기</a>
-                <a href="#" class="btn btn-gray">수정</a>
-                <a href="#" class="btn btn-gray">삭제</a>
+                <a href="${pageContext.request.contextPath}/communityWriter" class="btn btn-green">글쓰기</a>
+                <c:if test="${community.writer.userIdx == sessionScope.user.userIdx}">
+                	<a href="#" class="btn btn-gray">수정</a>
+                	<a href="#" class="btn btn-gray">삭제</a>
+                </c:if>
             </div>
             <div class="navigation-right">
                 <a href="${pageContext.request.contextPath}/community" class="btn btn-gray">목록</a>

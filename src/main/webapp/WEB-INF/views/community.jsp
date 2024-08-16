@@ -50,7 +50,12 @@
                         <c:forEach var="community" items="${list }">
                             <tr>
                                 <td>${community.idx}</td>
-                                <td><a href="${pageContext.request.contextPath}/communityRead?idx=${community.idx}">${community.title}</a></td>
+                                <td>
+                                	<a href="${pageContext.request.contextPath}/communityRead?idx=${community.idx}">${community.title}</a>
+                                	<c:if test="${community.comments.size() > 0}">
+	                                	[${community.comments.size()}]
+                                	</c:if>
+                                </td>
                                 <td>${community.category}</td>
                                 <td>${community.writer.userNick}</td>
                                 <td><fmt:formatDate value="${community.indate}" pattern="yyyy-MM-dd"/></td>

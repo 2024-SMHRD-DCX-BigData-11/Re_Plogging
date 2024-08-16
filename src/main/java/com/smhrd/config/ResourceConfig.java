@@ -14,7 +14,7 @@ public class ResourceConfig implements WebMvcConfigurer {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		// http://localhost:8096/boot/save/~~~~.jpg
-		registry.addResourceHandler("/save/**") // url mapping 지정
+		registry.addResourceHandler("/image/**") // url mapping 지정
 				.addResourceLocations( "file:///" + savePath);	// 어떤 폴더에 접근하는지
 	}
 }
