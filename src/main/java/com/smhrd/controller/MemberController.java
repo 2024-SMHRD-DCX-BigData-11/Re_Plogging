@@ -42,6 +42,11 @@ public class MemberController {
 		return "userInfoModify";
 	}
 	
+	@RequestMapping("/userWithdrawal")
+	public String goUserWithdrawal() {
+		return "userWithdrawal";
+	}
+	
 	@RequestMapping("/join")
 	public String join(Member member) {
 	    // 사용자가 입력한 비밀번호를 가져옴
