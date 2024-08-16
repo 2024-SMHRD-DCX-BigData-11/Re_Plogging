@@ -123,6 +123,7 @@
 		});
 		
 		$("#joinForm").submit( function( event ) {
+			event.preventDefault(); // 기본 폼 제출 동작을 막음
 			var $this = $(this),
 				formData = new FormData( $this[0] );
 		
@@ -136,28 +137,45 @@
 			
 			if( user_id.length == 0 ) {
 				$("#idMsg").css("display", "flex");
+				return false;
 			} else if ( user_pw.length == 0 ) {
-				erroAlert("비밀번호를 입력해주세요.")
+				erroAlert("비밀번호를 입력해주세요.",join_user_pw)
+				return false;
 			} else if ( user_pw_c.length == 0 ) {
-				erroAlert("비밀번호 확인을 입력해주세요.")
+				erroAlert("비밀번호 확인을 입력해주세요.",user_pw_confirm)
+				return false;
 			} else if ( user_pw.match( user_pw_c ) == null ) {
 				$("#pwMsg").css("display", "flex");
+				return false;
 			} else if ( user_phone.length == 0 ) {
 				erroAlert("전화번호를 입력해주세요.")
+				return false;
 			} else if ( $("#telCheck").val() == "0" ) {
 				erroAlert("전화번호를 인증해주세요.")
-			}else if (sms_check.length == 0){
-				erroAlert("이메일을 입력해주세요.")
+				return false;
+			}else if (sms_check.length == 0 || sms_check.length != 6){
+				erroAlert("인증번호를 다시 입력해주세요.",otp)
+				return false;
 			} else if ( user_nick.length == 0 ) {
 				$("#idMsg").css("display", "flex");
+				return false;
 			} else {
 				commonMultiAjax( "${ctx }/rest/member/join", formData, function( response ) {
 					if( response.code == 200 ) {
 						//등록 성공
+						alert("회원가입 성공!!");
 					} else if ( response.code == -100 ) {
 						//등록 실패
-					} else {
-						//email 중복
+						alert("회원가입 실패 다시 시도해주세요");
+					} else if (response.code == -500) {
+						//아이디 중복
+						alert("이미 가입된 이메일입니다!!");
+					} else if (response.code == -400) {
+						// 전화번호 중복
+						alert("이미 가입된 전화번호입니다!!");
+					} else{
+						// 닉네임 중복
+						alert("이미 사용중인 닉네임입니다!!");
 					}
 				});
 				return false;

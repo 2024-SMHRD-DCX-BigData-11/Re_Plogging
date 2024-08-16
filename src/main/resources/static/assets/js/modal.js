@@ -43,7 +43,7 @@ $('#user_pw_confirm').on( "focusout", function( event ) {
 });
 */
 
-// 닉네임 중복체크
+/*// 닉네임 중복체크
         $( '#user_nick' ).change(function() {
 			var userNick = $('#user_nick').val().trim();
 			
@@ -74,7 +74,7 @@ $('#user_pw_confirm').on( "focusout", function( event ) {
 				
 			})
 	
-        } );
+        } );*/
 
 
 
@@ -87,6 +87,10 @@ function telconfirmButton( url ) {
     
     // 값을 합쳐서 하나의 전화번호로 만듦
     var fullPhoneNumber = mobile1 + "-" + mobile2 + "-" + mobile3;
+
+	// fullPhoneNumber 값을 mobile4의 value로 설정
+    document.getElementById("#mobile4").value = fullPhoneNumber;
+
     
    	var formData = new FormData();
     formData.append('phoneNumber', fullPhoneNumber);
@@ -127,10 +131,10 @@ function smsCheck( url ) {
 	}).done( function( response ) {
 		if( response.code == 200 ) {
 			$("#telCheck").val( "1" );
-			alert("인증성공!");
+			alert("인증번호 확인 성공!");
 		} else{
 			$("#telCheck").val( "0" );
-			alert("인증실패!");
+			alert("인증번호 확인 실패!");
 		}
 	});   
 	return false;

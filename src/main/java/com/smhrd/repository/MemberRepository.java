@@ -45,6 +45,15 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
 	
 		public Member findByEmail(@Param("userId") String userId);
 	
+	
+	@Query("""
+		    select u
+		    from Member u
+		    where u.userPhone = :userPhone
+		    """)
+	
+		public Member findByPhone(@Param("userPhone") String userPhone);
+	
 	@Transactional
 	@Modifying
 	@Query("""
