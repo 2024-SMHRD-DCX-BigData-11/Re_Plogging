@@ -1,15 +1,19 @@
 package com.smhrd.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.smhrd.entity.Comment;
@@ -20,147 +24,247 @@ import com.smhrd.repository.CommunityRepository;
 import com.smhrd.repository.MemberRepository;
 
 import jakarta.servlet.http.HttpSession;
-import java.io.File;
-import java.io.IOException;
-import java.util.Date;
-import java.util.List;
 
 @Controller
 public class CommunityController {
 
-    @Autowired
-    private CommentRepository commentRepository;
+	@Autowired
+	private CommentRepository commentRepository;
 
-    @Autowired
-    private CommunityRepository communityRepository;
-    
-    @Autowired
-    private MemberRepository memberRepository;
+	@Autowired
+	private CommunityRepository communityRepository;
 
-    @RequestMapping("/community")
-    public ModelAndView goCommunity() {
-        ModelAndView mav = new ModelAndView("community");
-        
-        List<Community> list = communityRepository.findAll();
-        System.out.println("list.size() : " + list.size());
+	@Autowired
+	private MemberRepository memberRepository;
 
-        mav.addObject("list", list);
-        return mav;
-    }
-    
-    @GetMapping("/communityWriter")
-    public String goWriter() {
-        return "communityWriter";
-    }
+	// 전체 게시물 조회 및 카테고리/키워드 검색 처리
+	@RequestMapping("/community")
+	public ModelAndView goCommunity(@RequestParam(value = "category", required = false) String category,
+			@RequestParam(value = "keyword", required = false) String keyword) {
 
-    @GetMapping("/communityRead")
-    public String goRead(@RequestParam("idx") int idx, Model model, HttpSession session) {
-        Community community = communityRepository.findById(idx)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid community Id:" + idx));
+		ModelAndView mav = new ModelAndView("community");
 
-        community.setCount(community.getCount() + 1);
-        communityRepository.save(community);
-        
-        model.addAttribute("community", community);
-        model.addAttribute("user", session.getAttribute("user"));
-        return "communityRead";
-    }
+		List<Community> list;
 
-    @PostMapping("/submitPost")
-    public ModelAndView submitPost(@RequestParam("title") String title,
-                                   @RequestParam("category") String category,
-                                   @RequestParam("content") String content,
-                                   @RequestParam("file") MultipartFile file,
-                                   @RequestParam("writerId") int writerId) throws IOException {
-        ModelAndView mav = new ModelAndView("redirect:/community");
-        
-        // 카테고리 값 변환
-        if (category.equals("plogging")) {
-            category = "플로깅";
-        } else if (category.equals("separation")) {
-            category = "분리배출";
-        } else if (category.equals("freeboard")) {
-            category = "자유게시판";
-        }
+		if (category != null) {
+			// 카테고리 값 변환
+			if (category.equals("plogging")) {
+				category = "플로깅";
+			} else if (category.equals("separation")) {
+				category = "분리배출";
+			} else if (category.equals("freeboard")) {
+				category = "자유게시판";
+			}
+		}
 
-        // 작성자 정보 가져오기
-        Member writer = memberRepository.findById(writerId)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid writer Id:" + writerId));
-        
-        // 파일 저장 처리
-        String fileName = null;
-        if (!file.isEmpty()) {
-            fileName = file.getOriginalFilename();
-            String uploadDir = "C:/uploads/";
-            File dir = new File(uploadDir);
+		// 카테고리와 키워드에 따라 검색 로직 분기
+		if ((category == null || category.isEmpty()) && (keyword == null || keyword.isEmpty())) {
+			// 카테고리와 키워드가 없는 경우 전체 게시물 조회
+			list = communityRepository.findAll();
+		} else if (category != null && !category.isEmpty() && (keyword == null || keyword.isEmpty())) {
+			// 카테고리로만 검색하는 경우
+			list = communityRepository.findByCategory(category);
+		} else if ((category == null || category.isEmpty()) && keyword != null && !keyword.isEmpty()) {
+			// 키워드로만 검색하는 경우
+			list = communityRepository.findByTitleContaining(keyword);
+		} else {
+			// 카테고리와 키워드 모두로 검색하는 경우
+			list = communityRepository.findByCategoryAndTitleContaining(category, keyword);
+		}
 
-            // 디렉토리가 존재하지 않으면 생성
-            if (!dir.exists()) {
-                dir.mkdirs();
-            }
-            
-            String filePath = uploadDir + fileName;
-            file.transferTo(new File(filePath));
-        }
-        
-        // 새로운 Community 엔티티 생성 및 저장
-        Community newPost = new Community();
-        newPost.setTitle(title);
-        newPost.setCategory(category); // 변환된 카테고리 값을 설정
-        newPost.setContent(content);
-        newPost.setImg(fileName);
-        newPost.setWriter(writer);
-        newPost.setIndate(new Date());
-        newPost.setCount(0);
-        newPost.setLikes(0);
+		mav.addObject("list", list);
+		mav.addObject("selectedCategory", category); // 선택된 카테고리를 뷰로 전달
+		mav.addObject("keyword", keyword); // 입력된 키워드를 뷰로 전달
 
-        communityRepository.save(newPost);
+		return mav;
+	}
 
-        return mav;
-    }
-    
-    @PostMapping("/likePost")
-    public String likePost(@RequestParam("idx") int idx, HttpSession session, Model model) {
-        Member loggedInUser = (Member) session.getAttribute("user");
-        
-        
-        if (loggedInUser == null) {
-            // 로그인하지 않은 경우
-            model.addAttribute("errorMessage", "로그인 후 좋아요를 누를 수 있습니다.");
-            return "redirect:/communityRead?idx=" + idx;
-        }
-        
-        // 로그인한 경우 좋아요 수 증가
-        Community community = communityRepository.findById(idx)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid community Id:" + idx));
+	@GetMapping("/communityWriter")
+	public String goWriter() {
+		return "communityWriter";
+	}
 
-        community.setLikes(community.getLikes() + 1);
-        communityRepository.save(community);
+	@GetMapping("/communityRead")
+	public String goRead(@RequestParam("idx") int idx, Model model, HttpSession session) {
+		Community community = communityRepository.findById(idx)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid community Id:" + idx));
 
-        return "redirect:/communityRead?idx=" + idx;
-    }
-    
-    // 야매
-    @PostMapping("/comments/addComment")
-    public String createComment(@RequestParam("communityId") Integer communityId,
-                                                 @RequestParam("commentContent") String commentContent,
-                                                 HttpSession session) {
-        Member user = (Member) session.getAttribute("user");
-        if (user == null) {
-            return "redirect:/main";
-        }
+		community.setCount(community.getCount() + 1);
+		communityRepository.save(community);
 
-        Community community = communityRepository.findById(communityId).orElse(null);
-        if (community == null) {
-            return "redirect:/main";
-        }
+		model.addAttribute("community", community);
+		model.addAttribute("user", session.getAttribute("user"));
+		return "communityRead";
+	}
 
-        Comment comment = new Comment();
-        comment.setCommunity(community);
-        comment.setUser(user);
-        comment.setMessage(commentContent);
+	@PostMapping("/submitPost")
+	public ModelAndView submitPost(@RequestParam("title") String title, @RequestParam("category") String category,
+			@RequestParam("content") String content, @RequestParam("file") MultipartFile file,
+			@RequestParam("writerId") int writerId) throws IOException {
+		ModelAndView mav = new ModelAndView("redirect:/community");
 
-        Comment savedComment = commentRepository.save(comment);
-        return "redirect:/communityRead?idx=" + communityId;
-    }
+		// 카테고리 값 변환
+		if (category.equals("plogging")) {
+			category = "플로깅";
+		} else if (category.equals("separation")) {
+			category = "분리배출";
+		} else if (category.equals("freeboard")) {
+			category = "자유게시판";
+		}
+
+		// 작성자 정보 가져오기
+		Member writer = memberRepository.findById(writerId)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid writer Id:" + writerId));
+
+		// 파일 저장 처리
+		String fileName = null;
+		if (!file.isEmpty()) {
+			// 중복되지않는 고유한 파일 이름 만들기
+			// 랜덤한 문자열 생성
+			String uuid = UUID.randomUUID().toString();
+			// 파일 이름에 랜덤 문자열 붙이기
+			fileName = uuid + file.getOriginalFilename();
+
+			String uploadDir = "C:/uploads/";
+			File dir = new File(uploadDir);
+
+			// 디렉토리가 존재하지 않으면 생성
+			if (!dir.exists()) {
+				dir.mkdirs();
+			}
+
+			String filePath = uploadDir + fileName;
+			file.transferTo(new File(filePath));
+		}
+
+		// 새로운 Community 엔티티 생성 및 저장
+		Community newPost = new Community();
+		newPost.setTitle(title);
+		newPost.setCategory(category); // 변환된 카테고리 값을 설정
+		newPost.setContent(content);
+		newPost.setImg(fileName);
+		newPost.setWriter(writer);
+		newPost.setIndate(new Date());
+		newPost.setCount(0);
+		newPost.setLikes(0);
+
+		communityRepository.save(newPost);
+
+		return mav;
+	}
+
+	@PostMapping("/edit")
+	public ModelAndView edit(@RequestParam("title") String title, @RequestParam("category") String category,
+			@RequestParam("content") String content, @RequestParam("file") MultipartFile file,
+			@RequestParam("writerId") int writerId, @RequestParam("editId") int idx, @RequestParam("uploaded") String uploaded) throws IOException {
+		System.out.println("uploaded : " + uploaded);
+		ModelAndView mav = new ModelAndView("redirect:/communityRead?idx=" + idx);
+
+		// 카테고리 값 변환
+		if (category.equals("plogging")) {
+			category = "플로깅";
+		} else if (category.equals("separation")) {
+			category = "분리배출";
+		} else if (category.equals("freeboard")) {
+			category = "자유게시판";
+		}
+
+		// 작성자 정보 가져오기
+		Member writer = memberRepository.findById(writerId)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid writer Id:" + writerId));
+
+		Community community = communityRepository.findById(idx).orElse(null);
+		community.setCategory(category);
+		community.setTitle(title);
+		community.setContent(content);
+
+		// 파일 저장 처리
+		String fileName = null;
+		if (!file.isEmpty()) {
+			// 중복되지않는 고유한 파일 이름 만들기
+			// 랜덤한 문자열 생성
+			String uuid = UUID.randomUUID().toString();
+			// 파일 이름에 랜덤 문자열 붙이기
+			fileName = uuid + file.getOriginalFilename();
+
+			String uploadDir = "C:/uploads/";
+			File dir = new File(uploadDir);
+
+			// 디렉토리가 존재하지 않으면 생성
+			if (!dir.exists()) {
+				dir.mkdirs();
+			}
+
+			String filePath = uploadDir + fileName;
+			file.transferTo(new File(filePath));
+			community.setImg(fileName);
+		} else {
+			if (uploaded == null || uploaded.equals("") || uploaded.isBlank() || uploaded.isEmpty()) {
+				community.setImg(null);
+			}
+		}
+
+		communityRepository.save(community);
+
+		return mav;
+	}
+
+	@PostMapping("/likePost")
+	public String likePost(@RequestParam("idx") int idx, HttpSession session, Model model) {
+		Member loggedInUser = (Member) session.getAttribute("user");
+
+		if (loggedInUser == null) {
+			// 로그인하지 않은 경우
+			model.addAttribute("errorMessage", "로그인 후 좋아요를 누를 수 있습니다.");
+			return "redirect:/communityRead?idx=" + idx;
+		}
+
+		// 로그인한 경우 좋아요 수 증가
+		Community community = communityRepository.findById(idx)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid community Id:" + idx));
+
+		community.setLikes(community.getLikes() + 1);
+		communityRepository.save(community);
+
+		return "redirect:/communityRead?idx=" + idx;
+	}
+
+	@PostMapping("/comments/addComment")
+	public String createComment(@RequestParam("communityId") Integer communityId,
+			@RequestParam("commentContent") String commentContent, HttpSession session) {
+		Member user = (Member) session.getAttribute("user");
+		if (user == null) {
+			return "redirect:/main";
+		}
+
+		Community community = communityRepository.findById(communityId).orElse(null);
+		if (community == null) {
+			return "redirect:/main";
+		}
+
+		Comment comment = new Comment();
+		comment.setCommunity(community);
+		comment.setUser(user);
+		comment.setMessage(commentContent);
+
+		commentRepository.save(comment);
+		return "redirect:/communityRead?idx=" + communityId;
+	}
+
+	@RequestMapping("/editPost")
+	public ModelAndView editPost(int idx) {
+		Community community = communityRepository.findById(idx).orElse(null);
+
+		ModelAndView mav = new ModelAndView("communityWriter");
+		mav.addObject("community", community);
+
+		return mav;
+	}
+
+	@RequestMapping("/deletePost")
+	public String deletePost(int idx) {
+		Community community = communityRepository.findById(idx).orElse(null);
+		communityRepository.delete(community);
+		return "redirect:/community";
+	}
 }
