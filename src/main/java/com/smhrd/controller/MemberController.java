@@ -107,20 +107,20 @@ public class MemberController {
 		
 	}
 	
-	@RequestMapping("/nickCheck")
-	public int  nickCheck(@RequestParam String userNick) {
-		
-		Member member = repo.findByUserNick(userNick);
-		
-		if(member == null) {
-			//중복 안됨
-			return 0;
-		}
-		
-		else {
-			return 1;
-		}	
-	}
+//	@RequestMapping("/nickCheck")
+//	public int  nickCheck(@RequestParam String userNick) {
+//		
+//		Member member = repo.findByUserNick(userNick);
+//		
+//		if(member == null) {
+//			//중복 안됨
+//			return 0;
+//		}
+//		
+//		else {
+//			return 1;
+//		}	
+//	}
 	
 	   @RequestMapping("/deleteMember")
 	    public String deleteMember(@RequestParam("userId") String userId,

@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Optional;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -74,16 +75,23 @@ public class MemberRestController {
 		//유저 아이디 비교
 		Member member = repo.findByEmail( id );
 		if( member == null ) {
-			member = repo.findByUserNick(nick);
+			member = repo.findByPhone(phone);
 			if(member == null) {
-				member = new Member();
-				member.setUserId(id);
-				member.setUserPw(pass);
-				member.setUserPhone(phone);
-				member.setUserNick(nick);
-				//insert 
-				repo.save(member);
-				resultCode = member.getUserIdx() != 0 ? 200 : -100;
+				member = repo.findByUserNick(nick);
+				if(member == null) {
+					member = new Member();
+					member.setUserId(id);
+					String joinEncryptedPw = DigestUtils.sha512Hex(pass);
+					member.setUserPw(joinEncryptedPw);
+					member.setUserPhone(phone);
+					member.setUserNick(nick);
+					//insert 
+					repo.save(member);
+					resultCode = member.getUserIdx() != 0 ? 200 : -100;
+				} else {
+					resultCode = -300;
+				}
+				
 			} else {
 				resultCode = -400;
 			}
