@@ -1,18 +1,17 @@
 package com.smhrd.repository;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
 import com.smhrd.entity.Community;
 
 @Repository
 public interface CommunityRepository extends JpaRepository<Community, Integer> {
 
-    List<Community> findByCategory(String category);
+    Page<Community> findByCategory(String category, Pageable pageable);
 
-    List<Community> findByTitleContaining(String keyword);
+    Page<Community> findByTitleContaining(String keyword, Pageable pageable);
 
-    // 카테고리와 키워드로 검색
-    List<Community> findByCategoryAndTitleContaining(String category, String keyword);
+    Page<Community> findByCategoryAndTitleContaining(String category, String keyword, Pageable pageable);
 }

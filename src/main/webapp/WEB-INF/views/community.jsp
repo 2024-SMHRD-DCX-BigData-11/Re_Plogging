@@ -86,13 +86,19 @@
 
     <nav aria-label="Page navigation" style="text-align: center;">
         <ul class="pagination">
-            <li><a href="/community?page=1">&laquo;</a></li>
-            <li><a href="#">&lsaquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">&rsaquo;</a></li>
-            <li><a href="#">&raquo;</a></li>
+            <c:if test="${currentPage > 1}">
+                <li><a href="${pageContext.request.contextPath}/community?page=1">&laquo;</a></li>
+                <li><a href="${pageContext.request.contextPath}/community?page=${currentPage - 1}">&lsaquo;</a></li>
+            </c:if>
+            <c:forEach var="i" begin="1" end="${totalPages}">
+                <li class="${i == currentPage ? 'active' : ''}">
+                    <a href="${pageContext.request.contextPath}/community?page=${i}">${i}</a>
+                </li>
+            </c:forEach>
+            <c:if test="${currentPage < totalPages}">
+                <li><a href="${pageContext.request.contextPath}/community?page=${currentPage + 1}">&rsaquo;</a></li>
+                <li><a href="${pageContext.request.contextPath}/community?page=${totalPages}">&raquo;</a></li>
+            </c:if>
         </ul>
     </nav>
 </body>
