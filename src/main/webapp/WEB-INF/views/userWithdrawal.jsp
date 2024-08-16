@@ -13,6 +13,37 @@
 <link rel="stylesheet" href="assets/css/userWithdrawal.css">
 </head>
 <body>
-
+	<div class="userWithdrawal-container">
+		<div class="Withdrawal-container">
+			<span>회원 탈퇴</span>
+		</div>
+		<div class="Withdrawal-line"></div>
+			<div class="thanks">
+				<span>리플로깅을 이용해 주셔서 감사합니다.</span>
+			</div>
+		<div class="Withdrawal-container-inner">
+			<form id="Withdrawal-form" action="deleteMember" method="post" autocomplete="off">
+			<table id="Withdrawal-table">
+				<tr>
+					<th>아이디</th>
+					<td><input type="email" id="WuserId" name="userId" value="${user.userId}"
+						readonly></td>
+				</tr>
+				<tr>
+				    <th>비밀번호</th>
+				    <td>
+				        <input type="password" id="WuserPw" name="userPw" placeholder="비밀번호를 입력하세요.">
+				    </td>
+				</tr>
+			</table>
+			<div class="Withdrawal-button-wrapper">
+				<button type="submit" class="Withdrawal-button">확인</button>
+			</div>
+		</form>
+		</div>
+	</div>
+		<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved.
+		</footer>
+		<script src="assets/js/userWithdrawal.js"></script>
 </body>
 </html>

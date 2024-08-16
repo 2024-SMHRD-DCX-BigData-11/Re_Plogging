@@ -88,7 +88,7 @@ body, html {
 
 #userInfo-form th, #userInfo-form td {
 	text-align: left;
-	padding: 8px;
+	padding: 6px;
 	vertical-align: middle;
 }
 
@@ -102,7 +102,7 @@ body, html {
 #userInfo-form td input[type="email"], #userInfo-form td input[type="text"],
 	#userInfo-form td input[type="password"] {
 	width: 100%;
-	padding: 8px;
+	padding: 6px;
 	box-sizing: border-box;
 	border: 1px solid #a1acbd;
 	border-radius: 5px;
@@ -113,7 +113,7 @@ body, html {
 /* 아이디, 휴대폰번호 선 제거 */
 #MuserId {
 	width: 100%;
-	padding: 8px;
+	padding: 6px;
 	box-sizing: border-box;
 	border: none !important;
 	outline: none !important;
@@ -122,7 +122,7 @@ body, html {
 
 #MuserPw {
 	width: 100%;
-	padding: 8px;
+	padding: 6px;
 	box-sizing: border-box;
 	border: none !important;
 	outline: none !important;
@@ -131,7 +131,7 @@ body, html {
 
 #MuserPhone {
 	width: 100%;
-	padding: 8px;
+	padding: 6px;
 	box-sizing: border-box;
 	border: none !important;
 	outline: none !important;
@@ -214,7 +214,7 @@ body, html {
 	width: 45%;
 	background-color: #00a989;
 	color: white;
-	padding: 10px;
+	padding: 8px;
 	border-radius: 5px;
 	border: none;
 	cursor: pointer;
@@ -260,7 +260,6 @@ footer {
 	#userInfo-form td input[type="email"], #userInfo-form td input[type="text"],
 		#userInfo-form td input[type="password"] {
 		padding: 7px;
-		border-radius: 5px;
 		font-size: 14px;
 	}
 	#change-pw-button {
