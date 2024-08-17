@@ -22,31 +22,78 @@ public class MemberController {
 	@Autowired
 	private MemberRepository repo; // 레파지토리를 사용하기 위한 변수 선언
 
-	@RequestMapping("/test")
-	public String test() {
-		return "test";
-	}
-
 	@RequestMapping("/main")
 	public String goMain() {
 		return "main";
 	}
 
-	@RequestMapping("/mypage")
-	public String goMypage() {
-		return "mypage";
+	/* 로그인 */
+	@RequestMapping("/login")
+	public String login(@RequestParam("userId") String userId, @RequestParam("userPw") String userPw,
+			jakarta.servlet.http.HttpSession session) {
+		// 1. 비밀번호를 암호화
+		String loginEncryptedPw = DigestUtils.sha512Hex(userPw);
+
+		// 2. 레포지토리에서 암호화된 비밀번호와 아이디로 사용자 조회
+		Member member = repo.findByUserIdAndUserPw(userId, loginEncryptedPw);
+
+		// 3. 조회 결과에 따른 처리
+		if (member == null) {
+			// 로그인 실패 처리
+			return "redirect:/main?loginError=true";
+		} else {
+			// 로그인 성공 처리 (세션에 사용자 정보 저장)
+			session.setAttribute("user", member);
+			return "redirect:/main";
+		}
 	}
 
+	/* 로그아웃 */
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		// 세션에서 모든 속성을 제거하여 로그아웃 처리
+		session.invalidate();
+
+		return "redirect:/main";
+
+	}
+
+	/* 회원 정보 수정 */
 	@RequestMapping("/userInfoModify")
 	public String goUserInfoModify() {
 		return "userInfoModify";
 	}
-	
+
+	/* 회원탈퇴 페이지 */
 	@RequestMapping("/userWithdrawal")
 	public String goUserWithdrawal() {
 		return "userWithdrawal";
 	}
-	
+
+	/* 회원탈퇴 */
+	@RequestMapping("/deleteMember")
+	public String deleteMember(@RequestParam("userId") String userId, @RequestParam("userPw") String userPw,
+			HttpSession session) {
+
+		// 비밀번호를 SHA-512로 해시
+		String deletePw = DigestUtils.sha512Hex(userPw);
+
+		// 해시된 비밀번호를 사용하여 사용자 삭제 시도
+		int deletedCount = repo.deleteByUserIdAndUserPw(userId, deletePw);
+
+		if (deletedCount > 0) {
+			session.invalidate();
+			return "redirect:/main"; // 탈퇴 성공 시 메인으로 리다이렉트
+		} else {
+			return "redirect:/userWithdrawal?deleteError=true";
+		}
+	}
+
+	@RequestMapping("/test")
+	public String test() {
+		return "test";
+	}
+
 	/*
 	 * @RequestMapping("/join") public String join(Member member) { // 사용자가 입력한
 	 * 비밀번호를 가져옴 String joinPw = member.getUserPw();
@@ -71,74 +118,20 @@ public class MemberController {
 	 * // 3. View 선택 return "redirect:/main"; }
 	 */
 
-	@RequestMapping("/login")
-	public String login(@RequestParam("userId") String userId, 
-            @RequestParam("userPw") String userPw, 
-            jakarta.servlet.http.HttpSession session) {
-		 // 1. 비밀번호를 암호화
-         String loginEncryptedPw = DigestUtils.sha512Hex(userPw);
-         
-         // 2. 레포지토리에서 암호화된 비밀번호와 아이디로 사용자 조회
-         Member member = repo.findByUserIdAndUserPw(userId, loginEncryptedPw);
-         
-         // 3. 조회 결과에 따른 처리
-        if (member == null) {
-            // 로그인 실패 처리
-        	return "redirect:/main?loginError=true";
-        } else {
-            // 로그인 성공 처리 (세션에 사용자 정보 저장)
-            session.setAttribute("user", member);
-            return "redirect:/main";
-        }
-	}
-	
-	/*
-	 * // 비밀번호 암호화 메소드 (SHA-512 방식) private String encryptPassword(String password)
-	 * { return org.apache.commons.codec.digest.DigestUtils.sha512Hex(password); }
-	 */
-
-
-	@RequestMapping("/logout")
-	public String logout(HttpSession session) {
-		// 세션에서 모든 속성을 제거하여 로그아웃 처리
-		session.invalidate();
-		
-		return "redirect:/main";
-		
-	}
-	
-//	@RequestMapping("/nickCheck")
-//	public int  nickCheck(@RequestParam String userNick) {
-//		
-//		Member member = repo.findByUserNick(userNick);
-//		
-//		if(member == null) {
-//			//중복 안됨
-//			return 0;
+//		@RequestMapping("/nickCheck")
+//		public int  nickCheck(@RequestParam String userNick) {
+//			
+//			Member member = repo.findByUserNick(userNick);
+//			
+//			if(member == null) {
+//				//중복 안됨
+//				return 0;
+//			}
+//			
+//			else {
+//				return 1;
+//			}	
 //		}
-//		
-//		else {
-//			return 1;
-//		}	
-//	}
-	
-	   @RequestMapping("/deleteMember")
-	    public String deleteMember(@RequestParam("userId") String userId,
-	            @RequestParam("userPw") String userPw, HttpSession session) {
-	       
-	       // 비밀번호를 SHA-512로 해시
-	        String deletePw = DigestUtils.sha512Hex(userPw);
-
-	        // 해시된 비밀번호를 사용하여 사용자 삭제 시도
-	      int deletedCount = repo.deleteByUserIdAndUserPw(userId, deletePw);
-	      
-	      if (deletedCount > 0) {
-	         session.invalidate();
-	         return "redirect:/main"; // 탈퇴 성공 시 메인으로 리다이렉트
-	      } else {
-	    	  return "redirect:/userWithdrawal?deleteError=true";
-	      }
-	    }
 
 	// Get, Post Mapping 어노테이션을 이용해 URL 요청이 들어왔을 때, 요청 방식에 따라 다른 기능이 실행되게 할 수 있음.
 	// 즉, URL 매핑이 겹쳐도 사용할 수 있게 됨.
