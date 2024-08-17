@@ -89,6 +89,13 @@ body, html {
     text-align: center;
 }
 
+.no-current-plogging, .no-completed-plogging {
+	text-align: center;
+	margin: 50px 0;
+	font-size: 16px;
+	color: #777;
+}
+
 .coPlogging-container {
 	width: 600px;
     margin-top: 75px;
@@ -163,9 +170,14 @@ footer {
 	}
 	
 	.inProgress-Name {
-    font-size: 14px;
-}
+    	font-size: 14px;
+	}
 	
+	.no-current-plogging, .no-completed-plogging {
+		margin: 40px 0;
+		font-size: 14px;
+	}
+
 	.coPlogging-container {
 		width: 90%;
 	}
