@@ -17,7 +17,7 @@
 	<div class="myplogging-container">
 		<div class="cuPlogging-container">
 			<div class="current-plogging">
-				<span>현재 진행 중인 플로깅</span>
+				<span class="current-text">현재 진행 중인 플로깅</span>
 			</div>
 			<div class="current-line"></div>
 			<c:if test="${currentPlogging.qr1 != 1 || currentPlogging.qr2 != 1 || currentPlogging.qr3 != 1}">
@@ -42,7 +42,7 @@
 		</div>
 		<div class="coPlogging-container">
 				<div class="completed-plogging">
-				<span>완료된 플로깅</span>
+				<span class="completed-text">완료된 플로깅</span>
 			</div>
 			<div class="completed-line"></div>
 				<c:forEach var="plogging" items="${completedPlogging}">

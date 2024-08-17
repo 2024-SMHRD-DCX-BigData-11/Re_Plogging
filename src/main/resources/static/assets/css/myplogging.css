@@ -34,10 +34,13 @@ body, html {
 .current-plogging, .completed-plogging {
     width: 100%;
 	text-align: left;
+	margin-bottom: 10px;
+}
+
+.current-text, .completed-text {
 	font-size: 30px;
 	font-weight: bold;
 	color: #01875f;
-	margin-bottom: 5px;
 }
 
 /* 라인 스타일 */
@@ -55,7 +58,7 @@ body, html {
 }
 
 .inProgress-Name {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
     margin-bottom: 20px;
 }
@@ -101,12 +104,14 @@ body, html {
     box-sizing: border-box;
 }
 
-.completed-date {
+.completed-item .completed-date {
+    font-size: 16px;
     flex-basis: 20%;
     text-align: left; /* 왼쪽 정렬 */
 }
 
-.completed-course {
+.completed-item .completed-course {
+	font-size: 16px;
     color: #08917c;
     flex-basis: 40%;
     text-align: center;
@@ -120,9 +125,10 @@ body, html {
     border-radius: 5px;
     cursor: pointer;
     font-family: 'S-CoreDream-3Light';
-    font-size: 14px;
+    font-size: 16px;
     flex-basis: 20%;
     text-align: center;
+    white-space: nowrap;
     transition: background-color 0.3s ease;
 }
 
@@ -137,3 +143,42 @@ footer {
 	margin-top: 100px;
 	margin-bottom: 25px;
 }
+
+@media screen and (max-width: 768px) {
+	.myplogging-container {
+		width: 100%;
+		margin-top: 100px;
+	}
+	
+	.cuPlogging-container {
+		width: 90%
+	}
+	
+	.current-text, .completed-text {
+		font-size: 24px;
+	}
+	
+	.current-line, .completed-line {
+		margin-bottom: 10px;
+	}
+	
+	.inProgress-Name {
+    font-size: 14px;
+}
+	
+	.coPlogging-container {
+		width: 90%;
+	}
+	
+	.completed-item .completed-date, .completed-item .completed-course {
+	    font-size: 14px;
+	}
+	
+	.completed-btn {
+	    font-size: 14px;
+	}
+
+	footer {
+		font-size: 11px;
+	}
+} 
