@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ include file="header.jsp"%>
@@ -7,15 +6,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>RE:PLOGGING 커뮤니티 읽기 전용 페이지</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="assets/css/communityRead.css">
-<link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <title>RE:PLOGGING 커뮤니티 읽기 전용 페이지</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/communityRead.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<div class=comRead-container>
+<div class="comRead-container">
     <div class="comRead-innner">
         <div class="post-details">
             <h2 class="cr-title">${community.title}</h2>
@@ -33,9 +32,9 @@
                 </div>
             </div>
             <div class="post-content">
-            	<c:if test="${!empty community.img}">
-            		<img src="${pageContext.request.contextPath}/image/${community.img}">
-            	</c:if>
+                <c:if test="${!empty community.img}">
+                    <img src="${pageContext.request.contextPath}/image/${community.img}">
+                </c:if>
                 <p>${community.content}</p>
             </div>
         </div>
@@ -74,19 +73,23 @@
             </c:if>
         </div>
     </div>
-        <div class="navigation">
-            <div class="navigation-left">
+
+    <!-- Navigation Section -->
+    <div class="navigation">
+        <div class="navigation-left">
+            <c:if test="${sessionScope.user != null}">
                 <a href="${pageContext.request.contextPath}/communityWriter" class="btn btn-green">글쓰기</a>
-                <c:if test="${community.writer.userIdx == sessionScope.user.userIdx}">
-                	<a href="${pageContext.request.contextPath}/editPost?idx=${community.idx}" class="btn btn-gray">수정</a>
-                	<a href="${pageContext.request.contextPath}/deletePost?idx=${community.idx}" class="btn btn-gray">삭제</a>
-                </c:if>
-            </div>
-            <div class="navigation-right">
-                <a href="${pageContext.request.contextPath}/community" class="btn btn-gray">목록</a>
-            </div>
+            </c:if>
+            <c:if test="${community.writer.userIdx == sessionScope.user.userIdx}">
+                <a href="${pageContext.request.contextPath}/editPost?idx=${community.idx}" class="btn btn-gray">수정</a>
+                <a href="${pageContext.request.contextPath}/deletePost?idx=${community.idx}" class="btn btn-gray">삭제</a>
+            </c:if>
+        </div>
+        <div class="navigation-right">
+            <a href="${pageContext.request.contextPath}/community" class="btn btn-gray">목록</a>
         </div>
     </div>
-    <script src="assets/js/communityRead.js"></script>
+</div>
+<script src="assets/js/communityRead.js"></script>
 </body>
 </html>
