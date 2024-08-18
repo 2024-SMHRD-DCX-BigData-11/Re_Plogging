@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
@@ -15,6 +16,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.validation.constraints.Size;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Timestamp;
 
 
@@ -54,8 +59,9 @@ public class Member {
 	@Column(name = "user_nick", length = 30, nullable = false)
 	private String userNick;
 	
-	@Column(name = "user_profile_img", length = 1000, nullable = false)
-	private String userProfileImg;
+	@Lob
+	@Column(name = "user_profile_img", columnDefinition="BLOB", nullable = false)
+	private byte[] userProfileImg;
 	
 	@Column(name = "joined_at", columnDefinition = "datetime default now()", insertable = false, updatable = false)
 	private Timestamp joinedAt;
@@ -64,14 +70,20 @@ public class Member {
 	private int mileageAmount;
 	
 	@PrePersist
-    public void prePersist() {
-        if (this.userProfileImg == null || this.userProfileImg.isEmpty()) {
-            this.userProfileImg = "./src/main/resources/static/img/기본_프로필.png"; // 기본 이미지 경로
-        }
-        
-        if (this.mileageAmount == 0) {
-            this.mileageAmount = 500; // 기본 마일리지 설정
-        }
-    }
+	public void prePersist() {
+	    if (this.userProfileImg == null || this.userProfileImg.length == 0) {
+	        try {
+	            // 이미지 파일을 byte 배열로 로드
+	            this.userProfileImg = Files.readAllBytes(Paths.get("./src/main/resources/static/img/기본_프로필.png"));
+	        } catch (IOException e) {
+	            // 예외 처리 - 로그를 남기거나 다른 방식으로 처리할 수 있습니다.
+	            e.printStackTrace();
+	        }
+	    }
+	    
+	    if (this.mileageAmount == 0) {
+	        this.mileageAmount = 500; // 기본 마일리지 설정
+	    }
+	}
 	
 }

@@ -28,7 +28,7 @@
 				<button class="upload-button" onclick="onClickUpload();">사진 업로드</button>
 			</div>
 		</div>
-		<form id="userInfo-form" action="" method="post" autocomplete="off">
+		<form id="userInfo-form" method="post" autocomplete="off">
 			<table id="user-info-table">
 				<tr>
 					<th>아이디</th>
@@ -59,7 +59,7 @@
 					<th></th>
 					<td class="button-group">
 						<button type="button" id="cancel-button">취소</button>
-						<button type="button" id="save-button">변경사항 저장</button>
+						<button type="button" id="save-button" onclick="inputReadOnly()">변경사항 저장</button>
 					</td>
 				</tr>
 				</tbody>
@@ -80,5 +80,64 @@
 	</div>
 		<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved.
 		</footer>
+		
 		<script src="assets/js/userInfoModify.js"></script>
+		<script src="assets/js/modal.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(".Modify-button").on( "click", function( event ) {
+			$("#userInfo-form").submit();
+		});
+		
+		$("#userInfo-form").submit( function( event ) {
+			event.preventDefault(); // 기본 폼 제출 동작을 막음
+			var $this = $(this),
+				formData = new FormData( $this[0] );
+		
+			var currentMpw = $('#current-Mpw').val();
+			var confirmMpw = $('#confirm-Mpw').val();
+			var nconfirmMpw = $('#new-confirm-Mpw').val();
+			var MuserNick = $('#MuserNick').val();
+			
+			
+			if( !currentMpw || currentMpw.length === 0) {
+				erroAlert("현재 비밀번호를 입력해주세요.",'current-Mpw')
+				return false;
+			} else if (!confirmMpw || confirmMpw.length === 0) {
+				erroAlert("새 비밀번호를 입력해주세요.",'confirm-Mpw')
+				return false;
+			} else if (!nconfirmMpw || nconfirmMpw.length === 0) {
+				erroAlert("새 비밀번호 확인을 입력해주세요.",'new-confirm-Mpw')
+				return false;
+			} else if ( confirmMpw.match( nconfirmMpw ) == null ) {
+				erroAlert("비밀번호가 일치하지 않습니다.",'new-confirm-Mpw')
+				return false;
+			} else if (!MuserNick || MuserNick.length === 0) {
+				erroAlert("닉네임을 입력해주세요.",'MuserNick')
+				return false;
+			}else {
+				commonMultiAjax( "${ctx }/rest/member/memberUpdate", formData, function( response ) {
+					if( response.code == 0 ) {
+						//등록 성공
+						alert("회원정보 수정 성공!!");
+					} else if ( response.code != 0 ) {
+						//등록 실패
+						alert("회원정보 수정 실패");
+					} else if (response.code == -500) {
+						//아이디 중복
+						alert("비밀번호가 일치하지 않습니다.");
+					} else if (response.code == -400) {
+						// 전화번호 중복
+						alert("이미 사용중인 닉네임입니다!");
+					} else{
+						// 로그인이 되어있지 않음
+						alert("로그인 상태가 아닙니다.");
+					}
+				});
+				return false;
+			}	
+			return false;
+		});
+		
+	</script>
 </html>

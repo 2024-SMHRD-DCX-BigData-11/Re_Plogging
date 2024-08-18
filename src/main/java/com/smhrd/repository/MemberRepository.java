@@ -64,4 +64,12 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
 	
 	int deleteByUserIdAndUserPw(@Param("userId") String userId, @Param("userPw") String userPw);
 	
+	@Query("""
+		    select u
+		    from Member u
+		    where u.userPw = :nconfirmMpw
+		    """)
+		
+		public Member findByUserPw(@Param("nconfirmMpw") String userPw);
+	
 }

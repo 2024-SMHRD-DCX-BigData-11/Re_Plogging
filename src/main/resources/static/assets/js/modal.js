@@ -217,7 +217,7 @@ function join(formData, url){
 */
 function erroAlert( msg, id ) {
 	alert( msg );
-	$("#" + id ).focuson();
+	$("#" + id ).focus();
 	return false;
 }
 

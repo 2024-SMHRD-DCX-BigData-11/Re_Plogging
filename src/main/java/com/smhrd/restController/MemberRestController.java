@@ -18,6 +18,7 @@ import com.smhrd.entity.Member;
 import com.smhrd.repository.MemberRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping( "/rest/member/" )
@@ -102,4 +103,51 @@ public class MemberRestController {
 		return response;
 	}
 	
+	@RequestMapping( value ="/memberUpdate", method = RequestMethod.POST )
+	@ResponseBody
+	public CommonDomain memberUpdate(
+			MultipartHttpServletRequest request, HttpSession session
+			) {
+		
+		CommonDomain response = new CommonDomain();
+		
+		String nconfirmMpw = request.getParameter("nconfirmMpw").toString();
+		String MuserNick = request.getParameter( "MuserNick" ).toString();
+		
+		int resultCode = 0;
+		
+		// 세션에서 현재 로그인된 사용자 정보를 가져옴
+	    Member user = (Member) session.getAttribute("user");
+
+	    if (user != null) {
+	        // 비밀번호 확인
+	        if (DigestUtils.sha512Hex(nconfirmMpw).equals(user.getUserPw())) {
+	            // 닉네임 중복 확인
+	            Member nickCheck = repo.findByUserNick(MuserNick);
+	            if (nickCheck == null || nickCheck.getUserId().equals(user.getUserId())) {
+	                // 기존 사용자 정보 업데이트
+	                user.setUserNick(MuserNick);
+
+	                // 비밀번호 변경
+	                user.setUserPw(DigestUtils.sha512Hex(nconfirmMpw));
+
+	                // 데이터베이스에 저장
+	                repo.save(user);
+
+	                resultCode = 0; // 성공 코드
+	            } else {
+	                resultCode = -400; // 닉네임 중복
+	            }
+	        } else {
+	            resultCode = -500; // 비밀번호 불일치
+	        }
+	    } else {
+	        resultCode = -600; // 세션에 사용자 정보 없음
+	    }
+
+	    response.setCode(resultCode);
+	    return response;
+		
+
+	} 
 }
