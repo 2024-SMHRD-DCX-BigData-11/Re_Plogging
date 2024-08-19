@@ -164,18 +164,23 @@
 					if( response.code == 200 ) {
 						//등록 성공
 						alert("회원가입 성공!!");
+						location.replace("${ctx }/main") // 회원가입 성공 시 메인 페이지로 이동
 					} else if ( response.code == -100 ) {
 						//등록 실패
 						alert("회원가입 실패 다시 시도해주세요");
+						return false;
 					} else if (response.code == -500) {
 						//아이디 중복
 						alert("이미 가입된 이메일입니다!!");
+						return false;
 					} else if (response.code == -400) {
 						// 전화번호 중복
 						alert("이미 가입된 전화번호입니다!!");
+						return false;
 					} else{
 						// 닉네임 중복
-						alert("이미 사용중인 닉네임입니다!!");
+						alert("이미 사용중인 닉네임입니다!!")
+						return false;;
 					}
 				});
 				return false;

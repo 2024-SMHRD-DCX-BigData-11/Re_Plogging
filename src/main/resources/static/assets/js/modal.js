@@ -89,7 +89,7 @@ function telconfirmButton( url ) {
     var fullPhoneNumber = mobile1 + "-" + mobile2 + "-" + mobile3;
 
 	// fullPhoneNumber 값을 mobile4의 value로 설정
-    document.getElementById("#mobile4").value = fullPhoneNumber;
+    document.getElementById("mobile4").value = fullPhoneNumber;
 
     
    	var formData = new FormData();
