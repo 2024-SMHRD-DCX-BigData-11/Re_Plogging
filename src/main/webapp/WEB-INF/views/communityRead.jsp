@@ -33,7 +33,7 @@
             </div>
             <div class="post-content">
                 <c:if test="${!empty community.img}">
-                    <img src="${pageContext.request.contextPath}/image/${community.img}" alt="Post Image">
+                    <img src="${pageContext.request.contextPath}/image/${community.img}">
                 </c:if>
                 <p>${community.content}</p>
             </div>

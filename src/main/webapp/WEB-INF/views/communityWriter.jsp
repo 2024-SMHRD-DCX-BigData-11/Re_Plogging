@@ -24,7 +24,7 @@
         background-color: #f0f0f0; /* 버튼 배경색 */
     }
     #files {
-    	display: block;
+       display: block;
     }
 </style>
 </head>
@@ -47,13 +47,13 @@
 
             <label for="file">첨부파일</label>
             <div id="files">
-	            <c:if test="${!empty community.img}">
-		            <p id="uploaded">현재 파일: ${community.img}</p>
-		        </c:if>
-		
-		        <!-- 새로운 파일 선택 -->
-		        <input type="file" id="file" name="file">
-	            <button type="button" id="deleteButton" onclick="removeFile()">삭제</button>
+               <c:if test="${!empty community.img}">
+                  <p id="uploaded">현재 파일: ${community.img}</p>
+              </c:if>
+      
+              <!-- 새로운 파일 선택 -->
+              <input type="file" id="file" name="file">
+               <button type="button" id="deleteButton" onclick="removeFile()">삭제</button>
             </div>
             <input type="hidden" id="uploaded_" name="uploaded" value="${community.img}">
 
@@ -81,7 +81,7 @@
                 // If a file is selected, show the delete button
                 deleteButton.style.display = 'inline-block';
                 if (uploaded) {
-                	uploaded.remove();
+                   uploaded.remove();
                 }
             } else {
                 // If no file is selected, hide the delete button
@@ -100,7 +100,7 @@
             // Hide the delete button
             deleteButton.style.display = 'none';
             uploaded.style.display = 'none';
-        	uploaded_.value = null;
+           uploaded_.value = null;
         }
     </script>
 </body>
