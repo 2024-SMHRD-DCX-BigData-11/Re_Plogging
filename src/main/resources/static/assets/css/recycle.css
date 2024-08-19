@@ -78,11 +78,41 @@ h2 {
 }
 
 .pagination {
-    text-align: center;
-    margin-top: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .page-number {
     font-size: 14px;
     color: #777;
+}
+
+.pagination a {
+    position: relative;
+    color: gray;
+    text-decoration: underline;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.pagination a:hover {
+    color: darkgray; /* 호버시 조금 더 진한 회색으로 변경 */
+    text-decoration: underline;
+}
+
+.pagination .page-number {
+    margin: 0 10px;
+    font-weight: bold;
+    color: gray; /* 회색으로 변경 */
+}
+
+.pagination a:visited {
+    color: gray; /* 이미 방문한 링크도 회색으로 유지 */
+}
+
+.pagination a:active {
+    color: darkgray; /* 클릭 시에도 진한 회색 */
 }

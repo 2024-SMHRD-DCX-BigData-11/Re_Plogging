@@ -28,11 +28,6 @@
 			<option value="발포합성수지(스티로폼)">발포합성수지(스티로폼)</option>
 			<option value="기타">기타</option>
 		</select>
-
-		<!-- 두 번째 드롭다운: 세부 분류 -->
-		<select id="sub-category" name="sub-category">
-			<option value="" disabled selected>세부 분류를 선택해 주세요.</option>
-		</select>
 		<div class="recycle-content">
 			<div class="recycle-content-left">
 				<img src="data:image/jpeg;base64,${recycleImage}" alt="recycle"
