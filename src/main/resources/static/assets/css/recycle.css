@@ -13,10 +13,11 @@ body, html {
 	margin: 0;
 	padding: 0;
 	width: 100%;
+	height: 100%;
 }
 
 .recycle-container {
-    width: 60%;
+    width: 1350px;
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
@@ -26,55 +27,72 @@ body, html {
 select {
     width: 100%;
     padding: 10px;
+    font-family: 'S-CoreDream-3Light';
     font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid #a1acbd;
+    border-radius: 5px;
     margin-bottom: 20px;
 }
 
 .recycle-content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    margin-top: 50px;
+    height: 100%; /* 부모 요소의 높이를 모두 차지 */
 }
 
 .recycle-content-left {
-    width: 40%;
+    width: 650px;
     text-align: center;
 }
 
 .item-image {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
+    width: 100%;
+    height: auto; /* 이미지의 원본 비율을 유지하며 높이를 설정 */
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 25px;
 }
 
 h2 {
     font-size: 24px;
-    color: #333;
+    color: #08917c;
     margin-bottom: 10px;
 }
 
 .recycle-content-right {
-    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 625px;
+    height: auto; /* 자동 높이 설정 */
+    box-sizing: border-box;
+    margin-left: 30px;
 }
 
 .recycle-group {
-	display: flex;
-	flex-direction: column;
-    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 그룹 내의 요소들을 중앙에 배치 */
+    flex-grow: 1;
+    margin-bottom: 75px;
 }
 
 .right-Pone {
-    font-size: 25px;
+    font-size: 28px;
     font-weight: bold;
     color: #08917c;
     margin: 0;
 }
 
 .right-Sone {
-    font-size: 16px;
-    margin: 0;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-left: 25px;
+    
 }
 
 .pagination {
@@ -87,32 +105,58 @@ h2 {
 
 .page-number {
     font-size: 14px;
-    color: #777;
+    color: #a1acbd;
 }
 
 .pagination a {
     position: relative;
-    color: gray;
-    text-decoration: underline;
+    color: #a1acbd;
+    text-decoration: none;
     font-size: 18px;
     font-weight: bold;
 }
 
 .pagination a:hover {
-    color: darkgray; /* 호버시 조금 더 진한 회색으로 변경 */
     text-decoration: underline;
 }
 
 .pagination .page-number {
     margin: 0 10px;
     font-weight: bold;
-    color: gray; /* 회색으로 변경 */
+    color: #a1acbd; /* 회색으로 변경 */
 }
 
 .pagination a:visited {
-    color: gray; /* 이미 방문한 링크도 회색으로 유지 */
+    color: #a1acbd;
 }
 
 .pagination a:active {
-    color: darkgray; /* 클릭 시에도 진한 회색 */
+    color: #a1acbd;
+}
+
+@keyframes bounceEffect {
+  0% {
+    transform: translateY(0); /* 원래 위치 */
+  }
+  50% {
+    transform: translateY(-10px); /* 살짝 위로 이동 */
+  }
+  70% {
+    transform: translateY(5px); /* 살짝 아래로 내려오면서 튕김 */
+  }
+  100% {
+    transform: translateY(0); /* 원래 위치로 돌아옴 */
+  }
+}
+
+.bounce-effect {
+  animation: bounceEffect 0.7s ease-out; /* 애니메이션 시간과 속도 조절 */
+}
+
+
+footer {
+	font-size: 13px;
+	text-align: center;
+	margin-top: 100px;
+	margin-bottom: 25px;
 }

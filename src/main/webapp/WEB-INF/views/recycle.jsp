@@ -16,7 +16,7 @@
 	<div class="recycle-container">
 		<select id="main-category" name="main-category"
 			onchange="fetchRecycleData()">
-			<option value="" disabled selected>원하는 분리배출 대분류를 선택해 주세요.</option>
+			<option value="" disabled selected>원하는 분리배출 분류를 선택해 주세요.</option>
 			<option value="종이류">종이류</option>
 			<option value="종이팩·종이컵">종이팩·종이컵</option>
 			<option value="금속캔">금속캔</option>
@@ -36,18 +36,15 @@
 			</div>
 			<div class="recycle-content-right">
 				<div class="recycle-group">
-					<p class="right-Pone">#재활용 여부
-					<p>
+					<p class="right-Pone">#재활용 여부</p>
 						<span class="right-Sone" id="recycleStatus">${recycle.recycleStatus}</span>
 				</div>
 				<div class="recycle-group">
-					<p class="right-Pone">#분류
-					<p>
+					<p class="right-Pone">#분류</p>
 						<span class="right-Sone" id="recycleCategory">${recycle.recycleCategory}</span>
 				</div>
 				<div class="recycle-group">
-					<p class="right-Pone">#분리배출 방법
-					<p>
+					<p class="right-Pone">#분리배출 방법</p>
 						<span class="right-Sone" id="recycleMethod">${recycle.recycleMethod}</span>
 				</div>
 			</div>
@@ -57,6 +54,7 @@
 			<span class="page-number" id="page">${currentPage} / ${totalPages}</span>
 			<a href="#" id="next">다음</a>
 		</div>
+		<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved.</footer>
 	</div>
 	<script src="assets/js/recycle.js"></script>
 </body>
