@@ -13,7 +13,9 @@ import com.smhrd.entity.Plogging;
 import com.smhrd.repository.MemberRepository;
 import com.smhrd.repository.PloggingRepository;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import jakarta.transaction.Transactional;
 
 @Controller
 public class PloggingController {
@@ -36,18 +38,6 @@ public class PloggingController {
 			return targetUrl;
 		} else {
 			return "/boot/loginFail";
-		}
-	}
-
-	@RequestMapping("/qrSuccess")
-	public String loginCheck(HttpSession session) {
-		Member member = (Member) session.getAttribute("user");
-		if (member != null) {
-			return "redirect:/myplogging"; // 리다이렉트 사용
-		} else {
-			System.out.println("유저 없음.");
-			logout(session);
-			return "redirect:/main"; // 리다이렉트 사용
 		}
 	}
 
@@ -179,6 +169,8 @@ public class PloggingController {
 			return "main";
 		}
 	}
+
+	
 
 	/* 로그아웃 */
 	public String logout(HttpSession session) {

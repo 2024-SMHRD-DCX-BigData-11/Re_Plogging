@@ -2,10 +2,15 @@ package com.smhrd.entity;
 
 import java.util.Date;
 
+
+
 import jakarta.persistence.*;
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Data
 @Table(name = "tb_plogging_list") // 테이블 이름을 매핑
