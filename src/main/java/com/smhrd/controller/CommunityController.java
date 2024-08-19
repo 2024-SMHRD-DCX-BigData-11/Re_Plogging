@@ -64,17 +64,17 @@ public class CommunityController {
 
         // 카테고리와 키워드에 따라 검색 로직 분기
         if ((category == null || category.isEmpty()) && (keyword == null || keyword.isEmpty())) {
-            // 카테고리와 키워드가 없는 경우 전체 게시물 조회 (최신순 정렬)
-            communityPage = communityRepository.findAllByOrderByIndateDesc(pageable);
+            // 카테고리와 키워드가 없는 경우 전체 게시물 조회
+            communityPage = communityRepository.findAll(pageable);
         } else if (category != null && !category.isEmpty() && (keyword == null || keyword.isEmpty())) {
             // 카테고리로만 검색하는 경우
-            communityPage = communityRepository.findByCategoryOrderByIndateDesc(category, pageable);
+            communityPage = communityRepository.findByCategory(category, pageable);
         } else if ((category == null || category.isEmpty()) && keyword != null && !keyword.isEmpty()) {
             // 키워드로만 검색하는 경우
-            communityPage = communityRepository.findByTitleContainingOrderByIndateDesc(keyword, pageable);
+            communityPage = communityRepository.findByTitleContaining(keyword, pageable);
         } else {
             // 카테고리와 키워드 모두로 검색하는 경우
-            communityPage = communityRepository.findByCategoryAndTitleContainingOrderByIndateDesc(category, keyword, pageable);
+            communityPage = communityRepository.findByCategoryAndTitleContaining(category, keyword, pageable);
         }
 
         mav.addObject("list", communityPage.getContent());
@@ -205,7 +205,7 @@ public class CommunityController {
             file.transferTo(new File(filePath));
             community.setImg(fileName);
         } else {
-            if (uploaded == null || uploaded.isEmpty()) {
+            if (uploaded == null || uploaded.equals("") || uploaded.isBlank() || uploaded.isEmpty()) {
                 community.setImg(null);
             }
         }
@@ -227,17 +227,49 @@ public class CommunityController {
         Community community = communityRepository.findById(idx)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid community Id:" + idx));
 
-        // 좋아요 증가
         community.setLikes(community.getLikes() + 1);
         communityRepository.save(community);
 
         return "redirect:/communityRead?idx=" + idx;
     }
 
-    @PostMapping("/deletePost")
-    public ModelAndView deletePost(@RequestParam("idx") int idx) {
-        ModelAndView mav = new ModelAndView("redirect:/community");
-        communityRepository.deleteById(idx);
+    @PostMapping("/comments/addComment")
+    public String createComment(@RequestParam("communityId") Integer communityId,
+                                @RequestParam("commentContent") String commentContent, 
+                                HttpSession session) {
+        Member user = (Member) session.getAttribute("user");
+        if (user == null) {
+            return "redirect:/main";
+        }
+
+        Community community = communityRepository.findById(communityId).orElse(null);
+        if (community == null) {
+            return "redirect:/main";
+        }
+
+        Comment comment = new Comment();
+        comment.setCommunity(community);
+        comment.setUser(user);
+        comment.setMessage(commentContent);
+
+        commentRepository.save(comment);
+        return "redirect:/communityRead?idx=" + communityId;
+    }
+
+    @RequestMapping("/editPost")
+    public ModelAndView editPost(@RequestParam("idx") int idx) {
+        Community community = communityRepository.findById(idx).orElse(null);
+
+        ModelAndView mav = new ModelAndView("communityWriter");
+        mav.addObject("community", community);
+
         return mav;
+    }
+
+    @RequestMapping("/deletePost")
+    public String deletePost(@RequestParam("idx") int idx) {
+        Community community = communityRepository.findById(idx).orElse(null);
+        communityRepository.delete(community);
+        return "redirect:/community";
     }
 }

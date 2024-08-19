@@ -9,15 +9,9 @@ import com.smhrd.entity.Community;
 @Repository
 public interface CommunityRepository extends JpaRepository<Community, Integer> {
 
-    // 카테고리별 최신순 정렬
-    Page<Community> findByCategoryOrderByIndateDesc(String category, Pageable pageable);
+    Page<Community> findByCategory(String category, Pageable pageable);
 
-    // 키워드로 최신순 정렬
-    Page<Community> findByTitleContainingOrderByIndateDesc(String keyword, Pageable pageable);
+    Page<Community> findByTitleContaining(String keyword, Pageable pageable);
 
-    // 카테고리와 키워드로 최신순 정렬
-    Page<Community> findByCategoryAndTitleContainingOrderByIndateDesc(String category, String keyword, Pageable pageable);
-    
-    // 전체 게시글을 최신순으로 정렬
-    Page<Community> findAllByOrderByIndateDesc(Pageable pageable);
+    Page<Community> findByCategoryAndTitleContaining(String category, String keyword, Pageable pageable);
 }
