@@ -1,0 +1,88 @@
+@charset "EUC-KR";
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+		format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+
+body, html {
+	font-family: 'S-CoreDream-3Light';
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.recycle-container {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 110px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.recycle-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recycle-content-left {
+    width: 40%;
+    text-align: center;
+}
+
+.item-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.recycle-content-right {
+    width: 55%;
+}
+
+.recycle-group {
+	display: flex;
+	flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.right-Pone {
+    font-size: 25px;
+    font-weight: bold;
+    color: #08917c;
+    margin: 0;
+}
+
+.right-Sone {
+    font-size: 16px;
+    margin: 0;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.page-number {
+    font-size: 14px;
+    color: #777;
+}

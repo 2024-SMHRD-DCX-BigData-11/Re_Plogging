@@ -51,10 +51,8 @@ public class Recycle {
 	@Column(name = "recycle_method", columnDefinition = "TEXT")
 	private String recycleMethod;
 	
-	@Column(name = "recycle_video", length = 1500)
-	private String recycleVideo;
-	
-	
+	@Column(name = "recycle_video", columnDefinition = "LONGBLOB")
+	private byte[] recycleVideo;
 
 }
 
