@@ -23,10 +23,10 @@
             <form action="${pageContext.request.contextPath}/community" method="get"
                 style="display: flex; width: 100%;">
                 <select name="category" class="search-select">
-                    <option value="" ${selectedCategory == null ? 'selected' : ''}>전체 카테고리</option>
-                    <option value="plogging" ${selectedCategory == 'plogging' ? 'selected' : ''}>플로깅</option>
-                    <option value="separation" ${selectedCategory == 'separation' ? 'selected' : ''}>분리배출</option>
-                    <option value="freeboard" ${selectedCategory == 'freeboard' ? 'selected' : ''}>자유게시판</option>
+                    <option value="" ${empty selectedCategory ? 'selected' : ''}>전체 카테고리</option>
+                    <option value="plogging" ${'plogging' eq selectedCategory ? 'selected' : ''}>플로깅</option>
+                    <option value="separation" ${'separation' eq selectedCategory ? 'selected' : ''}>분리배출</option>
+                    <option value="freeboard" ${'freeboard' eq selectedCategory ? 'selected' : ''}>자유게시판</option>
                 </select> 
                 <input type="text" name="keyword" class="search-input"
                     placeholder="검색어를 입력하세요" value="${keyword}">
@@ -52,10 +52,10 @@
                             <tr>
                                 <td>${community.idx}</td>
                                 <td>
-                                	<a href="${pageContext.request.contextPath}/communityRead?idx=${community.idx}">${community.title}</a>
-                                	<c:if test="${community.comments.size() > 0}">
-	                                	[${community.comments.size()}]
-                                	</c:if>
+                                    <a href="${pageContext.request.contextPath}/communityRead?idx=${community.idx}">${community.title}</a>
+                                    <c:if test="${fn:length(community.comments) > 0}">
+                                        [${fn:length(community.comments)}]
+                                    </c:if>
                                 </td>
                                 <td>${community.category}</td>
                                 <td>${community.writer.userNick}</td>
@@ -67,7 +67,7 @@
                     </c:when>
                     <c:otherwise>
                         <tr>
-                            <td colspan="7">no data</td>
+                            <td colspan="7">데이터가 없습니다</td>
                         </tr>
                     </c:otherwise>
                 </c:choose>
@@ -78,8 +78,8 @@
                 class="commListBtn">목록</a>
                 
             <c:if test="${!empty user}">
-            <a href="${pageContext.request.contextPath}/communityWriter"
-                class="commWirteBtn">글쓰기</a>
+                <a href="${pageContext.request.contextPath}/communityWriter"
+                    class="commWirteBtn">글쓰기</a>
             </c:if>
         </div>
     </div>
@@ -87,17 +87,17 @@
     <nav aria-label="Page navigation" style="text-align: center;">
         <ul class="pagination">
             <c:if test="${currentPage > 1}">
-                <li><a href="${pageContext.request.contextPath}/community?page=1">&laquo;</a></li>
-                <li><a href="${pageContext.request.contextPath}/community?page=${currentPage - 1}">&lsaquo;</a></li>
+                <li><a href="${pageContext.request.contextPath}/community?page=1&category=${selectedCategory}&keyword=${keyword}">&laquo;</a></li>
+                <li><a href="${pageContext.request.contextPath}/community?page=${currentPage - 1}&category=${selectedCategory}&keyword=${keyword}">&lsaquo;</a></li>
             </c:if>
             <c:forEach var="i" begin="1" end="${totalPages}">
                 <li class="${i == currentPage ? 'active' : ''}">
-                    <a href="${pageContext.request.contextPath}/community?page=${i}">${i}</a>
+                    <a href="${pageContext.request.contextPath}/community?page=${i}&category=${selectedCategory}&keyword=${keyword}">${i}</a>
                 </li>
             </c:forEach>
             <c:if test="${currentPage < totalPages}">
-                <li><a href="${pageContext.request.contextPath}/community?page=${currentPage + 1}">&rsaquo;</a></li>
-                <li><a href="${pageContext.request.contextPath}/community?page=${totalPages}">&raquo;</a></li>
+                <li><a href="${pageContext.request.contextPath}/community?page=${currentPage + 1}&category=${selectedCategory}&keyword=${keyword}">&rsaquo;</a></li>
+                <li><a href="${pageContext.request.contextPath}/community?page=${totalPages}&category=${selectedCategory}&keyword=${keyword}">&raquo;</a></li>
             </c:if>
         </ul>
     </nav>
