@@ -42,8 +42,11 @@ public class Recycle {
 	@Column(name = "recycle_target", length = 100)
 	private String recycleTarget;
 	
-	@Column(name = "recycle_eligible", length = 10)
-	private String recycleEligible;
+	@Column(name = "recycle_status", length = 10)
+	private String recycleStatus;
+	
+	@Column(name = "recycle_category", length = 255)
+	private String recycleCategory;
 	
 	@Column(name = "recycle_method", columnDefinition = "TEXT")
 	private String recycleMethod;
