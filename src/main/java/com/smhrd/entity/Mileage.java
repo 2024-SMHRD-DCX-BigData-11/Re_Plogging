@@ -33,18 +33,18 @@ public class Mileage {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ml_idx", columnDefinition = "int", insertable = false, updatable = false)
-	private int ml_idx;
+	private int mlIdx;
 	
 	@Column(name = "ml_type", length = 50, nullable = false)
-	private String ml_type;
+	private String mlType;
 	
 	@Column(name = "ml_amount", columnDefinition = "int", nullable = false)
-	private String ml_amount;
+	private String mlAmount;
 	
 	@Column(name = "created_at", columnDefinition = "datetime default now()", insertable = false, updatable = false)
-	private Timestamp created_at;
+	private Timestamp createdAt;
 	
 	@ManyToOne // 다대일 관계
 	@JoinColumn(name="user_idx") // Member클래스의 user_idx를 참조하는 외래키
-	private Member user_idx;
+	private Member user;
 }

@@ -35,18 +35,18 @@ public class Purchase {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "purchase_idx", columnDefinition = "int", insertable = false, updatable = false)
-	private int purchase_idx;
+	private int purchaseIdx;
 
 	@ManyToOne // 다대일
 	@JoinColumn(name="mk_idx") // Market클래스의 mk_idx를 참조하는 외래키
-	private Market mk_idx;
+	private Market mkIdx;
 	
 	@ManyToOne // 다대일 관계
 	@JoinColumn(name="user_idx") // Member클래스의 user_idx를 참조하는 외래키
-	private Member user_idx;
+	private Member user;
 	
 	@Column(name = "created_at", columnDefinition = "datetime default now()", insertable = false, updatable = false)
-	private Timestamp created_at;
+	private Timestamp createdAt;
 	
 	
 

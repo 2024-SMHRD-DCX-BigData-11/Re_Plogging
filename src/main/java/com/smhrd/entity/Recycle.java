@@ -37,17 +37,19 @@ public class Recycle {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "recycle_idx", columnDefinition = "int", insertable = false, updatable = false)
-	private int recycle_idx;
-
+	private int recycleIdx;
 	
 	@Column(name = "recycle_target", length = 100)
-	private String recycle_target;
+	private String recycleTarget;
+	
+	@Column(name = "recycle_eligible", length = 10)
+	private String recycleEligible;
 	
 	@Column(name = "recycle_method", columnDefinition = "TEXT")
-	private String recycle_method;
+	private String recycleMethod;
 	
 	@Column(name = "recycle_video", length = 1500)
-	private String recycle_video;
+	private String recycleVideo;
 	
 	
 
