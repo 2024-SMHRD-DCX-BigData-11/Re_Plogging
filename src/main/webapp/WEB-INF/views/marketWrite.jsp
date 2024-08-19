@@ -26,6 +26,7 @@
                 <option value="560004">플라스틱</option>
                 <option value="560005">비닐</option>
                 <option value="560006">스티로폼</option>
+                <option value="560007">종이</option>
             </select><br>
       <label for="title">상품명</label>
       <input type="text" id="title" name="title" placeholder="상품명을 입력하세요." required><br>

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+marketRead.jsp<%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="header.jsp"%>
@@ -13,31 +13,50 @@
 <link rel="stylesheet" href="assets/css/market.css">
 </head>
 <body>
-<div class="container">
-<div class="market_Read_wrap">
-   <a href="marketBack" class="market_Read_btn_back">뒤로가기</a>
-   <div class="marketRead_img_view">
-   <div class="marketRead_img_load">
-      <img src="${market.img1}" alt="${market.title}" class="marketRead_img__image">
-   </div>
-   </div>
-   <div class="marketRead_info">
-   <h3>카테고리</h3>
-   <span>${market.category}</span><br>
-   <h3>상품명</h3>
-   <span>${market.title}</span><br>
-   <h3>판매자</h3>
-   <span>${market.user.userNick}</span><br>
-   <h3>등록일</h3>
-   <span>${market.createdAt}</span><br>
-      <div>
-      <a href="#">구매하기</a>
+   <div class="container">
+      <div class="market_Read_wrap">
+         <a href="marketBack" class="market_Read_btn_back">뒤로가기</a>
+         <div class="marketRead_img_view">
+            <div class="marketRead_img_load">
+               <img src="${market.img1}" alt="${market.title}"
+                  class="marketRead_img__image">
+            </div>
+         </div>
+         <div class="marketRead_info">
+            <h3>카테고리</h3>
+            <span>${market.category}</span><br>
+            <h3>상품명</h3>
+            <span>${market.title}</span><br>
+            <h3>판매자</h3>
+            <span>${market.user.userNick}</span><br>
+            <h3>등록일</h3>
+            <span>${market.createdAt}</span><br>
+            <div>
+               <c:if test="${sessionScope.user != null && market.user.userIdx != sessionScope.user.userIdx}">
+               <form action="${pageContext.request.contextPath}/marketPurchase"
+                  method="post">
+                  <input type="hidden" name="mkIdx" value="${market.mkIdx}">
+                  <button type="submit">구매하기</button>
+               </form>
+               </c:if>
+               <c:if test="${sessionScope.user != null && market.user.userIdx == sessionScope.user.userIdx}">
+               <form action="#"
+                  method="post">
+                  <input type="hidden" name="mkIdx" value="${market.mkIdx}">
+                  <button type="submit">수정하기</button>
+               </form>
+               <form action="#"
+                  method="post">
+                  <input type="hidden" name="mkIdx" value="${market.mkIdx}">
+                  <button type="submit">삭제하기</button>
+               </form>
+               </c:if>
+            </div>
+         </div>
+         <div class="marketRead_content">
+            <span>${market.content}</span>
+         </div>
       </div>
    </div>
-   <div class="marketRead_content">
-   <span>${market.content}</span>
-   </div>
-</div>
-</div>
 </body>
 </html>
