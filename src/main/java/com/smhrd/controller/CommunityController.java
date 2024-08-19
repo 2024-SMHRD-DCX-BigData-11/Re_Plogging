@@ -65,16 +65,16 @@ public class CommunityController {
         // 카테고리와 키워드에 따라 검색 로직 분기
         if ((category == null || category.isEmpty()) && (keyword == null || keyword.isEmpty())) {
             // 카테고리와 키워드가 없는 경우 전체 게시물 조회
-            communityPage = communityRepository.findAll(pageable);
+            communityPage = communityRepository.findAllByOrderByIndateDesc(pageable);
         } else if (category != null && !category.isEmpty() && (keyword == null || keyword.isEmpty())) {
             // 카테고리로만 검색하는 경우
-            communityPage = communityRepository.findByCategory(category, pageable);
+            communityPage = communityRepository.findByCategoryOrderByIndateDesc(category, pageable);
         } else if ((category == null || category.isEmpty()) && keyword != null && !keyword.isEmpty()) {
             // 키워드로만 검색하는 경우
-            communityPage = communityRepository.findByTitleContaining(keyword, pageable);
+            communityPage = communityRepository.findByTitleContainingOrderByIndateDesc(keyword, pageable);
         } else {
             // 카테고리와 키워드 모두로 검색하는 경우
-            communityPage = communityRepository.findByCategoryAndTitleContaining(category, keyword, pageable);
+            communityPage = communityRepository.findByCategoryAndTitleContainingOrderByIndateDesc(category, keyword, pageable);
         }
 
         mav.addObject("list", communityPage.getContent());

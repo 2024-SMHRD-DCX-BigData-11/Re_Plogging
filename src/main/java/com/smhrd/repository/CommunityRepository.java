@@ -9,9 +9,11 @@ import com.smhrd.entity.Community;
 @Repository
 public interface CommunityRepository extends JpaRepository<Community, Integer> {
 
-    Page<Community> findByCategory(String category, Pageable pageable);
+    Page<Community> findAllByOrderByIndateDesc(Pageable pageable);
 
-    Page<Community> findByTitleContaining(String keyword, Pageable pageable);
+    Page<Community> findByCategoryOrderByIndateDesc(String category, Pageable pageable);
 
-    Page<Community> findByCategoryAndTitleContaining(String category, String keyword, Pageable pageable);
+    Page<Community> findByTitleContainingOrderByIndateDesc(String keyword, Pageable pageable);
+
+    Page<Community> findByCategoryAndTitleContainingOrderByIndateDesc(String category, String keyword, Pageable pageable);
 }
