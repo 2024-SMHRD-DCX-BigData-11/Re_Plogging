@@ -130,7 +130,7 @@ public class CommunityController {
         if (!file.isEmpty()) {
             // 중복되지 않는 고유한 파일 이름 만들기
             String uuid = UUID.randomUUID().toString();
-            fileName = uuid + file.getOriginalFilename();
+            fileName = uuid + "_" + file.getOriginalFilename();
 
             String uploadDir = "C:/uploads/";
             File dir = new File(uploadDir);
@@ -192,7 +192,7 @@ public class CommunityController {
         String fileName = null;
         if (!file.isEmpty()) {
             String uuid = UUID.randomUUID().toString();
-            fileName = uuid + file.getOriginalFilename();
+            fileName = uuid + "_" + file.getOriginalFilename();
 
             String uploadDir = "C:/uploads/";
             File dir = new File(uploadDir);
@@ -205,7 +205,7 @@ public class CommunityController {
             file.transferTo(new File(filePath));
             community.setImg(fileName);
         } else {
-            if (uploaded == null || uploaded.equals("") || uploaded.isBlank() || uploaded.isEmpty()) {
+            if (uploaded == null || uploaded.isEmpty()) {
                 community.setImg(null);
             }
         }
