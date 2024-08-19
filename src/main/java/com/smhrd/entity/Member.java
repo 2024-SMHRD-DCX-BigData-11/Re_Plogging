@@ -60,7 +60,7 @@ public class Member {
 	private String userNick;
 	
 	@Lob
-	@Column(name = "user_profile_img", columnDefinition="BLOB", nullable = false)
+	@Column(name = "user_profile_img", columnDefinition="MEDIUMBLOB", nullable = false)
 	private byte[] userProfileImg;
 	
 	@Column(name = "joined_at", columnDefinition = "datetime default now()", insertable = false, updatable = false)
