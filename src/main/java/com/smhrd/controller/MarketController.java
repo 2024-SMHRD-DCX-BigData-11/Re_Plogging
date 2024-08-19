@@ -29,206 +29,224 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class MarketController {
 
-   @Autowired
-   private MarketRepository marketRepo;
+    @Autowired
+    private MarketRepository marketRepo;
 
-   @Autowired
-   private MemberRepository memberRepo;
-   
-   @Autowired
-   private PurchaseRepository purchaseRepo;
+    @Autowired
+    private MemberRepository memberRepo;
 
-   @RequestMapping("/market")
-   public ModelAndView goMarket(
-          @RequestParam(value = "page", defaultValue = "1") int page,
-          @RequestParam(value = "size", defaultValue = "8") int size,
-          @RequestParam(value = "sort", defaultValue = "latest") String sort,
-          @RequestParam(value = "category", required = false) String category) {
+    @Autowired
+    private PurchaseRepository purchaseRepo;
 
-      ModelAndView mav = new ModelAndView("market");
-      Page<Market> marketPage;
+    @RequestMapping("/market")
+    public ModelAndView goMarket(
+            @RequestParam(value = "page", defaultValue = "1") int page,
+            @RequestParam(value = "size", defaultValue = "8") int size,
+            @RequestParam(value = "sort", defaultValue = "latest") String sort,
+            @RequestParam(value = "category", required = false) String category) {
 
-      if (category != null && !category.isEmpty()) {
-          marketPage = getPagedMarketsByCategory(category, page, size, sort);
-      } else {
-          marketPage = getPagedMarkets(page, size, sort);
-      }
+        ModelAndView mav = new ModelAndView("market");
+        Page<Market> marketPage;
 
-      marketPage.getContent().forEach(market -> {
-          market.setCategory(categoryToName(market.getCategory()));
-      });
+        if (category != null && !category.isEmpty()) {
+            marketPage = getPagedMarketsByCategory(category, page, size, sort);
+        } else {
+            marketPage = getPagedMarkets(page, size, sort);
+        }
 
-      int totalPages = marketPage.getTotalPages();
+        marketPage.getContent().forEach(market -> {
+            market.setCategory(categoryToName(market.getCategory()));
+        });
 
-      mav.addObject("currentPage", page);
-      mav.addObject("totalPages", totalPages);
-      mav.addObject("list", marketPage.getContent());
-      mav.addObject("currentSort", sort);
-      mav.addObject("selectedCategory", category);
+        int totalPages = marketPage.getTotalPages();
 
-      return mav;
-   }
+        mav.addObject("currentPage", page);
+        mav.addObject("totalPages", totalPages);
+        mav.addObject("list", marketPage.getContent());
+        mav.addObject("currentSort", sort);
+        mav.addObject("selectedCategory", category);
 
-   private Page<Market> getPagedMarkets(int page, int size, String sort) {
-       if (page < 1) page = 1;
-       if (size < 1) size = 8;
+        return mav;
+    }
 
-       Sort sorting = getSorting(sort);
+    private Page<Market> getPagedMarkets(int page, int size, String sort) {
+        if (page < 1) page = 1;
+        if (size < 1) size = 8;
 
-       return marketRepo.findAll(PageRequest.of(page - 1, size, sorting));
-   }
-   
-   private Page<Market> getPagedMarketsByCategory(String category, int page, int size, String sort) {
-       if (page < 1) page = 1;
-       if (size < 1) size = 8;
+        Sort sorting = getSorting(sort);
 
-       Sort sorting = getSorting(sort);
+        return marketRepo.findAll(PageRequest.of(page - 1, size, sorting));
+    }
 
-       return marketRepo.findByCategory(category, PageRequest.of(page - 1, size, sorting));
-   }
+    private Page<Market> getPagedMarketsByCategory(String category, int page, int size, String sort) {
+        if (page < 1) page = 1;
+        if (size < 1) size = 8;
 
-   private Sort getSorting(String sort) {
-       Sort sorting = Sort.by(Sort.Direction.DESC, "createdAt");
+        Sort sorting = getSorting(sort);
 
-       if (sort.equals("lowPrice")) {
-           sorting = Sort.by(Sort.Direction.ASC, "mileage");
-       } else if (sort.equals("highPrice")) {
-           sorting = Sort.by(Sort.Direction.DESC, "mileage");
-       }
+        return marketRepo.findByCategory(category, PageRequest.of(page - 1, size, sorting));
+    }
 
-       return sorting;
-   }
+    private Sort getSorting(String sort) {
+        Sort sorting = Sort.by(Sort.Direction.DESC, "createdAt");
 
-   @RequestMapping("/marketWrite")
-   public String goWrite() {
-      return "marketWrite";
-   }
+        if (sort.equals("lowPrice")) {
+            sorting = Sort.by(Sort.Direction.ASC, "mileage");
+        } else if (sort.equals("highPrice")) {
+            sorting = Sort.by(Sort.Direction.DESC, "mileage");
+        }
 
-   @PostMapping("/marketPost")
-   public ModelAndView marketPost(
-         @RequestParam("category") String category, 
-         @RequestParam("title") String title,
-         @RequestParam("mileage") Integer mileage, 
-         @RequestParam("content") String content,
-         @RequestParam("img1") MultipartFile img1, 
-         @RequestParam("img2") MultipartFile img2,
-         @RequestParam("img3") MultipartFile img3, 
-         @RequestParam("user") int userId,
-         @RequestParam("status") String status) {
+        return sorting;
+    }
 
-      Member writer = memberRepo.findById(userId)
-            .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + userId));
+    @RequestMapping("/marketWrite")
+    public String goWrite() {
+        return "marketWrite";
+    }
 
-      String fileName1 = saveFile(img1);
-      String fileName2 = saveFile(img2);
-      String fileName3 = saveFile(img3);
+    @PostMapping("/marketPost")
+    public ModelAndView marketPost(
+            @RequestParam("category") String category,
+            @RequestParam("title") String title,
+            @RequestParam("mileage") Integer mileage,
+            @RequestParam("content") String content,
+            @RequestParam("img1") MultipartFile img1,
+            @RequestParam("img2") MultipartFile img2,
+            @RequestParam("img3") MultipartFile img3,
+            @RequestParam("user") int userId,
+            @RequestParam("status") String status) {
 
-      Market newPost = new Market();
-      newPost.setCategory(category);
-      newPost.setTitle(title);
-      newPost.setMileage(mileage);
-      newPost.setContent(content);
-      newPost.setImg1(fileName1);
-      newPost.setImg2(fileName2);
-      newPost.setImg3(fileName3);
-      newPost.setUser(writer);
-      newPost.setCreatedAt(new Date());
-      newPost.setClosedAt(new Date());
-      newPost.setStatus("판매중");
+        Member writer = memberRepo.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + userId));
 
-      marketRepo.save(newPost);
+        String fileName1 = saveFile(img1);
+        String fileName2 = saveFile(img2);
+        String fileName3 = saveFile(img3);
 
-      ModelAndView mav = new ModelAndView("redirect:/market");
-      return mav;
-   }
+        Market newPost = new Market();
+        newPost.setCategory(category);
+        newPost.setTitle(title);
+        newPost.setMileage(mileage);
+        newPost.setContent(content);
+        newPost.setImg1(fileName1);
+        newPost.setImg2(fileName2);
+        newPost.setImg3(fileName3);
+        newPost.setUser(writer);
+        newPost.setCreatedAt(new Date());
+        newPost.setClosedAt(new Date());
+        newPost.setStatus("판매중");
 
-   private String saveFile(MultipartFile file) {
-      if (file != null && !file.isEmpty()) {
-         String fileName = file.getOriginalFilename();
-         String uploadDir = "C:/uploads/";
-         File dir = new File(uploadDir);
+        marketRepo.save(newPost);
 
-         if (!dir.exists()) {
-            dir.mkdirs();
-         }
+        ModelAndView mav = new ModelAndView("redirect:/market");
+        return mav;
+    }
 
-         try {
-            String filePath = uploadDir + fileName;
-            file.transferTo(new File(filePath));
-            return fileName;
-         } catch (IOException e) {
-            e.printStackTrace();
-         }
-      }
-      return null;
-   }
+    private String saveFile(MultipartFile file) {
+        if (file != null && !file.isEmpty()) {
+            String fileName = file.getOriginalFilename();
+            String uploadDir = "C:/uploads/";
+            File dir = new File(uploadDir);
 
-   @GetMapping("/marketRead")
-   public String goRead(@RequestParam("idx") int idx, Model model, HttpSession session) {
-       Market market = marketRepo.findById(idx)
-               .orElseThrow(() -> new IllegalArgumentException("Invalid market Id:" + idx));
-       
-       market.setCategory(categoryToName(market.getCategory()));
-       
-       model.addAttribute("market", market);
-       model.addAttribute("user", session.getAttribute("user"));
-       return "marketRead";
-   }
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
 
+            try {
+                String filePath = uploadDir + fileName;
+                file.transferTo(new File(filePath));
+                return fileName;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
 
-   @GetMapping("/marketBack")
-   public String goBack() {
-      return "redirect:/market";
-   }
-   
-   @PostMapping("/marketPurchase")
-   public String purchaseItem(@RequestParam("mkIdx") int mkIdx, HttpSession session, Model model) {
-       Member currentUser = (Member) session.getAttribute("user");
+    @GetMapping("/marketRead")
+    public String goRead(@RequestParam("idx") int idx, Model model, HttpSession session) {
+        Market market = marketRepo.findById(idx)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid market Id:" + idx));
 
-       Market market = marketRepo.findById(mkIdx)
-               .orElseThrow(() -> new IllegalArgumentException("Invalid market Id:" + mkIdx));
+        market.setCategory(categoryToName(market.getCategory()));
 
-       if (currentUser.getMileageAmount() < market.getMileage()) {
-           model.addAttribute("error", "Insufficient mileage for this purchase.");
-           return "redirect:/marketRead?idx=" + mkIdx;
-       }
+        model.addAttribute("market", market);
+        model.addAttribute("user", session.getAttribute("user"));
+        return "marketRead";
+    }
 
-       currentUser.setMileageAmount(currentUser.getMileageAmount() - market.getMileage());
-       memberRepo.save(currentUser);
+    @GetMapping("/marketBack")
+    public String goBack() {
+        return "redirect:/market";
+    }
 
-       market.setClosedAt(new Date());
-       market.setStatus("판매완료");
-       marketRepo.save(market);
+    @PostMapping("/marketPurchase")
+    public String purchaseItem(@RequestParam("mkIdx") int mkIdx, HttpSession session, Model model) {
+        Member currentUser = (Member) session.getAttribute("user");
 
-       Purchase purchase = new Purchase();
-       purchase.setMkIdx(market);
-       purchase.setUserIdx(currentUser);
-       purchase.setCreatedAt(new Date());
-       purchaseRepo.save(purchase);
+        Market market = marketRepo.findById(mkIdx)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid market Id:" + mkIdx));
 
-       return "redirect:/market";
-   }
+        if (currentUser.getMileageAmount() < market.getMileage()) {
+            model.addAttribute("error", "Insufficient mileage for this purchase.");
+            return "redirect:/marketRead?idx=" + mkIdx;
+        }
 
-   
-   private String categoryToName(String category) {
-       switch (category) {
-           case "560000":
-               return "분류없음";
-           case "560001":
-               return "캔";
-           case "560002":
-               return "유리";
-           case "560003":
-               return "페트";
-           case "560004":
-               return "플라스틱";
-           case "560005":
-               return "비닐";
-           case "560006":
-               return "스티로폼";
-           default:
-               return "알 수 없음";
-       }
-   }
+        currentUser.setMileageAmount(currentUser.getMileageAmount() - market.getMileage());
+        memberRepo.save(currentUser);
 
+        market.setClosedAt(new Date());
+        market.setStatus("판매완료");
+        marketRepo.save(market);
+
+        Purchase purchase = new Purchase();
+        purchase.setMkIdx(market);
+        purchase.setUserIdx(currentUser);
+        purchase.setCreatedAt(new Date());
+        purchaseRepo.save(purchase);
+
+        return "redirect:/market";
+    }
+
+    @PostMapping("/market/delete")
+    public String deleteMarket(@RequestParam("mkIdx") int mkIdx, HttpSession session) {
+        Member currentUser = (Member) session.getAttribute("user");
+
+        if (currentUser == null) {
+            return "redirect:/login"; // 로그인되지 않은 경우 로그인 페이지로 리디렉션
+        }
+
+        Market market = marketRepo.findById(mkIdx)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid market Id:" + mkIdx));
+
+        // 현재 사용자가 해당 게시물의 작성자인지 확인
+        if (market.getUser().getUserIdx() != currentUser.getUserIdx()) {
+            return "redirect:/market"; // 작성자가 아니면 마켓 목록으로 리디렉션
+        }
+
+        marketRepo.delete(market); // 게시물 삭제
+
+        return "redirect:/market"; // 삭제 후 마켓 목록으로 리디렉션
+    }
+
+    private String categoryToName(String category) {
+        switch (category) {
+            case "560000":
+                return "분류없음";
+            case "560001":
+                return "캔";
+            case "560002":
+                return "유리";
+            case "560003":
+                return "페트";
+            case "560004":
+                return "플라스틱";
+            case "560005":
+                return "비닐";
+            case "560006":
+                return "스티로폼";
+            default:
+                return "알 수 없음";
+        }
+    }
 }
