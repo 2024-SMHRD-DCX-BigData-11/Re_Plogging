@@ -111,6 +111,7 @@ public class MemberRestController {
 		
 		CommonDomain response = new CommonDomain();
 		
+		String currentMpw = request.getParameter("currentMpw").toString();
 		String nconfirmMpw = request.getParameter("nconfirmMpw").toString();
 		String MuserNick = request.getParameter( "MuserNick" ).toString();
 		
@@ -121,7 +122,7 @@ public class MemberRestController {
 
 	    if (user != null) {
 	        // 비밀번호 확인
-	        if (DigestUtils.sha512Hex(nconfirmMpw).equals(user.getUserPw())) {
+	        if (DigestUtils.sha512Hex(currentMpw).equals(user.getUserPw())) {
 	            // 닉네임 중복 확인
 	            Member nickCheck = repo.findByUserNick(MuserNick);
 	            if (nickCheck == null || nickCheck.getUserId().equals(user.getUserId())) {

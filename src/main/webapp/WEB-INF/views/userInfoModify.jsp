@@ -45,15 +45,15 @@
 				<tbody id="change-pw-section" >
 				<tr>
 					<th>현재 비밀번호</th>
-					<td><input type="password" id="current-Mpw" placeholder="현재 비밀번호"></td>
+					<td><input type="password" id="current-Mpw" placeholder="현재 비밀번호" name = "currentMpw"></td>
 				</tr>
 				<tr>
 					<th>새 비밀번호</th>
-					<td><input type="password" id="confirm-Mpw" placeholder="새 비밀번호"></td>
+					<td><input type="password" id="confirm-Mpw" placeholder="새 비밀번호" name = "confirmMpw"></td>
 				</tr>
 				<tr>
 					<th>새 비밀번호 확인</th>
-					<td><input type="password" id="new-confirm-Mpw" placeholder="새 비밀번호 확인"></td>
+					<td><input type="password" id="new-confirm-Mpw" placeholder="새 비밀번호 확인" name = "nconfirmMpw"></td>
 				</tr>
 				<tr>
 					<th></th>
@@ -70,7 +70,7 @@
 				</tr>
 				<tr>
 					<th>닉네임</th>
-					<td><input type="text" id="MuserNick" name="userNick" value="${user.userNick}"></td>
+					<td><input type="text" id="MuserNick" name="MuserNick" value="${user.userNick}"></td>
 				</tr>
 			</table>
 			<div class="Modify-button-wrapper">
@@ -93,12 +93,17 @@
 			event.preventDefault(); // 기본 폼 제출 동작을 막음
 			var $this = $(this),
 				formData = new FormData( $this[0] );
+			
 		
 			var currentMpw = $('#current-Mpw').val();
 			var confirmMpw = $('#confirm-Mpw').val();
 			var nconfirmMpw = $('#new-confirm-Mpw').val();
 			var MuserNick = $('#MuserNick').val();
 			
+			// formData 안에 데이터 확인
+		    for (var pair of formData.entries()) {
+		        console.log(pair[0]+ ': ' + pair[1]);
+		    }
 			
 			if( !currentMpw || currentMpw.length === 0) {
 				erroAlert("현재 비밀번호를 입력해주세요.",'current-Mpw')
@@ -127,7 +132,7 @@
 						//아이디 중복
 						alert("비밀번호가 일치하지 않습니다.");
 					} else if (response.code == -400) {
-						// 전화번호 중복
+						// 닉네임 중복
 						alert("이미 사용중인 닉네임입니다!");
 					} else{
 						// 로그인이 되어있지 않음
