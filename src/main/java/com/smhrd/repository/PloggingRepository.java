@@ -27,7 +27,7 @@ public interface PloggingRepository extends JpaRepository<Plogging, Integer> {
 	@Modifying(clearAutomatically = true)
 	@Query("""
 		    UPDATE Plogging p
-			SET p.qr1 = 1
+			SET p.qr1 = 1, qr1Time = NOW()
 			WHERE p.user.userIdx = :userIdx AND p.courseName = :courseName
 		    """
 			)
@@ -37,7 +37,7 @@ public interface PloggingRepository extends JpaRepository<Plogging, Integer> {
 	@Modifying(clearAutomatically = true)
 	@Query("""
 		    UPDATE Plogging p
-			SET p.qr2 = 1
+			SET p.qr2 = 1, qr2Time = NOW()
 			WHERE p.user.userIdx = :userIdx AND p.courseName = :courseName
 		    """
 			)
@@ -47,7 +47,7 @@ public interface PloggingRepository extends JpaRepository<Plogging, Integer> {
 	@Modifying(clearAutomatically = true)
 	@Query("""
 		    UPDATE Plogging p
-			SET p.qr3 = 1
+			SET p.qr3 = 1, qr3Time = NOW()
 			WHERE p.user.userIdx = :userIdx AND p.courseName = :courseName
 		    """
 			)
