@@ -3,12 +3,15 @@ package com.smhrd.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.smhrd.entity.Comment;
 import com.smhrd.entity.Community;
+import com.smhrd.entity.Market;
 import com.smhrd.entity.Member;
 import com.smhrd.repository.CommentRepository;
 import com.smhrd.repository.CommunityRepository;
@@ -272,4 +276,56 @@ public class CommunityController {
         communityRepository.delete(community);
         return "redirect:/community";
     }
+    
+    @RequestMapping("/MyCommunityList")
+	public String MyCommunityList(HttpSession session, Model model) {
+    	
+    	// 로그인 확인
+    	 Member member = (Member) session.getAttribute("user");
+    	 
+    	 if(member != null) {
+    		 
+    		 int writer = member.getUserIdx();
+    	
+			// 1. 데이터 수집
+			// 2. 기능 실행
+			List<Community> list = communityRepository.findByMyCommunity(writer);// 작성일자 기준으로 내림차순
+					
+			model.addAttribute("MyClist", list);
+			
+			return "myCommunity";
+			
+			
+    	 }else {
+    		// 3. View 선택 로그인 상태가 이니면 메인 페이지로 이동
+    			return "redirect:/main";
+    	 }
+    	 
+	}
+    
+    @RequestMapping("/Mycview")
+	public String cview( int idx, Model model ) {
+		// 1. 데이터 수집
+		// 2. 기능실행
+		Optional<Community> MyCommunity = communityRepository.findById(idx);
+		
+		if( MyCommunity.isPresent() ) {
+			model.addAttribute("MyCommunity", MyCommunity.get());
+			// 3. View 선택
+			return "/communityRead";
+		}else {
+			return "redirect:/myCommunityList";
+		}
+		
+	}
+    
+    // 내 게시글 삭제
+ 	@RequestMapping("/Mycdelete")
+ 	public String Mycdelete( int idx ) {
+ 		// 1. 데이터 수집
+ 		// 2. 기능 실행
+ 		communityRepository.deleteById(idx);
+ 		// 3. View 선택
+ 		return "redirect:/MyCommunityList";
+ 	}
 }

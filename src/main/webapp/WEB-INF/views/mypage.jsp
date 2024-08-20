@@ -43,7 +43,7 @@
 						src="img/right-arrow.png" alt="Arrow"> </a></li>
 				<li><a href="${pageContext.request.contextPath}/myplogging"><sapn>나의 플로깅</sapn> <img
 						src="img/right-arrow.png" alt="Arrow"> </a></li>
-				<li><a href="#"><sapn>작성 글 조회</sapn> <img
+				<li><a href="${pageContext.request.contextPath}/MyCommunityList"><sapn>작성 글 조회</sapn> <img
 						src="img/right-arrow.png" alt="Arrow"> </a></li>
 				<li><a href="#"><sapn>마일리지 현황</sapn> <img
 						src="img/right-arrow.png" alt="Arrow"> </a></li>
