@@ -32,13 +32,13 @@
 				<%-- 회원 목록 출력--%>
 				<c:forEach var="member" items="${ulist}" >
 				<tr>
-					<td></td>
 					<td>${member.userIdx}</td>
 					<td>${member.userId}</td>
 					<td>${member.userPhone}</td>
 					<td>${member.userNick}</td>
 					<td>${member.joinedAt}</td>
 					<td>${member.ploggingCount}</td>
+					<td>${member.mileageAmount}</td>
 					<td><a href="${ctx }/udelete?idx=${member.userIdx}">X</a></td>
 				</tr>
 				</c:forEach>

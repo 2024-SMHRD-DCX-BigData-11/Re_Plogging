@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.smhrd.entity.Market;
 import com.smhrd.entity.Member;
+import com.smhrd.entity.Mileage;
 import com.smhrd.entity.Purchase;
 import com.smhrd.repository.MarketRepository;
 import com.smhrd.repository.MemberRepository;
@@ -194,6 +195,10 @@ public class MarketController {
 
         currentUser.setMileageAmount(currentUser.getMileageAmount() - market.getMileage());
         memberRepo.save(currentUser);
+        
+        Member postUser = market.getUser(); // Market 객체에 owner 필드가 있다고 가정
+        postUser.setMileageAmount(postUser.getMileageAmount() + market.getMileage());
+        memberRepo.save(postUser);
 
         market.setClosedAt(new Date());
         market.setStatus("판매완료");
