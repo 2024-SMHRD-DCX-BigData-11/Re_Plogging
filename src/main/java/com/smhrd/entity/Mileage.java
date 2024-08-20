@@ -1,6 +1,6 @@
 package com.smhrd.entity;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -39,10 +39,10 @@ public class Mileage {
 	private String mlType;
 	
 	@Column(name = "ml_amount", columnDefinition = "int", nullable = false)
-	private String mlAmount;
+	private int mlAmount;
 	
-	@Column(name = "created_at", columnDefinition = "datetime default now()", insertable = false, updatable = false)
-	private Timestamp createdAt;
+	@Column(name = "created_at", insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	private Date createdAt; 
 	
 	@ManyToOne // 다대일 관계
 	@JoinColumn(name="user_idx") // Member클래스의 user_idx를 참조하는 외래키

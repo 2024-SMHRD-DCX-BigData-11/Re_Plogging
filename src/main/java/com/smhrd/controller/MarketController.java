@@ -23,6 +23,7 @@ import com.smhrd.entity.Mileage;
 import com.smhrd.entity.Purchase;
 import com.smhrd.repository.MarketRepository;
 import com.smhrd.repository.MemberRepository;
+import com.smhrd.repository.MileageRepository;
 import com.smhrd.repository.PurchaseRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -38,6 +39,9 @@ public class MarketController {
 
     @Autowired
     private PurchaseRepository purchaseRepo;
+    
+    @Autowired
+    private MileageRepository mileageRepo;
 
     @RequestMapping("/market")
     public ModelAndView goMarket(
@@ -193,17 +197,35 @@ public class MarketController {
             return "redirect:/marketRead?idx=" + mkIdx;
         }
 
-        currentUser.setMileageAmount(currentUser.getMileageAmount() - market.getMileage());
+        int mileageAmount = market.getMileage();
+
+        currentUser.setMileageAmount(currentUser.getMileageAmount() - mileageAmount);
         memberRepo.save(currentUser);
-        
-        Member postUser = market.getUser(); // Market 객체에 owner 필드가 있다고 가정
-        postUser.setMileageAmount(postUser.getMileageAmount() + market.getMileage());
+
+        Member postUser = market.getUser();
+        postUser.setMileageAmount(postUser.getMileageAmount() + mileageAmount);
         memberRepo.save(postUser);
 
         market.setClosedAt(new Date());
         market.setStatus("판매완료");
         marketRepo.save(market);
 
+        // 마일리지 내역 기록
+        Mileage mileagePu = new Mileage();
+        mileagePu.setMlType("마켓판매");
+        mileagePu.setMlAmount(mileageAmount);
+        mileagePu.setUser(postUser);
+        mileagePu.setCreatedAt(new Date());
+        mileageRepo.save(mileagePu);
+
+        Mileage mileageCu = new Mileage();
+        mileageCu.setMlType("마켓구매");
+        mileageCu.setMlAmount(mileageAmount);
+        mileageCu.setUser(currentUser);
+        mileageCu.setCreatedAt(new Date());
+        mileageRepo.save(mileageCu);
+
+        // 구매 내역 생성 및 저장
         Purchase purchase = new Purchase();
         purchase.setMkIdx(market);
         purchase.setUserIdx(currentUser);
@@ -212,6 +234,7 @@ public class MarketController {
 
         return "redirect:/market";
     }
+
 
     @PostMapping("/market/delete")
     public String deleteMarket(@RequestParam("mkIdx") int mkIdx, HttpSession session) {
