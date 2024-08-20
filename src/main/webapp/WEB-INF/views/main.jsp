@@ -21,10 +21,15 @@
 		</div>
 
 		<div class="banner">
-			<p>
-				<span>지구수호대</span>님! 5회
-			</p>
+			<ul class="ploking">
+				<c:forEach var="item" items="${topUser}" varStatus="status">
+					<li>${status.index + 1}위 ${item.userNick}님! ${item.ploggingCount}회</li>
+				</c:forEach>
+			</ul>
+			<!--<span>${topUserNick}</span>님! ${topPloggingCount}회-->
 		</div>
+
+
 	</div>
 
 	<div class="plogging_01">
