@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,7 +39,7 @@
 					<td>${member.userNick}</td>
 					<td>${member.joinedAt}</td>
 					<td>${member.ploggingCount}</td>
-					<td><a href="/udelete?idx=${member.userIdx}">X</a></td>
+					<td><a href="${ctx }/udelete?idx=${member.userIdx}">X</a></td>
 				</tr>
 				</c:forEach>
 			</tbody>
@@ -73,7 +74,7 @@
 					<td>${community.count}</td>
 					<td>${community.likes}</td>
 					<td>${community.img}</td>
-					<td><a href="/cdelete?idx=${community.idx}">X</a></td>
+					<td><a href="${ctx }/cdelete?idx=${community.idx}">X</a></td>
 				</tr>
 				</c:forEach>
 			</tbody>
@@ -115,7 +116,7 @@
 					<td>${market.createdAt}</td>
 					<td>${market.status}</td>
 					<td>${market.closedAt}</td>
-					<td><a href="/mdelete?idx=${market.mkIdx}">X</a></td>
+					<td><a href="${ctx }/mdelete?idx=${market.mkIdx}">X</a></td>
 				</tr>
 				</c:forEach>
 			</tbody>
