@@ -14,10 +14,10 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
-	<div class="plocourse-container">
 		<div class="plocourseImg">
 			<img id="plocourseImage" alt="" src="img/플로코스.png">
 		</div>
+	<div class="plocourse-container">
 		<div class="plocourseInfo">
 			<span class="plocourseInfo-top">PLOCOURSE<br>DETAIL
 			</span> <span class="plocourseInfo-bottom">플로코스 안내</span>
