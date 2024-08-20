@@ -30,27 +30,24 @@ public class UploadImg {
 	// updatable = false 컬럼을 수정한 이후 기존에 저장되어 있던 데이터를 수정할 수 없게끔 막는것
 	// GeneratedValue(strategy = GenerationType.IDENTITY) 기본키 생성을 DB에게 위임
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "file_idx", columnDefinition = "int", insertable = false, updatable = false)
-	private int file_idx;
-	
-	@Column(name = "file_name", length = 1500, nullable = false)
-	private String file_name;
-	
-	@Column(name = "file_size", columnDefinition = "int", nullable = false)
-	private Long file_size;
-	
-	@Column(name = "file_ext", length = 10)
-	private String file_ext;
-	
-	@Column(name = "uploaded_at", columnDefinition = "datetime default now()", insertable = false, updatable = false)
-	private Timestamp uploaded_at;
-	
-	@ManyToOne // 다대일관계
-	@JoinColumn(name="user_idx") // Member클래스의 user_idx를 참조하는 외래키
-	private Member user_idx;
-	
-	@Column(name = "mileage", columnDefinition = "int")
-	private int mileage;
-}
+	 @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    @Column(name = "file_idx", columnDefinition = "int", insertable = false, updatable = false)
+	    private int fileIdx;
+
+	    @Column(name = "file_name", length = 1500, nullable = false)
+	    private String fileName;
+
+	    @Column(name = "image_data", columnDefinition = "LONGBLOB")
+	    private byte[] imageData;
+
+	    @Column(name = "uploaded_at", columnDefinition = "datetime default now()", insertable = false, updatable = false)
+	    private Timestamp uploadedAt;
+
+	    @ManyToOne
+	    @JoinColumn(name="user_idx") // Member클래스의 user_idx를 참조하는 외래키
+	    private Member userIdx;
+
+	    @Column(name = "mileage", columnDefinition = "int")
+	    private int mileage;
+	}
