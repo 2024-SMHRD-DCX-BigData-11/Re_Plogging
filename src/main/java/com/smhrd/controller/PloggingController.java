@@ -67,8 +67,7 @@ public class PloggingController {
 			p.setUser(member);
 			p.setCourseName("A코스");
 			prepo.save(p);
-			;
-			return "redirect:/myplogging"; // 새 플로깅 생성 후 이동
+			return "redirect:/myplogging?plogging=true"; // 새 플로깅 생성 후 이동
 		} else {
 			System.out.println("유저 없음.");
 			logout(session);
@@ -96,7 +95,7 @@ public class PloggingController {
 			p.setUser(member);
 			p.setCourseName("B코스");
 			prepo.save(p);
-			return "redirect:/myplogging"; // 새 플로깅 생성 후 이동
+			return "redirect:/myplogging?plogging=true"; // 새 플로깅 생성 후 이동
 		} else {
 			System.out.println("유저 없음.");
 			logout(session);
@@ -124,7 +123,7 @@ public class PloggingController {
 			p.setUser(member);
 			p.setCourseName("C코스");
 			prepo.save(p);
-			return "redirect:/myplogging"; // 새 플로깅 생성 후 이동
+			return "redirect:/myplogging?plogging=true"; // 새 플로깅 생성 후 이동
 		} else {
 			System.out.println("유저 없음.");
 			logout(session);
