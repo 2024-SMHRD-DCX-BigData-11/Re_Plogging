@@ -45,6 +45,9 @@ public class Member {
 
     @Column(name = "mileage_amount", columnDefinition = "integer default 500")
     private int mileageAmount;
+    
+    @Column(name = "plogging_count", columnDefinition = "integer default 500")
+    private int ploggingCount;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Plogging> ploggings;

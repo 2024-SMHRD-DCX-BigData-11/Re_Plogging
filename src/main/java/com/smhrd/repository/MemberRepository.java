@@ -1,5 +1,6 @@
 package com.smhrd.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -71,5 +72,6 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
 		    """)
 		
 		public Member findByUserPw(@Param("nconfirmMpw") String userPw);
+
 	
 }
