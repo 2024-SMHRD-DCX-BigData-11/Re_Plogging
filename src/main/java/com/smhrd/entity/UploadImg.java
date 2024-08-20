@@ -35,9 +35,6 @@ public class UploadImg {
 	    @Column(name = "file_idx", columnDefinition = "int", insertable = false, updatable = false)
 	    private int fileIdx;
 
-	    @Column(name = "file_name", length = 1500, nullable = false)
-	    private String fileName;
-
 	    @Column(name = "image_data", columnDefinition = "LONGBLOB")
 	    private byte[] imageData;
 
