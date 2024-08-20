@@ -1,6 +1,7 @@
 package com.smhrd.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -77,6 +78,39 @@ public class ManagerController {
 		mrepo.deleteById(idx);
 		// 3. View 선택
 		return "redirect:/ManagerList";
+	}
+	
+	
+	@RequestMapping("/cview")
+	public String cview( int idx, Model model ) {
+		// 1. 데이터 수집
+		// 2. 기능실행
+		Optional<Community> community = crepo.findById(idx);
+		
+		if( community.isPresent() ) {
+			model.addAttribute("community", community.get());
+			// 3. View 선택
+			return "/communityRead";
+		}else {
+			return "redirect:/ManagerList";
+		}
+		
+	}
+	
+	@RequestMapping("/mview")
+	public String mview( int idx, Model model ) {
+		// 1. 데이터 수집
+		// 2. 기능실행
+		Optional<Market> market = mrepo.findById(idx);
+		
+		if( market.isPresent() ) {
+			model.addAttribute("market", market.get());
+			// 3. View 선택
+			return "/marketReaad";
+		}else {
+			return "redirect:/ManagerList";
+		}
+		
 	}
 
 }

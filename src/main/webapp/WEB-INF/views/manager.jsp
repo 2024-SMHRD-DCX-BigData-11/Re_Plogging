@@ -69,7 +69,7 @@
 					<td></td>
 					<td>${community.idx}</td>
 					<td>${community.category}</td>
-					<td>${community.title}</td>
+					<td><a href="${ctx }/cview?idx=${community.idx}">${community.title}</a></td>
 					<td>${community.writer.userNick}</td>
 					<td>${community.count}</td>
 					<td>${community.likes}</td>
@@ -107,7 +107,7 @@
 					<td></td>
 					<td>${market.mkIdx}</td>
 					<td>${market.category}</td>
-					<td>${market.title}</td>
+					<td><a href="${ctx }/mview?idx=${market.mkIdx}">${market.title}</a></td>
 					<td>${market.mileage}</td>
 					<td>${market.user.userNick}</td>
 					<td>${market.img1}</td>
