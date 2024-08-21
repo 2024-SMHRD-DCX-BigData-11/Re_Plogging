@@ -1,7 +1,6 @@
 package com.smhrd.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,7 +8,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
 import com.smhrd.entity.Community;
+import com.smhrd.entity.Member;
 
 @Repository
 public interface CommunityRepository extends JpaRepository<Community, Integer> {
@@ -30,5 +31,5 @@ public interface CommunityRepository extends JpaRepository<Community, Integer> {
 		    ORDER BY indate DESC
 		    """)
     
-    public List<Community> findByMyCommunity(@Param("writer") int writer);
+    public List<Community> findByMyCommunity(@Param("writer") Member writer);
 }

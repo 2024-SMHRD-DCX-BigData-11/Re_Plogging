@@ -285,11 +285,9 @@ public class CommunityController {
     	 
     	 if(member != null) {
     		 
-    		 int writer = member.getUserIdx();
-    	
 			// 1. 데이터 수집
 			// 2. 기능 실행
-			List<Community> list = communityRepository.findByMyCommunity(writer);// 작성일자 기준으로 내림차순
+			List<Community> list = communityRepository.findByMyCommunity(member);// 작성일자 기준으로 내림차순
 					
 			model.addAttribute("MyClist", list);
 			
@@ -305,12 +303,14 @@ public class CommunityController {
     
     @RequestMapping("/Mycview")
 	public String cview( int idx, Model model ) {
-		// 1. 데이터 수집
-		// 2. 기능실행
-		Optional<Community> MyCommunity = communityRepository.findById(idx);
 		
-		if( MyCommunity.isPresent() ) {
-			model.addAttribute("MyCommunity", MyCommunity.get());
+    	// 1. 데이터 수집
+		// 2. 기능실행
+    	
+		Optional<Community> myCommunity = communityRepository.findById(idx);
+		
+		if( myCommunity.isPresent() ) {
+			model.addAttribute("myCommunity", myCommunity.get());
 			// 3. View 선택
 			return "/communityRead";
 		}else {
