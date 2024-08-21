@@ -1,5 +1,7 @@
 package com.smhrd.controller;
 
+import java.net.URLEncoder;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,9 +41,14 @@ public class QrController {
 
 			String courseName = request.getParameter("courseName").toString();
 
-			System.out.println("값이 잘 들어갔는지 확인: " + courseName);
-
-			prepo.UpdateQr1(member.getUserIdx(), courseName);
+			System.out.println("courseName: " + courseName);
+			
+			int userIdx = member.getUserIdx();
+			
+			System.out.println("userIdx: " + userIdx);
+			
+			prepo.UpdateQr1(userIdx, courseName);
+			
 
 			return "redirect:/myplogging"; // 리다이렉트 사용
 		} else {

@@ -30,7 +30,7 @@ public class UploadImg {
 	// updatable = false 컬럼을 수정한 이후 기존에 저장되어 있던 데이터를 수정할 수 없게끔 막는것
 	// GeneratedValue(strategy = GenerationType.IDENTITY) 기본키 생성을 DB에게 위임
 	
-	 @Id
+	 	@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Column(name = "file_idx", columnDefinition = "int", insertable = false, updatable = false)
 	    private int fileIdx;
