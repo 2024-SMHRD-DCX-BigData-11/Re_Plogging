@@ -65,7 +65,10 @@ public class PloggingController {
 			// 새로운 플로깅 생성
 			Plogging p = new Plogging();
 			p.setUser(member);
-			p.setCourseName("A코스");
+			p.setCourseName("A코스(순천대학교)");
+			p.setQr1Name("열린광장");
+			p.setQr2Name("공과대학 1호관");
+			p.setQr3Name("대학본부");
 			prepo.save(p);
 			return "redirect:/myplogging?plogging=true"; // 새 플로깅 생성 후 이동
 		} else {
@@ -93,7 +96,10 @@ public class PloggingController {
 			// 새로운 플로깅 생성
 			Plogging p = new Plogging();
 			p.setUser(member);
-			p.setCourseName("B코스");
+			p.setCourseName("B코스(순천 조례호수공원)");
+			p.setQr1Name("야외무대");
+			p.setQr2Name("산책로1");
+			p.setQr3Name("산책로2");
 			prepo.save(p);
 			return "redirect:/myplogging?plogging=true"; // 새 플로깅 생성 후 이동
 		} else {
@@ -121,7 +127,10 @@ public class PloggingController {
 			// 새로운 플로깅 생성
 			Plogging p = new Plogging();
 			p.setUser(member);
-			p.setCourseName("C코스");
+			p.setCourseName("C코스(순천 오천그린광장)");
+			p.setQr1Name("오천그린광장");
+			p.setQr2Name("산책로1");
+			p.setQr3Name("산책로2");
 			prepo.save(p);
 			return "redirect:/myplogging?plogging=true"; // 새 플로깅 생성 후 이동
 		} else {

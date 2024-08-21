@@ -48,4 +48,13 @@ public class Plogging {
 	
 	@Column(name = "started_at", insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date startedAt; // 시작일자 (started_at)
+	
+	@Column(name = "qr1Name", length = 255)
+	private String qr1Name; // QR1 이름 (qr1Name)
+	
+	@Column(name = "qr2Name", length = 255)
+	private String qr2Name; // QR2 이름 (qr2Name)
+	
+	@Column(name = "qr3Name", length = 255)
+	private String qr3Name; // QR3 이름 (qr3Name)
 }
