@@ -24,7 +24,7 @@ body, html {
 	width: 100%;
 }
 
-.container {
+.main-container {
 	width: 100%;
 	max-width: 850px; /* 최대 너비 설정 */
 	margin: 125px auto;
@@ -293,7 +293,6 @@ body, html {
     transform: translateY(-10px); /* 호버 시 이미지가 10px 위로 이동 */
 }
 
-
 /* 스크롤 css */
 .plogging_02, .plogging_03, .plogging_04 {
 	opacity: 0;
@@ -316,6 +315,30 @@ footer {
 	text-align: center;
 	margin-top: 300px;
 	margin-bottom: 25px;
+}
+
+.aiHelper-container {
+    position: fixed; /* 고정 위치 */
+    bottom: 30px; /* 화면 하단에서 20px 위에 위치 */
+    right: 50px; /* 화면 오른쪽에서 20px 왼쪽에 위치 */
+    background-color: #00a989; /* 배경색, 필요에 따라 변경 가능 */
+    color: white; /* 글자색 */
+    border-radius: 25px; /* 모서리를 둥글게 */
+    padding: 10px 20px; /* 내부 여백 설정 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 (옵션) */
+    z-index: 1000; /* 다른 요소들 위에 표시되도록 설정 */
+    display: flex; /* 이미지와 텍스트를 가로로 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+}
+
+.aiHelperImg img {
+	width: 30px;
+    margin-right: 10px; /* 이미지와 텍스트 사이의 간격 */
+}
+
+.aiHelperText {
+    font-size: 16px; /* 텍스트 크기 */
+    font-weight: bold; /* 텍스트 굵기 */
 }
 
 /* 미디어 쿼리 */

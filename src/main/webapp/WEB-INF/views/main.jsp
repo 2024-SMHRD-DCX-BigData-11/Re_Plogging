@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-	<div class="container">
+	<div class="main-container">
 		<div class="text">
 			<img src="img/왕관.png" alt="왕관">
 			<P class="normal">이달의</P>
@@ -99,11 +99,16 @@
 				<span> 분리배출을 어려워하는 여러분들을 위해 플로깅을 통해<br> 수집한 쓰레기 이미지를
 					첨부하거나,<br> <span class="point">분리배출 탭</span>에서 배출방법을 안내해드립니다.<br>
 					<p>
-						<a href="#" class="custom-button">분리배출 방법 보러가기</a>
+						<a href="${pageContext.request.contextPath}/recycle" class="custom-button">분리배출 방법 보러가기</a>
 					</p>
 				</span>
 			</div>
 		</div>
+	</div>
+	<div class="aiHelper-container" onclick="aiHerlper()">
+		<div class="aiHelperImg">
+		<img src="img/AI.png" alt="AI Image"></div>
+		<div class="aiHelperText">AI 분리배출 도우미 이용해 보기</div>
 	</div>
 
 	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
