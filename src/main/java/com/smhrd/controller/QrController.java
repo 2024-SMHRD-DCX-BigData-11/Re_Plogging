@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.smhrd.entity.Member;
+import com.smhrd.entity.Plogging;
 import com.smhrd.repository.PloggingRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -63,14 +64,27 @@ public class QrController {
 	public String qr2Update(HttpSession session, HttpServletRequest request) {
 		Member member = (Member) session.getAttribute("user");
 		if (member != null) {
-
+			
 			String courseName = request.getParameter("courseName").toString();
 
 			System.out.println("값이 잘 들어갔는지 확인: " + courseName);
-
-			prepo.UpdateQr2(member.getUserIdx(), courseName);
-
-			return "redirect:/myplogging"; // 리다이렉트 사용
+			
+			int userIdx = member.getUserIdx();
+			
+			System.out.println("userIdx: " + userIdx);
+			
+			Plogging plogging = prepo.checkQr1(userIdx, courseName);
+			
+			if(plogging != null) {
+				
+				prepo.UpdateQr2(userIdx, courseName);
+				
+				return "redirect:/myplogging"; // 리다이렉트 사용
+			}else {
+				System.out.println("qr1번 안찍음");
+				return "redirect:/myplogging"; // 리다이렉트 사용
+			}
+			
 		} else {
 			System.out.println("유저 없음");
 			logout(session);
@@ -88,10 +102,22 @@ public class QrController {
 			String courseName = request.getParameter("courseName").toString();
 
 			System.out.println("값이 잘 들어갔는지 확인: " + courseName);
-
-			prepo.UpdateQr3(member.getUserIdx(), courseName);
-
-			return "redirect:/myplogging"; // 리다이렉트 사용
+			
+			int userIdx = member.getUserIdx();
+			
+			System.out.println("userIdx: " + userIdx);
+			
+			Plogging plogging = prepo.checkQr2(userIdx, courseName);
+			
+			if(plogging != null) {
+				prepo.UpdateQr3(member.getUserIdx(), courseName);
+				return "redirect:/myplogging"; // 리다이렉트 사용
+			}else {
+				
+				System.out.println("qr1번 ,2번 안찍음");
+				return "redirect:/myplogging"; // 리다이렉트 사용
+			}
+			
 		} else {
 			System.out.println("유저 없음");
 			logout(session);

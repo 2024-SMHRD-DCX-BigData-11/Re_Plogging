@@ -53,5 +53,20 @@ public interface PloggingRepository extends JpaRepository<Plogging, Integer> {
 			)
 	public int UpdateQr3(@Param("userIdx") int userIdx, @Param("courseName") String courseName);
 	
+	@Query("""
+		    select p
+			from Plogging p
+			WHERE p.user.userIdx = :userIdx AND p.courseName = :courseName AND qr1=1
+		    """
+			)
+	public Plogging checkQr1(@Param("userIdx") int userIdx, @Param("courseName") String courseName);
+	
+	@Query("""
+		    select p
+			from Plogging p
+			WHERE p.user.userIdx = :userIdx AND p.courseName = :courseName AND qr1=1 AND qr2 =1
+		    """
+			)
+	public Plogging checkQr2(@Param("userIdx") int userIdx, @Param("courseName") String courseName);
 
 }
