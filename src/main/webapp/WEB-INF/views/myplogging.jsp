@@ -17,56 +17,103 @@
 <div class="myplogging-container">
     <div class="cuPlogging-container">
         <div class="current-plogging">
-            <span class="current-text">현재 진행 중인 플로깅</span>
+            <span class="current-text">${user.userNick}님이 현재 진행 중인 플로깅</span>
         </div>
         <div class="current-line"></div>
-        <c:choose>
-            <c:when test="${currentPlogging != null && (currentPlogging.qr1 != 1 || currentPlogging.qr2 != 1 || currentPlogging.qr3 != 1)}">
-                <div class="current-course">
-                    <div class="inProgress-Name">
-                        <span>${currentPlogging.courseName} | <fmt:formatDate value="${currentPlogging.startedAt}" pattern="yyyy.MM.dd" /></span>
-                    </div>
-                    <div class="inProgress-img">
-                        <div class="inProgress-courseQR1">
-                            <img src="img/플로깅_${currentPlogging.qr1 == 1 ? '완료' : '미완료'}.png" alt="">
-                            <span>QR1</span>
-                        </div>
-                        <div class="inProgress-courseQR2">
-                            <img src="img/플로깅_${currentPlogging.qr2 == 1 ? '완료' : '미완료'}.png" alt="">
-                            <span>QR2</span>
-                        </div>
-                        <div class="inProgress-courseQR3">
-                            <img src="img/플로깅_${currentPlogging.qr3 == 1 ? '완료' : '미완료'}.png" alt="">
-                            <span>QR3</span>
-                        </div>
-                    </div>
+<c:choose>
+    <c:when test="${currentPlogging != null && (currentPlogging.qr1 != 1 || currentPlogging.qr2 != 1 || currentPlogging.qr3 != 1)}">
+        <div class="current-course">
+            <div class="inProgress-Name">
+                <span>${currentPlogging.courseName} | <fmt:formatDate value="${currentPlogging.startedAt}" pattern="yyyy.MM.dd HH:mm:ss" /></span>
+				<span class="cancel-container" id="cancelButton" onclick="cancelPlogging()">취소하기</span>
+
+            </div>
+            <div class="inProgress-img">
+                <div class="inProgress-courseQR1">
+                    <span class="QRS">QR1</span>
+                    <img src="img/플로깅_${currentPlogging.qr1 == 1 ? '완료' : '미완료'}.png" alt="">
+                    <span class="mycorseName">${currentPlogging.qr1Name}</span>
+                    <c:choose>
+                        <c:when test="${currentPlogging.qr1Time != null}">
+                            <span class="mycorseQrTime"><fmt:formatDate value="${currentPlogging.qr1Time}" pattern="yyyy.MM.dd HH:mm:ss" /></span>
+                        </c:when>
+                        <c:otherwise>
+                            <span class="mycorseQrTime">QR을 찍어주세요!</span>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
-            </c:when>
-            <c:otherwise>
-                <div class="no-current-plogging">
-                    현재 참여 중인 플로깅이 존재하지 않습니다.
+                <div class="inProgress-courseQR2">
+                    <span class="QRS">QR2</span>
+                    <img src="img/플로깅_${currentPlogging.qr2 == 1 ? '완료' : '미완료'}.png" alt="">
+                    <span class="mycorseName">${currentPlogging.qr2Name}</span>
+                    <c:choose>
+                        <c:when test="${currentPlogging.qr2Time != null}">
+                            <span class="mycorseQrTime"><fmt:formatDate value="${currentPlogging.qr2Time}" pattern="yyyy.MM.dd HH:mm:ss" /></span>
+                        </c:when>
+                        <c:otherwise>
+                            <span class="mycorseQrTime">QR을 찍어주세요!</span>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
-            </c:otherwise>
-        </c:choose>
+                <div class="inProgress-courseQR3">
+                    <span class="QRS">QR3</span>
+                    <img src="img/플로깅_${currentPlogging.qr3 == 1 ? '완료' : '미완료'}.png" alt="">
+                    <span class="mycorseName">${currentPlogging.qr3Name}</span>
+                    <c:choose>
+                        <c:when test="${currentPlogging.qr3Time != null}">
+                            <span class="mycorseQrTime"><fmt:formatDate value="${currentPlogging.qr3Time}" pattern="yyyy.MM.dd HH:mm:ss" /></span>
+                        </c:when>
+                        <c:otherwise>
+                            <span class="mycorseQrTime">QR을 찍어주세요!</span>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+            </div>
+        </div>
+    </c:when>
+    <c:otherwise>
+        <div class="no-current-plogging">
+            현재 참여 중인 플로깅이 존재하지 않습니다.
+        </div>
+    </c:otherwise>
+</c:choose>
+
     </div>
 
     <div class="coPlogging-container">
         <div class="completed-plogging">
-            <span class="completed-text">완료된 플로깅</span>
+            <span class="completed-text">${user.userNick}님이 완료한 플로깅</span>
         </div>
         <div class="completed-line"></div>
         <c:choose>
-            <c:when test="${not empty completedPlogging}">
-                <c:forEach var="plogging" items="${completedPlogging}">
-                    <div class="completed-item">
-                        <span class="completed-date">
-                            <fmt:formatDate value="${plogging.qr3Time}" pattern="yyyy.MM.dd" />
-                        </span>
-                        <span class="completed-course">${plogging.courseName}</span>
-                        <button class="completed-btn">첨부하기</button>
-                    </div>
-                </c:forEach>
-            </c:when>
+<c:when test="${not empty completedPlogging}">
+<div class="plogging-table-container">
+    <table class="plogging-table">
+        <thead>
+            <tr>
+                <th>날짜</th>
+                <th>코스명</th>
+                <th>QR1</th>
+                <th>QR2</th>
+                <th>QR3</th>
+                <th>총 포인트 적립</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="plogging" items="${completedPlogging}">
+                <tr>
+                    <td><fmt:formatDate value="${plogging.qr3Time}" pattern="yyyy.MM.dd" /></td>
+                    <td style="font-weight: bold; color: #000;">${plogging.courseName}</td>
+                    <td><fmt:formatDate value="${plogging.qr1Time}" pattern="yyyy.MM.dd HH:mm:ss" /></td>
+                    <td><fmt:formatDate value="${plogging.qr2Time}" pattern="yyyy.MM.dd HH:mm:ss" /></td>
+                    <td><fmt:formatDate value="${plogging.qr3Time}" pattern="yyyy.MM.dd HH:mm:ss" /></td>
+                    <td style="font-weight: bold; color: #01875f;">777p</td> <!-- points 컬럼이 총 포인트를 의미한다고 가정 -->
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+    </div>
+</c:when>
             <c:otherwise>
                 <div class="no-completed-plogging">
                     완료된 플로깅이 존재하지 않습니다.

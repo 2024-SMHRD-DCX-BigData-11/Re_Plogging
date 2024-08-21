@@ -27,7 +27,7 @@ body, html {
 }
 
 .cuPlogging-container {
-	width: 600px;
+	width: 1200px;
 }
 
 /* 섹션 제목 스타일 */
@@ -44,11 +44,16 @@ body, html {
 }
 
 /* 라인 스타일 */
-.current-line, .completed-line {
+.current-line {
 	border-bottom: 2px solid #a1acbd;
 	width: 100%;
 	margin: 0 auto;
 	margin-bottom: 20px;
+}
+
+.completed-line {
+	border-bottom: 2px solid #a1acbd;
+	width: 100%;
 }
 
 /* 현재 진행 중인 플로깅 정보 */
@@ -61,6 +66,23 @@ body, html {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 20px;
+}
+
+.cancel-container {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #a1acbd;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cancel-container:hover {
+    background-color: #8b99b1;
+    
 }
 
 /* QR 코드 섹션 */
@@ -78,15 +100,30 @@ body, html {
 .inProgress-courseQR1 img, .inProgress-courseQR2 img, .inProgress-courseQR3 img {
     width: 50px;
     height: 50px;
+    margin: 10px 0;
 }
 
 .inProgress-img .inProgress-courseQR1 span,
 .inProgress-img .inProgress-courseQR2 span,
 .inProgress-img .inProgress-courseQR3 span {
     display: block;
-    font-size: 14px;
-    margin-top: 5px;
     text-align: center;
+}
+
+.QRS {
+    font-size: 16px;
+    font-weight: bold;
+    color: #777;
+}
+
+.mycorseName {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+ .mycorseQrTime {
+	font-size: 14px;
+	color: #777;
 }
 
 .no-current-plogging, .no-completed-plogging {
@@ -97,7 +134,7 @@ body, html {
 }
 
 .coPlogging-container {
-	width: 600px;
+	width: 1200px;
     margin-top: 75px;
 }
 
@@ -111,17 +148,31 @@ body, html {
     box-sizing: border-box;
 }
 
-.completed-item .completed-date {
-    font-size: 16px;
-    flex-basis: 20%;
-    text-align: left; /* 왼쪽 정렬 */
+.plogging-table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.completed-item .completed-course {
-	font-size: 16px;
-    color: #08917c;
-    flex-basis: 40%;
+.plogging-table th, .plogging-table td {
+    border: none;
     text-align: center;
+    padding: 10px;
+}
+
+.plogging-table th {
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 2px solid #a1acbd;
+}
+
+.plogging-table td {
+    font-size: 14px;
+    color: #777;
+    border-bottom: 1px solid #ddd;
+}
+
+.plogging-table tr:last-child td {
+    border-bottom: none; /* 마지막 행의 각 td 아래에 선 제거 */
 }
 
 .completed-btn {
@@ -170,7 +221,15 @@ footer {
 	}
 	
 	.inProgress-Name {
-    	font-size: 14px;
+    	font-size: 13px;
+	}
+	
+	.QRS {
+	    font-size: 15px;
+	}
+	
+	.mycorseName, .mycorseQrTime {
+		font-size: 13px;
 	}
 	
 	.no-current-plogging, .no-completed-plogging {
@@ -182,12 +241,25 @@ footer {
 		width: 90%;
 	}
 	
-	.completed-item .completed-date, .completed-item .completed-course {
+	.completed-btn {
 	    font-size: 14px;
 	}
 	
-	.completed-btn {
-	    font-size: 14px;
+	 .plogging-table-container {
+        overflow-x: auto; /* 가로 스크롤 활성화 */
+        -webkit-overflow-scrolling: touch; /* 스크롤이 부드럽게 작동하도록 */
+    }
+
+    .plogging-table {
+        min-width: 600px; /* 테이블의 최소 너비 설정 (필요에 따라 조정 가능) */
+    }
+    
+    .plogging-table th {
+	    font-size: 15px;
+	}
+	
+	.plogging-table td {
+	    font-size: 13px;
 	}
 
 	footer {
