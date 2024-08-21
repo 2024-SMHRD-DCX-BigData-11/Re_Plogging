@@ -1,0 +1,38 @@
+@charset "EUC-KR";
+@font-face {
+   font-family: 'S-CoreDream-3Light';
+   src:
+      url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+      format('woff');
+   font-weight: 300;
+   font-style: normal;
+}
+
+body, html {
+   font-family: 'S-CoreDream-3Light';
+   margin: 0;
+   padding: 0;
+   overflow-x: hidden;
+}
+
+.container {
+   width: 100%;
+   max-width: 1100px;
+   margin: 125px auto;
+   position: relative;
+   padding: 0 20px;
+   box-sizing: border-box;
+}
+
+.market_Read_btn_back {
+	color: grey;
+	background-color: transparent;
+	border-radius: 5px;
+	text-decoration: none;
+}
+
+.market_Read_wrapper {
+	display: grid;
+	 grid-template-columns: repeat(2, 1fr);
+	 gap: 20px;
+}

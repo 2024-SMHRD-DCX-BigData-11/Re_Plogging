@@ -38,6 +38,9 @@ public class Mileage {
 	@Column(name = "ml_type", length = 50, nullable = false)
 	private String mlType;
 	
+	@Column(name = "ml_log", length = 50, nullable = false)
+	private String mlLog;
+	
 	@Column(name = "ml_amount", columnDefinition = "int", nullable = false)
 	private int mlAmount;
 	

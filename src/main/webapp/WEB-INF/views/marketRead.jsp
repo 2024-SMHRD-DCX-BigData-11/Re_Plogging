@@ -9,21 +9,21 @@
     <title>RE: PLOGGING</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/market.css">
+    <link rel="stylesheet" href="assets/css/marketRead.css">
 </head>
 <body>
     <div class="container">
-        <div class="market_Read_wrap">
             <a href="marketBack" class="market_Read_btn_back">뒤로가기</a>
+        <div class="market_Read_wrapper">
             <div class="marketRead_img_view">
                 <div class="marketRead_img_load">
                     <img src="${market.img1}" alt="${market.title}" class="marketRead_img__image">
                 </div>
             </div>
             <div class="marketRead_info">
-                <h3>카테고리</h3>
+                <span>카테고리 |</span>
                 <span>${market.category}</span><br>
-                <h3>상품명</h3>
+                <span>상품명</span>
                 <span>${market.title}</span><br>
                 <h3>판매자</h3>
                 <span>${market.user.userNick}</span><br>
