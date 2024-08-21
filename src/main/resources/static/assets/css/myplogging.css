@@ -78,12 +78,24 @@ body, html {
     font-size: 14px;
     margin-left: 10px;
     transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+    border: none; /* 폼에는 기본적으로 테두리가 없지만, 안전을 위해 추가 */
 }
 
 .cancel-container:hover {
     background-color: #8b99b1;
-    
 }
+
+.cancel-container button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
 
 /* QR 코드 섹션 */
 .inProgress-img {

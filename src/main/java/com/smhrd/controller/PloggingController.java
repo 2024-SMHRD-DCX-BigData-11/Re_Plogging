@@ -1,12 +1,17 @@
 package com.smhrd.controller;
 
 import java.util.Optional;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.smhrd.entity.Member;
 import com.smhrd.entity.Plogging;
@@ -178,7 +183,27 @@ public class PloggingController {
 		}
 	}
 
-	
+	/* 플로깅 취소 */
+	@PostMapping("/ploggingCancel")
+    public String cancelPlogging(@RequestParam("ploggingIdx") int ploggingIdx, HttpSession session) {
+        Member currentUser = (Member) session.getAttribute("user");
+
+        if (currentUser == null) {
+            return "redirect:/login"; // 로그인되지 않은 경우 로그인 페이지로 리디렉션
+        }
+
+        Plogging plogging = prepo.findById(ploggingIdx)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid plogging Id:" + ploggingIdx));
+
+        // 현재 사용자가 해당 플로깅의 시작자인지 확인
+        if (plogging.getUser().getUserIdx() != currentUser.getUserIdx()) {
+            return "redirect:/main"; // 작성자가 아니면 플로깅 목록으로 리디렉션
+        }
+
+        prepo.delete(plogging); // 플로깅 취소(삭제)
+
+        return "redirect:/myplogging"; // 삭제 후 플로깅 목록으로 리디렉션
+    }
 
 	/* 로그아웃 */
 	public String logout(HttpSession session) {

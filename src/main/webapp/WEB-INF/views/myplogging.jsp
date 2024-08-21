@@ -25,7 +25,12 @@
         <div class="current-course">
             <div class="inProgress-Name">
                 <span>${currentPlogging.courseName} | <fmt:formatDate value="${currentPlogging.startedAt}" pattern="yyyy.MM.dd HH:mm:ss" /></span>
-				<span class="cancel-container" id="cancelButton" onclick="cancelPlogging()">취소하기</span>
+			<form action="ploggingCancel" method="post" class="cancel-container" onsubmit="return confirm('정말로 플로깅을 취소하시겠습니까?')">
+			    <input type="hidden" name="userIdx" value="${currentPlogging.user.userIdx}">
+			    <input type="hidden" name="ploggingIdx" value="${currentPlogging.idx}">
+			    <button type="submit">취소하기</button>
+			</form>
+
 
             </div>
             <div class="inProgress-img">
