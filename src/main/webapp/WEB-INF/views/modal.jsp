@@ -114,6 +114,17 @@
 			<div class="modal-close" onclick="closeJoinModal()">닫기</div>
 		</div>
 	</div>
+	
+	
+	<!-- 지도 이미지 모달 -->
+	<div id="courseModal" class="courseModal">
+    <div class="courseModal-content">
+        <span class="close" onclick="closeCourseModal()">&times;</span>
+    	<div class="courseModal-inner-content">
+        <img id="courseImage" src="" alt="코스 이미지" style="width: 100%; height: auto;">
+        </div>
+    </div>
+</div>
 	<!-- <script  src="http://code.jquery.com/jquery-latest.min.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="assets/js/modal.js"></script>

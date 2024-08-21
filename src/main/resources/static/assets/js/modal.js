@@ -270,3 +270,36 @@ window.onload = function() {
         }
     });
 };*/
+
+
+// 지도 이미지 모달
+function showCourseImage(courseName) {
+    var modal = document.getElementById("courseModal");
+    var courseImage = document.getElementById("courseImage");
+
+    // 코스 이름에 따라 이미지를 설정
+    if (courseName === 'A코스(순천대학교)') {
+        courseImage.src = 'img/A코스.png';
+    } else if (courseName === 'B코스(순천 조례호수공원)') {
+        courseImage.src = 'img/B코스.png';
+    } else if (courseName === 'C코스(순천 오천그린광장)') {
+        courseImage.src = 'img/C코스.png';
+    } else if (courseName === 'MY플로깅코스') {
+        courseImage.src = 'img/myplogging.png';
+    }
+
+    modal.style.display = "block"; // 모달을 보여줌
+}
+
+function closeCourseModal() {
+    var modal = document.getElementById("courseModal");
+    modal.style.display = "none"; // 모달을 숨김
+}
+
+// 모달 외부 클릭 시 모달 닫기
+window.onclick = function(event) {
+    var modal = document.getElementById("courseModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
