@@ -36,7 +36,7 @@
 					<td></td>
 					<td>${myCommunity.idx}</td>
 					<td>${myCommunity.category}</td>
-					<td><a href="${ctx }/Mycview?idx=${myCommunity.idx}">${myCommunity.title}</a></td>
+					<td><a href="${ctx }/communityRead?idx=${myCommunity.idx}">${myCommunity.title}</a></td>
 					<td>${myCommunity.writer.userNick}</td>
 					<td>${myCommunity.count}</td>
 					<td>${myCommunity.likes}</td>

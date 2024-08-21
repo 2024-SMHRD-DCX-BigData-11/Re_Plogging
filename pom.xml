@@ -147,21 +147,36 @@
       
    </dependencies>
 
-   <build>
-      <plugins>
-         <plugin>
+<build>
+    <plugins>
+        <!-- Spring Boot Maven Plugin -->
+        <plugin>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
             <configuration>
-               <excludes>
-                  <exclude>
-                     <groupId>org.projectlombok</groupId>
-                     <artifactId>lombok</artifactId>
-                  </exclude>
-               </excludes>
+                <excludes>
+                    <exclude>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok</artifactId>
+                    </exclude>
+                </excludes>
             </configuration>
-         </plugin>
-      </plugins>
-   </build>
+        </plugin>
+
+        <!-- Maven Compiler Plugin -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version> <!-- 원하는 버전으로 조정 가능 -->
+            <configuration>
+                <source>1.8</source> <!-- Java 버전 (예: 1.8 또는 11) -->
+                <target>1.8</target>
+                <compilerArgs>
+                    <arg>-parameters</arg>
+                </compilerArgs>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 
 </project>

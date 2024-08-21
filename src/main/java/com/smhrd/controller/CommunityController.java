@@ -301,23 +301,6 @@ public class CommunityController {
     	 
 	}
     
-    @RequestMapping("/Mycview")
-	public String cview( int idx, Model model ) {
-		
-    	// 1. 데이터 수집
-		// 2. 기능실행
-    	
-		Optional<Community> myCommunity = communityRepository.findById(idx);
-		
-		if( myCommunity.isPresent() ) {
-			model.addAttribute("myCommunity", myCommunity.get());
-			// 3. View 선택
-			return "/communityRead";
-		}else {
-			return "redirect:/myCommunityList";
-		}
-		
-	}
     
     // 내 게시글 삭제
  	@RequestMapping("/Mycdelete")
