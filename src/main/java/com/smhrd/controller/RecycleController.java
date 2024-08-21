@@ -22,65 +22,74 @@ import com.smhrd.repository.RecycleRepository;
 @Controller
 public class RecycleController {
 
-	@Autowired
-	private RecycleRepository repo;
+    @Autowired
+    private RecycleRepository repo;
 
-	@GetMapping("/recycle")
-	public String goRecycle(Model model, @RequestParam(defaultValue = "1") int page) {
-		int pageSize = 1; // 한 번에 한 개씩만 보여주기
-		Pageable pageable = PageRequest.of(page - 1, pageSize);
-		Page<Recycle> recyclePage = repo.findAll(pageable);
+    @GetMapping("/recycle")
+    public String goRecycle(Model model, 
+                            @RequestParam(defaultValue = "1") int page,
+                            @RequestParam(name = "main-category", required = false) String mainCategory) {
+        
+        int pageSize = 1; // 한 번에 한 개씩만 보여주기
+        Pageable pageable = PageRequest.of(page - 1, pageSize);
+        Page<Recycle> recyclePage;
 
-		// 현재 페이지의 항목을 가져옴
-		Recycle recycle = recyclePage.getContent().isEmpty() ? null : recyclePage.getContent().get(0);
+        if (mainCategory == null || mainCategory.isEmpty()) {
+            // 전체보기일 때
+            recyclePage = repo.findAll(pageable);
+        } else {
+            // 특정 카테고리일 때
+            recyclePage = repo.findRecycleByTarget(mainCategory, pageable);
+        }
 
-		if (recycle != null && recycle.getRecycleVideo() != null) {
-			String base64Image = Base64.getEncoder().encodeToString(recycle.getRecycleVideo());
-			model.addAttribute("recycleImage", base64Image);
-		}
+        Recycle recycle = recyclePage.getContent().isEmpty() ? null : recyclePage.getContent().get(0);
 
-		model.addAttribute("recycle", recycle);
-		model.addAttribute("currentPage", page);
-		model.addAttribute("totalPages", recyclePage.getTotalPages());
+        if (recycle != null && recycle.getRecycleVideo() != null) {
+            String base64Image = Base64.getEncoder().encodeToString(recycle.getRecycleVideo());
+            model.addAttribute("recycleImage", base64Image);
+        }
 
-		return "recycle";
-	}
+        model.addAttribute("recycle", recycle);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", recyclePage.getTotalPages());
+        model.addAttribute("selectedCategory", mainCategory);
 
-	@GetMapping("/recycle/data")
-	@ResponseBody
-	public List<Map<String, Object>> getRecycleData(
-			@RequestParam(name = "main-category", defaultValue = "") String mainCategory) {
+        return "recycle";
+    }
 
-		System.out.println("mainCategory : " + mainCategory);
+    @GetMapping("/recycle/data")
+    @ResponseBody
+    public List<Map<String, Object>> getRecycleData(
+            @RequestParam(name = "main-category", defaultValue = "") String mainCategory) {
 
-		List<Recycle> recycle;
+        List<Recycle> recycle;
 
-		if (mainCategory.length() > 0) {
-			recycle = repo.findRecycleByTarget(mainCategory);
-		} else {
-			recycle = repo.findAll();
-		}
-		List<Map<String, Object>> response = new ArrayList<>();
+        if (mainCategory.isEmpty()) {
+            recycle = repo.findAll();  // 전체 데이터를 가져옴
+        } else {
+            Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE); // 모든 결과를 가져오도록 설정
+            Page<Recycle> recyclePage = repo.findRecycleByTarget(mainCategory, pageable);
+            recycle = recyclePage.getContent();
+        }
 
-		if (recycle != null) {
-			for (Recycle r : recycle) {
-				Map<String, Object> obj = new HashMap<>();
-				if (r.getRecycleVideo() != null) {
-					String base64Image = Base64.getEncoder().encodeToString(r.getRecycleVideo());
-					obj.put("recycleImage", base64Image);
-				} else {
-					obj.put("recycleImage", null);
-				}
-				obj.put("recycleTarget", r.getRecycleTarget());
-				obj.put("recycleStatus", r.getRecycleStatus());
-				obj.put("recycleCategory", r.getRecycleCategory());
-				obj.put("recycleMethod", r.getRecycleMethod());
+        List<Map<String, Object>> response = new ArrayList<>();
 
-				response.add(obj);
-			}
-		}
+        for (Recycle r : recycle) {
+            Map<String, Object> obj = new HashMap<>();
+            if (r.getRecycleVideo() != null) {
+                String base64Image = Base64.getEncoder().encodeToString(r.getRecycleVideo());
+                obj.put("recycleImage", base64Image);
+            } else {
+                obj.put("recycleImage", null);
+            }
+            obj.put("recycleTarget", r.getRecycleTarget());
+            obj.put("recycleStatus", r.getRecycleStatus());
+            obj.put("recycleCategory", r.getRecycleCategory());
+            obj.put("recycleMethod", r.getRecycleMethod());
 
-		return response;
-	}
+            response.add(obj);
+        }
 
+        return response;
+    }
 }
