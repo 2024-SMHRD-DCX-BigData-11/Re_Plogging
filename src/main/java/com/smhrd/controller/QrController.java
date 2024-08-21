@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.smhrd.entity.Member;
+import com.smhrd.entity.Mileage;
 import com.smhrd.entity.Plogging;
+import com.smhrd.repository.MileageRepository;
 import com.smhrd.repository.PloggingRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,6 +21,9 @@ public class QrController {
 	
 	@Autowired
 	private PloggingRepository prepo;
+	
+	@Autowired
+	private MileageRepository mrepo;
 	
 	// qr인증 성공 페이지
 	@RequestMapping("/qrSuccess")
@@ -110,7 +115,13 @@ public class QrController {
 			Plogging plogging = prepo.checkQr2(userIdx, courseName);
 			
 			if(plogging != null) {
-				prepo.UpdateQr3(member.getUserIdx(), courseName);
+				prepo.UpdateQr3(userIdx, courseName);
+				Mileage mileage = new Mileage();
+				mileage.setUser(member);
+				mileage.setMlAmount(777);
+				mileage.setMlType("플로깅완주");
+				mileage.setMlLog("적립");
+				mrepo.save(mileage);
 				return "redirect:/myplogging"; // 리다이렉트 사용
 			}else {
 				

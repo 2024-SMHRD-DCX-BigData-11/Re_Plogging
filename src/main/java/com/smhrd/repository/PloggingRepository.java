@@ -56,7 +56,7 @@ public interface PloggingRepository extends JpaRepository<Plogging, Integer> {
 	@Query("""
 		    select p
 			from Plogging p
-			WHERE p.user.userIdx = :userIdx AND p.courseName = :courseName AND qr1=1
+			WHERE p.user.userIdx = :userIdx AND p.courseName = :courseName AND qr1=1 AND qr2=0 AND qr3=0
 		    """
 			)
 	public Plogging checkQr1(@Param("userIdx") int userIdx, @Param("courseName") String courseName);
@@ -64,7 +64,7 @@ public interface PloggingRepository extends JpaRepository<Plogging, Integer> {
 	@Query("""
 		    select p
 			from Plogging p
-			WHERE p.user.userIdx = :userIdx AND p.courseName = :courseName AND qr1=1 AND qr2 =1
+			WHERE p.user.userIdx = :userIdx AND p.courseName = :courseName AND qr1=1 AND qr2=1 AND qr3=0
 		    """
 			)
 	public Plogging checkQr2(@Param("userIdx") int userIdx, @Param("courseName") String courseName);
