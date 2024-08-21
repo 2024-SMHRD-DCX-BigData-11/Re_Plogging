@@ -1,5 +1,6 @@
 package com.smhrd.restController;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,7 +16,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.smhrd.entity.CommonDomain;
 import com.smhrd.entity.Member;
+import com.smhrd.entity.Mileage;
 import com.smhrd.repository.MemberRepository;
+import com.smhrd.repository.MileageRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -26,6 +29,9 @@ public class MemberRestController {
 	
 	@Autowired
 	private MemberRepository repo;
+	
+	@Autowired
+	private MileageRepository mileageRepo;
 	
 	@RequestMapping("/check")
 	public String check( int userIdx ) {
@@ -81,13 +87,21 @@ public class MemberRestController {
 				member = repo.findByUserNick(nick);
 				if(member == null) {
 					member = new Member();
+					Mileage mileage = new Mileage();
 					member.setUserId(id);
 					String joinEncryptedPw = DigestUtils.sha512Hex(pass);
 					member.setUserPw(joinEncryptedPw);
 					member.setUserPhone(phone);
 					member.setUserNick(nick);
+					member.setMileageAmount(500);
+					mileage.setMlAmount(500);
+					mileage.setUser(member);
+					mileage.setMlType("회원가입");
+					
 					//insert 
 					repo.save(member);
+					mileageRepo.save(mileage);
+					
 					resultCode = member.getUserIdx() != 0 ? 200 : -100;
 				} else {
 					resultCode = -300;
@@ -100,6 +114,8 @@ public class MemberRestController {
 			resultCode = -500;
 		}
 		response.setCode( resultCode );
+		
+		
 		return response;
 	}
 	

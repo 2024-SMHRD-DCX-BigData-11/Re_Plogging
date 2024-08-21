@@ -45,7 +45,7 @@ public class Market {
 	@Column(name = "created_at", insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date createdAt; // 게시 날짜 (created_at)
 	
-	@Column(name = "closed_at", nullable = false)
+	@Column(name = "closed_at", nullable = true)
 	private Date closedAt; // 완료 날짜 (closed_at)
 	
 	@Column(name = "mk_status", nullable = true, length = 20)

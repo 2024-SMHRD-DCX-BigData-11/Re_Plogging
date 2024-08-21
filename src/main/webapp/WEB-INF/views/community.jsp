@@ -36,9 +36,8 @@
         <table class="community-table">
             <thead>
                 <tr>
-                    <th>번호</th>
-                    <th>제목</th>
                     <th>카테고리</th>
+                    <th>제목</th>
                     <th>작성자</th>
                     <th>작성날짜</th>
                     <th>조회수</th>
@@ -50,18 +49,18 @@
                     <c:when test="${fn:length(list) != 0}">
                         <c:forEach var="community" items="${list}">
                             <tr>
-                                <td>${community.idx}</td>
+                                
+                                <td style="color:#08917c;">${community.category}</td>
                                 <td>
-                                   <a href="${pageContext.request.contextPath}/communityRead?idx=${community.idx}">${community.title}</a>
+                                   <a href="${pageContext.request.contextPath}/communityRead?idx=${community.idx}" style="color:black; text-decoration: none;">${community.title}</a>
                                    <c:if test="${community.comments.size() > 0}">
                                       [${community.comments.size()}]
                                    </c:if>
                                 </td>
-                                <td>${community.category}</td>
-                                <td>${community.writer.userNick}</td>
-                                <td><fmt:formatDate value="${community.indate}" pattern="yyyy-MM-dd"/></td>
-                                <td>${community.count}</td>
-                                <td>${community.likes}</td>
+                                <td style="color:#747474;">${community.writer.userNick}</td>
+                                <td style="color:#747474;"><fmt:formatDate value="${community.indate}" pattern="yyyy-MM-dd" /></td>
+                                <td style="color:#747474;">${community.count}</td>
+                                <td style="color:#747474;">${community.likes}</td>
                             </tr>
                         </c:forEach>
                     </c:when>

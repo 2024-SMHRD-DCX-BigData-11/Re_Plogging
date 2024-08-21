@@ -137,8 +137,6 @@ public class MarketController {
         newPost.setImg2(fileName2);
         newPost.setImg3(fileName3);
         newPost.setUser(writer);
-        newPost.setCreatedAt(new Date());
-        newPost.setClosedAt(new Date());
         newPost.setStatus("판매중");
 
         marketRepo.save(newPost);
@@ -215,21 +213,18 @@ public class MarketController {
         mileagePu.setMlType("마켓판매");
         mileagePu.setMlAmount(mileageAmount);
         mileagePu.setUser(postUser);
-        mileagePu.setCreatedAt(new Date());
         mileageRepo.save(mileagePu);
 
         Mileage mileageCu = new Mileage();
         mileageCu.setMlType("마켓구매");
         mileageCu.setMlAmount(mileageAmount);
         mileageCu.setUser(currentUser);
-        mileageCu.setCreatedAt(new Date());
         mileageRepo.save(mileageCu);
 
         // 구매 내역 생성 및 저장
         Purchase purchase = new Purchase();
         purchase.setMkIdx(market);
         purchase.setUserIdx(currentUser);
-        purchase.setCreatedAt(new Date());
         purchaseRepo.save(purchase);
 
         return "redirect:/market";
