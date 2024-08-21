@@ -35,4 +35,85 @@ body, html {
 	display: grid;
 	 grid-template-columns: repeat(2, 1fr);
 	 gap: 20px;
+	 padding: 50px 20px;
+}
+
+.purchase_btn {
+	display: inline-block;
+   background-color: #00a989;
+   color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    width: 75%;
+    font-family: 'S-CoreDream-3Light';
+    font-size: 15pt;
+    font-weight:bold;
+    text-decoration: none;
+}
+
+.Delete_btn {
+	display: inline-block;
+   background-color: #00a989;
+   color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    width: 75%;
+    font-family: 'S-CoreDream-3Light';
+    font-size: 15pt;
+    font-weight:bold;
+    text-decoration: none;
+}
+
+.marketRead_content {
+	text-align: center;
+}
+
+#marketRead_info_category {
+	font-size: 15pt;
+	color: grey;
+}
+
+#marketRead_info_category_content {
+	font-size: 15pt;
+	color: #00a989;
+	font-weight:bold;
+}
+
+#marketRead_info_title {
+	font-size: 25pt;
+	color: black;
+	font-weight:bold;
+	display: inline-block;
+    margin-bottom: 10px;
+}
+
+#marketRead_info_mileage {
+	font-size: 20pt;
+	color: black;
+	font-weight:bold;
+	display: inline-block;
+    margin-bottom: 20px;
+}
+
+#marketRead_info_span {
+	font-size: 10pt;
+	color: grey;
+	display: inline-block;
+    margin-bottom: 35px;
+	
+}
+
+#marketRead_info_content {
+	font-size: 10pt;
+	color: black;
+	font-weight:bold;
+	margin-bottom: 35px;
+}
+
+.marketRead_content {
+	padding:30px 20px;
 }
