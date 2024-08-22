@@ -1,5 +1,7 @@
 package com.smhrd.repository;
 
-public interface ImageRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.smhrd.entity.UploadImg;
 
+public interface ImageRepository extends JpaRepository<UploadImg, Long> {
 }
