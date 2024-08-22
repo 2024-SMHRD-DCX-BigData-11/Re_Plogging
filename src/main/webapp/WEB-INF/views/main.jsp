@@ -105,7 +105,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="aiHelper-container" onclick="aiHerlper()">
+	<div class="aiHelper-container" onclick="">
 	    <div class="aiHelperImg">
 	        <img src="img/AI.png" alt="AI Image">
 	    </div>
