@@ -16,7 +16,7 @@ import com.smhrd.repository.MemberRepository;
 
 import jakarta.servlet.http.HttpSession;
 
-@Controller
+//@Controller
 public class MyPageController {
 	
 	@Autowired
