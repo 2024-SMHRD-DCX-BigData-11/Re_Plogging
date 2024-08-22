@@ -1,9 +1,10 @@
 package com.smhrd.controller;
 
-import java.io.File;
+import net.coobird.thumbnailator.Thumbnails;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Date;
-import java.util.List;
+import javax.imageio.ImageIO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,10 +16,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.smhrd.entity.Community;
 import com.smhrd.entity.Market;
 import com.smhrd.entity.Member;
 import com.smhrd.entity.Mileage;
@@ -41,7 +42,7 @@ public class MarketController {
 
     @Autowired
     private PurchaseRepository purchaseRepo;
-    
+
     @Autowired
     private MileageRepository mileageRepo;
 
@@ -126,46 +127,42 @@ public class MarketController {
         Member writer = memberRepo.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + userId));
 
-        String fileName1 = saveFile(img1);
-        String fileName2 = saveFile(img2);
-        String fileName3 = saveFile(img3);
-
         Market newPost = new Market();
         newPost.setCategory(category);
         newPost.setTitle(title);
         newPost.setMileage(mileage);
         newPost.setContent(content);
-        newPost.setImg1(fileName1);
-        newPost.setImg2(fileName2);
-        newPost.setImg3(fileName3);
+
+        try {
+            newPost.setImg1(resizeImage(img1));
+            if (img2 != null && !img2.isEmpty()) {
+                newPost.setImg2(resizeImage(img2));
+            }
+            if (img3 != null && !img3.isEmpty()) {
+                newPost.setImg3(resizeImage(img3));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ModelAndView("redirect:/marketWrite?uploadError=true");
+        }
+
         newPost.setUser(writer);
         newPost.setStatus("판매중");
 
         marketRepo.save(newPost);
 
-        ModelAndView mav = new ModelAndView("redirect:/market");
-        return mav;
+        return new ModelAndView("redirect:/market");
     }
 
-    private String saveFile(MultipartFile file) {
-        if (file != null && !file.isEmpty()) {
-            String fileName = file.getOriginalFilename();
-            String uploadDir = "C:/uploads/";
-            File dir = new File(uploadDir);
+    private byte[] resizeImage(MultipartFile file) throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-            if (!dir.exists()) {
-                dir.mkdirs();
-            }
+        Thumbnails.of(file.getInputStream())
+                .size(800, 800)
+                .outputFormat("jpg")
+                .toOutputStream(baos);
 
-            try {
-                String filePath = uploadDir + fileName;
-                file.transferTo(new File(filePath));
-                return fileName;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return null;
+        return baos.toByteArray();
     }
 
     @GetMapping("/marketRead")
@@ -198,7 +195,6 @@ public class MarketController {
         }
 
         int mileageAmount = market.getMileage();
-
         Member postUser = market.getUser();
 
         market.setClosedAt(new Date());
@@ -212,7 +208,6 @@ public class MarketController {
         mileagePu.setUser(postUser);
         mileagePu.setMlLog("적립");
         mileageRepo.save(mileagePu);
-        
         
         Mileage mileageCu = new Mileage();
         mileageCu.setMlType("마켓구매");
@@ -229,7 +224,6 @@ public class MarketController {
 
         return "redirect:/market";
     }
-    
     
     @PostMapping("/market/delete")
     public String deleteMarket(@RequestParam("mkIdx") int mkIdx, HttpSession session) {
@@ -252,6 +246,24 @@ public class MarketController {
         return "redirect:/market"; // 삭제 후 마켓 목록으로 리디렉션
     }
 
+    @GetMapping("/marketImage1")
+    @ResponseBody
+    public byte[] getMarketImage1(@RequestParam("idx") int mkIdx) {
+        return marketRepo.findImg1ByMkIdx(mkIdx);
+    }
+
+    @GetMapping("/marketImage2")
+    @ResponseBody
+    public byte[] getMarketImage2(@RequestParam("idx") int mkIdx) {
+        return marketRepo.findImg2ByMkIdx(mkIdx);
+    }
+
+    @GetMapping("/marketImage3")
+    @ResponseBody
+    public byte[] getMarketImage3(@RequestParam("idx") int mkIdx) {
+        return marketRepo.findImg3ByMkIdx(mkIdx);
+    }
+
     private String categoryToName(String category) {
         switch (category) {
             case "560000":
@@ -268,10 +280,10 @@ public class MarketController {
                 return "비닐";
             case "560006":
                 return "스티로폼";
+            case "560007":
+                return "종이";
             default:
                 return "알 수 없음";
         }
     }
-    
 }
-

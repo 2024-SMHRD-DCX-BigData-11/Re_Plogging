@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="header.jsp"%>
 <%@ include file="modal.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,11 +13,11 @@
 </head>
 <body>
     <div class="container">
-            <a href="marketBack" class="market_Read_btn_back">뒤로가기</a>
+        <a href="marketBack" class="market_Read_btn_back">뒤로가기</a>
         <div class="market_Read_wrapper">
             <div class="marketRead_img_view">
                 <div class="marketRead_img_load">
-                    <img src="${market.img1}" alt="${market.title}" class="marketRead_img__image">
+                    <img src="<%=request.getContextPath()%>/marketImage1?idx=${market.mkIdx}" alt="${market.title}" class="marketRead_img__image">
                 </div>
             </div>
             <div class="marketRead_info">
@@ -46,9 +45,9 @@
                 </div>
             </div>
         </div>
-            <div class="marketRead_content">
-                <span>${market.content}</span>
-            </div>
+        <div class="marketRead_content">
+            <span>${market.content}</span>
+        </div>
     </div>
 </body>
 </html>

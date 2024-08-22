@@ -31,15 +31,15 @@ public class Market {
     private String content;
 
     @Lob
-    @Column(name = "mk_img1", nullable = false)
+    @Column(name = "mk_img1", nullable = false, columnDefinition = "MEDIUMBLOB")
     private byte[] img1;
 
     @Lob
-    @Column(name = "mk_img2", nullable = true)
+    @Column(name = "mk_img2", nullable = true, columnDefinition = "MEDIUMBLOB")
     private byte[] img2;
 
     @Lob
-    @Column(name = "mk_img3", nullable = true)
+    @Column(name = "mk_img3", nullable = true, columnDefinition = "MEDIUMBLOB")
     private byte[] img3;
 
     @Column(name = "created_at", insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
