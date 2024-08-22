@@ -48,5 +48,47 @@
 		</table>
 	</div>
 	
+	
+	<div id="MyMarketList">
+	<h1>마켓 글 목록</h1>
+		<table id="list">
+			<thead>
+				<tr>
+					<td>상품번호</td>
+					<td>카테고리</td>
+					<td>상품명</td>
+					<td>판매자</td>
+					<td>상품마일리지</td>
+					<td>이미지1</td>
+					<td>이미지2</td>
+					<td>이미지3</td>
+					<td>게시날짜</td>
+					<td>판매상태</td>
+					<td>완료날짜</td>
+				</tr>
+			</thead>
+			<tbody>
+				<%--마켓 판매글 목록 출력--%>
+				<c:forEach var="myMarket" items="${MyMlist}" >
+				<tr>
+					<td></td>
+					<td>${myMarket.mkIdx}</td>
+					<td>${myMarket.category}</td>
+					<td><a href="${ctx }/marketRead?idx=${myMarket.mkIdx}">${myMarket.title}</a></td>
+					<td>${myMarket.user.userNick}</td>
+					<td>${myMarket.mileage}</td>
+					<td>${myMarket.img1}</td>
+					<td>${myMarket.img2}</td>
+					<td>${myMarket.img3}</td>
+					<td>${myMarket.createdAt}</td>
+					<td>${myMarket.status}</td>
+					<td>${myMarket.closedAt}</td>
+					<td><a href="${ctx }/Mymdelete?idx=${myMarket.idx}">X</a></td>
+				</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	
 </body>
 </html>

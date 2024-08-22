@@ -3,6 +3,7 @@ package com.smhrd.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.smhrd.entity.Community;
 import com.smhrd.entity.Market;
 import com.smhrd.entity.Member;
 import com.smhrd.entity.Mileage;
@@ -272,4 +274,41 @@ public class MarketController {
                 return "알 수 없음";
         }
     }
-}
+    
+    // 내 마켓글 조회
+    @RequestMapping("/MyMarketList")
+   	public String MyMarketList(HttpSession session, Model model) {
+       	
+       	// 로그인 확인
+       	 Member member = (Member) session.getAttribute("user");
+       	 
+       	 if(member != null) {
+       		 
+   			// 1. 데이터 수집
+   			// 2. 기능 실행
+   			List<Market> list = marketRepo.findByMyMarket(member);// 작성일자 기준으로 내림차순
+   					
+   			model.addAttribute("MyMlist", list);
+   			
+   			return "myCommunity";
+   			
+   			
+       	 }else {
+       		// 3. View 선택 로그인 상태가 이니면 메인 페이지로 이동
+       			return "redirect:/main";
+       	 }
+       	 
+   	}
+       
+       
+       // 내 마켓글 삭제
+    	@RequestMapping("/Mymdelete")
+    	public String Mymdelete( int idx ) {
+    		// 1. 데이터 수집
+    		// 2. 기능 실행
+    		marketRepo.deleteById(idx);
+    		// 3. View 선택
+    		return "redirect:/MyCommunityList";
+    	}
+   }
+
