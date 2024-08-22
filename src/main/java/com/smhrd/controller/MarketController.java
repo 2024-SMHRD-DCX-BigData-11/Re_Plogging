@@ -199,12 +199,7 @@ public class MarketController {
 
         int mileageAmount = market.getMileage();
 
-        currentUser.setMileageAmount(currentUser.getMileageAmount() - mileageAmount);
-        memberRepo.save(currentUser);
-
         Member postUser = market.getUser();
-        postUser.setMileageAmount(postUser.getMileageAmount() + mileageAmount);
-        memberRepo.save(postUser);
 
         market.setClosedAt(new Date());
         market.setStatus("판매완료");
@@ -215,12 +210,15 @@ public class MarketController {
         mileagePu.setMlType("마켓판매");
         mileagePu.setMlAmount(mileageAmount);
         mileagePu.setUser(postUser);
+        mileagePu.setMlLog("적립");
         mileageRepo.save(mileagePu);
-
+        
+        
         Mileage mileageCu = new Mileage();
         mileageCu.setMlType("마켓구매");
         mileageCu.setMlAmount(mileageAmount);
         mileageCu.setUser(currentUser);
+        mileageCu.setMlLog("사용");
         mileageRepo.save(mileageCu);
 
         // 구매 내역 생성 및 저장
@@ -231,8 +229,8 @@ public class MarketController {
 
         return "redirect:/market";
     }
-
-
+    
+    
     @PostMapping("/market/delete")
     public String deleteMarket(@RequestParam("mkIdx") int mkIdx, HttpSession session) {
         Member currentUser = (Member) session.getAttribute("user");
@@ -275,40 +273,5 @@ public class MarketController {
         }
     }
     
-    // 내 마켓글 조회
-    @RequestMapping("/MyMarketList")
-   	public String MyMarketList(HttpSession session, Model model) {
-       	
-       	// 로그인 확인
-       	 Member member = (Member) session.getAttribute("user");
-       	 
-       	 if(member != null) {
-       		 
-   			// 1. 데이터 수집
-   			// 2. 기능 실행
-   			List<Market> list = marketRepo.findByMyMarket(member);// 작성일자 기준으로 내림차순
-   					
-   			model.addAttribute("MyMlist", list);
-   			
-   			return "myCommunity";
-   			
-   			
-       	 }else {
-       		// 3. View 선택 로그인 상태가 이니면 메인 페이지로 이동
-       			return "redirect:/main";
-       	 }
-       	 
-   	}
-       
-       
-       // 내 마켓글 삭제
-    	@RequestMapping("/Mymdelete")
-    	public String Mymdelete( int idx ) {
-    		// 1. 데이터 수집
-    		// 2. 기능 실행
-    		marketRepo.deleteById(idx);
-    		// 3. View 선택
-    		return "redirect:/MyCommunityList";
-    	}
-   }
+}
 

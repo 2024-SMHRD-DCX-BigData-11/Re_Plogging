@@ -105,10 +105,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="aiHelper-container" onclick="aiHerlper()">
-		<div class="aiHelperImg">
-		<img src="img/AI.png" alt="AI Image"></div>
-		<div class="aiHelperText">AI 분리배출 도우미 이용해 보기</div>
+	<div class="aiHelper-container" onclick="">
+	    <div class="aiHelperImg">
+	        <img src="img/AI.png" alt="AI Image">
+	    </div>
+	    <div class="aiHelperText">AI 분리배출 도우미 이용해 보기</div>
 	</div>
 
 	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>

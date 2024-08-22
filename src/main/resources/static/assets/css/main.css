@@ -318,41 +318,49 @@ footer {
 }
 
 .aiHelper-container {
-    position: fixed; /* 고정 위치 */
-    bottom: 30px; /* 화면 하단에서 20px 위에 위치 */
-    right: 50px; /* 화면 오른쪽에서 20px 왼쪽에 위치 */
-    background-color: #00a989; /* 배경색, 필요에 따라 변경 가능 */
-    color: white; /* 글자색 */
-    border-radius: 25px; /* 모서리를 둥글게 */
-    padding: 10px 20px; /* 내부 여백 설정 */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 (옵션) */
-    z-index: 1000; /* 다른 요소들 위에 표시되도록 설정 */
-    display: flex; /* 이미지와 텍스트를 가로로 정렬 */
-    align-items: center; /* 세로 중앙 정렬 */
+    position: fixed;
+    bottom: 30px;
+    right: 50px;
+    background-color: #00a989;
+    color: white;
+    border-radius: 25px;
+    padding: 10px 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    cursor: pointer; /* 마우스 커서 변경 */
+    display: flex;
+    align-items: center;
+    animation: bounce 0.3s infinite alternate;
+}
+
+/* 애니메이션 정의 */
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-5px);
+    }
 }
 
 .aiHelperImg img {
 	width: 30px;
-    margin-right: 10px; /* 이미지와 텍스트 사이의 간격 */
+    margin-right: 5px;
 }
 
 .aiHelperText {
-    font-size: 16px; /* 텍스트 크기 */
-    font-weight: bold; /* 텍스트 굵기 */
+    font-size: 16px;
+    font-weight: bold;
 }
 
 /* 미디어 쿼리 */
 @media ( max-width : 768px) {
-	/* .menu {
-                display: none;
-                
-            } */
 	/* 플로킹 */
 	.container {
-		padding: 0 15px; /* 중간 크기 화면에서 좌우 여백 조정 */
+		padding: 0 15px;
 	}
 	.text .normal, .text .point {
-		font-size: 20px; /* 중간 크기 화면에서 폰트 크기 조정 */
+		font-size: 20px;
 	}
 	.banner {
 		width: calc(100% - 20px); /* 중간 크기 화면에서 좌우 여백 조정 */
@@ -360,7 +368,7 @@ footer {
 		padding: 0 15px;
 	}
 	.banner p {
-		font-size: 15px; /* 작은 화면에서 폰트 크기 조정 */
+		font-size: 15px;
 	}
 	.plogging_01, .plogging_03 {
 		display: flex;
@@ -384,41 +392,52 @@ footer {
 	}
 	.plogging_01 img, .plogging_03 img {
 		margin: 0;
-		width: 100%; /* 이미지 너비를 줄여 화면에 맞게 조정 */
+		width: 100%;
 		max-width: 500px;
-		height: auto; /* 비율 유지 */
+		height: auto;
 		margin-top: 75px;
 	}
 	.plogging_02 img, .plogging_04 img {
 		margin: 0;
-		width: 100%; /* 이미지 너비를 줄여 화면에 맞게 조정 */
+		width: 100%;
 		max-width: 500px;
-		height: auto; /* 비율 유지 */
+		height: auto;
 		margin-top: 75px;
 	}
 	.plogging_01-TC, .plogging_03-TC {
-		text-align: right; /* 텍스트 가운데 정렬 */
-		margin: 20px 0; /* 상하 여백 추가 */
-		margin-left: auto; /* 컨테이너를 오른쪽으로 밀기 */
+		text-align: right;
+		margin: 20px 0;
+		margin-left: auto;
 		margin-right: 0;
 	}
 	.plogging_02-TC, .plogging_04-TC {
-		text-align: left; /* 텍스트 가운데 정렬 */
-		margin: 20px 0; /* 상하 여백 추가 */
-		margin-right: auto; /* 컨테이너를 오른쪽으로 밀기 */
+		text-align: left;
+		margin: 20px 0;
+		margin-right: auto;
 		margin-left: 0;
 	}
 	#plogging_01-title, #plogging_02-title, #plogging_03-title,
 		#plogging_04-title {
-		font-size: 38px; /* 작은 화면에서 텍스트 크기 줄이기 */
+		font-size: 38px;
 	}
 	.plogging_01-content, .plogging_02-content, .plogging_03-content,
 		.plogging_04-content {
-		font-size: 13px; /* 작은 화면에서 텍스트 크기 줄이기 */
+		font-size: 13px;
 	}
 	.custom-button {
 		padding: 10px 18px;
 		font-size: 16px;
 		border-radius: 20px;
+	}
+	.aiHelper-container {
+		right: 20px;
+		padding: 8px 16px;
+	}
+	.aiHelperImg img {
+		width: 25px;
+		margin-right: 5px;
+	}
+	.aiHelperText {
+		font-size: 13px;
 	}
 }

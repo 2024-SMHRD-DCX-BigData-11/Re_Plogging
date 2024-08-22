@@ -63,9 +63,17 @@ body, html {
 }
 
 .inProgress-Name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 20px;
+}
+
+.ploggings-buttons {
+    display: flex;
+    gap: 10px; /* 버튼 사이에 약간의 간격 추가 */
 }
 
 /* 코스 확인하기 버튼 */
@@ -80,7 +88,6 @@ body, html {
     font-family: 'S-CoreDream-3Light';
     font-size: 14px;
     font-weight: bold;
-    margin-left: 10px;
     transition: background-color 0.3s, color 0.3s;
     text-align: center;
 }
@@ -93,21 +100,16 @@ body, html {
 .cancel-container {
     display: inline-block;
     padding: 5px 10px;
-    border: 2px solid #08917c; 
+    border: none; 
     background-color: #fff;
     background-color: #a1acbd;
     color: white;
     border-radius: 15px;
     cursor: pointer;
     font-size: 14px;
-    margin-left: 10px;
     transition: background-color 0.3s, color 0.3s;
     text-align: center;
     border: none; /* 폼에는 기본적으로 테두리가 없지만, 안전을 위해 추가 */
-}
-
-.cancel-container:hover {
-    background-color: #8b99b1;
 }
 
 .cancel-container button {
@@ -118,6 +120,10 @@ body, html {
     font: inherit;
     cursor: pointer;
     outline: inherit;
+}
+
+.cancel-container:hover {
+    background-color: #8b99b1;
 }
 
 /* QR 코드 섹션 */
@@ -210,23 +216,56 @@ body, html {
     border-bottom: none; /* 마지막 행의 각 td 아래에 선 제거 */
 }
 
-.completed-btn {
-    background-color: #00a989;
+.myplogging-aiHelper-container {
+    position: fixed;
+    bottom: 30px;
+    right: 50px;
+    background-color: #a1acbd;
     color: white;
-    border: none;
-    padding: 4px 8px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'S-CoreDream-3Light';
+    border-radius: 25px;
+    padding: 10px 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
     font-size: 16px;
-    flex-basis: 20%;
-    text-align: center;
+    font-weight: bold;
+    cursor: pointer; /* 마우스 커서 변경 */
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-start;
     white-space: nowrap;
-    transition: background-color 0.3s ease;
+    position: fixed;
+    animation: bounce 0.3s infinite alternate;
 }
 
-.completed-btn:hover {
-    background-color: #08917c;
+/* 애니메이션 정의 */
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-5px);
+    }
+}
+
+.aiHeperText-nomal {
+	margin: 5px 0;
+}
+
+.aiHelper-content {
+    display: inline-flex;
+    align-items: center;
+}
+
+.myplogging-aiHelper-container img {
+    width: 30px;
+    height: 30px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.aiHeperText-point {
+    text-decoration: underline;
+    text-underline-position:under;
 }
 
 /* footer */
@@ -242,62 +281,79 @@ footer {
 		width: 100%;
 		margin-top: 100px;
 	}
-	
 	.cuPlogging-container {
 		width: 90%
 	}
-	
 	.current-text, .completed-text {
 		font-size: 24px;
 	}
-	
 	.current-line, .completed-line {
 		margin-bottom: 10px;
 	}
-	
 	.inProgress-Name {
-    	font-size: 13px;
+		flex-direction: column;
+		align-items: flex-start;
+		font-size: 13px;
 	}
-	
 	.QRS {
-	    font-size: 15px;
+		font-size: 15px;
 	}
-	
 	.mycorseName, .mycorseQrTime {
 		font-size: 13px;
 	}
-	
+	.ploggings-buttons {
+		margin-top: 5px;
+	}
+	.course-view-button {
+		padding: 3px 8px;
+		border: none;
+		font-size: 13px;
+	}
+	.cancel-container {
+		padding: 3px 8px;
+		font-size: 13px;
+		border: none;
+	}
 	.no-current-plogging, .no-completed-plogging {
 		margin: 40px 0;
 		font-size: 14px;
 	}
-
 	.coPlogging-container {
 		width: 90%;
 	}
-	
-	.completed-btn {
-	    font-size: 14px;
+	.plogging-table-container {
+		overflow-x: auto; /* 가로 스크롤 활성화 */
+		-webkit-overflow-scrolling: touch; /* 스크롤이 부드럽게 작동하도록 */
 	}
-	
-	 .plogging-table-container {
-        overflow-x: auto; /* 가로 스크롤 활성화 */
-        -webkit-overflow-scrolling: touch; /* 스크롤이 부드럽게 작동하도록 */
-    }
-
-    .plogging-table {
-        min-width: 600px; /* 테이블의 최소 너비 설정 (필요에 따라 조정 가능) */
-    }
-    
-    .plogging-table th {
-	    font-size: 15px;
+	.plogging-table {
+		min-width: 600px; /* 테이블의 최소 너비 설정 (필요에 따라 조정 가능) */
 	}
-	
+	.plogging-table th {
+		font-size: 15px;
+	}
 	.plogging-table td {
-	    font-size: 13px;
+		font-size: 13px;
 	}
+	
+.myplogging-aiHelper-container {
+    right: 10px;
+    padding: 7px 18px;
+    font-size: 13px;
+    flex-direction: column;
+}
 
+.aiHeperText-nomal {
+	margin-bottom: 5px;
+}
+
+.myplogging-aiHelper-container img {
+    width: 25px;
+    height: 25px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+	
 	footer {
 		font-size: 11px;
 	}
-} 
+}

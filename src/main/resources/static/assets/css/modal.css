@@ -75,7 +75,8 @@ body, html {
 	border-radius: 4px;
 	font-size: 15px;
 	cursor: pointer;
-	margin-top: 10px;
+	margin-top: 5px;
+	margin-bottom: 10px;
 	transition: background-color 0.3s ease;
 }
 
@@ -83,7 +84,7 @@ body, html {
 	background-color: #08917c;
 }
 
-.or {
+/* .or {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -120,7 +121,7 @@ body, html {
 
 .kakao-login:hover {
 	background-color: #ffd14c;
-}
+} */
 
 .login-options {
 	display: flex;
@@ -133,6 +134,7 @@ body, html {
 #join-link {
 	color: #555;
 	text-decoration: none;
+	transition: background-color 0.3s ease;
 }
 
 #join-link:hover {

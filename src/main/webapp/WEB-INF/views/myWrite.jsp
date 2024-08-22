@@ -83,7 +83,7 @@
 					<td>${myMarket.createdAt}</td>
 					<td>${myMarket.status}</td>
 					<td>${myMarket.closedAt}</td>
-					<td><a href="${ctx }/Mymdelete?idx=${myMarket.idx}">X</a></td>
+					<td><a href="${ctx }/Mymdelete?idx=${myMarket.mkIdx}">X</a></td>
 				</tr>
 				</c:forEach>
 			</tbody>
