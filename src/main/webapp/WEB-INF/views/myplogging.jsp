@@ -108,9 +108,9 @@
                 <tr>
                     <td><fmt:formatDate value="${plogging.qr3Time}" pattern="yyyy.MM.dd" /></td>
                     <td style="font-weight: bold; color: #000;">${plogging.courseName}</td>
-                    <td><fmt:formatDate value="${plogging.qr1Time}" pattern="yyyy.MM.dd HH:mm:ss" /></td>
-                    <td><fmt:formatDate value="${plogging.qr2Time}" pattern="yyyy.MM.dd HH:mm:ss" /></td>
-                    <td><fmt:formatDate value="${plogging.qr3Time}" pattern="yyyy.MM.dd HH:mm:ss" /></td>
+                    <td>${plogging.qr1Name}<br><fmt:formatDate value="${plogging.qr1Time}" pattern="yyyy.MM.dd HH:mm:ss" /></td>
+                    <td>${plogging.qr2Name}<br><fmt:formatDate value="${plogging.qr2Time}" pattern="yyyy.MM.dd HH:mm:ss" /></td>
+                    <td>${plogging.qr3Name}<br><fmt:formatDate value="${plogging.qr3Time}" pattern="yyyy.MM.dd HH:mm:ss" /></td>
                     <td style="font-weight: bold; color: #01875f;">777p</td> <!-- points 컬럼이 총 포인트를 의미한다고 가정 -->
                 </tr>
             </c:forEach>

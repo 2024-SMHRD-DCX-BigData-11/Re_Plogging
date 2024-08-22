@@ -52,3 +52,9 @@ window.onload = function() {
         openLoginModalWithError();
     }
 };
+
+
+function aiHerlper() {
+    // 또는 팝업 표시:
+    alert('AI 분리배출 도우미를 이용해보세요!');
+}
