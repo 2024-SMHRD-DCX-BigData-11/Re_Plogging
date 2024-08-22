@@ -277,38 +277,5 @@ public class CommunityController {
         return "redirect:/community";
     }
     
-    @RequestMapping("/MyCommunityList")
-	public String MyCommunityList(HttpSession session, Model model) {
-    	
-    	// 로그인 확인
-    	 Member member = (Member) session.getAttribute("user");
-    	 
-    	 if(member != null) {
-    		 
-			// 1. 데이터 수집
-			// 2. 기능 실행
-			List<Community> list = communityRepository.findByMyCommunity(member);// 작성일자 기준으로 내림차순
-					
-			model.addAttribute("MyClist", list);
-			
-			return "myCommunity";
-			
-			
-    	 }else {
-    		// 3. View 선택 로그인 상태가 이니면 메인 페이지로 이동
-    			return "redirect:/main";
-    	 }
-    	 
-	}
     
-    
-    // 내 게시글 삭제
- 	@RequestMapping("/Mycdelete")
- 	public String Mycdelete( int idx ) {
- 		// 1. 데이터 수집
- 		// 2. 기능 실행
- 		communityRepository.deleteById(idx);
- 		// 3. View 선택
- 		return "redirect:/MyCommunityList";
- 	}
 }
