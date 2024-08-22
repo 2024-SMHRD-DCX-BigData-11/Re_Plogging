@@ -20,21 +20,36 @@
 		<div class="profile-line"></div>
 		<div>
 			<div class="profile-container-inner">
-			<div class="pc-inner-left"><img src="img/기본_프로필.png" alt=""></div>
+				<div class="pc-inner-left">
+					<c:choose>
+						<c:when test="${user.userProfileImg != null}">
+							<img src="<%=request.getContextPath()%>/profileImage" alt="프로필 이미지">
+						</c:when>
+						<c:otherwise>
+							<img src="img/기본_프로필.png" alt="">
+						</c:otherwise>
+					</c:choose>
+				</div>
 				<div class="pc-inner-right">
 					<div class="profile-nContainer">
-						<div class="profile-nick"><span class="pro-usernick">${user.userNick}</span><span class="pro-nim">님</span></div>
-						    <div class="logout-container" id="logoutButton">
-						        <span class="logout-text">로그아웃</span>
-						        <img src="img/로그아웃.png" alt="" class="icon">
-						    </div>
+						<div class="profile-nick">
+							<span class="pro-usernick">${user.userNick}</span>
+							<span class="pro-nim">님</span>
+						</div>
+						<div class="logout-container" id="logoutButton">
+							<span class="logout-text">로그아웃</span>
+							<img src="img/로그아웃.png" alt="" class="icon">
+						</div>
 					</div>
 					<div class="profile-info">
-						<span>리플로깅과 함께</span><br> <span>오늘도 활기찬 하루 보내세요♥</span>
+						<span>리플로깅과 함께</span><br>
+						<span>오늘도 활기찬 하루 보내세요♥</span>
 					</div>
 					<div class="profile-activity">
-						<span>완료한 플로깅</span> <span class="point">${completedPloggingCount}회</span><br>
-						<span>그린 마일리지</span> <span class="point">${user.mileageAmount}p</span>
+						<span>완료한 플로깅</span>
+						<span class="point">${completedPloggingCount}회</span><br>
+						<span>그린 마일리지</span>
+						<span class="point">${user.mileageAmount}p</span>
 					</div>
 				</div>
 			</div>

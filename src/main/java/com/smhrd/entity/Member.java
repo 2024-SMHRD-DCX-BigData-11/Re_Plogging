@@ -1,11 +1,10 @@
 package com.smhrd.entity;
 
-import java.util.Date;
-import java.util.List;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Timestamp;
+import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -37,7 +36,7 @@ public class Member {
     private String userNick;
 
     @Lob
-    @Column(name = "user_profile_img", columnDefinition="MEDIUMBLOB", nullable = false)
+    @Column(name = "user_profile_img", columnDefinition="MEDIUMBLOB", nullable = true)
     private byte[] userProfileImg;
 
     @Column(name = "joined_at", columnDefinition = "datetime default now()", insertable = false, updatable = false)
