@@ -133,7 +133,7 @@
 										<td>${plogging.qr3Name}<br>
 										<fmt:formatDate value="${plogging.qr3Time}"
 												pattern="yyyy.MM.dd HH:mm:ss" /></td>
-										<td style="font-weight: bold; color: #01875f;">777p</td>
+										<td style="font-weight: bold; color: #00a989;">777p</td>
 										<!-- points 컬럼이 총 포인트를 의미한다고 가정 -->
 									</tr>
 								</c:forEach>
