@@ -320,7 +320,7 @@ public class SendRestController {
 			sms_url = "https://sslsms.cafe24.com/sms_sender.php"; // SMS 전송요청 URL
 			String user_id = base64Encode("iworks2018"); // SMS아이디
 			String secure = base64Encode("ac48f9ab4e7200e10b27c5b7b5fc633b");// 인증키
-			String msg = base64Encode(nullcheck("Re:plogging 인증번호는[" + code + "]입니다.", ""));
+			String msg = base64Encode(nullcheck("Re:plogging 인증번호는 [" + code + "] 입니다.", ""));
 			String rphone = base64Encode(nullcheck(phoneNumber, ""));
 			String sphone1 = base64Encode(nullcheck("061", "")); // cafe24에 등록된 폰번호 010
 			String sphone2 = base64Encode(nullcheck("746", "")); // cafe24에 등록된 폰번호 1111
