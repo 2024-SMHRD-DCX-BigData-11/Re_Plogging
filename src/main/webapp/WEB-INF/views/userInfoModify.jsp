@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="header.jsp"%>
 <%@ include file="modal.jsp"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -113,30 +114,25 @@
 			if (!currentMpw || currentMpw.length === 0) {
 				erroAlert("현재 비밀번호를 입력해주세요.", 'current-Mpw');
 				return false;
-			} else if (!confirmMpw || confirmMpw.length === 0) {
-				erroAlert("새 비밀번호를 입력해주세요.", 'confirm-Mpw');
-				return false;
-			} else if (!nconfirmMpw || nconfirmMpw.length === 0) {
-				erroAlert("새 비밀번호 확인을 입력해주세요.", 'new-confirm-Mpw');
-				return false;
-			} else if (confirmMpw.match(nconfirmMpw) == null) {
-				erroAlert("비밀번호가 일치하지 않습니다.", 'new-confirm-Mpw');
-				return false;
-			} else if (!MuserNick || MuserNick.length === 0) {
-				erroAlert("닉네임을 입력해주세요.", 'MuserNick');
-				return false;
 			} else {
 				commonMultiAjax("${ctx}/rest/member/memberUpdate", formData, function(response) {
 					if (response.code == 0) {
 						alert("회원정보 수정 성공!!");
-					} else if (response.code != 0) {
-						alert("회원정보 수정 실패");
+					} else if (response.code == -600) {
+						alert("로그인 상태가 아닙니다.");
+						return false;
 					} else if (response.code == -500) {
 						alert("비밀번호가 일치하지 않습니다.");
+						return false;
 					} else if (response.code == -400) {
 						alert("이미 사용중인 닉네임입니다!");
-					} else {
-						alert("로그인 상태가 아닙니다.");
+						return false;
+					} else if(response.code == -300) {
+						alert("입력한 값을 확인해주세요.");
+						return false;
+					} else if(response.code == -200){
+						alert("중복된 닉네임입니다.");
+						return false;
 					}
 				});
 				return false;
@@ -148,5 +144,11 @@
 			document.getElementById('image-upload-form').submit();
 		}
 	</script>
+	
+	<script type="text/javascript">
+    var ctx = "${ctx}";
+    console.log("Context Path: " + ctx);
+	</script>
+	
 </body>
 </html>
