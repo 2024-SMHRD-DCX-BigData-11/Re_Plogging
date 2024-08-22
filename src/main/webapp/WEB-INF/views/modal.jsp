@@ -27,12 +27,12 @@
 				</div>
 
 				<button type="submit" class="login-button">로그인</button>
-				<div class="or">
+<!-- 				<div class="or">
 					<div class="line"></div>
 					<div>또는</div>
 					<div class="line"></div>
 				</div>
-				<button class="kakao-login">Kakao 로그인</button>
+				<button class="kakao-login">Kakao 로그인</button> -->
 			</form>
 
 			<div class="login-options">
