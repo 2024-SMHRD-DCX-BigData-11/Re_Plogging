@@ -1,0 +1,146 @@
+@charset "EUC-KR";
+
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+		format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+
+body, html {
+	font-family: 'S-CoreDream-3Light';
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+/* 전체 컨테이너 스타일링 */
+.checkMyWrote-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 125px auto 0 auto;
+    width: 1300px; /* 부모 컨테이너의 폭을 1200px로 설정 */
+    box-sizing: border-box;
+}
+
+/* 게시글 목록과 마켓 글 목록 테이블 스타일 */
+#MyCommunityList {
+    width: 100%; /* 컨테이너의 폭을 100%로 설정 */
+    margin-bottom: 100px; /* 목록 간 간격 추가 */
+}
+
+#MyMarketList {
+	width: 100%; /* 컨테이너의 폭을 100%로 설정 */
+}
+#MyCommunityList table, #MyMarketList table {
+    width: 100%; /* 테이블이 부모 컨테이너 폭을 가득 채우도록 설정 */
+    border-collapse: collapse;
+}
+
+#MyCommunityList th, #MyMarketList th {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    padding: 10px;
+    border-top: 2px solid #a1acbd;
+    border-bottom: 2px solid #a1acbd;
+}
+
+#MyCommunityList td {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+    overflow: hidden; /* 넘치는 내용 숨기기 */
+    text-overflow: ellipsis; /* 넘치는 텍스트에 '...' 표시 */
+    max-width: 150px; /* ellipsis가 작동하도록 너비 제한 설정 */
+
+}
+
+#MyMarketList td {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+    color: #777;
+    white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+    overflow: hidden; /* 넘치는 내용 숨기기 */
+    text-overflow: ellipsis; /* 넘치는 텍스트에 '...' 표시 */
+    max-width: 150px; /* ellipsis가 작동하도록 너비 제한 설정 */
+}
+
+#MyCommunityList a, #MyMarketList a {
+    color: #00969d;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#MyCommunityList a:hover, #MyMarketList a:hover {
+    text-decoration: underline;
+}
+
+/* 제목 스타일 */
+h1 {
+    color: #00969d;
+    text-align: left;
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding-bottom: 0px; /* h1 요소 아래의 패딩 제거 */
+    width: 100%;
+}
+
+.myCommunityList-line, .myMarketList-line {
+    border-bottom: 2px solid #a1acbd;
+}
+
+/* 버튼 스타일 */
+#MyCommunityList a[href*="delete"], #MyMarketList a[href*="delete"] {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #ffa17a;
+    color: white;
+    border-radius: 15px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#MyCommunityList a[href*="delete"]:hover, #MyMarketList a[href*="delete"]:hover {
+    background-color: #e8926e;
+    text-decoration: none;
+}
+
+/* footer */
+footer {
+	font-size: 13px;
+	text-align: center;
+	margin-top: 100px;
+	margin-bottom: 25px;
+}
+
+@media screen and (max-width: 768px) {
+	.checkMyWrote-container {
+		width: 90%;
+		margin-top: 100px;
+	}
+	h1 {
+		font-size: 24px;
+	}
+	#MyCommunityList, #MyMarketList {
+		overflow-x: auto; /* 가로 스크롤 가능 */
+	}
+	#MyCommunityList th, #MyMarketList th {
+		font-size: 15px;
+	}
+	#MyCommunityList td, #MyMarketList td, #MyCommunityList a[href*="delete"],
+		#MyMarketList a[href*="delete"] {
+		font-size: 13px;
+	}
+	footer {
+		font-size: 11px;
+	}}

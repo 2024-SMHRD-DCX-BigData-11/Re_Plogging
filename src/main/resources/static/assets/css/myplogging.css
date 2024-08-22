@@ -287,8 +287,11 @@ footer {
 	.current-text, .completed-text {
 		font-size: 24px;
 	}
-	.current-line, .completed-line {
+	.current-line {
 		margin-bottom: 10px;
+	}
+	.completed-line {
+		margin-bottom: 0px;
 	}
 	.inProgress-Name {
 		flex-direction: column;
@@ -334,25 +337,21 @@ footer {
 	.plogging-table td {
 		font-size: 13px;
 	}
-	
-.myplogging-aiHelper-container {
-    right: 10px;
-    padding: 7px 18px;
-    font-size: 13px;
-    flex-direction: column;
-}
-
-.aiHeperText-nomal {
-	margin-bottom: 5px;
-}
-
-.myplogging-aiHelper-container img {
-    width: 25px;
-    height: 25px;
-    margin-left: 15px;
-    margin-right: 5px;
-}
-	
+	.myplogging-aiHelper-container {
+		right: 10px;
+		padding: 7px 18px;
+		font-size: 13px;
+		flex-direction: column;
+	}
+	.aiHeperText-nomal {
+		margin-bottom: 5px;
+	}
+	.myplogging-aiHelper-container img {
+		width: 25px;
+		height: 25px;
+		margin-left: 15px;
+		margin-right: 5px;
+	}
 	footer {
 		font-size: 11px;
 	}
