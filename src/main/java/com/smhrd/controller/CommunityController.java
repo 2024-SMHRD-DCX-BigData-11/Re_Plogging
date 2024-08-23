@@ -1,29 +1,26 @@
 package com.smhrd.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import com.smhrd.entity.Comment;
 import com.smhrd.entity.Community;
-import com.smhrd.entity.Market;
 import com.smhrd.entity.Member;
 import com.smhrd.repository.CommentRepository;
 import com.smhrd.repository.CommunityRepository;
@@ -43,7 +40,6 @@ public class CommunityController {
     @Autowired
     private MemberRepository memberRepository;
 
-    // 전체 게시물 조회 및 카테고리/키워드 검색 처리
     @RequestMapping("/community")
     public ModelAndView goCommunity(@RequestParam(value = "category", required = false) String category,
                                     @RequestParam(value = "keyword", required = false) String keyword,
@@ -52,11 +48,10 @@ public class CommunityController {
 
         ModelAndView mav = new ModelAndView("community");
 
-        Pageable pageable = PageRequest.of(page - 1, size); // 페이지는 0부터 시작하므로 -1
+        Pageable pageable = PageRequest.of(page - 1, size);
         Page<Community> communityPage;
 
         if (category != null) {
-            // 카테고리 값 변환
             if (category.equals("plogging")) {
                 category = "플로깅";
             } else if (category.equals("separation")) {
@@ -66,18 +61,13 @@ public class CommunityController {
             }
         }
 
-        // 카테고리와 키워드에 따라 검색 로직 분기
         if ((category == null || category.isEmpty()) && (keyword == null || keyword.isEmpty())) {
-            // 카테고리와 키워드가 없는 경우 전체 게시물 조회
             communityPage = communityRepository.findAllByOrderByIndateDesc(pageable);
         } else if (category != null && !category.isEmpty() && (keyword == null || keyword.isEmpty())) {
-            // 카테고리로만 검색하는 경우
             communityPage = communityRepository.findByCategoryOrderByIndateDesc(category, pageable);
         } else if ((category == null || category.isEmpty()) && keyword != null && !keyword.isEmpty()) {
-            // 키워드로만 검색하는 경우
             communityPage = communityRepository.findByTitleContainingOrderByIndateDesc(keyword, pageable);
         } else {
-            // 카테고리와 키워드 모두로 검색하는 경우
             communityPage = communityRepository.findByCategoryAndTitleContainingOrderByIndateDesc(category, keyword, pageable);
         }
 
@@ -116,7 +106,6 @@ public class CommunityController {
                                    @RequestParam("writerId") int writerId) throws IOException {
         ModelAndView mav = new ModelAndView("redirect:/community");
 
-        // 카테고리 값 변환
         if (category.equals("plogging")) {
             category = "플로깅";
         } else if (category.equals("separation")) {
@@ -125,35 +114,19 @@ public class CommunityController {
             category = "자유게시판";
         }
 
-        // 작성자 정보 가져오기
         Member writer = memberRepository.findById(writerId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid writer Id:" + writerId));
 
-        // 파일 저장 처리
-        String fileName = null;
+        byte[] imageData = null;
         if (!file.isEmpty()) {
-            // 중복되지 않는 고유한 파일 이름 만들기
-            String uuid = UUID.randomUUID().toString();
-            fileName = uuid + file.getOriginalFilename();
-
-            String uploadDir = "C:/uploads/";
-            File dir = new File(uploadDir);
-
-            // 디렉토리가 존재하지 않으면 생성
-            if (!dir.exists()) {
-                dir.mkdirs();
-            }
-
-            String filePath = uploadDir + fileName;
-            file.transferTo(new File(filePath));
+            imageData = file.getBytes();
         }
 
-        // 새로운 Community 엔티티 생성 및 저장
         Community newPost = new Community();
         newPost.setTitle(title);
         newPost.setCategory(category);
         newPost.setContent(content);
-        newPost.setImg(fileName);
+        newPost.setImg(imageData);
         newPost.setWriter(writer);
         newPost.setIndate(new Date());
         newPost.setCount(0);
@@ -174,7 +147,6 @@ public class CommunityController {
                              @RequestParam("uploaded") String uploaded) throws IOException {
         ModelAndView mav = new ModelAndView("redirect:/communityRead?idx=" + idx);
 
-        // 카테고리 값 변환
         if (category.equals("plogging")) {
             category = "플로깅";
         } else if (category.equals("separation")) {
@@ -183,7 +155,6 @@ public class CommunityController {
             category = "자유게시판";
         }
 
-        // 작성자 정보 가져오기
         Member writer = memberRepository.findById(writerId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid writer Id:" + writerId));
 
@@ -192,24 +163,11 @@ public class CommunityController {
         community.setTitle(title);
         community.setContent(content);
 
-        // 파일 저장 처리
-        String fileName = null;
         if (!file.isEmpty()) {
-            String uuid = UUID.randomUUID().toString();
-            fileName = uuid + file.getOriginalFilename();
-
-            String uploadDir = "C:/uploads/";
-            File dir = new File(uploadDir);
-
-            if (!dir.exists()) {
-                dir.mkdirs();
-            }
-
-            String filePath = uploadDir + fileName;
-            file.transferTo(new File(filePath));
-            community.setImg(fileName);
+            byte[] imageData = file.getBytes();
+            community.setImg(imageData);
         } else {
-            if (uploaded == null || uploaded.equals("") || uploaded.isBlank() || uploaded.isEmpty()) {
+            if (uploaded == null || uploaded.isEmpty()) {
                 community.setImg(null);
             }
         }
@@ -217,6 +175,16 @@ public class CommunityController {
         communityRepository.save(community);
 
         return mav;
+    }
+
+    @GetMapping("/image/{id}")
+    @ResponseBody
+    public ResponseEntity<byte[]> getImage(@PathVariable("id") int id) {
+        Community community = communityRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid community Id:" + id));
+
+        byte[] imageContent = community.getImg();
+        return ResponseEntity.ok().contentType(org.springframework.http.MediaType.IMAGE_JPEG).body(imageContent);
     }
 
     @PostMapping("/likePost")
@@ -240,10 +208,16 @@ public class CommunityController {
     @PostMapping("/comments/addComment")
     public String createComment(@RequestParam("communityId") Integer communityId,
                                 @RequestParam("commentContent") String commentContent, 
-                                HttpSession session) {
+                                HttpSession session, Model model) {
         Member user = (Member) session.getAttribute("user");
         if (user == null) {
             return "redirect:/main";
+        }
+
+        // 댓글 내용이 비어 있는지 확인
+        if (commentContent == null || commentContent.trim().isEmpty()) {
+            model.addAttribute("errorMessage", "댓글 내용을 입력해주세요.");
+            return "redirect:/communityRead?idx=" + communityId + "&error=emptyComment";
         }
 
         Community community = communityRepository.findById(communityId).orElse(null);
@@ -276,6 +250,4 @@ public class CommunityController {
         communityRepository.delete(community);
         return "redirect:/community";
     }
-    
-    
 }

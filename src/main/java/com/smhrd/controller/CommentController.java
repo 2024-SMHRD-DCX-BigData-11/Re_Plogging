@@ -41,30 +41,7 @@ public class CommentController {
         return ResponseEntity.ok(comments);
     }
 
-    // 댓글 작성, ajax 써서 만들든가 말든가 (CommunityController.java에 이거 지우고)
-//    @PostMapping("/addComment")
-//    public ResponseEntity<Comment> createComment(@RequestParam("communityId") Integer communityId,
-//                                                 @RequestParam("commentContent") String commentContent,
-//                                                 HttpSession session) {
-//        Member user = (Member) session.getAttribute("user");
-//        if (user == null) {
-//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-//        }
-//
-//        Community community = communityRepository.findById(communityId).orElse(null);
-//        if (community == null) {
-//            return ResponseEntity.badRequest().build();
-//        }
-//
-//        Comment comment = new Comment();
-//        comment.setCommunity(community);
-//        comment.setUser(user);
-//        comment.setMessage(commentContent);
-//
-//        Comment savedComment = commentRepository.save(comment);
-//        return ResponseEntity.ok(savedComment);
-//    }
-
+ 
     // 댓글 수정
     @PostMapping("/updateComment")
     public ResponseEntity<Void> updateComment(@RequestParam("commentId") Integer commentId,

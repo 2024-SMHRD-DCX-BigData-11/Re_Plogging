@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -40,8 +41,9 @@ public class Community {
     @Column(name = "comm_content", nullable = false, columnDefinition = "TEXT")
     private String content;
 
-    @Column(name = "comm_file", length = 1200, nullable = true)
-    private String img;
+    @Lob
+    @Column(name = "comm_file", nullable = true, columnDefinition = "MEDIUMBLOB")
+    private byte[] img;
 
     @Column(name = "created_at", insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date indate;

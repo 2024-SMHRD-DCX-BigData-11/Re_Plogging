@@ -12,6 +12,24 @@
     <link rel="stylesheet" href="assets/css/communityRead.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script type="text/javascript">
+        function likePost(user) {
+            if (user != null) {
+                document.getElementById('likeForm').submit();
+            } else {
+                alert('로그인 후 좋아요를 누를 수 있습니다.');
+            }
+        }
+
+        function validateCommentForm() {
+            var commentContent = document.getElementsByName("commentContent")[0].value.trim();
+            if (commentContent === "") {
+                alert("댓글 내용을 입력해주세요.");
+                return false; // 폼 제출을 중단
+            }
+            return true; // 폼 제출 허용
+        }
+    </script>
 </head>
 <body>
 <div class="comRead-container">
@@ -32,8 +50,8 @@
                 </div>
             </div>
             <div class="post-content">
-                <c:if test="${!empty community.img}">
-                    <img src="${pageContext.request.contextPath}/image/${community.img}">
+                <c:if test="${community.img != null}">
+                    <img src="${pageContext.request.contextPath}/image/${community.idx}">
                 </c:if>
                 <p>${community.content}</p>
             </div>
@@ -62,7 +80,7 @@
             
             <!-- Comment Form -->
             <c:if test="${sessionScope.user != null}">
-                <form class="comment-form" action="${pageContext.request.contextPath}/comments/addComment" method="post">
+                <form class="comment-form" action="${pageContext.request.contextPath}/comments/addComment" method="post" onsubmit="return validateCommentForm();">
                     <input type="hidden" name="communityId" value="${community.idx}">
                     <textarea name="commentContent" placeholder="댓글을 남겨보세요."></textarea>
                     <button type="submit">등록</button>

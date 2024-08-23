@@ -29,6 +29,7 @@ public class Comment {
    
    @Column(name = "cmt_content", length = 900, nullable = false) // 댓글 내용
    private String message; // 댓글 내용 (cmt_content)
+
    
    @Column(name = "created_at", insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
    private Date indate; // 댓글 작성일자 (created_at)
