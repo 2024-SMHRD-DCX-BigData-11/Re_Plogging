@@ -13,9 +13,15 @@ public class UploadImg {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "file_idx", columnDefinition = "int", insertable = false, updatable = false)
     private int fileIdx;
+    
+    @Column(name = "file_name", nullable = false)
+    private String fileName;
 
     @Column(name = "image_data", columnDefinition = "LONGBLOB")
     private byte[] imageData;
+    
+    @Column(name = "file_ext", nullable = false)
+    private String fileExt;
 
     @Column(name = "uploaded_at", columnDefinition = "datetime default now()", insertable = false, updatable = false)
     private Timestamp uploadedAt;
