@@ -125,92 +125,62 @@ public class MemberRestController {
 	@RequestMapping( value ="/memberUpdate", method = RequestMethod.POST )
 	@ResponseBody
 	public CommonDomain memberUpdate(
-			MultipartHttpServletRequest request, HttpSession session
-			) {
-		CommonDomain response = new CommonDomain();
-		
-		int resultCode = 0;
-		
-		// 세션에서 현재 로그인된 사용자 정보를 가져옴
+	        MultipartHttpServletRequest request, HttpSession session
+	) {
+	    CommonDomain response = new CommonDomain();
+	    
+	    int resultCode = 0;
+	    
+	    // 세션에서 현재 로그인된 사용자 정보를 가져옴
 	    Member user = (Member) session.getAttribute("user");
 	    
-	    String currentMpw = request.getParameter("currentMpw").toString();
-		String nconfirmMpw = request.getParameter("nconfirmMpw").toString();
-		String MuserNick = request.getParameter( "MuserNick" ).toString();
-	
-		
-		if(user != null) { // 로그인 세션이 있으면
-			
-			// 비밀번호 확인
-	        if (DigestUtils.sha512Hex(currentMpw).equals(user.getUserPw())) {
-	        	
-	        	// 새 비밀번호 확인 칸과 닉네임 칸에 값이 있으면 둘 다 변경
-	        	if(nconfirmMpw != null && MuserNick != null) { 
-	        		
-	        		// 닉네임 중복 확인
-	        		Member nickCheck1 = repo.findByUserNick(MuserNick);
-	        		if(nickCheck1 == null) {
-	        			
-	        			// 닉네임 변경
-	        			user.setUserNick(MuserNick);
-	        			
-	        			// 비밀번호 변경
-	        			user.setUserPw(DigestUtils.sha512Hex(nconfirmMpw));
-
-	        			// 데이터베이스에 업데이트
-		                repo.save(user);
-	        		}
-	        		else {
-	        			resultCode = -400; // 닉네임 중복
-	        		}
-
-	        		// 새 비밀번호 칸만 값이 있으면 비밀번호만 업데이트
-	        	}else if(nconfirmMpw != null && MuserNick == null) {
-	        		
-	        		// 비밀번호 변경
-        			user.setUserPw(DigestUtils.sha512Hex(nconfirmMpw));
-        			
-        			// 닉네임 유지
-        			user.setUserNick(user.getUserNick());
-        			
-        			// 데이터베이스에 업데이트
+	    String currentMpw = request.getParameter("currentMpw");
+	    String nconfirmMpw = request.getParameter("nconfirmMpw");
+	    String MuserNick = request.getParameter("MuserNick");
+	    
+	    if(user != null) { // 로그인 세션이 있으면
+	        
+	        // 비밀번호 확인
+	        if (currentMpw != null && DigestUtils.sha512Hex(currentMpw).equals(user.getUserPw())) {
+	            
+	            boolean isUpdated = false;
+	            
+	            // 새 비밀번호가 입력된 경우 비밀번호 변경
+	            if(nconfirmMpw != null && !nconfirmMpw.isEmpty()) {
+	                user.setUserPw(DigestUtils.sha512Hex(nconfirmMpw));
+	                isUpdated = true;
+	            }
+	            
+	            // 닉네임이 입력된 경우 닉네임 변경
+	            if(MuserNick != null && !MuserNick.isEmpty()) {
+	                // 닉네임 중복 확인
+	                Member nickCheck = repo.findByUserNick(MuserNick);
+	                if(nickCheck == null) {
+	                    user.setUserNick(MuserNick);
+	                    isUpdated = true;
+	                } else {
+	                    resultCode = -400; // 닉네임 중복
+	                }
+	            }
+	            
+	            if (isUpdated) {
+	                // 데이터베이스에 업데이트
 	                repo.save(user);
-	        		
-	                // 닉네임 칸만 값이 있으면 닉네임만 업데이트
-	        	}else if(nconfirmMpw == null && MuserNick != null) {
-	        		
-	        		// 닉네임 중복 확인
-	        		Member nickCheck2 = repo.findByUserNick(MuserNick);
-	        		if(nickCheck2 == null) {
-	        			
-	        			// 닉네임 변경
-	        			user.setUserNick(MuserNick);
-	        			
-	        			// 비밀번호 유지
-	        			user.setUserPw(DigestUtils.sha512Hex(currentMpw));
-	        			
-	        			// 데이터베이스에 업데이트
-		                repo.save(user);
-		                
-	        		}else {
-	        			resultCode = -200; // 중복된 닉네임
-	        		}
-	        		
-	        	}else {
-	        		resultCode = -300; // 새비밀번호 확인, 닉네임 값이 없음
-	        	}
-	        	
-	        }else {
-	        	resultCode = -500; // 비밀번호 불일치
+	            } else if (resultCode == 0) {
+	                resultCode = -300; // 변경된 사항 없음
+	            }
+	            
+	        } else {
+	            resultCode = -500; // 비밀번호 불일치
 	        }
-			
-		}else {
-			resultCode = -600; // 로그인 세션 없음
-		}
-		
-		response.setCode(resultCode);
-		return response;
-	
+	        
+	    } else {
+	        resultCode = -600; // 로그인 세션 없음
+	    }
+	    
+	    response.setCode(resultCode);
+	    return response;
 	}
+
 	
 }

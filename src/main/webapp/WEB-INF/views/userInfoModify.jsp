@@ -79,7 +79,7 @@
 				</tr>
 				<tr>
 					<th>닉네임</th>
-					<td><input type="text" id="MuserNick" name="MuserNick" value="${user.userNick}"></td>
+					<td><input type="text" id="MuserNick" name="MuserNick" placeholder="${user.userNick}"></td>
 				</tr>
 			</table>
 			<div class="Modify-button-wrapper">
@@ -111,7 +111,7 @@
 		        console.log(pair[0]+ ': ' + pair[1]);
 		    }
 			
-			if (!currentMpw || currentMpw.length === 0) {
+			if (currentMpw==null || currentMpw.length == 0) {
 				erroAlert("현재 비밀번호를 입력해주세요.", 'current-Mpw');
 				return false;
 			} else {
