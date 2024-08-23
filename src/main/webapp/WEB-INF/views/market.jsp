@@ -50,10 +50,10 @@
                             <c:if test="${market.status == '판매중'}">
                                 <div class="market_card">
                                     <a class="market_card_link" href="${pageContext.request.contextPath}/marketRead?idx=${market.mkIdx}">
-                                        <div class="market_card_photo">
-                                            <img src="${pageContext.request.contextPath}/marketImage1?idx=${market.mkIdx}" alt="${market.title}" class="market_card_photo_image">
-                                        </div>
                                         <div class="market_card_desc">
+                                        	<div class="market_card_photo">
+                                            	<img src="${pageContext.request.contextPath}/marketImage1?idx=${market.mkIdx}" alt="${market.title}" class="market_card_photo_image">
+                                        	</div>
                                             <div class="market_card_title">
                                                 <h2>${market.title}</h2>
                                             </div>
