@@ -1,0 +1,170 @@
+@charset "EUC-KR";
+
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+		format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+
+body, html {
+	font-family: 'S-CoreDream-3Light';
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+/* 헤더 */
+.manager-header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 65px;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	z-index: 1000;
+	transition: background-color 0.3s ease, opacity 0.3s ease, transform
+		0.3s ease;
+}
+
+.manager-header.hidden {
+	opacity: 0;
+	transform: translateY(-20px);
+}
+
+.manager-header .manager-logo {
+	position: relative;
+	display: inline-block;
+	height: 55px;
+}
+
+.manager-header img {
+	height: 100%;
+}
+
+/* 전체 컨테이너 스타일링 */
+.manager-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 125px auto 50px auto;
+	width: 1300px; /* 부모 컨테이너의 폭을 1200px로 설정 */
+	box-sizing: border-box;
+}
+
+/* 회원 목록, 게시글 목록, 마켓 글 목록 테이블 스타일 */
+#memberList, #CommunityList {
+	width: 100%;
+	margin-bottom: 100px;
+}
+
+#MarketList {
+	width: 100%;
+}
+
+h1 {
+	width: 100%;
+	color: #4385c1;
+	text-align: left;
+	font-size: 30px;
+	margin-top: 0;
+	margin-bottom: 10px;
+	padding-bottom: 0px;
+}
+
+#memberList table, #CommunityList table, #MarketList table {
+	width: 100%; /* 테이블이 부모 컨테이너 폭을 가득 채우도록 설정 */
+	border-collapse: collapse;
+}
+
+#memberList th, #CommunityList th, #MarketList th {
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
+	padding: 10px;
+	border-top: 2px solid #a1acbd;
+	border-bottom: 2px solid #a1acbd;
+	white-space: nowrap;
+}
+
+#memberList td, #CommunityList td, #MarketList td {
+	padding: 10px;
+	text-align: center;
+	font-size: 14px;
+	color: #777;
+	border-bottom: 1px solid #ddd;
+	white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+	overflow: hidden; /* 넘치는 내용 숨기기 */
+	text-overflow: ellipsis; /* 넘치는 텍스트에 '...' 표시 */
+	max-width: 150px; /* ellipsis가 작동하도록 너비 제한 설정 */
+}
+
+#CommunityList a, #MarketList a {
+	color: #4385c1;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#CommunityList a:hover, #MarketList a:hover {
+	text-decoration: underline;
+}
+
+/* 버튼 스타일 */
+#list a[href*="delete"] {
+	display: inline-block;
+	padding: 5px 10px;
+	background-color: #eee8a9;
+	color: #494738;
+	font-weight: bold;
+	text-decoration: none;
+	border-radius: 15px;
+	font-size: 14px;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+#list a[href*="delete"]:hover {
+	background-color: #d6cf8e;
+	text-decoration: underline;
+	text-decoration: none;
+}
+
+/* footer */
+footer {
+	font-size: 13px;
+	text-align: center;
+	margin-top: 100px;
+	margin-bottom: 25px;
+}
+
+
+@media screen and (max-width: 768px) {
+	.manager-header img {
+		height: 90%;
+	}
+	.manager-container {
+		width: 90%;
+		margin-top: 100px;
+	}
+	h1 {
+		font-size: 24px;
+	}
+	#memberList, #CommunityList, #MarketList {
+		overflow-x: auto;
+	}
+	#memberList th, #CommunityList th, #MarketList th {
+		font-size: 15px;
+	}
+	#memberList td, #CommunityList td, #MarketList td, #list a[href*="delete"]
+		{
+		font-size: 13px;
+	}
+	footer {
+		font-size: 11px;
+	}
+}
