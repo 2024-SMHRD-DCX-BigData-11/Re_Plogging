@@ -54,6 +54,31 @@ window.onload = function() {
 };
 
 
+
+
+// 플로킹 효과
+document.addEventListener("DOMContentLoaded", function() {
+    const items = document.querySelectorAll('.ploking li');
+    let currentIndex = 0;
+
+    function showNextItem() {
+        const currentItem = items[currentIndex];
+        currentItem.classList.remove('active');
+        
+        currentIndex = (currentIndex + 1) % items.length;
+        const nextItem = items[currentIndex];
+        nextItem.classList.add('active');
+        
+        setTimeout(showNextItem, 3000); // 3초 후 다음 아이템 표시
+    }
+
+    items[currentIndex].classList.add('active');
+    setTimeout(showNextItem, 3000); // 3초 후 다음 아이템 표시
+});
+
+
+
+
 function aiHerlper() {
     // 또는 팝업 표시:
     alert('AI 분리배출 도우미를 이용해보세요!');

@@ -26,18 +26,18 @@ body, html {
 
 .main-container {
 	width: 100%;
-	max-width: 850px; /* 최대 너비 설정 */
+	max-width: 850px;
 	margin: 125px auto;
 	position: relative;
-	padding: 0 20px; /* 좌우 여백 추가 */
-	box-sizing: border-box; /* padding을 포함하여 너비를 계산하도록 설정 */
+	padding: 0 20px;
+	box-sizing: border-box;
 }
 
 .text img {
 	width: 30px;
 	height: 30px;
-	padding-left: 5px; /* 왼쪽 여백 추가 */
-	margin-right: 5px; /* 이미지와 텍스트 사이의 간격 */
+	padding-left: 5px;
+	margin-right: 5px;
 }
 
 .text {
@@ -47,75 +47,103 @@ body, html {
 }
 
 .text .normal, .text .plo-point {
-	margin: 0; /* 기본 마진 제거 */
-	font-size: 22px; /* 글자 크기 조정 */
+	margin: 0;
+	font-size: 22px;
+	font-weight: bold;
+	color: #000;
 }
 
 .text .plo-point {
-	color: #08917c;
+	color: #00a989;
 }
 
 .banner {
-	width: 100%; /* 배너 너비 설정 */
-	height: 53px;
-	border: 1px solid #08917c;
-	box-shadow: 0px 2px 2px rgba(15, 255, 163, 0.4);
-	border-radius: 25px; /* 둥근 직사각형 모양으로 변경 */
-	box-sizing: border-box;
-	position: absolute; /* 위치를 절대적으로 설정 */
-	left: 50%; /* 전체 컨테이너의 중앙에 위치하도록 설정 */
-	transform: translateX(-50%);
-	/* 배너 너비의 절반만큼 왼쪽으로 이동시켜서 정확히 중앙에 위치하도록 함 */
-	display: flex; /* flexbox 활성화 */
-	align-items: center; /* 수직 중앙 정렬 */
-	margin-bottom: 20px;
+    width: 100%;
+    height: 53px;
+    border: 1px solid #00a989;
+    box-shadow: 0px 2px 2px rgba(0, 169, 137, 0.3);
+    border-radius: 25px;
+    box-sizing: border-box;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.ploking {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    width: 100%;
+    height: 53px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.ploking li {
+    position: absolute;
+    height: 100%;
+    line-height: 53px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    font-size: 18px;
+}
+
+.ploking li.active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.ploking-highlight {
+    color: #00a989;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0 10px 0 30px;
+}
+
+.ploking-highlight-Nick {
+	color: #00a989;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.plogging-count {
+    text-align: right; /* 오른쪽 끝에 정렬 */
+    margin-left: auto; /* 자동으로 오른쪽에 배치 */
+    margin-right: 30px;
+    font-size: 18px;
+}
+
+
+
+/* plogging */
+.ploggings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    margin-top: 200px;
 }
 
 /* Plogging_01 */
 .plogging_01 {
 	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
-	padding: 0 20px;
-	box-sizing: border-box;
-	margin-top: 200px;
-	flex-direction: row;
-}
-
-/* Plogging_01 이미지*/
-.plogging_01 img {
-	margin-left: 40px;
-	width: 700px;
-	height: auto;
-}
-
-/* Plogging_01 타이틀&내용 */
-.plogging_01-TC {
-	text-align-last: right;
-	margin-right: 40px;
-}
-
-/* Plogging_01 타이틀 */
-#plogging_01-title {
-	font-family: 'TheJamsil5Bold';
-	font-size: 65px;
-	margin-bottom: 15px;
-}
-
-.title {
-	color: #08917c;
-	display: inline;
-}
-
-.dot {
-	color: #777777;
-}
-
-/* Plogging_01 내용 */
-.plogging_01-content {
-	display: flex;
-	flex-direction: column;
-	font-size: 18px;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1920px;
+    gap: 50px;
 }
 
 /* Plogging_02 */
@@ -123,45 +151,11 @@ body, html {
 	display: flex;
 	align-items: flex-start;
 	justify-content: space-between;
-	padding: 0 20px;
-	box-sizing: border-box;
+	width: 100%;
+    max-width: 1920px;
+    gap: 50px;
 	margin-top: 200px;
 	flex-direction: row-reverse;
-}
-
-/* Plogging_02 이미지*/
-.plogging_02 img {
-	margin-right: 40px;
-	width: 700px;
-	height: auto;
-}
-
-/* Plogging_02 타이틀&내용 */
-.plogging_02-TC {
-	margin-left: 40px;
-}
-
-/* Plogging_02 타이틀 */
-#plogging_02-title {
-	font-family: 'TheJamsil5Bold';
-	font-size: 65px;
-	margin-bottom: 15px;
-}
-
-.title {
-	color: #08917c;
-	display: inline;
-}
-
-.dot {
-	color: #777777;
-}
-
-/* Plogging_02 내용 */
-.plogging_02-content {
-	display: flex;
-	flex-direction: column;
-	font-size: 18px;
 }
 
 /* Plogging_03 */
@@ -169,46 +163,11 @@ body, html {
 	display: flex;
 	align-items: flex-start;
 	justify-content: space-between;
-	padding: 0 20px;
-	box-sizing: border-box;
+	width: 100%;
+    max-width: 1920px;
+    gap: 50px;
 	margin-top: 200px;
 	flex-direction: row;
-}
-
-/* Plogging_03 이미지*/
-.plogging_03 img {
-	margin-left: 40px;
-	width: 700px;
-	height: auto;
-}
-
-/* Plogging_03 타이틀&내용 */
-.plogging_03-TC {
-	text-align-last: right;
-	margin-right: 40px;
-}
-
-/* Plogging_03 타이틀 */
-#plogging_03-title {
-	font-family: 'TheJamsil5Bold';
-	font-size: 65px;
-	margin-bottom: 15px;
-}
-
-.title {
-	color: #08917c;
-	display: inline;
-}
-
-.dot {
-	color: #777777;
-}
-
-/* Plogging_03 내용 */
-.plogging_03-content {
-	display: flex;
-	flex-direction: column;
-	font-size: 18px;
 }
 
 /* Plogging_04 */
@@ -216,31 +175,39 @@ body, html {
 	display: flex;
 	align-items: flex-start;
 	justify-content: space-between;
-	padding: 0 20px;
-	box-sizing: border-box;
+	width: 100%;
+    max-width: 1920px;
+    gap: 50px;
 	margin-top: 200px;
 	flex-direction: row-reverse;
 }
 
-/* Plogging_04 이미지*/
-.plogging_04 img {
+/* Plogging_01, 03 이미지*/
+.plogging_01 img, .plogging_03 img {
+    margin-left: 40px;
+    width: 700px;
+    height: auto;
+}
+
+/* Plogging_01, 03 타이틀&내용 */
+.plogging_01-TC, .plogging_03-TC {
+    text-align: right;
+    margin-right: 40px;
+}
+
+/* Plogging_02, 04 이미지*/
+.plogging_02 img, .plogging_04 img {
 	margin-right: 40px;
 	width: 700px;
 	height: auto;
 }
 
-/* Plogging_04 타이틀&내용 */
-.plogging_04-TC {
+/* Plogging_02, 04 타이틀&내용 */
+.plogging_02-TC, .plogging_04-TC  {
 	margin-left: 40px;
 }
 
-/* Plogging_04 타이틀 */
-#plogging_04-title {
-	font-family: 'TheJamsil5Bold';
-	font-size: 65px;
-	margin-bottom: 15px;
-}
-
+/* Plogging_01-04 동일*/
 .title {
 	color: #08917c;
 	display: inline;
@@ -250,17 +217,25 @@ body, html {
 	color: #777777;
 }
 
-/* Plogging_04 내용 */
-.plogging_04-content {
-	display: flex;
-	flex-direction: column;
-	font-size: 18px;
-}
-
-/* Plogging_01-04 동일*/
 .point {
 	color: #08917c;
 	font-weight: bold;
+}
+
+/* Plogging_01 타이틀 */
+#plogging_01-title, #plogging_02-title,
+#plogging_03-title, #plogging_04-title  {
+	font-family: 'TheJamsil5Bold';
+	font-size: 65px;
+	margin-bottom: 15px;
+}
+
+/* Plogging_01 내용 */
+.plogging_01-content, .plogging_02-content,
+.plogging_03-content, .plogging_04-content {
+	display: flex;
+	flex-direction: column;
+	font-size: 18px;
 }
 
 .custom-button {
@@ -359,36 +334,43 @@ footer {
 	.container {
 		padding: 0 15px;
 	}
-	.text .normal, .text .point {
+	.text {
+		margin: 0 10px 5px 10px;
+	}
+	.text .normal, .text .plo-point {
 		font-size: 20px;
+		font-weight: bold;
 	}
 	.banner {
 		width: calc(100% - 20px); /* 중간 크기 화면에서 좌우 여백 조정 */
 		height: 40px;
-		padding: 0 15px;
+		padding: 0px;
 	}
-	.banner p {
-		font-size: 15px;
+	.ploking li, .ploking-highlight, .ploking-highlight-Nick, .plogging-count {
+		font-size: 16px;
+	}
+	.ploggings {
+		padding: 0px;
+		margin-top: 100px;
 	}
 	.plogging_01, .plogging_03 {
 		display: flex;
 		flex-direction: column-reverse;
 		align-items: flex-start;
 		justify-content: flex-start;
-		padding: 0;
-		margin-right: 20px;
+		padding: 0 20px 0 0;
 		box-sizing: border-box;
-		margin-top: 100px;
+		gap: 0px;
 	}
 	.plogging_02, .plogging_04 {
 		display: flex;
 		flex-direction: column-reverse;
 		align-items: flex-start;
 		justify-content: flex-start;
-		padding: 0;
-		margin-left: 20px;
+		padding: 0 0 0 20px;
 		box-sizing: border-box;
 		margin-top: 100px;
+		gap: 0px;
 	}
 	.plogging_01 img, .plogging_03 img {
 		margin: 0;

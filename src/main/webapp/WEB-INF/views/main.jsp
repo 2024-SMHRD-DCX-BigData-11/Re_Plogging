@@ -16,22 +16,26 @@
 	<div class="main-container">
 		<div class="text">
 			<img src="img/왕관.png" alt="왕관">
-			<P class="normal">이달의</P>
-			<P class="plo-point">플로킹!</P>
+			<p class="normal">이달의</p>&nbsp;
+			<p class="plo-point">플로킹!</p>
 		</div>
 
 		<div class="banner">
 			<ul class="ploking">
 				<c:forEach var="item" items="${topUser}" varStatus="status">
-					<li>${status.index + 1}위 ${item.userNick}님! ${item.ploggingCount}회</li>
+					<li>
+						<span class="ploking-highlight">${status.index + 1}위</span>
+						<span class="ploking-highlight-Nick">${item.userNick}</span>님!
+						<span class="plogging-count">${item.ploggingCount}회</span>
+					</li>
 				</c:forEach>
 			</ul>
-			<!--<span>${topUserNick}</span>님! ${topPloggingCount}회-->
 		</div>
 
 
 	</div>
 
+	<div class="ploggings">
 	<div class="plogging_01">
 		<img src="img/메인_01.png" alt="Plogging Image">
 		<div class="plogging_01-TC">
@@ -104,6 +108,7 @@
 				</span>
 			</div>
 		</div>
+	</div>
 	</div>
 	<div class="aiHelper-container" onclick="">
 	    <div class="aiHelperImg">
