@@ -21,7 +21,7 @@
 				<input type="email" id="user_id" name="userId"
 					class="login-id-input" placeholder="ID@example.com" autocomplete="off"> <input
 					type="password" id="user_pw" name="userPw" class="login-pw-input"
-					placeholder="비밀번호를 입력하세요.">
+					placeholder="비밀번호를 입력하세요." autocomplete="off">
 				<div id="errorMessage" class="error-message">
 					이메일 또는 비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다시 확인해주세요.
 				</div>
@@ -62,12 +62,12 @@
 					<tr>
 						<th>비밀번호</th>
 						<td><input type="password" id="join_user_pw" name="userPw"
-							class="join-pw-input" placeholder="비밀번호를 입력하세요."></td>
+							class="join-pw-input" placeholder="비밀번호를 입력하세요." autocomplete="off"></td>
 					</tr>
 					<tr>
 						<th>비밀번호 확인</th>
 						<td><input type="password" id="user_pw_confirm"
-							name="user_pw_confirm" class="join-pw-confirm">
+							name="user_pw_confirm" class="join-pw-confirm" autocomplete="off">
 							<span id="pwMsg" class="pwMsg">비밀번호가 일치하지 않습니다.</span>	
 						</td>
 					</tr>
@@ -83,9 +83,9 @@
 									<option value="018">018</option>
 									<option value="019">019</option>
 								</select>
-								<input id="mobile2" name="mobile[]" type="tel">
-								<input id="mobile3" name="mobile[]" type="tel">
-								<input id="mobile4" name="userPhone" type="hidden" value = "">
+								<input id="mobile2" name="mobile[]" type="tel" maxlength="4" autocomplete="off">
+								<input id="mobile3" name="mobile[]" type="tel" maxlength="4" autocomplete="off">
+								<input id="mobile4" name="userPhone" type="hidden" value = "" autocomplete="off">
 							</div>
 							<input type="hidden" id="telCheck" name="telCheck" value="0" />
 							<button type="button" id="telconfirm" class="tel-confirm" onclick="telconfirmButton('${ctx }/rest/sms/shipping1234');">인증</button>
@@ -104,7 +104,7 @@
 					<tr>
 						<th>닉네임</th>
 						<td><input type="text" id="user_nick" name="userNick"
-							class="join-nick-input">
+							class="join-nick-input" autocomplete="off">
 							<span id="nickMsg" class="nickMsg">중복된 닉네임 입니다.</span>
 						</td>
 					</tr>

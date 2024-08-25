@@ -48,6 +48,7 @@ h1 {
 	font-size: 14px;
 	border: 1px solid #a1acbd;
 	border-radius: 4px;
+	outline: none;
 }
 
 .search-input {
@@ -56,6 +57,7 @@ h1 {
 	font-size: 14px;
 	border: 1px solid #a1acbd;
 	border-radius: 4px;
+	outline: none;
 }
 
 .search-btn {
