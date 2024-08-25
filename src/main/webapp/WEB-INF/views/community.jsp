@@ -17,7 +17,7 @@
 <body>
     <div class="community-container">
         <div class="page-header">
-            <h1>자유 게시판</h1>
+            <h1>커뮤니티</h1>
         </div>
         <div class="search-box">
             <form action="${pageContext.request.contextPath}/community" method="get"
@@ -29,7 +29,7 @@
                     <option value="freeboard" ${selectedCategory == 'freeboard' ? 'selected' : ''}>자유게시판</option>
                 </select> 
                 <input type="text" name="keyword" class="search-input"
-                    placeholder="검색어를 입력하세요" value="${keyword}">
+                    placeholder="검색어를 입력하세요" value="${keyword}" autocomplete="off">
                 <button type="submit" class="search-btn">검색</button>
             </form>
         </div>
@@ -58,7 +58,7 @@
                                    </c:if>
                                 </td>
                                 <td style="color:#747474;">${community.writer.userNick}</td>
-                                <td style="color:#747474;"><fmt:formatDate value="${community.indate}" pattern="yyyy-MM-dd" /></td>
+                                <td style="color:#747474;"><fmt:formatDate value="${community.indate}" pattern="yyyy.MM.dd" /></td>
                                 <td style="color:#747474;">${community.count}</td>
                                 <td style="color:#747474;">${community.likes}</td>
                             </tr>
@@ -66,7 +66,7 @@
                     </c:when>
                     <c:otherwise>
                         <tr>
-                            <td colspan="7">no data</td>
+                            <td colspan="7">작성된 게시글이 없습니다.</td>
                         </tr>
                     </c:otherwise>
                 </c:choose>
@@ -86,8 +86,8 @@
     <nav aria-label="Page navigation" style="text-align: center;">
         <ul class="pagination">
             <c:if test="${currentPage > 1}">
-                <li><a href="${pageContext.request.contextPath}/community?page=1">&laquo;</a></li>
-                <li><a href="${pageContext.request.contextPath}/community?page=${currentPage - 1}">&lsaquo;</a></li>
+                <li><a href="${pageContext.request.contextPath}/community?page=1">처음</a></li>
+                <li><a href="${pageContext.request.contextPath}/community?page=${currentPage - 1}">이전</a></li>
             </c:if>
             <c:forEach var="i" begin="1" end="${totalPages}">
                 <li class="${i == currentPage ? 'active' : ''}">
@@ -95,10 +95,13 @@
                 </li>
             </c:forEach>
             <c:if test="${currentPage < totalPages}">
-                <li><a href="${pageContext.request.contextPath}/community?page=${currentPage + 1}">&rsaquo;</a></li>
-                <li><a href="${pageContext.request.contextPath}/community?page=${totalPages}">&raquo;</a></li>
+                <li><a href="${pageContext.request.contextPath}/community?page=${currentPage + 1}">다음</a></li>
+                <li><a href="${pageContext.request.contextPath}/community?page=${totalPages}">끝</a></li>
             </c:if>
         </ul>
     </nav>
+    
+    <footer> © 2024 지구수호대 Korea Corporation All Rights Reserved.</footer>
+    
 </body>
 </html>
