@@ -9,13 +9,15 @@
 <title>RE:PLOGGING MANAGER</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="assets/css/manager.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/manager.css">
 </head>
 <body>
 	<div class="manager-header">
 		<div class="manager-logo">
 			<a href="${pageContext.request.contextPath}/main"><img
-				src="img/Re_Plogging_로고(관리자).png" alt=""></a>
+				src="${pageContext.request.contextPath}/img/Re_Plogging_로고(관리자).png"
+				alt=""></a>
 		</div>
 	</div>
 
@@ -36,7 +38,6 @@
 					</tr>
 				</thead>
 				<tbody>
-					<%-- 회원 목록 출력--%>
 					<c:forEach var="member" items="${ulist}">
 						<tr>
 							<td>${member.userIdx}</td>
@@ -47,15 +48,14 @@
 									pattern="yyyy.MM.dd HH:mm:ss" /></td>
 							<td>${member.ploggingCount}</td>
 							<td>${member.mileageAmount}</td>
-							<td><a href="${ctx }/udelete?idx=${member.userIdx}">회원
+							<td><a
+								href="${pageContext.request.contextPath}/udelete?idx=${member.userIdx}">회원
 									탈퇴</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-
-
 
 		<div id="CommunityList">
 			<h1>커뮤니티 작성 글 목록</h1>
@@ -74,26 +74,26 @@
 					</tr>
 				</thead>
 				<tbody>
-					<%--게시글 목록 출력--%>
 					<c:forEach var="community" items="${clist}">
 						<tr>
 							<td>${community.idx}</td>
 							<td>${community.category}</td>
-							<td><a href="${ctx }/cview?idx=${community.idx}">${community.title}</a></td>
+							<td><a
+								href="${pageContext.request.contextPath}/cview?idx=${community.idx}">${community.title}</a></td>
 							<td>${community.writer.userNick}</td>
 							<td><fmt:formatDate value="${community.indate}"
 									pattern="yyyy.MM.dd HH:mm:ss" /></td>
 							<td>${community.count}</td>
 							<td>${community.likes}</td>
 							<td>${community.img != null ? community.img : '-'}</td>
-							<td><a href="${ctx }/cdelete?idx=${community.idx}">게시물
+							<td><a
+								href="${pageContext.request.contextPath}/cdelete?idx=${community.idx}">게시물
 									삭제</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-
 
 		<div id="MarketList">
 			<h1>그린마켓 작성 글 목록</h1>
@@ -115,12 +115,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<%--마켓 게시글 목록 출력--%>
 					<c:forEach var="market" items="${mlist}">
 						<tr>
 							<td>${market.mkIdx}</td>
 							<td>${market.category}</td>
-							<td><a href="${ctx }/mview?idx=${market.mkIdx}">${market.title}</a></td>
+							<td><a
+								href="${pageContext.request.contextPath}/mview?idx=${market.mkIdx}">${market.title}</a></td>
 							<td>${market.mileage}</td>
 							<td>${market.user.userNick}</td>
 							<td>${market.img1 != null ? market.img1 : '-'}</td>
@@ -136,8 +136,9 @@
 									</c:when>
 									<c:otherwise>-</c:otherwise>
 								</c:choose></td>
-							<td><a href="${ctx }/mdelete?idx=${market.mkIdx}">판매 글
-									삭제</a></td>
+							<td><a
+								href="${pageContext.request.contextPath}/mdelete?idx=${market.mkIdx}">판매
+									글 삭제</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -145,8 +146,8 @@
 		</div>
 	</div>
 
-	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
+	<footer>© 2024 지구수호대 Korea Corporation All Rights Reserved.</footer>
 
-	<script src="assets/js/manager.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/manager.js"></script>
 </body>
 </html>
