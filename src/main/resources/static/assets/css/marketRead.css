@@ -46,7 +46,7 @@ body, html {
 	border-style : solid;
 	text-decoration: none;
 	padding: 10px 10%;
-	margin: 100px;
+	margin: 100px 0 0 0;
 }
 
 .market_Read_wrapper {
@@ -149,6 +149,13 @@ body, html {
 	padding: 30px 20px;
 }
 
+footer {
+	font-size: 13px;
+	text-align: center;
+	margin-top: 100px;
+	margin-bottom: 25px;
+}
+
 @media screen and (max-width: 700px) {
 	.marketRead_img__image {
 	max-width: 552px;
@@ -156,5 +163,9 @@ body, html {
 	
 	.market_Read_wrapper {
 		grid-template-columns: repeat(1, 1fr);
+	}
+	
+	footer {
+		font-size: 11px;
 	}
 }

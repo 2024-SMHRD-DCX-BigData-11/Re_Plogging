@@ -190,5 +190,7 @@
 			}
 		});
 	</script>
+	
+	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
 </body>
 </html>

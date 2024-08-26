@@ -202,7 +202,12 @@ body, html {
     color: white;
 }
 
-
+footer {
+	font-size: 13px;
+	text-align: center;
+	margin-top: 100px;
+	margin-bottom: 25px;
+}
 
 @media screen and (max-width: 900px) {
     .market_card_wrapper {
@@ -246,5 +251,9 @@ body, html {
    font-size: 13px;
    margin: 3px;
 }
+
+footer {
+		font-size: 11px;
+	}
     
 }

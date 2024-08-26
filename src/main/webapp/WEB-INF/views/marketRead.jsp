@@ -56,5 +56,7 @@
         	<a href="marketBack" class="market_Read_btn_back_bottom">목록</a>
         </div>
     </div>
+    
+    <footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
 </body>
 </html>
