@@ -1,0 +1,153 @@
+@charset "EUC-KR";
+
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+		format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+
+body, html {
+	font-family: 'S-CoreDream-3Light';
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.checkMyMileage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 125px auto 0 auto;
+    width: 400px;
+    box-sizing: border-box;
+}
+
+
+.Mileage-Details {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #00a989;
+}
+
+.Mileaget-line {
+    border-bottom: 2px solid #a1acbd;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.no-Mileage {
+	text-align: center;
+	margin: 50px 0;
+	font-size: 16px;
+	color: #777;
+}
+
+.Mileage-Details-innner {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.Mileage-nomal-wrapper {
+    text-align: left;
+}
+
+.Mileage-nomal {
+    display: block;
+    color: #333;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.Mileage-point {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    color: #00a989;
+    margin-top: 5px;
+}
+
+.Mileage-tab {
+    margin-top: 10px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.Mileage-tab-item {
+    font-size: 15px;
+    font-weight: bold;
+    border-bottom: 2px solid #000;
+    padding-bottom: 5px;
+}
+
+.Mileage-list-container {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.Mileage-item {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.Mileage-item-title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.Mileage-amount {
+    color: #00a989;
+}
+
+.Mileage-item-info {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #777;
+}
+
+/* footer */
+footer {
+	font-size: 13px;
+	text-align: center;
+	margin-top: 100px;
+	margin-bottom: 25px;
+}
+
+@media screen and (max-width: 768px) {
+	.checkMyMileage-container {
+		width: 90%;
+		margin-top: 100px;
+		box-sizing: border-box;
+	}
+	.Mileage-Details {
+		font-size: 24px;
+	}
+	.no-Mileage {
+		margin: 40px 0;
+		font-size: 14px;
+	}
+	.Mileage-nomal, .Mileage-tab-item, .Mileage-item-title {
+		font-size: 13px;
+	}
+	.Mileage-point {
+		font-size: 20px;
+	}
+	.Mileage-item-info {
+		font-size: 12px;
+	}
+	footer {
+		font-size: 11px;
+	}}
