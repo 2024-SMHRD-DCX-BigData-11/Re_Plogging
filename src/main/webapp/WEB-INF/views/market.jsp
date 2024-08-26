@@ -19,10 +19,10 @@
 				<h1 id="market_title">그린마켓</h1>
 			</div>
 			<div class="market_List_category">
-				<div>
-					<h3 id="market_List_category">카테고리</h3>
+				<div class="market_List_Text">
+					<h3>카테고리</h3>
 				</div>
-				<div>
+				<div class="market_List_categorys">
 					<a
 						class="market_List_category_li ${selectedCategory == null ? 'active' : ''}"
 						href="/boot/market?sort=${currentSort}">전체보기</a> <a
