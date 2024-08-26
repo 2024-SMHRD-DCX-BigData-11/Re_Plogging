@@ -145,20 +145,7 @@ public class PloggingController {
 		}
 	}
 
-	/* 마이 페이지 */
-	@RequestMapping("/mypage")
-	public String myPage(HttpSession session, Model model) {
-		Member member = (Member) session.getAttribute("user");
-		if (member != null) {
-			int completedPloggingCount = prepo.countCompletedPlogging(member.getUserIdx());
-			model.addAttribute("completedPloggingCount", completedPloggingCount);
-			return "mypage";
-		} else {
-			System.out.println("유저 없음.");
-			logout(session);
-			return "redirect:/main";
-		}
-	}
+	
 
 	/* 나의 플로깅 */
 	@RequestMapping("/myplogging")

@@ -14,6 +14,8 @@ import com.smhrd.entity.Member;
 import com.smhrd.repository.CommunityRepository;
 import com.smhrd.repository.MarketRepository;
 import com.smhrd.repository.MemberRepository;
+import com.smhrd.repository.MileageRepository;
+import com.smhrd.repository.PloggingRepository;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -28,6 +30,31 @@ public class MyPageController {
 
 	@Autowired
 	private CommunityRepository crepo;
+	
+	@Autowired
+	private MileageRepository mirepo;
+	
+	@Autowired
+	private PloggingRepository prepo;
+
+	@RequestMapping("/mypage")
+	public String goMileageList(HttpSession session, Model model) {
+        Member member = (Member) session.getAttribute("user");
+
+        if (member != null) {
+            int totalMileage = mirepo.getMileageCount(member.getUserIdx());
+            int completedPloggingCount = prepo.countCompletedPlogging(member.getUserIdx());
+            
+            model.addAttribute("totalMileage", totalMileage);
+
+			model.addAttribute("completedPloggingCount", completedPloggingCount);
+            
+            return "mypage";
+        } else {
+            return "redirect:/main";
+        }
+    }
+	
 
 	@RequestMapping("/myWrite")
 	public String MyCommunityList(HttpSession session, Model model) {
@@ -72,6 +99,7 @@ public class MyPageController {
 		mrepo.deleteById(idx);
 		return "redirect:/myWrite";
 	}
+	
 
 	// 카테고리
 	private String categoryToName(String category) {

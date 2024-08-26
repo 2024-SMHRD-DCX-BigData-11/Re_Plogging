@@ -68,7 +68,7 @@
 				<tr>
 					<th></th>
 					<td class="button-group">
-						<button type="button" id="cancel-button">취소</button>
+						<button type="button" id="cancel-button" >취소</button>
 						<button type="button" id="save-button" onclick="inputReadOnly()">변경사항 저장</button>
 					</td>
 				</tr>
@@ -116,22 +116,27 @@
 				return false;
 			} else {
 				commonMultiAjax("${ctx}/rest/member/memberUpdate", formData, function(response) {
+					
 					if (response.code == 0) {
 						alert("회원정보 수정 성공!!");
-					} else if (response.code == -600) {
-						alert("로그인 상태가 아닙니다.");
-						return false;
-					} else if (response.code == -500) {
-						alert("비밀번호가 일치하지 않습니다.");
-						return false;
-					} else if (response.code == -400) {
-						alert("이미 사용중인 닉네임입니다!");
-						return false;
-					} else if(response.code == -300) {
-						alert("입력한 값을 확인해주세요.");
-						return false;
-					} else if(response.code == -200){
-						alert("중복된 닉네임입니다.");
+					} else {
+						switch(response.code){
+						case "-600":
+							alert("로그인 상태가 아닙니다.");
+							break;
+						case "-500":
+							alert("비밀번호가 일치하지 않습니다.");
+							break;
+						case "-400":
+							alert("이미 사용중인 닉네임입니다!");
+							break;
+						case "-300":
+							alert("입력한 값을 확인해주세요.");
+							break;
+						case "-200":
+							alert("중복된 닉네임입니다.");
+							break;
+						}
 						return false;
 					}
 				});
