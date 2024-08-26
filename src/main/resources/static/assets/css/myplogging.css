@@ -22,7 +22,6 @@ body, html {
     flex-direction: column;
     align-items: center;
     margin: 125px auto 0 auto;
-    width: 600px;
     box-sizing: border-box;
 }
 
@@ -34,7 +33,7 @@ body, html {
 .current-plogging, .completed-plogging {
     width: 100%;
 	text-align: left;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 }
 
 .current-text, .completed-text {
@@ -48,7 +47,7 @@ body, html {
 	border-bottom: 2px solid #a1acbd;
 	width: 100%;
 	margin: 0 auto;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 .completed-line {
@@ -291,9 +290,6 @@ footer {
 	}
 	.current-text, .completed-text {
 		font-size: 24px;
-	}
-	.current-line {
-		margin-bottom: 10px;
 	}
 	.completed-line {
 		margin-bottom: 0px;

@@ -30,7 +30,7 @@ body, html {
 	text-align: left;
 	font-size: 30px;
 	font-weight: bold;
-	color: #01875f;
+	color: #00a989;
 	margin-bottom: 5px;
 }
 
@@ -140,7 +140,7 @@ body, html {
 
 .profile-activity .point {
 	font-size: 15px;
-	color: #01875f;
+	color: #00a989;
 }
 
 .mypage-ul {
@@ -163,7 +163,7 @@ body, html {
 }
 
 .mypage-ul li a:hover {
-	color: #01875f;
+	color: #00a989;
 }
 
 .mypage-ul li a img {
@@ -186,7 +186,6 @@ footer {
 	}
 	.profile-container {
 		font-size: 24px;
-		margin-bottom: 10px;
 	}
 	.profile-container-inner {
 		margin-bottom: 40px;
