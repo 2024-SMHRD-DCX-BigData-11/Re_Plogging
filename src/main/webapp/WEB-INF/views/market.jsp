@@ -16,11 +16,11 @@
 	<div class="container">
 		<div class="market_List_wrap">
 			<div>
-				<h1>그린마켓</h1>
+				<h1 id="market_title">그린마켓</h1>
 			</div>
 			<div class="market_List_category">
 				<div>
-					<h3>카테고리</h3>
+					<h3 id="market_List_category">카테고리</h3>
 				</div>
 				<div>
 					<a
@@ -76,11 +76,11 @@
 											<div class="market_card_title">
 												<h2>${market.title}</h2>
 											</div>
-											<div class="market_card_category">
-												<span>${market.category}</span>
-											</div>
 											<div class="market_card_price">
 												<span>${market.mileage}p</span>
+											</div>
+											<div class="market_card_category">
+												<span>${market.category}</span>
 											</div>
 											<div class="market_card_writer">
 												<span>${market.user.userNick}</span>

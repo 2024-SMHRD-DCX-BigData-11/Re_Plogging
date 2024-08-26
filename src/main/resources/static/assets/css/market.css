@@ -27,6 +27,13 @@ body, html {
    
 }
 
+#market_title {
+	color: #00a989;
+}
+
+#market_List_category{
+}
+
 .market_List_category {
    padding: 0 0 20px;
 }
@@ -49,7 +56,7 @@ body, html {
 .market_List_category_li.active {
 	color: white;
     background-color: #00a989; /* 선택된 상태에서 배경색 */
-    border-radius: 5px; /* 둥근 모서리 */
+    border-radius: 20px; /* 둥근 모서리 */
     padding: 5px 10px; /* 적절한 패딩 추가 */
     text-decoration: none;
 }
@@ -130,6 +137,14 @@ body, html {
 .market_card_desc span {
    font-size: 15px;
    margin: 5px;
+}
+
+.market_card_price {
+	font-weight: bold;
+}
+
+.market_card_category {
+	color: #00a989;
 }
 
 .market_Wirte {

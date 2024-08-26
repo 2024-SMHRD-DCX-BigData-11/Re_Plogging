@@ -25,11 +25,28 @@ body, html {
 	box-sizing: border-box;
 }
 
-.market_Read_btn_back {
+.market_Read_btn_back_top {
 	color: grey;
 	background-color: transparent;
 	border-radius: 5px;
 	text-decoration: none;
+}
+
+.market_Read_btn_back__bottom {
+	 display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.market_Read_btn_back_bottom {
+	color: grey;
+	background-color: white;
+	border-radius: 5px;
+	border-color: #BDBDBD;
+	border-style : solid;
+	text-decoration: none;
+	padding: 10px 10%;
+	margin: 100px;
 }
 
 .market_Read_wrapper {
@@ -47,7 +64,7 @@ body, html {
 	border-radius: 5px;
 	cursor: pointer;
 	padding: 10px;
-	width: 75%;
+	width: 100%;
 	font-family: 'S-CoreDream-3Light';
 	font-size: 15pt;
 	font-weight: bold;
@@ -62,7 +79,7 @@ body, html {
 	border-radius: 5px;
 	cursor: pointer;
 	padding: 10px;
-	width: 75%;
+	width: 100%;
 	font-family: 'S-CoreDream-3Light';
 	font-size: 15pt;
 	font-weight: bold;
@@ -73,9 +90,18 @@ body, html {
 	text-align: center;
 }
 
+.marketRead_content h4 {
+	margin: 0 20px 50px;
+}
+
 .marketRead_img__image {
-	max-width: 530px;
-	width: auto;
+	 max-width: 530px;
+    width: 100%;
+    height: auto;
+}
+
+.marketRead_info {
+	width: 100%;
 }
 
 #marketRead_info_category {
@@ -121,4 +147,14 @@ body, html {
 
 .marketRead_content {
 	padding: 30px 20px;
+}
+
+@media screen and (max-width: 700px) {
+	.marketRead_img__image {
+	max-width: 552px;
+	}
+	
+	.market_Read_wrapper {
+		grid-template-columns: repeat(1, 1fr);
+	}
 }
