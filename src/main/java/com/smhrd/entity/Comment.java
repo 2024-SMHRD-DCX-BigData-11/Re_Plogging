@@ -34,9 +34,6 @@ public class Comment {
    @Column(name = "created_at", insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
    private Date indate; // 댓글 작성일자 (created_at)
    
-   @Column(name = "cmt_likes", nullable = false, columnDefinition = "INT UNSIGNED DEFAULT 0")
-   private int likes; // 댓글 좋아요 수 (cmt_likes)
-   
    @ManyToOne
    @JoinColumn(name = "user_idx", nullable = false) // 사용자와의 관계 설정 (외래 키)
    private Member user; // 사용자 인덱스 (user_idx)
