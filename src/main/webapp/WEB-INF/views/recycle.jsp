@@ -15,7 +15,6 @@
 <body>
     <div class="recycle-container">
         <div class="recycle_List_category">
-           
             <div>
                 <a href="#" class="recycle_List_category_li ${selectedCategory == null ? 'active' : ''}" onclick="fetchRecycleData('')">전체</a>
                 <a href="#" class="recycle_List_category_li ${selectedCategory == '종이류' ? 'active' : ''}" onclick="fetchRecycleData('종이류')">종이류</a>
@@ -63,5 +62,6 @@
     </div>
 
     <script src="assets/js/recycle.js"></script>
+    
 </body>
 </html>

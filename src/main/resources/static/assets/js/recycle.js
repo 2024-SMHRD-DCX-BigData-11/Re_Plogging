@@ -3,12 +3,18 @@ const page = document.getElementById("page");
 var data = [];
 var i = 0;
 
+// 페이지 로드 시 #전체를 기본으로 설정
+window.onload = function() {
+    fetchRecycleData(''); // 페이지가 로드될 때 전체 데이터를 불러옵니다.
+    setActiveCategory(''); // 전체 버튼을 기본으로 활성화합니다.
+};
+
 function fetchRecycleData(category) {
     var xhr = new XMLHttpRequest();
     if (category) {
         xhr.open('GET', '/boot/recycle/data?main-category=' + category, true);
     } else {
-        xhr.open('GET', '/boot/recycle/data');
+        xhr.open('GET', '/boot/recycle/data', true);
     }
     xhr.onload = function() {
         if (xhr.status === 200) {
@@ -20,6 +26,27 @@ function fetchRecycleData(category) {
         }
     };
     xhr.send();
+
+    setActiveCategory(category); // 버튼 활성화 함수 호출
+}
+
+function setActiveCategory(category) {
+    // 모든 버튼의 active 클래스를 제거합니다.
+    var buttons = document.querySelectorAll('.recycle_List_category_li');
+    buttons.forEach(function(button) {
+        button.classList.remove('active');
+    });
+
+    // 선택된 카테고리 버튼에 active 클래스를 추가합니다.
+    var activeButton;
+    if (category) {
+        activeButton = document.querySelector('[onclick="fetchRecycleData(\'' + category + '\')"]');
+    } else {
+        activeButton = document.querySelector('[onclick="fetchRecycleData(\'\')"]');
+    }
+    if (activeButton) {
+        activeButton.classList.add('active');
+    }
 }
 
 document.getElementById('prev').addEventListener('click', function(event) {
