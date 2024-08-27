@@ -2,9 +2,12 @@ package com.smhrd.controller;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Blob;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -60,6 +63,15 @@ public class AiController {
 				
 				// 사용자 idx DTO에 담기
 				uploadimg.setUserIdx(member);
+				
+				// 파일을 byte[]로 변환
+				byte[] fileBytes = file.getBytes();
+
+				// DTO에 byte[] 저장
+				uploadimg.setImageData(fileBytes); // byte[]로 파일 데이터를 저장
+				
+				// 저장한 파일의 사이즈 DTO에 담기
+				uploadimg.setFileSize(file.getSize());
 				
 				if (filenameo != null && filenameo.contains(".")) {
 				    String fileExt = filenameo.substring(filenameo.lastIndexOf(".") + 1);
