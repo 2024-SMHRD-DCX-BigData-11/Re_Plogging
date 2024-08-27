@@ -45,8 +45,8 @@
             </c:if>
 
             <div class="commWrite-button-group">
-                <button type="submit" class="commWrite-btn">등록</button>
                 <a href="${pageContext.request.contextPath}/community" class="commWrite-btn-cancel">취소</a>
+                <button type="submit" class="commWrite-btn">등록</button>
             </div>
             </div>
         </form>

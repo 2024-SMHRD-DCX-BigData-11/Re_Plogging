@@ -52,8 +52,8 @@
                 <input type="hidden" name="status" value="0">
 
                 <div class="marWrite-button-group">
-                    <button type="submit" class="marWrite-btn">등록</button>
                     <a href="${pageContext.request.contextPath}/market" class="marWrite-btn-cancel">취소</a>
+                    <button type="submit" class="marWrite-btn">등록</button>
                 </div>
             </form>
     </div>
