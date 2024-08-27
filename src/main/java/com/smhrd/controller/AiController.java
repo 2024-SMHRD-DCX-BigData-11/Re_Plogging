@@ -73,6 +73,7 @@ public class AiController {
 				// 저장한 파일의 사이즈 DTO에 담기
 				uploadimg.setFileSize(file.getSize());
 				
+				
 				if (filenameo != null && filenameo.contains(".")) {
 				    String fileExt = filenameo.substring(filenameo.lastIndexOf(".") + 1);
 				    uploadimg.setFileExt(fileExt);
@@ -89,8 +90,15 @@ public class AiController {
 			
 			// 2. 기능 실행
 			irepo.save(uploadimg);
-			// 3. View 선택
-			return "redirect:/main";
+			
+			// 회원번호 변수에 담기(쿼리스트링용)
+			int useridx = member.getUserIdx();
+			
+			// 파일번호 변수에 담기(쿼리스트링용)
+			int fileidx = uploadimg.getFileIdx();
+			
+			// 3. 플라스크로 이동(쿼리스트링)
+			return "redirect:http://127.0.0.1:5001?userIdx=" + useridx +"&fileIdx=" + fileidx;
 	}else {
 			// 로그인 상태가 이니면 메인 페이지로 이동
 			return "redirect:/main";
