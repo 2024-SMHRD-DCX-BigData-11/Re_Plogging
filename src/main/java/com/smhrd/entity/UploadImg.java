@@ -18,7 +18,7 @@ public class UploadImg {
     private String fileName;
 
     @Lob
-    @Column(name = "image_data", columnDefinition = "LONGBLOB")
+    @Column(name = "image_data", columnDefinition = "LONGBLOB", nullable = false)
     private byte[] imageData;
 
     @Column(name = "file_ext", nullable = false)
