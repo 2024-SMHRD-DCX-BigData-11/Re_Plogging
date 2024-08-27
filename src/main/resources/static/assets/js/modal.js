@@ -9,6 +9,17 @@ function closeLoginModal() {
 }
 
 
+// 비밀번호 찾기
+/*document.getElementById('find-password').addEventListener('click', function() {
+    Swal.fire({
+        title: '',
+        html: '비밀번호 찾기 기능은<br> 추후 구현 예정입니다.',
+        icon: 'info',
+        confirmButtonText: 'OK'
+    });
+});*/
+
+
 // 회원가입 모달 열기
 function openJoinModal() {
     // 로그인 모달이 열려 있을 때만 회원가입 모달을 열 수 있음
@@ -140,15 +151,6 @@ function smsCheck( url ) {
 	return false;
 }
 
-/*
-commonAjax( "url", { idx : idx }, "post", function( response ) {
-	if( response.code == 200 ) {
-		alert( "success" );
-	}else {
-		alert( "fail" );
-	}
-})*/
-
 function commonAjax( url, data, type, callback ) {
 	$.ajax({
 		url : url,
@@ -175,101 +177,12 @@ function commonMultiAjax( url, data, callback ) {
 		}
 	});   
 }
-/*
-function join(formData, url){
-	
-	var user_id = $('#user_id').val();
-	var user_pw = $('#user_pw').val();
-	var user_pw_c = $('#user_pw_confirm').val();
-	var user_phone = $('#mobile4').val();
-	var sms_check = $('#otp').val();
-	var user_nick = $('#user_nick').val();
-	
-	
-	if( user_id.length == 0 ) {
-		erroAlert("이메일을 입력해주세요.1")
-	} else if ( user_pw.length == 0 ) {
-		erroAlert("비밀번호를 입력해주세요.")
-	} else if ( user_pw_c.length == 0 ) {
-		erroAlert("비밀번호 확인을 입력해주세요.")
-	} else if ( user_pw.match( user_pw_c ) == null ) {
-		erroAlert("비밀번호를 맞게 썼는지 확인해주세요.")
-	} else if ( user_phone.length == 0 ) {
-		erroAlert("전화번호를 입력해주세요.")
-	} else if (sms_check.length == 0){
-		erroAlert("이메일을 입력해주세요.2")
-	} else if ( user_nick.length == 0 ) {
-		erroAlert("닉네임을 입력해주세요.")
-	} else {
-		commonMultiAjax( url, formData, function( response ) {
-			if( response.code == 200 ) {
-				//등록 성공
-			} else if ( response.code == -100 ) {
-				//등록 실패
-			} else {
-				//email 중복
-			}
-		});
-		return false;
-	}
-	return false;
-}
-*/
+
 function erroAlert( msg, id ) {
 	alert( msg );
 	$("#" + id ).focus();
 	return false;
 }
-
-
-
-
-/*// 인증 버튼 교체
-function telconfirmButton() {
-    const telconfirm = document.getElementById('telconfirm');
-    
-    if (telconfirm.classList.contains('tel-confirm')) {
-        telconfirm.textContent = '재인증';
-    }
-}
-
-// 타이머
-window.onload = function() {
-    var duration = 180; // 3분 (180초)
-    var timer = duration, minutes, seconds;
-    var countdownElement = document.getElementById('countdown');
-
-    var interval = setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        countdownElement.value = minutes + ":" + seconds;
-
-        if (--timer < 0) {
-            clearInterval(interval);
-            countdownElement.value = "시간 초과";
-            // 타이머 종료 후 추가 동작 (예: 입력 필드 비활성화)
-            document.getElementById('otp').disabled = true;
-            document.getElementById('btnSubmit').disabled = true;
-        }
-    }, 1000);
-
-    // 인증번호 검증 예시
-    document.getElementById('btnSubmit').addEventListener('click', function() {
-        var userInput = document.getElementById('otp').value;
-        var correctOtp = "123456"; // 예시로 사용한 정답 OTP
-
-        if (userInput === correctOtp) {
-            alert("인증 성공!");
-            // 회원가입 절차로 이동
-        } else {
-            alert("잘못된 인증번호입니다.");
-        }
-    });
-};*/
 
 
 // 지도 이미지 모달

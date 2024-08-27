@@ -9,7 +9,7 @@
 <title>RE: PLOGGING</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="assets/css/modal.css">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css">
 </head>
 <body>
 	<!-- 로그인 모달 -->
@@ -36,8 +36,8 @@
 			</form>
 
 			<div class="login-options">
-				<div id="join-link">회원가입</div>
-				<div id="">비밀번호 찾기</div>
+				<span>아직 회원이 아니시라면?&nbsp;<div id="join-link">회원가입</div>하러 가기</span>
+				<!-- <div id="find-password">비밀번호 찾기</div> -->
 			</div>
 
 			<!-- 모달 닫기 버튼 -->
@@ -169,8 +169,9 @@
 
 
 	<!-- <script  src="http://code.jquery.com/jquery-latest.min.js"></script> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="assets/js/modal.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
 	<script type="text/javascript">
 		$(".join-button").on( "click", function( event ) {
 			$("#joinForm").submit();
