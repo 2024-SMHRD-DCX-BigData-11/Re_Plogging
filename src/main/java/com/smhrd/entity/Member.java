@@ -61,8 +61,5 @@ public class Member {
             }
         }
         
-        if (this.mileageAmount == 0) {
-            this.mileageAmount = 500;
-        }
     }
 }
