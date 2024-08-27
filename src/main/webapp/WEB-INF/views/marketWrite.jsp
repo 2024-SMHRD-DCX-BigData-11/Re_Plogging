@@ -28,10 +28,10 @@
                     <option value="560006">스티로폼</option>
                     <option value="560007">종이</option>
                 </select>
-                <input type="text" id="mileage" class="marWrite-mileage" name="mileage" placeholder="상품 가격을 입력해 주세요." required>
+                <input type="number" id="mileage" class="marWrite-mileage" min="0" max="2147483647" autocomplete="off" name="mileage" placeholder="상품 가격을 입력해 주세요." required>
                 </div>
-                <input type="text" id="title" class="marWrite-title" name="title" placeholder="상품 명을 입력해 주세요." required>
-                <textarea id="content" class="commWrite-content" name="content" placeholder="내용을 입력해 주세요." required></textarea>
+                <input type="text" id="title" class="marWrite-title" maxlength="300" autocomplete="off" name="title" placeholder="상품 명을 입력해 주세요." required>
+                <textarea id="content" class="commWrite-content" autocomplete="off" name="content" placeholder="내용을 입력해 주세요." required></textarea>
 
                 <div class="plz-img">📢&nbsp;<span class="plzImg-point">상품 사진</span>을 올려주세요!</div>
                 <div class="market-imgs">
