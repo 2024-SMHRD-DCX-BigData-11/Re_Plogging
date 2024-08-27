@@ -378,7 +378,7 @@ td {
 
 
 
-/* ai 모달 */
+/* ai 모달(메인) */
 #ai-modal {
     position: fixed;
     width: 100%;
@@ -434,7 +434,7 @@ td {
 /*     padding: 10px; */
 }
 
-.ai-body-first {
+.ai-body {
     display: flex;
     flex-direction: row; /* 요소들을 가로로 정렬 */
     align-items: center;
@@ -443,13 +443,13 @@ td {
     margin-bottom: 15px; /* 텍스트 아래 여백 추가 */
 }
 
-.ai-body-first img, .aiModal-body-two img {
+.ai-body img {
     width: 45px; /* AI 이미지 크기 */
     height: 45px; /* AI 이미지 크기 */
     margin-right: 5px;
 }
 
-.ai-body-first span {
+.ai-body span {
     font-size: 16px;
     margin-top: 15px;
 }
@@ -460,10 +460,9 @@ td {
 
 .ai-modal-body form {
 	display: flex;
-    flex-direction: row; /* 요소들을 가로로 정렬 */
+    flex-direction: row;
     align-items: center;
-    justify-content: center; /* 가운데 정렬 */
-    /* padding: 5px; */
+    justify-content: center;
     margin-bottom: 30px;
     font-family: 'S-CoreDream-3Light';
 }
@@ -501,6 +500,130 @@ input[type="submit"]:hover {
 	text-decoration: underline;
 }
 
+
+
+/* ai 모달(나의 플로깅) */
+#myplo-ai-modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.5s ease-out;
+}
+
+#myplo-ai-modal.show {
+    opacity: 1;
+    transform: translateY(0);
+    animation: slideUp 0.5s ease-out forwards;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.myplo-ai-container {
+    background: white;
+	padding: 20px;
+	border-radius: 8px;
+	width: 620px;
+    text-align: center;
+    box-shadow: 0px 1px 5px rgba(133, 145, 162, 0.2);
+    position: fixed;
+    bottom: 25px;
+    right: 50px;
+    border: 0.3px solid #a1acbd;
+    z-index: 1000; /* 다른 요소 위에 표시되도록 */
+}
+
+.myplo-ai-logo {
+	width: 200px;
+}
+
+.myplo-ai-modal-body {
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.myplo-ai-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.myplo-ai-body img {
+    width: 55px;
+    height: 55px;
+    margin-right: 5px;
+}
+
+.myplo-ai-body span {
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.myplo-ai-Imgpoint {
+	color: #a1acbd;
+	font-weight: bold;
+}
+
+.myplo-ai-modal-body form {
+	display: flex;
+    flex-direction: row; /* 요소들을 가로로 정렬 */
+    align-items: center;
+    justify-content: center; /* 가운데 정렬 */
+    margin-bottom: 30px;
+    font-family: 'S-CoreDream-3Light';
+}
+
+.myplo-file {
+    font-size: 15px !important;
+    cursor: pointer;
+    font-family: 'S-CoreDream-3Light' !important;
+}
+
+.myplo-submit {
+    font-size: 15px !important;
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #a1acbd !important;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    font-family: 'S-CoreDream-3Light' !important;
+}
+
+.myplo-submit:hover {
+    background-color: #8b99b1 !important; /* 업로드 버튼에 마우스 오버 시 배경 색상 */
+}
+
+.myplo-ai-modal-close {
+	margin-top: 20px;
+	font-size: 12px;
+	color: #555;
+	cursor: pointer;
+}
+
+.myplo-ai-modal-close:hover {
+	text-decoration: underline;
+}
+
+
 /* 미디어 쿼리 */
 @media ( max-width : 768px) {
 	.ai-container {
@@ -510,18 +633,18 @@ input[type="submit"]:hover {
 	.ai-modal-body {
 		margin-bottom: 10px;
 	}
-	.ai-body-first {
+	.ai-body {
 		margin-top: 10px;
 		margin-bottom: 10px; /* 텍스트 아래 여백 추가 */
 	}
-	.ai-body-first img, .aiModal-body-two img {
+	.ai-body img {
 		width: 35px; /* AI 이미지 크기 */
 		height: 35px; /* AI 이미지 크기 */
 		margin-right: 5px;
 	}
-	.ai-body-first span {
+	.ai-body span {
 		font-size: 14px;
-		margin-top: 14px;
+		margin-top: 15px;
 	}
 	input[type="file"] {
 		font-size: 10px;
@@ -530,6 +653,38 @@ input[type="submit"]:hover {
 	}
 	input[type="submit"] {
 		font-size: 11px;
+		padding: 7px;
+	}
+	
+	/* ai모달(나의플로깅) */
+	.myplo-ai-container {
+		width: 300px;
+		right: 10px;
+	}
+	.myplo-ai-logo {
+		width: 180px;
+	}
+	.myplo-ai-modal-body {
+		margin-bottom: 10px;
+	}
+	.myplo-ai-body {
+		margin-top: 10px;
+		margin-bottom: 10px; /* 텍스트 아래 여백 추가 */
+	}
+	.myplo-ai-body img {
+		width: 35px; /* AI 이미지 크기 */
+		height: 35px; /* AI 이미지 크기 */
+		margin-right: 5px;
+	}
+	.myplo-ai-body span {
+		font-size: 13px;
+		margin-top: 15px;
+	}
+	.myplo-file {
+		font-size: 10px !important;
+	}
+	.myplo-submit {
+		font-size: 10px !important;
 		padding: 7px;
 	}
 }

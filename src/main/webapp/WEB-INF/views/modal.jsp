@@ -126,13 +126,13 @@
     </div>
 </div>
 
-	<!-- ai 모달 -->
+	<!-- ai 모달(메인) -->
 	<div id="ai-modal">
 		<div class="ai-container">
 			<img src="img/Re_Plogging_로고.png" class="ai-logo"
 				alt="Re: Plogging Logo">
 			<div class="ai-modal-body">
-				<div class="ai-body-first">
+				<div class="ai-body">
 					<img src="img/aiAssistant.png" alt="AI"> <span>분리배출
 						방법이 궁금한 <span class="ai-Imgpoint">이미지</span>를 올려주세요!</span>
 				</div>
@@ -143,6 +143,27 @@
 				</form>
 			</div>
 			<div class="ai-modal-close" onclick="closeAiModal()">닫기</div>
+		</div>
+	</div>
+	
+	
+	<!-- ai 모달(나의 플로깅) -->
+	<div id="myplo-ai-modal">
+		<div class="myplo-ai-container">
+			<img src="img/Re_Plogging_로고(나의플로깅).png" class="myplo-ai-logo"
+				alt="Re: Plogging Logo">
+			<div class="myplo-ai-modal-body">
+				<div class="myplo-ai-body">
+					<img src="img/aiAssistant(나의플로깅).png" alt="AI"> <span>분리배출
+						방법이 궁금한 <span class="myplo-ai-Imgpoint">이미지</span>를 올려주세요!</span>
+				</div>
+				<form id="uploadForm" action="${pageContext.request.contextPath}/AiImageUpload" method="post"
+					enctype="multipart/form-data">
+					<input name="file" type="file" class="myplo-file">
+					</td> <input type="submit" class="myplo-submit" value="이미지 업로드">
+				</form>
+			</div>
+			<div class="myplo-ai-modal-close" onclick="closeMyPloAiModal()">닫기</div>
 		</div>
 	</div>
 

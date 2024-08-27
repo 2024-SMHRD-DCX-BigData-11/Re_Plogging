@@ -148,11 +148,11 @@
 		</div>
 	</div>
 
-	<div class="myplogging-aiHelper-container" onclick="">
+	<div class="myplogging-aiHelper-container" onclick="openMyploAiModal()">
 		<span class="aiHeperText-nomal">내가 주운 쓰레기의 분리배출 방법이 궁금하다면?</span>
 		<div class="aiHelper-content">
 		<img src="img/AI.png" alt="AI Image">
-		<a href = "ai1"><span class="aiHeperText-point">AI 분리배출 도우미 이용해 보기</span></a>
+		<span class="aiHeperText-point">AI 분리배출 도우미 이용해 보기</span>
 		</div>
 	</div>
 

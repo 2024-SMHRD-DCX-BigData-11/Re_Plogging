@@ -305,7 +305,7 @@ window.onclick = function(event) {
 }
 
 
-// ai 모달 열기
+// ai 모달(메인) 열기
 function openAiModal() {
     var modal = document.getElementById('ai-modal');
     modal.style.display = 'flex';
@@ -314,9 +314,28 @@ function openAiModal() {
     }, 10);
 }
 
-// ai 모달 닫기
+// ai 모달(메인) 닫기
 function closeAiModal() {
     var modal = document.getElementById('ai-modal');
+    modal.classList.remove('show');
+    setTimeout(function() {
+        modal.style.display = 'none';
+    }, 300);
+}
+
+
+// ai 모달(나의 플로깅) 열기
+function openMyploAiModal() {
+    var modal = document.getElementById('myplo-ai-modal');
+    modal.style.display = 'flex';
+    setTimeout(function() {
+        modal.classList.add('show');
+    }, 10);
+}
+
+// ai 모달(나의 플로깅) 닫기
+function closeMyPloAiModal() {
+    var modal = document.getElementById('myplo-ai-modal');
     modal.classList.remove('show');
     setTimeout(function() {
         modal.style.display = 'none';
