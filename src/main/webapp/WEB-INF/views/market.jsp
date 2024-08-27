@@ -74,7 +74,7 @@
 													alt="${market.title}" class="market_card_photo_image">
 											</div>
 											<div class="market_card_title">
-												<h2>${market.title}</h2>
+												<h2 class="marketTitle">${market.title}</h2>
 											</div>
 											<div class="market_card_price">
 												<span>${market.mileage}p</span>
