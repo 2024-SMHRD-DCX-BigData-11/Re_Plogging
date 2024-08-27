@@ -92,7 +92,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th>SNS 인증번호</th>
+						<th>SMS 인증번호</th>
 						<td>
 						<div class="join-sns-input">
 							<input type="tel" id="otp" name="otp" class="otp" maxlength="6" placeholder="숫자 6자리 입력">
@@ -125,6 +125,32 @@
         </div>
     </div>
 </div>
+
+	<!-- ai 모달 -->
+	<div id="ai-modal">
+		<div class="ai-container">
+			<img src="img/Re_Plogging_로고.png" class="ai-logo"
+				alt="Re: Plogging Logo">
+			<div class="ai-modal-body">
+				<div class="ai-body-first">
+					<img src="img/aiAssistant.png" alt="AI"> <span>분리배출
+						방법이 궁금한 이미지를 올려주세요!</span>
+				</div>
+				<form id="uploadForm" action="${pageContext.request.contextPath}/AiImageUpload" method="post"
+					enctype="multipart/form-data">
+					<input name="file" type="file">
+					</td> <input type="submit" value="이미지 업로드">
+				</form>
+			</div>
+			<div class="aiModal-body-two">
+				<img src="img/aiAssistant.png" alt="AI"> <span>잠시만 기다려
+					주세요 .... !</span>
+			</div>
+			<div class="ai-modal-close" onclick="closeAiModal()">닫기</div>
+		</div>
+	</div>
+
+
 	<!-- <script  src="http://code.jquery.com/jquery-latest.min.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="assets/js/modal.js"></script>
