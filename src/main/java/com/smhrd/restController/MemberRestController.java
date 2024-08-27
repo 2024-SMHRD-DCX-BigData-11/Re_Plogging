@@ -76,7 +76,6 @@ public class MemberRestController {
                     member.setUserPw(joinEncryptedPw);
                     member.setUserPhone(phone);
                     member.setUserNick(nick);
-                    member.setMileageAmount(500);
                     
                     mileage.setMlAmount(500);
                     mileage.setUser(member);
