@@ -12,9 +12,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.smhrd.entity.Recycle;
 import com.smhrd.repository.RecycleRepository;
@@ -27,34 +29,41 @@ public class RecycleController {
 
     @GetMapping("/recycle")
     public String goRecycle(Model model, 
-                            @RequestParam(defaultValue = "1") int page,
-                            @RequestParam(name = "main-category", required = false) String mainCategory) {
+                            @RequestParam(name = "page", defaultValue = "1") int page,
+                            @RequestParam(name = "main-category", required = false) String mainCategory,
+                            RedirectAttributes redirectAttributes) {
         
-        int pageSize = 1; // 한 번에 한 개씩만 보여주기
-        Pageable pageable = PageRequest.of(page - 1, pageSize);
-        Page<Recycle> recyclePage;
+        try {
+            int pageSize = 1; // 한 번에 한 개씩만 보여주기
+            Pageable pageable = PageRequest.of(page - 1, pageSize);
+            Page<Recycle> recyclePage;
 
-        if (mainCategory == null || mainCategory.isEmpty()) {
-            // 전체보기일 때
-            recyclePage = repo.findAll(pageable);
-        } else {
-            // 특정 카테고리일 때
-            recyclePage = repo.findRecycleByTarget(mainCategory, pageable);
+            if (mainCategory == null || mainCategory.isEmpty()) {
+                // 전체보기일 때
+                recyclePage = repo.findAll(pageable);
+            } else {
+                // 특정 카테고리일 때
+                recyclePage = repo.findRecycleByTarget(mainCategory, pageable);
+            }
+
+            Recycle recycle = recyclePage.getContent().isEmpty() ? null : recyclePage.getContent().get(0);
+
+            if (recycle != null && recycle.getRecycleVideo() != null) {
+                String base64Image = Base64.getEncoder().encodeToString(recycle.getRecycleVideo());
+                model.addAttribute("recycleImage", base64Image);
+            }
+
+            model.addAttribute("recycle", recycle);
+            model.addAttribute("currentPage", page);
+            model.addAttribute("totalPages", recyclePage.getTotalPages());
+            model.addAttribute("selectedCategory", mainCategory);
+
+            return "recycle";
+        } catch (Exception e) {
+            // 예외 발생 시 리다이렉트 처리
+            redirectAttributes.addFlashAttribute("errorMessage", "잘못된 요청입니다.");
+            return "redirect:/error";
         }
-
-        Recycle recycle = recyclePage.getContent().isEmpty() ? null : recyclePage.getContent().get(0);
-
-        if (recycle != null && recycle.getRecycleVideo() != null) {
-            String base64Image = Base64.getEncoder().encodeToString(recycle.getRecycleVideo());
-            model.addAttribute("recycleImage", base64Image);
-        }
-
-        model.addAttribute("recycle", recycle);
-        model.addAttribute("currentPage", page);
-        model.addAttribute("totalPages", recyclePage.getTotalPages());
-        model.addAttribute("selectedCategory", mainCategory);
-
-        return "recycle";
     }
 
     @GetMapping("/recycle/data")
@@ -91,5 +100,11 @@ public class RecycleController {
         }
 
         return response;
+    }
+
+    @ExceptionHandler(Exception.class)
+    public String handleException(Model model, Exception ex) {
+        model.addAttribute("errorMessage", "예기치 않은 오류가 발생했습니다.");
+        return "error"; // error 페이지로 포워딩
     }
 }
