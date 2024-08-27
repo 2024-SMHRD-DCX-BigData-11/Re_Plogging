@@ -23,14 +23,14 @@
                 <option value="separation" ${community.category == '분리배출' ? 'selected' : ''}>분리배출</option>
                 <option value="freeboard" ${community.category == '자유게시판' ? 'selected' : ''}>자유게시판</option>
             </select>
-            <input type="text" id="title" class="commWrite-title" name="title" placeholder="제목을 입력해 주세요." value="${community.title}" required>
+            <input type="text" id="title" class="commWrite-title" maxlength="1200" name="title" autocomplete="off" placeholder="제목을 입력해 주세요." value="${community.title}" required>
 			</div>
-            <textarea id="content" class="commWrite-content" name="content" placeholder="내용을 입력해 주세요." required>${community.content}</textarea>
+            <textarea id="content" class="commWrite-content" name="content" autocomplete="off" placeholder="내용을 입력해 주세요." required>${community.content}</textarea>
 
 			<div class="commWrite-bottom-group">
             <div id="files" class="commWrite-file">
                <c:if test="${!empty community.img}">
-                  <p id="uploaded">현재 파일: ${community.img}</p>
+                  <p id="uploaded">📢&nbsp;<span class="nowFile-point">현재 파일</span> ${community.img}</p>
               </c:if>
       
               <!-- 새로운 파일 선택 -->

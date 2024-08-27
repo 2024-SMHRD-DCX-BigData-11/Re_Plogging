@@ -192,47 +192,52 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-	.marketWrite-container {
-		padding: 20px;
-		margin-top: 80px;
-		border-width: 0;
-	}
-	h1 {
-		font-size: 24px;
-	}
-	.marWrite-line {
-    margin-bottom: 10px;
+.marketWrite-container {
+	padding: 20px;
+	margin-top: 80px;
+	border-width: 0;
 }
+
+h1 {
+	font-size: 24px;
+}
+
+.marWrite-line {
+	margin-bottom: 10px;
+}
+
 .marWrite-group {
-    justify-content: space-between;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    height: 40px;
-    gap: 5px;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+	height: 40px;
+	gap: 5px;
 }
-	
+
 .marWrite-category {
 	width: 100%;
 	font-size: 12px;
 }
-	
+
 .marWrite-mileage {
 	width: 100%;
 	font-size: 12px;
 }
+
 .marWrite-title, .commWrite-content {
 	width: 100%;
 	margin-bottom: 10px;
 }
-	
+
 .plz-img {
-    font-size: 13px;
+	font-size: 13px;
 }
 
 .market-imgs {
 	flex-direction: column;
 	align-items: flex-start;
 }
+
 #img1-container, #img2-container, #img3-container {
 	justify-content: space-between;
 	flex-wrap: nowrap;
@@ -241,14 +246,17 @@ footer {
 .marWrite-btn-cancel {
 	flex-wrap: nowrap;
 }
+
 .marWrite-button-group {
 	margin-top: 5px;
 }
+
 .marWrite-btn, .marWrite-btn-cancel {
 	font-size: 13px;
 	padding: 5px 10px;
 }
-	footer {
-		font-size: 11px;
-	}
+
+footer {
+	font-size: 11px;
+}
 }
