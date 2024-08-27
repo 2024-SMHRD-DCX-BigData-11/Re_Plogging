@@ -158,7 +158,6 @@
 			const newUrl = new URL(currentUrl);
 			newUrl.searchParams.set('sort', sortCriteria);
 
-			// 기존의 카테고리 필터가 적용되어 있으면 유지
 			const category = newUrl.searchParams.get('category');
 			if (category) {
 				newUrl.searchParams.set('category', category);
@@ -190,7 +189,16 @@
 			}
 		});
 	</script>
-	
+	<script type="text/javascript">
+		window.onload = function() {
+			const urlParams = new URLSearchParams(window.location.search);
+			if (urlParams.has('purchaseSuccess')
+					&& urlParams.get('purchaseSuccess') === 'true') {
+				alert("구매 성공!");
+			}
+		}
+	</script>
+
 	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
 </body>
 </html>

@@ -122,7 +122,9 @@ body, html {
 .marketRead_img__image {
 	max-width: 530px;
 	width: 100%;
-	height: auto;
+	max-height: 530px;
+	object-fit: cover;
+	border-radius: 10px;
 }
 
 .marketRead_info {

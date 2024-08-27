@@ -42,7 +42,7 @@
 					</c:if>
 					<div class="image_btn">
 						<c:if test="${market.img2 != null}">
-						<button id="showImage1" class="image-btn" onclick="showImage(1)"></button>
+							<button id="showImage1" class="image-btn" onclick="showImage(1)"></button>
 							<button id="showImage2" class="image-btn" onclick="showImage(2)"></button>
 						</c:if>
 						<c:if test="${market.img3 != null}">
@@ -64,10 +64,12 @@
 				<div>
 					<c:if
 						test="${sessionScope.user != null && market.user.userIdx != sessionScope.user.userIdx}">
-						<form action="${pageContext.request.contextPath}/marketPurchase"
+						<form id="purchaseForm"
+							action="${pageContext.request.contextPath}/marketPurchase"
 							method="post">
 							<input type="hidden" name="mkIdx" value="${market.mkIdx}">
-							<button type="submit" class="purchase_btn">구매하기</button>
+							<button type="button" class="purchase_btn"
+								onclick="checkMileageAndSubmit()">구매하기</button>
 						</form>
 					</c:if>
 					<c:if
@@ -91,39 +93,57 @@
 	</div>
 
 	<script>
-    function showImage(imageNumber) {
-    	// 이미지들을 참조하고 없을 경우 null 처리
-        const image1 = document.getElementById("image1");
-        const image2 = document.getElementById("image2");
-        const image3 = document.getElementById("image3");
+	function showImage(imageNumber) {
+	    const image1 = document.getElementById("image1");
+	    const image2 = document.getElementById("image2");
+	    const image3 = document.getElementById("image3");
 
-        // 모든 이미지를 숨기기 (존재하는 경우에만)
-        if (image1) image1.style.display = "none";
-        if (image2) image2.style.display = "none";
-        if (image3) image3.style.display = "none";
-        
-        // 버튼 스타일 초기화
-        const buttons = document.querySelectorAll('.image-btn');
-        buttons.forEach(button => {
-            button.classList.remove('selected');
-        });
+	    if (image1) image1.style.display = "none";
+	    if (image2) image2.style.display = "none";
+	    if (image3) image3.style.display = "none";
+	    
+	    const buttons = document.querySelectorAll('.image-btn');
+	    buttons.forEach(button => {
+	        if (button) button.classList.remove('selected');
+	    });
 
-        // 선택된 이미지 보여주기
-        if (imageNumber === 1) {
-            document.getElementById("image1").style.display = "block";
-            document.getElementById("showImage1").classList.add('selected');
-        } else if (imageNumber === 2) {
-            document.getElementById("image2").style.display = "block";
-            document.getElementById("showImage2").classList.add('selected');
-        } else if (imageNumber === 3) {
-            document.getElementById("image3").style.display = "block";
-            document.getElementById("showImage3").classList.add('selected');
+	    if (imageNumber === 1 && image1) {
+	        image1.style.display = "block";
+	        const showImage1Button = document.getElementById("showImage1");
+	        if (showImage1Button) showImage1Button.classList.add('selected');
+	    } else if (imageNumber === 2 && image2) {
+	        image2.style.display = "block";
+	        const showImage2Button = document.getElementById("showImage2");
+	        if (showImage2Button) showImage2Button.classList.add('selected');
+	    } else if (imageNumber === 3 && image3) {
+	        image3.style.display = "block";
+	        const showImage3Button = document.getElementById("showImage3");
+	        if (showImage3Button) showImage3Button.classList.add('selected');
+	    }
+	}
+
+	window.onload = function() {
+	    showImage(1);
+	};
+
+
+</script>
+	<script type="text/javascript">
+var userMileage = ${totalMileage != null ? totalMileage : 0};
+var itemMileage = ${market.mileage};
+
+console.log("User Mileage (JS):", userMileage);
+console.log("Item Mileage (JS):", itemMileage);
+
+    function checkMileageAndSubmit() {
+        if (userMileage < itemMileage) {
+            alert("마일리지가 부족합니다!");
+        } else {
+            document.getElementById("purchaseForm").submit();
         }
     }
+    </script>
 
-    // 초기 상태 설정
-    showImage(1);
-</script>
 	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
 </body>
 </html>
