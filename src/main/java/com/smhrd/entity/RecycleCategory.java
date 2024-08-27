@@ -26,8 +26,8 @@ public class RecycleCategory {
     @Column(name = "category_info", columnDefinition = "TEXT", nullable = true)
     private String categoryInfo;
 
-    @Column(name = "category_point", columnDefinition = "INT", nullable = false)
-    private int categoryPoint;
+    @Column(name = "category_mileage", columnDefinition = "INT", nullable = false)
+    private int categoryMileage;
 
     @OneToMany(mappedBy = "category")
     private List<AnalysisDetail> analysisDetails;
