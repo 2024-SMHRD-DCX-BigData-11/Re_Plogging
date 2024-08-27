@@ -185,11 +185,12 @@ public class MarketController {
     @PostMapping("/marketPurchase")
     public String purchaseItem(@RequestParam("mkIdx") int mkIdx, HttpSession session, Model model) {
         Member currentUser = (Member) session.getAttribute("user");
+        int totalMileage = marketRepo.getMileageCount(currentUser.getUserIdx());
 
         Market market = marketRepo.findById(mkIdx)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid market Id:" + mkIdx));
 
-        if (currentUser.getMileageAmount() < market.getMileage()) {
+        if (totalMileage < market.getMileage()) {
             model.addAttribute("error", "Insufficient mileage for this purchase.");
             return "redirect:/marketRead?idx=" + mkIdx;
         }

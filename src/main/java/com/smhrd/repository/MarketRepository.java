@@ -23,6 +23,9 @@ public interface MarketRepository extends JpaRepository<Market, Integer> {
         ORDER BY createdAt DESC
         """)
     public List<Market> findByMyMarket(@Param("user") Member user);
+    
+    @Query(value = "SELECT fn_mileagecnt(:userIdx)", nativeQuery = true)
+    int getMileageCount(@Param("userIdx") int userIdx);
 
     @Query("SELECT m.img1 FROM Market m WHERE m.mkIdx = :mkIdx")
     byte[] findImg1ByMkIdx(@Param("mkIdx") int mkIdx);
