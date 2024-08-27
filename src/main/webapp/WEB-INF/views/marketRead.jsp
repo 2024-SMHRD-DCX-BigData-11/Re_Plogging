@@ -41,8 +41,8 @@
 						</div>
 					</c:if>
 					<div class="image_btn">
-						<button id="showImage1" class="image-btn" onclick="showImage(1)"></button>
 						<c:if test="${market.img2 != null}">
+						<button id="showImage1" class="image-btn" onclick="showImage(1)"></button>
 							<button id="showImage2" class="image-btn" onclick="showImage(2)"></button>
 						</c:if>
 						<c:if test="${market.img3 != null}">

@@ -56,19 +56,29 @@ body, html {
 	padding: 50px 20px;
 }
 
+.image_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .image_btn button {
-	padding: 5px;
-	background-color: transparent;
-	border-radius: 50%;
-	border: 1px solid rgb(130, 130, 130);
-	cursor: pointer;
-	margin: 5px 0 0 0;
+    padding: 5px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 1px solid rgb(130, 130, 130);
+    cursor: pointer;
+    margin: 5px 5px 0 0;
+}
+
+.image_btn button:first-child {
+    margin-left: 0; /* 첫 번째 버튼의 마진을 0으로 설정 */
 }
 
 .image_btn button.selected {
-	padding: 5px;
-	background-color: rgb(130, 130, 130);
-	color: white;
+    padding: 5px;
+    background-color: rgb(130, 130, 130);
+    color: white;
 }
 
 .purchase_btn {
