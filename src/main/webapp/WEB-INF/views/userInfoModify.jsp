@@ -119,6 +119,7 @@
 					
 					if (response.code == 0) {
 						alert("회원정보 수정 성공!!");
+						window.location.href = "${ctx}/main"; 
 					} else {
 						switch(response.code){
 						case "-600":
