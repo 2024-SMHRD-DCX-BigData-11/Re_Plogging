@@ -14,7 +14,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-
 @Entity
 @Data
 @Table(name = "tb_analysis")
@@ -25,15 +24,11 @@ public class Analysis {
     @Column(name = "anal_idx", columnDefinition = "INT", insertable = false, updatable = false)
     private int analIdx;
 
-    @ManyToOne
-    @JoinColumn(name = "file_idx") // UploadImg 엔티티의 file_idx를 참조하는 외래키
-    private UploadImg fileIdx;
+    @Column(name = "file_idx", columnDefinition = "INT")
+    private int fileIdx;
 
-    @Column(name = "anal_label", length = 100)
-    private String analLabel;
-
-    @Column(name = "anal_result", columnDefinition = "TEXT")
-    private String analResult;
+    @Column(name = "anal_resultImg", columnDefinition = "LONGBLOB", nullable = true)
+    private byte[] analResultImg;
 
     @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
     private Timestamp createdAt;
