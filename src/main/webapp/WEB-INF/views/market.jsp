@@ -99,13 +99,13 @@
 													alt="${market.title}" class="market_card_photo_image">
 											</div>
 											<div class="market_card_title">
-												<h2>${market.title}</h2>
-											</div>
-											<div class="market_card_category">
-												<span>${market.category}</span>
+												<h2 class="marketTitle">${market.title}</h2>
 											</div>
 											<div class="market_card_price">
 												<span>판매완료</span>
+											</div>
+											<div class="market_card_category">
+												<span>${market.category}</span>
 											</div>
 											<div class="market_card_writer">
 												<span>${market.user.userNick}</span>

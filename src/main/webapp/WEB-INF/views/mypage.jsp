@@ -60,7 +60,7 @@
 						src="img/right-arrow.png" alt="Arrow"> </a></li>
 				<li><a href="${pageContext.request.contextPath}/myWrite"><sapn>작성 글 조회</sapn> <img
 						src="img/right-arrow.png" alt="Arrow"> </a></li>
-				<li><a href="#"><sapn>마일리지 현황</sapn> <img
+				<li><a href="${pageContext.request.contextPath}/myMileage"><sapn>마일리지 현황</sapn> <img
 						src="img/right-arrow.png" alt="Arrow"> </a></li>
 				<li><a href="${pageContext.request.contextPath}/userWithdrawal"><sapn>회원 탈퇴</sapn> <img
 						src="img/right-arrow.png" alt="Arrow"> </a></li>
