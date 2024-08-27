@@ -303,3 +303,22 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+
+// ai 모달 열기
+function openAiModal() {
+    var modal = document.getElementById('ai-modal');
+    modal.style.display = 'flex';
+    setTimeout(function() {
+        modal.classList.add('show');
+    }, 10);
+}
+
+// ai 모달 닫기
+function closeAiModal() {
+    var modal = document.getElementById('ai-modal');
+    modal.classList.remove('show');
+    setTimeout(function() {
+        modal.style.display = 'none';
+    }, 300);
+}

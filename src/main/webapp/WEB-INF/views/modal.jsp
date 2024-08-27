@@ -134,17 +134,13 @@
 			<div class="ai-modal-body">
 				<div class="ai-body-first">
 					<img src="img/aiAssistant.png" alt="AI"> <span>분리배출
-						방법이 궁금한 이미지를 올려주세요!</span>
+						방법이 궁금한 <span class="ai-Imgpoint">이미지</span>를 올려주세요!</span>
 				</div>
 				<form id="uploadForm" action="${pageContext.request.contextPath}/AiImageUpload" method="post"
 					enctype="multipart/form-data">
 					<input name="file" type="file">
 					</td> <input type="submit" value="이미지 업로드">
 				</form>
-			</div>
-			<div class="aiModal-body-two">
-				<img src="img/aiAssistant.png" alt="AI"> <span>잠시만 기다려
-					주세요 .... !</span>
 			</div>
 			<div class="ai-modal-close" onclick="closeAiModal()">닫기</div>
 		</div>
