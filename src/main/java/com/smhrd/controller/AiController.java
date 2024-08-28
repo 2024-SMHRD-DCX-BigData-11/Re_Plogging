@@ -4,8 +4,10 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Blob;
@@ -31,6 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.smhrd.FileUtils;
 import com.smhrd.entity.Analysis;
 import com.smhrd.entity.AnalysisDetail;
 import com.smhrd.entity.Member;
@@ -73,63 +76,95 @@ public class AiController {
     }
     
     @PostMapping("/AiImageUpload")
-    public String AiImageUpload(
-    		MultipartHttpServletRequest request,
-    		HttpSession session,
-    		Model model) {
+  public String AiImageUpload(
+  		MultipartHttpServletRequest request,
+  		HttpSession session,
+  		Model model) {
+    	
+    	Member member = (Member) session.getAttribute("user");
+    	String fileName = FileUtils.fileUpload(request, "file", "ai" );
+    	
+    	if( member != null ) {
+    		UploadImg uploadimg = new UploadImg();
+        	uploadimg.setFileName(fileName);
+        	uploadimg.setUserIdx(member);
 
-        Member member = (Member) session.getAttribute("user");
-        UploadImg uploadimg = new UploadImg();
-        if (member != null) {
-            try {
-                logger.info("파일 업로드 및 처리 시작");
-                
-                MultipartFile file = request.getFile("file");
-                
-                // 중복되지 않는 고유한 파일 이름 만들기
-                String uuid = UUID.randomUUID().toString();
-                String filenameo = file.getOriginalFilename();
-                String filename = uuid + filenameo;
-
-                // 파일 이름과 사용자 정보를 DTO에 저장
-                uploadimg.setFileName(filename);
-                uploadimg.setUserIdx(member);
-                uploadimg.setFileSize(file.getSize());
-                Path path = Paths.get("savePath" + filename);
-                file.transferTo(path);
-                
-                String fileExt = "NoExt";
-                if( file != null ) {
-                	fileExt = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
-                }
-
-                uploadimg.setFileExt(fileExt);
-
-                logger.info("파일 정보 저장: {}", fileExt );
-
-            } catch (Exception e) {
-                logger.error("파일 처리 중 오류 발생", e);
-                e.printStackTrace();
-            }
-
-            // 2. 기능 실행
-            irepo.save(uploadimg);
+        	
+        	irepo.save(uploadimg);
             logger.info("파일 정보 DB에 저장 완료");
-
-            // 회원번호 변수에 담기(쿼리스트링용)
+        
             int useridx = member.getUserIdx();
             int fileidx = uploadimg.getFileIdx();
             logger.info("회원번호: {}, 파일번호: {}", useridx, fileidx);
-            
-            
-            // 3. 플라스크로 이동(쿼리스트링)
+         
+         
+//          3. 플라스크로 이동(쿼리스트링)
             return "redirect:http://127.0.0.1:5001?userIdx=" + useridx + "&fileIdx=" + fileidx;
-        } else {
-        	
-        	// 로그인 상태x
-            return "redirect:/main";
-        }
-    }
+    	} else {
+    		return "redirect:/main";
+    	}
+}	
+	
+    
+    
+//    @PostMapping("/AiImageUpload")
+//    public String AiImageUpload(
+//    		MultipartHttpServletRequest request,
+//    		HttpSession session,
+//    		Model model) {
+//
+//        Member member = (Member) session.getAttribute("user");
+//        UploadImg uploadimg = new UploadImg();
+//        if (member != null) {
+//            try {
+//                logger.info("파일 업로드 및 처리 시작");
+//                
+//                MultipartFile file = request.getFile("file");
+//                
+//                // 중복되지 않는 고유한 파일 이름 만들기
+//                String uuid = UUID.randomUUID().toString();
+//                String filenameo = file.getOriginalFilename();
+//                String filename = uuid + filenameo;
+//
+//                // 파일 이름과 사용자 정보를 DTO에 저장
+//                uploadimg.setFileName(filename);
+//                uploadimg.setUserIdx(member);
+//                uploadimg.setFileSize(file.getSize());
+//                Path path = Paths.get("savePath" + File.separator + filename);
+//                file.transferTo(path);
+//                
+//                String fileExt = "NoExt";
+//                if( file != null ) {
+//                	fileExt = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+//                }
+//
+//                uploadimg.setFileExt(fileExt);
+//
+//                logger.info("파일 정보 저장: {}", fileExt );
+//
+//            } catch (Exception e) {
+//                logger.error("파일 처리 중 오류 발생", e);
+//                e.printStackTrace();
+//            }
+//
+//            // 2. 기능 실행
+//            irepo.save(uploadimg);
+//            logger.info("파일 정보 DB에 저장 완료");
+//
+//            // 회원번호 변수에 담기(쿼리스트링용)
+//            int useridx = member.getUserIdx();
+//            int fileidx = uploadimg.getFileIdx();
+//            logger.info("회원번호: {}, 파일번호: {}", useridx, fileidx);
+//            
+//            
+//            // 3. 플라스크로 이동(쿼리스트링)
+//            return "redirect:http://127.0.0.1:5001?userIdx=" + useridx + "&fileIdx=" + fileidx;
+//        } else {
+//        	
+//        	// 로그인 상태x
+//            return "redirect:/main";
+//        }
+//    }
     
 //    @GetMapping("/viewAnalysisImage")
 //    public String viewAnalysisImage(@RequestParam(value = "file_idx", required = true) int fileIdx, Model model) {

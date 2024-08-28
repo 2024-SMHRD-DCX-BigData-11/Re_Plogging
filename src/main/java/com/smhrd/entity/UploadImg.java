@@ -18,9 +18,6 @@ public class UploadImg {
     @Column(name = "file_name", nullable = false)
     private String fileName;
 
-    @Column(name = "file_ext", nullable = false)
-    private String fileExt;
-
     @ManyToOne
     @JoinColumn(name = "user_idx")
     private Member userIdx;
