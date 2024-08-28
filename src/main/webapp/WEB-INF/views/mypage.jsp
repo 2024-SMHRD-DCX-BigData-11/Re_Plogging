@@ -43,7 +43,7 @@
 					</div>
 					<div class="profile-info">
 						<span>리플로깅과 함께</span><br>
-						<span>오늘도 활기찬 하루 보내세요♥</span>
+						<span>오늘도 활기찬 하루 보내세요<span class="profile-heart">♥</span></span>
 					</div>
 					<div class="profile-activity">
 						<span>완료한 플로깅</span>

@@ -42,7 +42,7 @@ public class ManagerController {
 	@RequestMapping("/manager")
 	public String ReploggingList(Model model) {
 
-	    List<Member> members = repo.findAll(Sort.by(Sort.Direction.DESC, "joinedAt")); 
+	    List<Member> members = repo.findByUserIdxNot(2530000, Sort.by(Sort.Direction.DESC, "joinedAt"));
 	    List<MemberDTO> memberDTOs = new ArrayList<>();
 
 	    // 각 회원의 마일리지와 플로깅 횟수를 DTO에 저장

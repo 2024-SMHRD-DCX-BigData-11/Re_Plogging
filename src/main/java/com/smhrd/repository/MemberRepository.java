@@ -1,5 +1,8 @@
 package com.smhrd.repository;
 
+import java.util.List;
+
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -62,4 +65,13 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
 
     @Query("SELECT u.userProfileImg FROM Member u WHERE u.userIdx = :userIdx")
     byte[] findUserProfileImgByUserIdx(@Param("userIdx") int userIdx);
+    
+    
+    @Query("""
+            select u
+            from Member u
+            where u.userIdx != 2530000
+            """)
+    public List<Member> findByUserIdxNot(@Param("userIdx") int userIdx, Sort sort);
+
 }

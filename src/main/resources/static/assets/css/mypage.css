@@ -130,6 +130,10 @@ body, html {
 	font-size: 13px;
 }
 
+.profile-heart {
+	color: #e74c3c;
+}
+
 .profile-activity {
 	margin-top: 10px;
 }
