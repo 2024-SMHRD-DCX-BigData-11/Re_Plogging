@@ -1,5 +1,6 @@
 package com.smhrd.entity;
 
+import java.sql.Blob;
 import java.sql.Timestamp;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -16,10 +17,6 @@ public class UploadImg {
 
     @Column(name = "file_name", nullable = false)
     private String fileName;
-
-    @Lob
-    @Column(name = "image_data", columnDefinition = "LONGBLOB", nullable = false)
-    private byte[] imageData;
 
     @Column(name = "file_ext", nullable = false)
     private String fileExt;

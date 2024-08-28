@@ -1,5 +1,6 @@
 package com.smhrd.entity;
 
+import java.sql.Blob;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -27,8 +29,8 @@ public class Analysis {
     @Column(name = "file_idx", columnDefinition = "INT")
     private int fileIdx;
 
-    @Column(name = "anal_resultImg", columnDefinition = "LONGBLOB", nullable = true)
-    private byte[] analResultImg;
+    @Column(name = "analResultImg_Name", columnDefinition = "INT")
+    private String analResultImgName;
 
     @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
     private Timestamp createdAt;
