@@ -189,7 +189,7 @@ body, html {
     background: #ffffff;
     box-shadow: none; /* 기본 상태에서 그림자를 숨김 */
     transition: left 0.8s ease; /* 슬라이드 효과 */
-    z-index: 1000;
+    z-index: 1001;
 }
 
 .aside-user {

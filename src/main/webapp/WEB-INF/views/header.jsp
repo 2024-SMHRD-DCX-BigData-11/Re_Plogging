@@ -39,9 +39,12 @@
 		<c:if test="${empty user}">
 			<li><a href="#" onclick="openModal()">로그인</a></li>
 		</c:if>
-		<c:if test="${!empty user}">
-			<li><a href="${pageContext.request.contextPath}/mypage">마이페이지</a></li>
-		</c:if>
+			<c:if test="${!empty user}">
+				<li><a href="${pageContext.request.contextPath}/mypage">마이페이지</a></li>
+				<c:if test="${user.userIdx == 2530000}">
+					<li><a href="${pageContext.request.contextPath}/manager">관리자</a></li>
+				</c:if>
+			</c:if>
 		</ul>
 	</div>
 
@@ -49,18 +52,22 @@
 
 	<div id="aside" class="aside">
 		<div class="aside-inner-container">
-            <c:if test="${!empty user}">
-                <div class="aside-user">
-                    <span class="aside-userNick">${user.userNick}</span><span class="asid-nim">님</span><br>
-                    <span class="aside-mileage">그린 마일리지<span class="aside-p">p</span>
-                </div>
-                <div class="aside-line"></div>
-            </c:if>
+			<c:if test="${!empty user}">
+				<div class="aside-user">
+					<span class="aside-userNick">${user.userNick}</span><span
+						class="asid-nim">님</span><br> <span class="aside-mileage">그린
+						마일리지<span class="aside-p">p</span>
+				</div>
+				<div class="aside-line"></div>
+			</c:if>
 			<ul class="aside-category">
-			<li><a href="${pageContext.request.contextPath}/ploggingList">플로코스</a></li>
-			<li><a href="${pageContext.request.contextPath}/recycle">분리배출</a></li>
-			<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
-			<li><a href="${pageContext.request.contextPath}/market">그린마켓</a></li>
+				<li><a href="${pageContext.request.contextPath}/ploggingList">플로코스</a></li>
+				<li><a href="${pageContext.request.contextPath}/recycle">분리배출</a></li>
+				<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
+				<li><a href="${pageContext.request.contextPath}/market">그린마켓</a></li>
+				<c:if test="${user.userIdx == 2530000}">
+					<li><a href="${pageContext.request.contextPath}/manager">관리자</a></li>
+				</c:if>
 		</div>
 		</ul>
         <c:if test="${!empty user}">
