@@ -272,6 +272,20 @@ body, html {
     text-underline-position:under;
 }
 
+.custom-success-button {
+	background-color: #81d298 !important;
+	color: #fff !important;
+	border: none !important;
+	transition: background-color 0.3s ease;
+}
+
+.custom-error-button {
+	background-color: #ffa17a !important;
+	color: #fff !important;
+	border: none !important;
+	transition: background-color 0.3s ease;
+}
+
 /* footer */
 footer {
 	font-size: 13px;

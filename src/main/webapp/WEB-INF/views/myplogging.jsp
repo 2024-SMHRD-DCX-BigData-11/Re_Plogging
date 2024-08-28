@@ -12,6 +12,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="assets/css/myplogging.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+<style>
+</style>
 </head>
 <body>
 	<div class="myplogging-container">
@@ -160,6 +164,6 @@
 	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
 
 	<script src="assets/js/myplogging.js"></script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	
 </body>
 </html>
