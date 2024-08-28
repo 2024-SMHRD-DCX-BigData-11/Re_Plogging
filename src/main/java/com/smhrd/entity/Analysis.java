@@ -26,10 +26,10 @@ public class Analysis {
     @Column(name = "anal_idx", columnDefinition = "INT", insertable = false, updatable = false)
     private int analIdx;
 
-    @Column(name = "file_idx", columnDefinition = "VARCHAR", length = 255)
+    @Column(name = "file_idx", columnDefinition = "INT")
     private int fileIdx;
 
-    @Column(name = "analResultImg_Name", columnDefinition = "INT")
+    @Column(name = "analResultImg_Name", columnDefinition = "VARCHAR", length = 255)
     private String analResultImgName;
 
     @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
