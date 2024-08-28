@@ -36,7 +36,7 @@
         <div class="Mileage-Details-innner">
             <div class="Mileage-nomal-wrapper">
                 <span class="Mileage-nomal">${user.userNick}님의 현재 그린 마일리지</span>
-                <span class="Mileage-point">5000p</span>
+                <span class="Mileage-point">${totalMileage}p</span>
             </div>
         </div>
         
