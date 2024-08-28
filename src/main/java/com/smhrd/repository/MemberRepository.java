@@ -73,5 +73,9 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
             where u.userIdx != 2530000
             """)
     public List<Member> findByUserIdxNot(@Param("userIdx") int userIdx, Sort sort);
+    
+    
+    @Query(value = "SELECT fn_mileagecnt(:userIdx)", nativeQuery = true)
+    int getMileageCount(@Param("userIdx") int userIdx);
 
 }

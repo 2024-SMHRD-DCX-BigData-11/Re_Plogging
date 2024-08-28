@@ -35,6 +35,9 @@ public class Member {
     @Column(name = "user_nick", length = 30, nullable = false)
     private String userNick;
 
+    @Transient
+    private int totalMileage;
+    
     @Lob
     @Column(name = "user_profile_img", columnDefinition="MEDIUMBLOB", nullable = true)
     private byte[] userProfileImg;
@@ -56,6 +59,7 @@ public class Member {
         }
         
     }
+    
     
     
 }
