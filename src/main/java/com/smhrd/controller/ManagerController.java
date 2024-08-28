@@ -16,6 +16,8 @@ import com.smhrd.entity.Member;
 import com.smhrd.repository.CommunityRepository;
 import com.smhrd.repository.MarketRepository;
 import com.smhrd.repository.MemberRepository;
+import com.smhrd.repository.MileageRepository;
+import com.smhrd.repository.PloggingRepository;
 
 @Controller
 public class ManagerController {
@@ -28,14 +30,30 @@ public class ManagerController {
 
     @Autowired
     MarketRepository mrepo;
+    
+    @Autowired
+    MileageRepository mirepo;
+	
+	@Autowired
+	PloggingRepository prepo;
 
-    @RequestMapping("/managerList")
+    @RequestMapping("/manager")
     public String ReploggingList(Model model) {
 
         // 1. 데이터 수집
         List<Member> list1 = repo.findAll(Sort.by(Sort.Direction.DESC, "joinedAt")); // 가입일자 기준으로 내림차순
         List<Community> list2 = crepo.findAll(Sort.by(Sort.Direction.DESC, "indate")); // 작성일 기준으로 내림차순
         List<Market> list3 = mrepo.findAll(Sort.by(Sort.Direction.DESC, "createdAt")); // 게시날짜 기준으로 내림차순
+        
+        list1.forEach(member -> {
+            int totalMileage = mirepo.getMileageCount(member.getUserIdx());
+            int completedPloggingCount = prepo.countCompletedPlogging(member.getUserIdx());
+
+            // 각 회원 객체에 마일리지와 플로깅 횟수를 임시로 추가하거나
+            // 새로운 DTO를 만들어 모델에 추가하는 방법을 사용할 수 있습니다.
+            member.setTotalMileage(totalMileage);
+            member.setCompletedPloggingCount(completedPloggingCount);
+        });
 
         model.addAttribute("ulist", list1);
         model.addAttribute("clist", list2);
@@ -54,7 +72,7 @@ public class ManagerController {
     @RequestMapping("/udelete")
     public String udelete(@RequestParam("idx") int idx) {
         repo.deleteById(idx);
-        return "redirect:/managerList";
+        return "redirect:/manager";
     }
 
     // 게시글 삭제
@@ -65,14 +83,14 @@ public class ManagerController {
         } catch (Exception e) {
             e.printStackTrace(); // 예외가 발생하면 콘솔에 출력
         }
-        return "redirect:/managerList";
+        return "redirect:/manager";
     }
 
     // 마켓 게시글 삭제
     @RequestMapping("/mdelete")
     public String mdelete(@RequestParam("idx") int idx) {
         mrepo.deleteById(idx);
-        return "redirect:/managerList";
+        return "redirect:/manager";
     }
 
     @RequestMapping("/cview")
@@ -83,7 +101,7 @@ public class ManagerController {
             model.addAttribute("community", community.get());
             return "/communityRead";
         } else {
-            return "redirect:/managerList";
+            return "redirect:/manager";
         }
     }
 
@@ -95,7 +113,7 @@ public class ManagerController {
             model.addAttribute("market", market.get());
             return "/marketRead";
         } else {
-            return "redirect:/managerList";
+            return "redirect:/manager";
         }
     }
 

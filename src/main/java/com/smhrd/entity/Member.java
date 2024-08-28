@@ -42,12 +42,6 @@ public class Member {
     @Column(name = "joined_at", columnDefinition = "datetime default now()", insertable = false, updatable = false)
     private Timestamp joinedAt;
 
-    @Column(name = "mileage_amount", columnDefinition = "integer default 0")
-    private int mileageAmount;
-    
-    @Column(name = "plogging_count", columnDefinition = "integer default 0")
-    private int ploggingCount;
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Plogging> ploggings;
 
@@ -61,5 +55,29 @@ public class Member {
             }
         }
         
+    }
+    
+    // 임시
+    @Transient
+    private int totalMileage;
+
+    @Transient
+    private int completedPloggingCount;
+
+    // Getter and Setter
+    public int getTotalMileage() {
+        return totalMileage;
+    }
+
+    public void setTotalMileage(int totalMileage) {
+        this.totalMileage = totalMileage;
+    }
+
+    public int getCompletedPloggingCount() {
+        return completedPloggingCount;
+    }
+
+    public void setCompletedPloggingCount(int completedPloggingCount) {
+        this.completedPloggingCount = completedPloggingCount;
     }
 }

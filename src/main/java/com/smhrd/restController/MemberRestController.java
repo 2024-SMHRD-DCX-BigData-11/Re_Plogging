@@ -77,7 +77,7 @@ public class MemberRestController {
                     member.setUserPhone(phone);
                     member.setUserNick(nick);
                     
-                    mileage.setMlAmount(500);
+                    mileage.setMlAmount(300);
                     mileage.setUser(member);
                     mileage.setMlType("회원가입");
                     mileage.setMlLog("적립"); // mlLog 필드에 값 설정

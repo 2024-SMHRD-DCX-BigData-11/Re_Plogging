@@ -62,24 +62,30 @@
 					id="marketRead_info_content"><fmt:formatDate
 						value="${market.createdAt}" pattern="yyyy.MM.dd HH:mm" /></span><br>
 				<div>
-					<c:if
-						test="${sessionScope.user != null && market.user.userIdx != sessionScope.user.userIdx}">
-						<form id="purchaseForm"
-							action="${pageContext.request.contextPath}/marketPurchase"
-							method="post">
-							<input type="hidden" name="mkIdx" value="${market.mkIdx}">
-							<button type="button" class="purchase_btn"
-								onclick="checkMileageAndSubmit()">구매하기</button>
-						</form>
-					</c:if>
-					<c:if
-						test="${sessionScope.user != null && market.user.userIdx == sessionScope.user.userIdx}">
-						<form action="${pageContext.request.contextPath}/market/delete"
-							method="post">
-							<input type="hidden" name="mkIdx" value="${market.mkIdx}">
-							<button type="submit" class="Delete_btn">삭제하기</button>
-						</form>
-					</c:if>
+					<div class="login_button_container">
+						<c:if test="${sessionScope.user == null}">
+							<button class="login_btn" onclick="openModal()">로그인 후
+								구매하기</button>
+						</c:if>
+						<c:if
+							test="${sessionScope.user != null && market.user.userIdx != sessionScope.user.userIdx}">
+							<form id="purchaseForm"
+								action="${pageContext.request.contextPath}/marketPurchase"
+								method="post">
+								<input type="hidden" name="mkIdx" value="${market.mkIdx}">
+								<button type="button" class="purchase_btn"
+									onclick="checkMileageAndSubmit()">구매하기</button>
+							</form>
+						</c:if>
+						<c:if
+							test="${sessionScope.user != null && market.user.userIdx == sessionScope.user.userIdx}">
+							<form action="${pageContext.request.contextPath}/market/delete"
+								method="post">
+								<input type="hidden" name="mkIdx" value="${market.mkIdx}">
+								<button type="submit" class="Delete_btn">삭제하기</button>
+							</form>
+						</c:if>
+					</div>
 				</div>
 			</div>
 		</div>

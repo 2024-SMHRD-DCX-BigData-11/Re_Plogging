@@ -114,6 +114,7 @@ body, html {
 }
 
 .market_card_photo {
+	position: relative;
     width: 100%;
     height: auto;
 }
@@ -214,6 +215,18 @@ body, html {
 
 .market_pagination a.active{
     color: #00a989;
+}
+
+.sold-out-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255, 0, 0, 0.7);
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 10;
 }
 
 footer {

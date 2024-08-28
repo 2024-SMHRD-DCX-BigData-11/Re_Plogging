@@ -97,6 +97,7 @@
 												<img
 													src="${pageContext.request.contextPath}/marketImage1?idx=${market.mkIdx}"
 													alt="${market.title}" class="market_card_photo_image">
+												<span class="sold-out-label">판매완료</span>
 											</div>
 											<div class="market_card_title">
 												<h2 class="marketTitle">${market.title}</h2>
