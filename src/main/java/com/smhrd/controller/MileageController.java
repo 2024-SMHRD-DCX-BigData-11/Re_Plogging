@@ -18,21 +18,27 @@ import jakarta.servlet.http.HttpSession;
 public class MileageController {
 
     @Autowired
-    private MileageRepository mileageRepo;
+    private MileageRepository miRepo;
 
     @RequestMapping("/myMileage")
     public String goMileageList(HttpSession session, Model model) {
         Member member = (Member) session.getAttribute("user");
 
         if (member != null) {
-            List<Mileage> list = mileageRepo.findByUser(member);
-            model.addAttribute("list", list);
+            // 보유 마일리지 가져오기
+            int totalMileage = miRepo.getMileageCount(member.getUserIdx());
             
+            // 마일리지 리스트 가져오기
+            List<Mileage> list = miRepo.findByUser(member);
+            
+            // 모델에 리스트와 보유 마일리지 추가
+            model.addAttribute("list", list);
+            model.addAttribute("totalMileage", totalMileage);
             
             return "myMileage";
         } else {
             return "main";
-        }
+        } 
     }
 }
 

@@ -15,9 +15,6 @@
 </head>
 <body>
 	<div class="container">
-		<div class="market_Read_btn_back">
-			<a href="marketBack" class="market_Read_btn_back_top">목록</a>
-		</div>
 		<div class="market_Read_wrapper">
 			<div class="marketRead_img_view">
 				<div class="marketRead_img_load">
