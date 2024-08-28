@@ -15,7 +15,7 @@ public class UploadImg {
     @Column(name = "file_idx", columnDefinition = "INT", insertable = false, updatable = false)
     private int fileIdx;
 
-    @Column(name = "file_name", length = 255, nullable = false)
+    @Column(name = "file_name", columnDefinition = "VARCHAR", length = 255, nullable = false)
     private String fileName;
 
     @ManyToOne
