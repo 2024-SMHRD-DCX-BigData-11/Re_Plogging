@@ -62,7 +62,7 @@
 					id="marketRead_info_content"><fmt:formatDate
 						value="${market.createdAt}" pattern="yyyy.MM.dd HH:mm" /></span><br>
 				<div>
-					<div class="login_button_container">
+					<div class="function_button_container">
 						<c:if test="${sessionScope.user == null}">
 							<button class="login_btn" onclick="openModal()">로그인 후
 								구매하기</button>

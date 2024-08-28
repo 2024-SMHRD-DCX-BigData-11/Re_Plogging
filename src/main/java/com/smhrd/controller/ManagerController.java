@@ -1,5 +1,6 @@
 package com.smhrd.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.smhrd.entity.Community;
 import com.smhrd.entity.Market;
 import com.smhrd.entity.Member;
+import com.smhrd.entity.MemberDTO;
 import com.smhrd.repository.CommunityRepository;
 import com.smhrd.repository.MarketRepository;
 import com.smhrd.repository.MemberRepository;
@@ -37,36 +39,47 @@ public class ManagerController {
 	@Autowired
 	PloggingRepository prepo;
 
-    @RequestMapping("/manager")
-    public String ReploggingList(Model model) {
+	@RequestMapping("/manager")
+	public String ReploggingList(Model model) {
 
-        // 1. 데이터 수집
-        List<Member> list1 = repo.findAll(Sort.by(Sort.Direction.DESC, "joinedAt")); // 가입일자 기준으로 내림차순
-        List<Community> list2 = crepo.findAll(Sort.by(Sort.Direction.DESC, "indate")); // 작성일 기준으로 내림차순
-        List<Market> list3 = mrepo.findAll(Sort.by(Sort.Direction.DESC, "createdAt")); // 게시날짜 기준으로 내림차순
-        
-        list1.forEach(member -> {
-            int totalMileage = mirepo.getMileageCount(member.getUserIdx());
-            int completedPloggingCount = prepo.countCompletedPlogging(member.getUserIdx());
+	    List<Member> members = repo.findAll(Sort.by(Sort.Direction.DESC, "joinedAt")); 
+	    List<MemberDTO> memberDTOs = new ArrayList<>();
 
-            // 각 회원 객체에 마일리지와 플로깅 횟수를 임시로 추가하거나
-            // 새로운 DTO를 만들어 모델에 추가하는 방법을 사용할 수 있습니다.
-            member.setTotalMileage(totalMileage);
-            member.setCompletedPloggingCount(completedPloggingCount);
-        });
+	    // 각 회원의 마일리지와 플로깅 횟수를 DTO에 저장
+	    for (Member member : members) {
+	        int totalMileage = mirepo.getMileageCount(member.getUserIdx());
+	        int completedPloggingCount = prepo.countCompletedPlogging(member.getUserIdx());
 
-        model.addAttribute("ulist", list1);
-        model.addAttribute("clist", list2);
-        model.addAttribute("mlist", list3);
+	        // MemberDTO 생성자 호출 시 joinedAt 필드 추가
+	        MemberDTO memberDTO = new MemberDTO(
+	            member.getUserIdx(),
+	            member.getUserId(),
+	            member.getUserPhone(),
+	            member.getUserNick(),
+	            totalMileage,
+	            completedPloggingCount,
+	            member.getJoinedAt()  // joinedAt 필드 추가
+	        );
+	        memberDTOs.add(memberDTO);
+	    }
 
-        // 카테고리 값을 변환하여 추가
-        list3.forEach(market -> {
-            market.setCategory(categoryToName(market.getCategory()));
-        });
+	    model.addAttribute("ulist", memberDTOs);
 
-        // 3. View 선택
-        return "manager";
-    }
+	    List<Community> list2 = crepo.findAll(Sort.by(Sort.Direction.DESC, "indate")); 
+	    List<Market> list3 = mrepo.findAll(Sort.by(Sort.Direction.DESC, "createdAt")); 
+
+	    model.addAttribute("clist", list2);
+	    model.addAttribute("mlist", list3);
+
+	    list3.forEach(market -> {
+	        market.setCategory(categoryToName(market.getCategory()));
+	    });
+
+	    return "manager";
+	}
+
+
+
 
     // 회원 삭제
     @RequestMapping("/udelete")

@@ -81,6 +81,10 @@ body, html {
     color: white;
 }
 
+.function_button_container {
+	
+}
+
 .purchase_btn {
 	display: inline-block;
 	background-color: #00a989;
@@ -174,17 +178,17 @@ body, html {
 }
 
 #marketRead_info_span {
-	font-size: 10pt;
+	font-size: 11pt;
 	color: grey;
 	display: inline-block;
 	margin-bottom: 35px;
 }
 
 #marketRead_info_content {
-	font-size: 10pt;
+	font-size: 11pt;
 	color: black;
 	font-weight: bold;
-	margin-bottom: 35px;
+	margin: 0 35px 0 7px;
 }
 
 .marketRead_content {

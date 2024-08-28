@@ -57,27 +57,5 @@ public class Member {
         
     }
     
-    // 임시
-    @Transient
-    private int totalMileage;
-
-    @Transient
-    private int completedPloggingCount;
-
-    // Getter and Setter
-    public int getTotalMileage() {
-        return totalMileage;
-    }
-
-    public void setTotalMileage(int totalMileage) {
-        this.totalMileage = totalMileage;
-    }
-
-    public int getCompletedPloggingCount() {
-        return completedPloggingCount;
-    }
-
-    public void setCompletedPloggingCount(int completedPloggingCount) {
-        this.completedPloggingCount = completedPloggingCount;
-    }
+    
 }
