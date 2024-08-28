@@ -125,6 +125,13 @@ body, html {
 	background-color: #08917c;
 }
 
+.custom-delete-button {
+	background-color: #ffa17a !important;
+	color: #fff !important;
+	border: none !important;
+	transition: background-color 0.3s ease;
+}
+
 footer {
 	font-size: 13px;
 	text-align: center;

@@ -39,10 +39,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const ploggingStartError = urlParams.get('ploggingStartError');
 
         // 에러 메시지를 swal로 띄우는 함수
-        function showAlertWithPloggingStartError() {
-            // 에러 메시지를 swal로 표시
-            swal('플로깅 시작 실패', "로그인 후 플로깅을 시작해 주세요.", 'warning');
-        }
+		function showAlertWithPloggingStartError() {
+			Swal.fire({
+				title: '',
+				html: "플로깅 시작에 실패했습니다.<br>로그인 후 플로깅을 시작해 주세요.",
+				icon: 'warning',
+				confirmButtonText: '확인',
+				customClass: {
+					confirmButton: 'custom-login-button'
+				}
+			});
+		}
 
         // 페이지 로드 시 쿼리 파라미터에 따라 경고 메시지 표시
         if (ploggingStartError) {
