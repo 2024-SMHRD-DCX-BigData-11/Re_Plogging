@@ -29,7 +29,7 @@ public class Analysis {
     @Column(name = "file_idx", columnDefinition = "INT")
     private int fileIdx;
 
-    @Column(name = "analResultImg_Name", columnDefinition = "LONGTEXT")
+    @Column(name = "anal_result_img_name", columnDefinition = "LONGTEXT")
     private String analResultImgName;
 
     @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
