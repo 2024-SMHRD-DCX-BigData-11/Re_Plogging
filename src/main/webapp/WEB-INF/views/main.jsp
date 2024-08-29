@@ -110,12 +110,22 @@
 		</div>
 	</div>
 	</div>
+	<c:if test="${empty user}">
+	<div class="aiHelper-container" onclick="openModal()">
+	    <div class="aiHelperImg">
+	        <img src="img/AI.png" alt="AI Image">
+	    </div>
+	    <div class="aiHelperText"">AI 분리배출 도우미 이용해 보기</div>
+	</div>
+	</c:if>
+	<c:if test="${!empty user}">
 	<div class="aiHelper-container" onclick="openAiModal()">
 	    <div class="aiHelperImg">
 	        <img src="img/AI.png" alt="AI Image">
 	    </div>
 	    <div class="aiHelperText"">AI 분리배출 도우미 이용해 보기</div>
 	</div>
+	</c:if>
 
 	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
 
