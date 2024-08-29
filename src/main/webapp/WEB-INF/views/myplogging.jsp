@@ -38,7 +38,7 @@
 									확인하기</button>
 								<form action="ploggingCancel" method="post"
 									class="cancel-container"
-									onsubmit="return confirm('정말로 플로깅을 취소하시겠습니까?')">
+									onsubmit="return confirm('😮 정말로 플로깅을 취소하시겠습니까?')">
 									<input type="hidden" name="userIdx"
 										value="${currentPlogging.user.userIdx}"> <input
 										type="hidden" name="ploggingIdx"
