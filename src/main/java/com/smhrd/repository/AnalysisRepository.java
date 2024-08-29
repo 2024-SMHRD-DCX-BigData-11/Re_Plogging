@@ -10,5 +10,5 @@ import com.smhrd.entity.Analysis;
 
 
 public interface AnalysisRepository extends JpaRepository<Analysis, Integer> {
-
+	
 }

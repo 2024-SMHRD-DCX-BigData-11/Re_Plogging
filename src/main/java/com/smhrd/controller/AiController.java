@@ -49,11 +49,6 @@ import net.coobird.thumbnailator.Thumbnails;
 @Controller
 public class AiController {
 	
-	// Value 어노테이션으로 변수에 값을 채울 수 있음
-	// ${프로퍼티 이름} 문법을 통해 application.properties에 정의한 데이터를 가져올 수 있음
-	@Value("${save.path}")
-	private String savePath;
-
     private static final Logger logger = LoggerFactory.getLogger(AiController.class); // 로거 추가
 
     @Autowired
@@ -103,22 +98,22 @@ public class AiController {
     	} else {
     		return "redirect:/main";
     	}
-}	
-	
-    
+}
     
     
     @GetMapping("/viewAnalysisImage")
-    public String viewAnalysisImage(@RequestParam("file_idx") int fileIdx, @RequestParam("anal_idx") int analIdx, Model model) {
-        // 분석 결과 이미지 데이터베이스에서 가져오기
-        Optional<Analysis> analysisOptional = arepo1.findById(analIdx);
-        
-        if (analysisOptional.isPresent()) {
-            Analysis analysis = analysisOptional.get();
-            String base64Image = analysis.getAnalResultImgName();
-            model.addAttribute("imageData", base64Image);
+    public String viewAnalysisImage(@RequestParam( value = "resultImageName", required = true) String resultImageName,  Model model) {
+    	
+    	// 분석 결과 이미지 프로젝트 내부 폴더에서 가져오기
+         if (!resultImageName.equals("")) {
+        	 
+        	 model.addAttribute("resultImageName", resultImageName);
+        	 
+        	System.out.println( resultImageName );
+        	
         } else {
-            model.addAttribute("imageData", null);
+        	System.out.println("이미지 없음");
+            model.addAttribute("resultImageName", null);
         }
         
         return "aiResult"; // aiResult.jsp로 이동

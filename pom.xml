@@ -32,6 +32,13 @@
    </properties>
    <dependencies>
    
+   
+   	 <!-- File Upload  -->
+	  <dependency>
+		<groupId>commons-fileupload</groupId>
+		<artifactId>commons-fileupload</artifactId>
+		<version>1.4</version>
+	 </dependency>
       <!-- Thumbnailator 의존성 추가 -->
       <dependency>
          <groupId>net.coobird</groupId>

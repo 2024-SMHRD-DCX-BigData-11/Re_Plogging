@@ -26,7 +26,7 @@ public class Analysis {
     @Column(name = "anal_idx", columnDefinition = "INT", insertable = false, updatable = false)
     private int analIdx;
 
-    @Column(name = "file_idx", columnDefinition = "INT")
+    @Column(name = "file_idx", columnDefinition = "INT", nullable = false)
     private int fileIdx;
 
     @Column(name = "anal_result_img_name", columnDefinition = "LONGTEXT")

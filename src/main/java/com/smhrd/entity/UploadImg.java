@@ -19,7 +19,7 @@ public class UploadImg {
     private String fileName;
 
     @ManyToOne
-    @JoinColumn(name = "user_idx")
+    @JoinColumn(name = "user_idx", nullable = false)
     private Member userIdx;
 
     @Column(name = "mileage", columnDefinition = "INT")
