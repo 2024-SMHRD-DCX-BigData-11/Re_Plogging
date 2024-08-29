@@ -39,7 +39,7 @@ import com.smhrd.entity.AnalysisDetail;
 import com.smhrd.entity.Member;
 import com.smhrd.entity.UploadImg;
 import com.smhrd.repository.AnalysisRepository;
-import com.smhrd.repository.AiTextRepository;
+import com.smhrd.repository.AnalysisDetailRepository;
 import com.smhrd.repository.ImageRepository;
 
 import jakarta.servlet.ServletOutputStream;
@@ -63,7 +63,7 @@ public class AiController {
     AnalysisRepository arepo1;
 
     @Autowired
-    AiTextRepository arepo2;
+    AnalysisDetailRepository arepo2;
 
     @RequestMapping("/ai1")
     public String openAi1() {
@@ -107,78 +107,20 @@ public class AiController {
 	
     
     
-//    @PostMapping("/AiImageUpload")
-//    public String AiImageUpload(
-//    		MultipartHttpServletRequest request,
-//    		HttpSession session,
-//    		Model model) {
-//
-//        Member member = (Member) session.getAttribute("user");
-//        UploadImg uploadimg = new UploadImg();
-//        if (member != null) {
-//            try {
-//                logger.info("파일 업로드 및 처리 시작");
-//                
-//                MultipartFile file = request.getFile("file");
-//                
-//                // 중복되지 않는 고유한 파일 이름 만들기
-//                String uuid = UUID.randomUUID().toString();
-//                String filenameo = file.getOriginalFilename();
-//                String filename = uuid + filenameo;
-//
-//                // 파일 이름과 사용자 정보를 DTO에 저장
-//                uploadimg.setFileName(filename);
-//                uploadimg.setUserIdx(member);
-//                uploadimg.setFileSize(file.getSize());
-//                Path path = Paths.get("savePath" + File.separator + filename);
-//                file.transferTo(path);
-//                
-//                String fileExt = "NoExt";
-//                if( file != null ) {
-//                	fileExt = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
-//                }
-//
-//                uploadimg.setFileExt(fileExt);
-//
-//                logger.info("파일 정보 저장: {}", fileExt );
-//
-//            } catch (Exception e) {
-//                logger.error("파일 처리 중 오류 발생", e);
-//                e.printStackTrace();
-//            }
-//
-//            // 2. 기능 실행
-//            irepo.save(uploadimg);
-//            logger.info("파일 정보 DB에 저장 완료");
-//
-//            // 회원번호 변수에 담기(쿼리스트링용)
-//            int useridx = member.getUserIdx();
-//            int fileidx = uploadimg.getFileIdx();
-//            logger.info("회원번호: {}, 파일번호: {}", useridx, fileidx);
-//            
-//            
-//            // 3. 플라스크로 이동(쿼리스트링)
-//            return "redirect:http://127.0.0.1:5001?userIdx=" + useridx + "&fileIdx=" + fileidx;
-//        } else {
-//        	
-//        	// 로그인 상태x
-//            return "redirect:/main";
-//        }
-//    }
     
-//    @GetMapping("/viewAnalysisImage")
-//    public String viewAnalysisImage(@RequestParam(value = "file_idx", required = true) int fileIdx, Model model) {
-//    	
-//    	System.out.println(fileIdx);
-//    	byte[] resultImage = arepo1.findResultImgByFileIdx(fileIdx);
-//
-//    	if( resultImage != null ) {
-//    		
-//    		model.addAttribute("imageData", resultImage);
-//    		
-//        return "aiResult"; // aiResult.jsp 파일 반환
-//    }
-//    	System.out.println("이미지 데이터 없음");
-//    	return "main";
-//}
+    @GetMapping("/viewAnalysisImage")
+    public String viewAnalysisImage(@RequestParam("file_idx") int fileIdx, @RequestParam("anal_idx") int analIdx, Model model) {
+        // 분석 결과 이미지 데이터베이스에서 가져오기
+        Optional<Analysis> analysisOptional = arepo1.findById(analIdx);
+        
+        if (analysisOptional.isPresent()) {
+            Analysis analysis = analysisOptional.get();
+            String base64Image = analysis.getAnalResultImgName();
+            model.addAttribute("imageData", base64Image);
+        } else {
+            model.addAttribute("imageData", null);
+        }
+        
+        return "aiResult"; // aiResult.jsp로 이동
+    }
 }

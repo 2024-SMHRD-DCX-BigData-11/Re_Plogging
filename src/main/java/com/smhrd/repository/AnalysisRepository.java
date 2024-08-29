@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 import com.smhrd.entity.Analysis;
 
 
-public interface AnalysisRepository extends JpaRepository<Analysis, Long> {
+public interface AnalysisRepository extends JpaRepository<Analysis, Integer> {
 
 }

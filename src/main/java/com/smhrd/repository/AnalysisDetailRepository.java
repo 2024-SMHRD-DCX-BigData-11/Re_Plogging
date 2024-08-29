@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.smhrd.entity.AnalysisDetail;
 
-public interface AiTextRepository extends JpaRepository<AnalysisDetail, Long> {
+public interface AnalysisDetailRepository extends JpaRepository<AnalysisDetail, Integer> {
 	
 	@Query("""
 		    select a
