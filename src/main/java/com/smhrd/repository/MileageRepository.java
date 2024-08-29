@@ -18,4 +18,5 @@ public interface MileageRepository extends JpaRepository<Mileage, Integer> {
     @Query(value = "SELECT fn_mileagecnt(:userIdx)", nativeQuery = true)
     int getMileageCount(@Param("userIdx") int userIdx);
 
+    List<Mileage> findByUserOrderByCreatedAtDesc(Member user);
 }

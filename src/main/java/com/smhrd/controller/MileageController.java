@@ -25,13 +25,10 @@ public class MileageController {
         Member member = (Member) session.getAttribute("user");
 
         if (member != null) {
-            // 보유 마일리지 가져오기
             int totalMileage = miRepo.getMileageCount(member.getUserIdx());
             
-            // 마일리지 리스트 가져오기
-            List<Mileage> list = miRepo.findByUser(member);
+            List<Mileage> list = miRepo.findByUserOrderByCreatedAtDesc(member);
             
-            // 모델에 리스트와 보유 마일리지 추가
             model.addAttribute("list", list);
             model.addAttribute("totalMileage", totalMileage);
             
