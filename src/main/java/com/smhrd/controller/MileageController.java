@@ -1,6 +1,8 @@
 package com.smhrd.controller;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,12 +30,16 @@ public class MileageController {
             // 보유 마일리지 가져오기
             int totalMileage = miRepo.getMileageCount(member.getUserIdx());
             
-            // 마일리지 리스트 가져오기
-            List<Mileage> list = miRepo.findByUser(member);
+            // 내림차순 정렬된 마일리지 리스트 가져오기
+            List<Mileage> list = miRepo.findByUserOrderByCreatedAtDesc(member);
+            
+            // 숫자를 천 단위로 포맷팅
+            NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
+            String formattedMileage = numberFormat.format(totalMileage);
             
             // 모델에 리스트와 보유 마일리지 추가
             model.addAttribute("list", list);
-            model.addAttribute("totalMileage", totalMileage);
+            model.addAttribute("totalMileage", formattedMileage);
             
             return "myMileage";
         } else {

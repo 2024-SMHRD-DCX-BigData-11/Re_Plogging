@@ -49,7 +49,7 @@
 						<span>완료한 플로깅</span>
 						<span class="point">${completedPloggingCount}회</span><br>
 						<span>그린 마일리지</span>
-						<span class="point">${totalMileage}p</span>
+						<span class="point" id="mileage-point">${totalMileage}p</span>
 					</div>
 				</div>
 			</div>
@@ -60,7 +60,7 @@
 						src="img/right-arrow.png" alt="Arrow"> </a></li>
 				<li><a href="${pageContext.request.contextPath}/myWrite"><sapn>작성 글 조회</sapn> <img
 						src="img/right-arrow.png" alt="Arrow"> </a></li>
-				<li><a href="${pageContext.request.contextPath}/myMileage"><sapn>마일리지 현황</sapn> <img
+				<li><a href="${pageContext.request.contextPath}/myMileage"><sapn>그린 마일리지 내역</sapn> <img
 						src="img/right-arrow.png" alt="Arrow"> </a></li>
 				<li><a href="${pageContext.request.contextPath}/userWithdrawal"><sapn>회원 탈퇴</sapn> <img
 						src="img/right-arrow.png" alt="Arrow"> </a></li>
