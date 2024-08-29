@@ -8,18 +8,6 @@ function closeLoginModal() {
     document.getElementById('login-modal').style.display = 'none';
 }
 
-
-// 비밀번호 찾기
-/*document.getElementById('find-password').addEventListener('click', function() {
-    Swal.fire({
-        title: '',
-        html: '비밀번호 찾기 기능은<br> 추후 구현 예정입니다.',
-        icon: 'info',
-        confirmButtonText: 'OK'
-    });
-});*/
-
-
 // 회원가입 모달 열기
 function openJoinModal() {
     // 로그인 모달이 열려 있을 때만 회원가입 모달을 열 수 있음
@@ -46,9 +34,9 @@ $('#user_pw_confirm').on( "focusout", function( event ) {
 	
 	
 	if( pw.match( cpw ) != null ) {
-		alert( "비밀번호가 일치합니다." );
+		alert( "😊 비밀번호가 일치합니다." );
 	} else {
-		alert( "비밀번호가 일치 하지않습니다." );
+		alert( "😣 비밀번호가 일치하지 않습니다." );
 	}
 	return false;
 });
@@ -59,7 +47,7 @@ $('#user_pw_confirm').on( "focusout", function( event ) {
 			var userNick = $('#user_nick').val().trim();
 			
 			if(userNick === ''){
-				alert("닉네임을 입력해주세요.");
+				alert("🤔 닉네임을 입력해 주세요.");
 				return;
 			}
 			
@@ -72,11 +60,11 @@ $('#user_pw_confirm').on( "focusout", function( event ) {
 				success : function(data){
 					
 					if(data == 1){
-						alert("중복된 닉네임입니다.");
+						alert("😣 중복된 닉네임 입니다.");
 						
 					}
 					else{
-						alert("사용할 수 있는 닉네임입니다.");
+						alert("😊 사용할 수 있는 닉네임입니다.");
 					}
 				},
 				error:function(request, error){
@@ -117,10 +105,10 @@ function telconfirmButton( url ) {
 	}).done( function( response ) {
 		//결과 alert
 		if(response.code == 200){
-			alert("인증번호 발송");
+			alert("😊 인증번호가 발송되었습니다.");
 		}
 		else{
-			alert("인증번호 발송 실패");
+			alert("😣 인증번호 발송에 실패했습니다.");
 		}
 		
 	}).fail( function( error ) {
@@ -142,10 +130,10 @@ function smsCheck( url ) {
 	}).done( function( response ) {
 		if( response.code == 200 ) {
 			$("#telCheck").val( "1" );
-			alert("인증번호 확인 성공!");
+			alert("😊 인증번호가 확인되었습니다.");
 		} else{
 			$("#telCheck").val( "0" );
-			alert("인증번호 확인 실패!");
+			alert("😣 인증번호 확인에 실패했습니다. 다시 시도해 주세요.");
 		}
 	});   
 	return false;

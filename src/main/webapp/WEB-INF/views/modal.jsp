@@ -134,19 +134,21 @@
 			<div class="ai-modal-body">
 				<div class="ai-body">
 					<img src="img/aiAssistant.png" alt="AI"> <span>분리배출
-						방법이 궁금한 <span class="ai-Imgpoint">이미지</span>를 올려주세요!</span>
+						방법이 궁금한 <span class="ai-Imgpoint">이미지</span>를 올려주세요!
+					</span>
 				</div>
-				<form id="uploadForm" action="${pageContext.request.contextPath}/AiImageUpload" method="post"
-					enctype="multipart/form-data">
-					<input name="file" type="file">
-					</td> <input type="submit" value="이미지 업로드">
+				<form id="uploadFormMain"
+					action="${pageContext.request.contextPath}/AiImageUpload"
+					method="post" enctype="multipart/form-data">
+					<input name="file" type="file"> <input type="submit"
+						value="이미지 업로드">
 				</form>
 			</div>
 			<div class="ai-modal-close" onclick="closeAiModal()">닫기</div>
 		</div>
 	</div>
-	
-	
+
+
 	<!-- ai 모달(나의 플로깅) -->
 	<div id="myplo-ai-modal">
 		<div class="myplo-ai-container">
@@ -154,13 +156,14 @@
 				alt="Re: Plogging Logo">
 			<div class="myplo-ai-modal-body">
 				<div class="myplo-ai-body">
-					<img src="img/aiAssistant(나의플로깅).png" alt="AI"> <span>분리배출
-						방법이 궁금한 <span class="myplo-ai-Imgpoint">이미지</span>를 올려주세요!</span>
+					<img src="img/aiAssistant(나의플로깅).png" alt="AI"> <span>분리배출 방법이 궁금한 <span class="myplo-ai-Imgpoint">이미지</span>를 올려주세요!
+					</span>
 				</div>
-				<form id="uploadForm" action="${pageContext.request.contextPath}/AiImageUpload" method="post"
-					enctype="multipart/form-data">
-					<input name="file" type="file" class="myplo-file">
-					</td> <input type="submit" class="myplo-submit" value="이미지 업로드">
+				<form id="uploadFormMyPlo"
+					action="${pageContext.request.contextPath}/AiImageUpload"
+					method="post" enctype="multipart/form-data">
+					<input name="file" type="file" class="myplo-file"> <input
+						type="submit" class="myplo-submit" value="이미지 업로드">
 				</form>
 			</div>
 			<div class="myplo-ai-modal-close" onclick="closeMyPloAiModal()">닫기</div>
@@ -194,22 +197,22 @@
 				$("#idMsg").css("display", "flex");
 				return false;
 			} else if ( user_pw.length == 0 ) {
-				erroAlert("비밀번호를 입력해주세요.",join_user_pw)
+				erroAlert("🤔 비밀번호를 입력해 주세요.",join_user_pw)
 				return false;
 			} else if ( user_pw_c.length == 0 ) {
-				erroAlert("비밀번호 확인을 입력해주세요.",user_pw_confirm)
+				erroAlert("🤔 비밀번호 확인을 입력해 주세요.",user_pw_confirm)
 				return false;
 			} else if ( user_pw.match( user_pw_c ) == null ) {
 				$("#pwMsg").css("display", "flex");
 				return false;
 			} else if ( user_phone.length == 0 ) {
-				erroAlert("전화번호를 입력해주세요.")
+				erroAlert("🤔 휴대폰번호를 입력해 주세요.")
 				return false;
 			} else if ( $("#telCheck").val() == "0" ) {
-				erroAlert("전화번호를 인증해주세요.")
+				erroAlert("🤔 휴대폰번호를 인증해 주세요.")
 				return false;
 			}else if (sms_check.length == 0 || sms_check.length != 6){
-				erroAlert("인증번호를 다시 입력해주세요.",otp)
+				erroAlert("🤔 인증번호를 다시 입력해주세요.",otp)
 				return false;
 			} else if ( user_nick.length == 0 ) {
 				$("#idMsg").css("display", "flex");
@@ -218,23 +221,23 @@
 				commonMultiAjax( "${ctx }/rest/member/join", formData, function( response ) {
 					if( response.code == 200 ) {
 						//등록 성공
-						alert("회원가입 성공!!");
+						alert("🥳 축하드립니다! 회원가입이 성공적으로 완료되었습니다.");
 						location.replace("${ctx }/main") // 회원가입 성공 시 메인 페이지로 이동
 					} else if ( response.code == -100 ) {
 						//등록 실패
-						alert("회원가입 실패 다시 시도해주세요");
+						alert("😭 회원가입에 실패했습니다. 다시 시도해 주세요.");
 						return false;
 					} else if (response.code == -500) {
 						//아이디 중복
-						alert("이미 가입된 이메일입니다!!");
+						alert("😣 이미 가입된 이메일입니다.");
 						return false;
 					} else if (response.code == -400) {
 						// 전화번호 중복
-						alert("이미 가입된 전화번호입니다!!");
+						alert("😣 이미 가입된 휴대폰 번호입니다.");
 						return false;
 					} else{
 						// 닉네임 중복
-						alert("이미 사용중인 닉네임입니다!!")
+						alert("😣 이미 사용중인 닉네임입니다.")
 						return false;;
 					}
 				});
