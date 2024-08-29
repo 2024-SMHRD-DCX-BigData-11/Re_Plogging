@@ -55,3 +55,27 @@ document.addEventListener('DOMContentLoaded', function() {
         if (ploggingStartError) {
             showAlertWithPloggingStartError();
         }
+
+function scrolltotop(){
+	window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+document.addEventListener("DOMContentLoaded", function() {
+    const topBtn = document.querySelector("#button-page-top-btn");
+
+    topBtn.addEventListener("click", function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return false;
+    });
+
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollOffset = document.querySelector(".plocourse-container").offsetTop;
+
+        if (scrollTop < scrollOffset) {
+            topBtn.classList.remove('visible'); // 버튼 숨기기
+        } else {
+            topBtn.classList.add('visible'); // 버튼 보이기
+        }
+    });
+});
+

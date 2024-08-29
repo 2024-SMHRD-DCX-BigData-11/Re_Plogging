@@ -207,6 +207,10 @@
 			</c:if>
 		</div>
 	</div>
+	
+	<div class="button-page-top">
+		<button type="button" id="button-page-top-btn" onclick="scrolltotop()">↑</button>
+	</div>
 
 	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
 
