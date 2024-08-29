@@ -62,5 +62,19 @@
 
 	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
 
+	<script>
+		// 숫자를 천 단위로 포맷팅하는 함수
+		function formatNumber(num) {
+			return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+
+		// 모든 Mileage-amount 요소를 선택하여 포맷팅
+		var mileageElements = document.querySelectorAll('.Mileage-amount');
+		mileageElements.forEach(function(element) {
+		    var mlAmount = parseInt(element.textContent, 10);
+		    element.textContent = formatNumber(mlAmount) + 'p';
+		});
+	</script>
+
 </body>
 </html>

@@ -49,7 +49,7 @@
 						<span>완료한 플로깅</span>
 						<span class="point">${completedPloggingCount}회</span><br>
 						<span>그린 마일리지</span>
-						<span class="point">${totalMileage}p</span>
+						<span class="point" id="mileage-point">${totalMileage}p</span>
 					</div>
 				</div>
 			</div>
