@@ -48,19 +48,19 @@
                 <c:choose>
                     <c:when test="${fn:length(list) != 0}">
                         <c:forEach var="community" items="${list}">
-                            <tr>
+                            <tr class="community-list">
                                 
-                                <td style="color:#08917c;">${community.category}</td>
+                                <td class="community-text-point">${community.category}</td>
                                 <td>
                                    <a href="${pageContext.request.contextPath}/communityRead?idx=${community.idx}" style="color:black; text-decoration: none;">${community.title}</a>
                                    <c:if test="${community.comments.size() > 0}">
-                                      [${community.comments.size()}]
+                                      <span class="community-text-point">[${community.comments.size()}]</span>
                                    </c:if>
                                 </td>
-                                <td style="color:#747474;">${community.writer.userNick}</td>
-                                <td style="color:#747474;"><fmt:formatDate value="${community.indate}" pattern="yyyy.MM.dd" /></td>
-                                <td style="color:#747474;">${community.count}</td>
-                                <td style="color:#747474;">${community.likes}</td>
+                                <td style="color:black;">${community.writer.userNick}</td>
+                                <td><fmt:formatDate value="${community.indate}" pattern="yyyy.MM.dd" /></td>
+                                <td>${community.count}</td>
+                                <td>${community.likes}</td>
                             </tr>
                         </c:forEach>
                     </c:when>
