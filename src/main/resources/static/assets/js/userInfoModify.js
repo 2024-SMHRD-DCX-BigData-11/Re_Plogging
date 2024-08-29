@@ -29,13 +29,13 @@ function inputReadOnly(){
         $('#confirm-Mpw').attr("readonly", true).css("background-color", "#e0e0e0");
         $('#new-confirm-Mpw').attr("readonly", true).css("background-color", "#e0e0e0");
 		$('#MuserNick').attr("readonly", true).css("background-color", "#e0e0e0");
-		alert("변경사항이 저장되었습니다.")
+		alert("😊 변경사항이 저장되었습니다.")
     }
 }
 
 /*document.getElementById("save-changes-button").addEventListener("click", function() {
     // 여기에 비밀번호 변경 로직 추가
-    alert("비밀번호가 성공적으로 변경되었습니다.");
+    alert("😊 비밀번호가 성공적으로 변경되었습니다.");
     document.getElementById("pw-section").style.display = "flex";
     document.getElementById("change-password-section").style.display = "none";
 });
@@ -43,6 +43,6 @@ function inputReadOnly(){
 document.getElementById("user-info-form").addEventListener("submit", function(event) {
     event.preventDefault();
     // 닉네임 변경 처리 로직 추가
-    alert("정보가 성공적으로 변경되었습니다.");
+    alert("😊 정보가 성공적으로 변경되었습니다.");
 });
 */

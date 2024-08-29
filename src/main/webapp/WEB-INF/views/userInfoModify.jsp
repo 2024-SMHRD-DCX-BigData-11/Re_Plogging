@@ -112,13 +112,13 @@
 		    }
 			
 			if (currentMpw==null || currentMpw.length == 0) {
-				erroAlert("현재 비밀번호를 입력해주세요.", 'current-Mpw');
+				erroAlert("🤔 현재 비밀번호를 입력해 주세요.", 'current-Mpw');
 				return false;
 			} else {
 				commonMultiAjax("${ctx}/rest/member/memberUpdate", formData, function(response) {
 					
 					if (response.code == 0) {
-						alert("회원정보 수정 성공!!");
+						alert("😊 회원정보 수정이 완료되었습니다.");
 						window.location.href = "${ctx}/main"; 
 					} else {
 						switch(response.code){
@@ -126,16 +126,16 @@
 							alert("로그인 상태가 아닙니다.");
 							break;
 						case "-500":
-							alert("비밀번호가 일치하지 않습니다.");
+							alert("😣 비밀번호가 일치하지 않습니다.");
 							break;
 						case "-400":
-							alert("이미 사용중인 닉네임입니다!");
+							alert("😣 이미 사용 중인 닉네임입니다.");
 							break;
 						case "-300":
-							alert("입력한 값을 확인해주세요.");
+							alert("😣 입력한 값을 다시 확인해 주세요.");
 							break;
 						case "-200":
-							alert("중복된 닉네임입니다.");
+							alert("😣 중복된 닉네임 입니다.");
 							break;
 						}
 						return false;
