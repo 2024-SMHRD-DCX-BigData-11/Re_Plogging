@@ -205,14 +205,14 @@ public class MarketController {
 
 		// 마일리지 내역 기록
 		Mileage mileagePu = new Mileage();
-		mileagePu.setMlType("마켓판매");
+		mileagePu.setMlType("공예품 판매");
 		mileagePu.setMlAmount(mileageAmount);
 		mileagePu.setUser(postUser);
 		mileagePu.setMlLog("적립");
 		mileageRepo.save(mileagePu);
 
 		Mileage mileageCu = new Mileage();
-		mileageCu.setMlType("마켓구매");
+		mileageCu.setMlType("공예품 구매");
 		mileageCu.setMlAmount(mileageAmount);
 		mileageCu.setUser(currentUser);
 		mileageCu.setMlLog("사용");
