@@ -41,11 +41,13 @@ import com.smhrd.FileUtils;
 import com.smhrd.entity.Analysis;
 import com.smhrd.entity.AnalysisDetail;
 import com.smhrd.entity.Member;
+import com.smhrd.entity.Mileage;
 import com.smhrd.entity.RecycleCategory;
 import com.smhrd.entity.UploadImg;
 import com.smhrd.repository.AnalysisRepository;
 import com.smhrd.repository.AnalysisDetailRepository;
 import com.smhrd.repository.ImageRepository;
+import com.smhrd.repository.MileageRepository;
 import com.smhrd.repository.RecycleCategoryRepository;
 
 import jakarta.servlet.ServletOutputStream;
@@ -68,6 +70,9 @@ public class AiController {
     
     @Autowired
     RecycleCategoryRepository categoryrepo;
+    
+    @Autowired
+    MileageRepository mileagerepo;
 
     @RequestMapping("/ai1")
     public String openAi1() {
@@ -113,8 +118,8 @@ public class AiController {
     
     
     @GetMapping("/viewAnalysisImage")
-    public String viewAnalysisImage(@RequestParam( value = "resultImageName", required = true) String resultImageName, @RequestParam( value = "anal_idx", required = true) int anal_idx,  Model model) {
-    	
+    public String viewAnalysisImage(@RequestParam( value = "resultImageName", required = true) String resultImageName, @RequestParam( value = "anal_idx", required = true) int anal_idx,  Model model, HttpSession session) {
+    	Member member = (Member) session.getAttribute("user");
     	// 분석 결과 이미지 프로젝트 내부 폴더에서 가져오기
          if (!resultImageName.equals("")) {
         	 model.addAttribute("resultImageName", resultImageName);
@@ -122,14 +127,22 @@ public class AiController {
         	 
         	 List<AnalysisDetail> resultText =  arepo2.findByResultText(anal_idx);
         	 int totalMil = 0;
+        	 Mileage mileage = new Mileage();
         	 for (int i = 0; i < resultText.size(); i++) {
 				totalMil += resultText.get(i).getCategory().getCategoryMileage() * resultText.get(i).getCategoryCount();
+				
+				// 마일리지 적립
+				mileage.setMlAmount(resultText.get(i).getCategory().getCategoryMileage() * resultText.get(i).getCategoryCount());
+				mileage.setMlLog("적립");
+				mileage.setMlType(resultText.get(i).getCategory().getCategoryName() + " 객체 인식");
+				mileage.setUser(member);
+				mileagerepo.save(mileage);
+				
 			}
         	 
         	 model.addAttribute("total", totalMil );
         	 model.addAttribute("list", resultText );
         	 model.addAttribute("anal_idx", anal_idx );
-        	System.out.println( resultImageName );
         	
         } else {
         	System.out.println("이미지 없음");
