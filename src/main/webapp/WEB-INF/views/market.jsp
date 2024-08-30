@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ include file="header.jsp"%>
 <%@ include file="modal.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -77,8 +78,10 @@
 												<h2 class="marketTitle">${market.title}</h2>
 											</div>
 											<div class="market_card_price">
-												<span>${market.mileage}p</span>
+												<span><fmt:formatNumber value="${market.mileage}"
+														type="number" groupingUsed="true" />p</span>
 											</div>
+
 											<div class="market_card_category">
 												<span>${market.category}</span>
 											</div>

@@ -47,7 +47,7 @@
 							<td><fmt:formatDate value="${member.joinedAt}"
 									pattern="yyyy.MM.dd HH:mm:ss" /></td>
 							<td>${member.completedPloggingCount}</td>
-							<td>${member.totalMileage}</td>
+							<td><fmt:formatNumber value="${member.totalMileage}" type="number" groupingUsed="true"/></td>
 							<td><a
 								href="${pageContext.request.contextPath}/udelete?idx=${member.userIdx}">회원
 									탈퇴</a></td>
