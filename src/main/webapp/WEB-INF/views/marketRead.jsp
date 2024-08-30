@@ -52,8 +52,9 @@
 				<span id="marketRead_info_category">카테고리 </span> <span
 					id="marketRead_info_category_content"># ${market.category}</span><br>
 				<span id="marketRead_info_title">${market.title}</span><br> <span
-					id="marketRead_info_mileage">${market.mileage}p</span><br> <span
-					id="marketRead_info_span">판매자</span> <span
+					id="marketRead_info_mileage"><fmt:formatNumber
+						value="${market.mileage}" type="number" groupingUsed="true" />p</span><br>
+				<span id="marketRead_info_span">판매자</span> <span
 					id="marketRead_info_content">${market.user.userNick}</span><br>
 				<span id="marketRead_info_span">등록일</span> <span
 					id="marketRead_info_content"><fmt:formatDate
@@ -140,7 +141,7 @@ console.log("Item Mileage (JS):", itemMileage);
 
     function checkMileageAndSubmit() {
         if (userMileage < itemMileage) {
-            alert("마일리지가 부족합니다!");
+            alert("😞 마일리지가 부족합니다.");
         } else {
             document.getElementById("purchaseForm").submit();
         }

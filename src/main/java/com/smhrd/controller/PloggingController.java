@@ -145,8 +145,6 @@ public class PloggingController {
 		}
 	}
 
-	
-
 	/* 나의 플로깅 */
 	@RequestMapping("/myplogging")
 	public String gomyplogging(HttpSession session, Model model) {
@@ -160,6 +158,10 @@ public class PloggingController {
 
 			// 완료된 플로깅 목록 가져오기
 			List<Plogging> completedPlogging = prepo.findByUserAndQr1AndQr2AndQr3(member, 1, 1, 1);
+			
+			// qr3Time 기준으로 내림차순 정렬
+			completedPlogging.sort((p1, p2) -> p2.getQr3Time().compareTo(p1.getQr3Time()));
+			
 			model.addAttribute("completedPlogging", completedPlogging);
 
 			return "myplogging";

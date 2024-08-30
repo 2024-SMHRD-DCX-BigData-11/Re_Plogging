@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ include file="header.jsp"%>
 <%@ include file="modal.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -52,10 +53,10 @@
 						onclick="sortList('latest')">최신순</button>
 					<button
 						class="market_List_option_btn ${currentSort == 'lowPrice' ? 'active' : ''}"
-						onclick="sortList('lowPrice')">낮은가격순</button>
+						onclick="sortList('lowPrice')">낮은 가격순</button>
 					<button
 						class="market_List_option_btn ${currentSort == 'highPrice' ? 'active' : ''}"
-						onclick="sortList('highPrice')">높은가격순</button>
+						onclick="sortList('highPrice')">높은 가격순</button>
 				</div>
 			</div>
 
@@ -77,8 +78,10 @@
 												<h2 class="marketTitle">${market.title}</h2>
 											</div>
 											<div class="market_card_price">
-												<span>${market.mileage}p</span>
+												<span><fmt:formatNumber value="${market.mileage}"
+														type="number" groupingUsed="true" />p</span>
 											</div>
+
 											<div class="market_card_category">
 												<span>${market.category}</span>
 											</div>
@@ -195,7 +198,7 @@
 			const urlParams = new URLSearchParams(window.location.search);
 			if (urlParams.has('purchaseSuccess')
 					&& urlParams.get('purchaseSuccess') === 'true') {
-				alert("구매 성공!");
+				alert("🥳 상품 구매가 완료되었습니다.");
 			}
 		}
 	</script>
