@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 
 import com.smhrd.entity.AnalysisDetail;
@@ -16,12 +17,7 @@ public interface AnalysisDetailRepository extends JpaRepository<AnalysisDetail, 
 		    where a.analysis.analIdx = :anal_idx
 		    """)
 	public List<AnalysisDetail> findByResultText(@Param("anal_idx") int anal_idx);
+	
 
-
-
-
-	@Query(value = "CALL getanalresult(:anal_idx)", nativeQuery = true)
-   public String getAnalResult(@Param("anal_idx") int anal_idx);
-		
 		
 }

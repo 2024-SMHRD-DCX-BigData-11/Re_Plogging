@@ -1,5 +1,6 @@
 package com.smhrd.restController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -15,8 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.smhrd.entity.AnalysisDetail;
 import com.smhrd.entity.Comment;
 import com.smhrd.entity.CommonDomain;
+import com.smhrd.entity.RecycleCategory;
 import com.smhrd.repository.AnalysisDetailRepository;
 import com.smhrd.repository.ChatRepository;
+import com.smhrd.repository.RecycleCategoryRepository;
 
 @RestController
 @RequestMapping( "/rest/char/" )
@@ -28,21 +31,36 @@ public class ChatRestController {
    @Autowired
    AnalysisDetailRepository arepo2;
    
+   @Autowired
+   RecycleCategoryRepository recyclerepo;
+   
    @RequestMapping( value = "createChart", method = RequestMethod.POST )
    @ResponseBody
    public Map<String, Object> createChart(
 		   @RequestParam( value ="idx" ) int idx
 		   ) {
+	   List<RecycleCategory> categoryList = recyclerepo.findCategory(); 
+	   List<AnalysisDetail> detailList = arepo2.findByResultText(idx);
+	   
+	   List<String> xValue = new ArrayList<String>();
+	   List<String> yValue = new ArrayList<String>();
+	   
+	   for (int i = 0; i < categoryList.size(); i++) {
+		   String target = "";
+		   xValue.add( categoryList.get(i).getCategoryName() );
+		   for (int j = 0; j < detailList.size(); j++) {
+			   if ( categoryList.get(i).getCategoryName().equals( detailList.get(j).getCategory().getCategoryName() ) ) {
+				    target = String.valueOf( detailList.get(j).getCategoryCount() );
+			   } 
+		   }
+		   yValue.add( target.equals("") ? "0" : target );
+	   }
+	 
 	   Map<String, Object> result = new HashMap<String, Object>();
-	   List<AnalysisDetail> resultText =  arepo2.findByResultText(idx);
-	   for (Iterator iterator = resultText.iterator(); iterator.hasNext();) {
-		AnalysisDetail detail = (AnalysisDetail) iterator.next();
-		detail.setAnalysis( null );
-	}
+	   result.put("xValue", xValue );
+	   result.put("yValue", yValue );
 	   
 	   
-	   result.put("code", resultText.size() != 0 ? 200 : -100  );
-	   result.put("result", resultText );
 	   return result;
    }
    
@@ -59,4 +77,48 @@ public class ChatRestController {
       return list;
    }
 
+   @RequestMapping( value = "getUrlList", method = RequestMethod.POST )
+   @ResponseBody
+   public Map<String, Object> getUrlList(
+		   @RequestParam( value ="idx" ) int idx
+		   ) {
+	   List<RecycleCategory> categoryList = recyclerepo.findCategory(); 
+	   List<AnalysisDetail> detailList = arepo2.findByResultText(idx);
+	   
+	   List<String> targetTitleList = new ArrayList<String>();
+	   List<String> targetUrlList = new ArrayList<String>();
+	   
+	   String[] targetNameArr =  { "종이", "캔", "유리", "페트", "플라스틱", "비닐", "스티로폼", "건전지" };
+	   String[] targetUrl = { "urE4nzXFOLE?si=o35GOHZY-h7CtGN2", "DsgUFESLWKw?si=MuQEwH6e0RIDp7uj",
+			   "gEeCPIe1JEE?si=JahZgVDseRrlUM6E",
+			        "UJdK0h4NQWg?si=RPE-gOSQ3Gln98Kk",
+			        "hyXggCmXI7I?si=ikO6BOJ8jQGlMl-l",
+			        "vrNgvgTtowo?si=izg5GkCYXogMsAXT",
+			        "Fe3R9PWuI_0?si=ZVQ_Oxcke2B0wOcy",
+			        "Q1H0Yydsv-k?si=RG-YwgMTMNZ-FVex" };
+	   
+	   String youtube_url = "https://youtu.be/";
+	   
+	   for (int i = 0; i < detailList.size(); i++) {
+		   String categoryName = detailList.get(i).getCategory().getCategoryName();
+		   
+		   for (int j = 0; j < targetNameArr.length; j++) {
+			   if( categoryName.equals( targetNameArr[j] ) ) {
+				   targetTitleList.add( categoryName );
+				   targetUrlList.add( targetUrl[i] );
+			   }
+		   }
+		}
+		   
+	   Map<String, Object> result = new HashMap<String, Object>();
+	   result.put("nameList", targetTitleList );
+	   result.put( "urlList", targetUrlList );
+	   result.put("youtube", youtube_url );
+	   
+	   return result;
+   }
+   
+   
+   
+   
 }

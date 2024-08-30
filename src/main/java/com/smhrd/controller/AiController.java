@@ -41,10 +41,12 @@ import com.smhrd.FileUtils;
 import com.smhrd.entity.Analysis;
 import com.smhrd.entity.AnalysisDetail;
 import com.smhrd.entity.Member;
+import com.smhrd.entity.RecycleCategory;
 import com.smhrd.entity.UploadImg;
 import com.smhrd.repository.AnalysisRepository;
 import com.smhrd.repository.AnalysisDetailRepository;
 import com.smhrd.repository.ImageRepository;
+import com.smhrd.repository.RecycleCategoryRepository;
 
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpSession;
@@ -63,6 +65,9 @@ public class AiController {
 
     @Autowired
     AnalysisDetailRepository arepo2;
+    
+    @Autowired
+    RecycleCategoryRepository categoryrepo;
 
     @RequestMapping("/ai1")
     public String openAi1() {
@@ -74,8 +79,10 @@ public class AiController {
         return "aiResult";
     }
     
+    
+    
     @PostMapping("/AiImageUpload")
-  public String AiImageUpload(
+    public String AiImageUpload(
   		MultipartHttpServletRequest request,
   		HttpSession session,
   		Model model) {
@@ -111,18 +118,17 @@ public class AiController {
     	// 분석 결과 이미지 프로젝트 내부 폴더에서 가져오기
          if (!resultImageName.equals("")) {
         	 model.addAttribute("resultImageName", resultImageName);
+        	 
+        	 
         	 List<AnalysisDetail> resultText =  arepo2.findByResultText(anal_idx);
+        	 int totalMil = 0;
+        	 for (int i = 0; i < resultText.size(); i++) {
+				totalMil += resultText.get(i).getCategory().getCategoryMileage() * resultText.get(i).getCategoryCount();
+			}
+        	 
+        	 model.addAttribute("total", totalMil );
         	 model.addAttribute("list", resultText );
-        	 model.addAttribute("count", resultText.size() );
         	 model.addAttribute("anal_idx", anal_idx );
-        	 
-        	 
-        	 String resultNC =arepo2.getAnalResult(anal_idx);
-        	
-        	 
-        	 model.addAttribute("resultNC", resultNC);
-        	 
-        	 
         	System.out.println( resultImageName );
         	
         } else {

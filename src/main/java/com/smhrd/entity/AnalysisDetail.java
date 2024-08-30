@@ -17,7 +17,6 @@ import lombok.Setter;
 @Setter
 @Table(name = "tb_analysis_details")
 public class AnalysisDetail {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "det_idx", columnDefinition = "INT", insertable = false, updatable = false)
@@ -33,4 +32,5 @@ public class AnalysisDetail {
 
     @Column(name = "category_count", columnDefinition = "INT", nullable = false)
     private int categoryCount;
+      
 }
