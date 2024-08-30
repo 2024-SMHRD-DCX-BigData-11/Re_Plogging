@@ -295,24 +295,21 @@ footer {
     transform: translateY(0);
 }
 
-.button-page-top {
-    position: fixed;
-    bottom: 30px;
-    right: 50px;
-    z-index: 1000;
-}
-
 #button-page-top-btn {
-    opacity: 0;
+	position: fixed;
+	bottom: 30px;
+	right: 50px;
+	z-index: 1000;
+	opacity: 0;
     transition: opacity 0.3s ease-out, background-color 0.3s ease;
     background-color: #a1acbd;
     color: white;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border: none;
     border-radius: 50%;
     font-family: 'S-CoreDream-3Light';
-    font-size: 15pt;
+    font-size: 15px;
 }
 
 #button-page-top-btn.visible {
@@ -321,7 +318,7 @@ footer {
 }
 
 #button-page-top-btn:hover {
-    background-color: #00a989;
+    background-color: #8b99b1;
 }
 
 /* ¹Ìµð¾î Äõ¸® */
@@ -405,11 +402,9 @@ footer {
 		font-size: 16px;
 	}
 	
-	.button-page-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
+	#button-page-top-btn  {
+		bottom: 50px;
+		right: 20px;
 	}
 
 	/* footer */

@@ -12,6 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="assets/css/ploggingList.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 </head>
 <body>
@@ -207,10 +208,10 @@
 			</c:if>
 		</div>
 	</div>
-	
-	<div class="button-page-top">
-		<button type="button" id="button-page-top-btn" onclick="scrolltotop()">↑</button>
-	</div>
+
+	<button type="button" id="button-page-top-btn" onclick="scrolltotop()">
+		<i class="fa-solid fa-arrow-up"></i>
+	</button>
 
 	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
 
