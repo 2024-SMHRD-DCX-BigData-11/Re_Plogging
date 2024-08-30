@@ -140,7 +140,7 @@ console.log("Item Mileage (JS):", itemMileage);
 
     function checkMileageAndSubmit() {
         if (userMileage < itemMileage) {
-            alert("마일리지가 부족합니다!");
+            alert("😞 마일리지가 부족합니다.");
         } else {
             document.getElementById("purchaseForm").submit();
         }
