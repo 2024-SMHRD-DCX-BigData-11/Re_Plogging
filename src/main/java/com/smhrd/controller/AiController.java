@@ -110,7 +110,7 @@ public class AiController {
          
          
 //          3. 플라스크로 이동(쿼리스트링)
-            return "redirect:http://127.0.0.1:5001?userIdx=" + useridx + "&fileIdx=" + fileidx;
+            return "redirect:http://localhost:5001?userIdx=" + useridx + "&fileIdx=" + fileidx;
     	} else {
     		return "redirect:/main";
     	}

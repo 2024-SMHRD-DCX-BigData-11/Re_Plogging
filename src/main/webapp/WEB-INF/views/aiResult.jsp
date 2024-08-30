@@ -13,8 +13,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="assets/css/aiResult.css">
-
-<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+	integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+	crossorigin="anonymous"></script>
 
 <script>
 /* $('#fileSubmitBtn').on("click",function(){
@@ -56,8 +59,7 @@
 	    });
 }); */
 </script>
-
-<body>	
+<body>
 	<div class="aiResult-container">
 		<div class="aiResult-container-inner">
 			<div class="aiResult-inner">
@@ -77,21 +79,36 @@
 					<p class="inner-header">#이미지 분석 결과</p>
 					<canvas id="recyclingChart"></canvas>
 
-					<p class="inner-header">#총 적립 마일리지</p>
-					<span class="inner-nomal">
-						<c:forEach var = "result" items = "${list }">
-<%-- 							<div>
+					<span class="inner-header">#총 적립 마일리지 <span
+						class="tooltip-container"> <i
+							class="fa-solid fa-circle-exclamation"></i>
+							<div class="tooltip-box">
+								<ul>
+									<li>종이: <span>10p</span></li>
+									<li>캔: <span>50p</span></li>
+									<li>유리: <span>50p</span></li>
+									<li>페트: <span>30p</span></li>
+									<li>플라스틱: <span>25p</span></li>
+									<li>비닐: <span>10p</span></li>
+									<li>스티로폼: <span>30p</span></li>
+									<li>건전지: <span>50p</span></li>
+								</ul>
+							</div>
+					</span>
+					</span> <span class="inner-nomal"> <c:forEach var="result"
+							items="${list }">
+							<%-- 							<div>
 								<c:set var="sum" value = "${result.categoryCount * result.category.categoryMileage } "  />
 								${result.category.categoryName } ( ${result.categoryCount } ) * ${result.category.categoryMileage } = ${sum }
 							</div> --%>
-						</c:forEach>
-						 ${total }p
+						</c:forEach> ${total }p
 					</span>
 				</div>
 			</div>
-			<c:forEach var="result" items="${list }" >
+			<c:forEach var="result" items="${list }">
 				<div class="aiResult-info">
-					<p class="aiResult-info-title">${result.category.categoryName }의 분리배출 방법</p>
+					<p class="aiResult-info-title">#${result.category.categoryName
+						}의 분리배출 방법</p>
 					<div id="aiResult-info-commentGroup">
 						<span class="aiResult-info-comment">${result.category.categoryInfo }</span>
 					</div>
@@ -104,18 +121,15 @@
 				<ul id="detected-items-list">
 					<!-- JavaScript로 동적으로 생성된 항목들이 여기에 추가됩니다 -->
 				</ul>
-				
+
 			</div>
 		</div>
 	</div>
-	
-	
+
 	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
+	
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script type="text/javascript">
-
-
-
+	<script type="text/javascript">
 
 $.ajax({
     url: "${pageContext.request.contextPath}/rest/char/createChart",
@@ -161,30 +175,66 @@ $.ajax({
     }
 });
 	
-	$(".aiResult-interested").on("click", function( event ) {
-		$.ajax({
-			url : "${pageContext.request.contextPath}/rest/char/getUrlList",
-			data : { idx : "${anal_idx }" },
-			type : "post"
-		}).done( function( data ) {
-			var youtube = data.youtube,
-				nameList = data.nameList,
-				urlList = data.urlList,
-				appendHtml = "";
-			
-			for (var i = 0; i < nameList.length; i++) {
-				appendHtml += "<li><a href='"+ youtube + urlList[i] +"' >"+ nameList[i] +" YOUTUBE 바로가기</a></li>";
-			}
-			
-			
-			$("#detected-items-list").css( "display", "block" );
-			$("#detected-items-list").empty().append( appendHtml );
-		});
+$(".aiResult-interested").on("click", function(event) {
+    var $detectedItemsList = $("#detected-items-list");
+    
+    // 토글 기능 추가
+    if ($detectedItemsList.css("display") === "block") {
+        $detectedItemsList.css("display", "none");
+    } else {
+        $.ajax({
+            url: "${pageContext.request.contextPath}/rest/char/getUrlList",
+            data: { idx: "${anal_idx }" },
+            type: "post"
+        }).done(function(data) {
+            var youtube = data.youtube,
+                nameList = data.nameList,
+                urlList = data.urlList,
+                appendHtml = "";
+
+            for (var i = 0; i < nameList.length; i++) {
+                appendHtml += "<li><a href='" + youtube + urlList[i] + "' >" + nameList[i] + " YOUTUBE 바로가기</a></li>";
+            }
+
+            $detectedItemsList.empty().append(appendHtml);
+            $detectedItemsList.css("display", "block");
+        });
+    }
+});
+
+	
+	
+    window.addEventListener('resize', function() {
+        if (window.innerWidth <= 768) { // 768px 이하일 때 모바일 화면으로 인식
+            document.querySelector('.aiResult-interested-p').innerHTML = 
+                '재활용 쓰레기로 만드는 <br><span class="aiResult-point">멋진 공예품</span>에 관심 있으신가요?';
+        } else {
+            document.querySelector('.aiResult-interested-p').innerHTML = 
+                '재활용 쓰레기로 만드는 <span class="aiResult-point">멋진 공예품</span>에 관심 있으신가요?';
+        }
+    });
+
+    // 초기 로드 시 체크
+    if (window.innerWidth <= 768) {
+        document.querySelector('.aiResult-interested-p').innerHTML = 
+            '재활용 쓰레기로 만드는 <br><span class="aiResult-point">멋진 공예품</span>에 관심 있으신가요?';
+    }
+	
+	
+	$(document).ready(function(){
+	    $('.tooltip-container').on('click', function(event) {
+	        event.stopPropagation(); // 클릭 이벤트 전파 방지
+	        $(this).find('.tooltip-box').toggle(); // 툴팁 박스를 토글(보이기/숨기기)
+	    });
+
+	    // 페이지 다른 곳을 클릭했을 때 툴팁 닫기
+	    $(document).on('click', function(event) {
+	        if (!$(event.target).closest('.tooltip-container').length) {
+	            $('.tooltip-box').hide(); // 툴팁 박스 숨기기
+	        }
+	    });
 	});
-	
-	
 	</script>
-	<script src="assets/js/ai1.js"></script>
 	
 </body>
 </html>
