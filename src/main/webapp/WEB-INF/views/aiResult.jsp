@@ -33,15 +33,15 @@
 				</div>
 				<div class="aiResult-inner-right">
 					<p class="inner-header">이미지 분석 결과</p>
-					<%-- <canvas id="recyclingChart"></canvas> --%>
+					<canvas id="recyclingChart"></canvas>
 					<p class="inner-header">총 적립 마일리지</p>
 					<span class="inner-nomal">300p</span>
 				</div>
 			</div>
 			<div class="aiResult-info">
-				<p class="aiResult-info-title">()의 분리배출 방법</p>
+				<p class="aiResult-info-title">#${item.category.categoryName }의 분리배출 방법</p>
 				<div id="aiResult-info-commentGroup">
-					<span class="aiResult-info-comment">(내용 들어가야함)</span>
+					<span class="aiResult-info-comment">${item.category.categoryInfo }</span>
 				</div>
 			</div>
 			<div class="aiResult-interested">
@@ -51,12 +51,36 @@
 				<ul id="detected-items-list">
 					<!-- JavaScript로 동적으로 생성된 항목들이 여기에 추가됩니다 -->
 				</ul>
+				
 			</div>
 		</div>
 	</div>
-
+	
+	<c:forEach var ="resultNC" items = "${resultNameAndCount }">
+	
+	${resultNC.c.categoryName }
+	${resultNC.d.categoryCount }
+	</c:forEach>
+	
 	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
-
+<script type="text/javascript">
+	
+$.ajax({
+    url: "${pageContext.request.contextPath}/rest/char/createChart",
+    type: "post",
+    data: { idx : "${anal_idx }" },
+    success: function (data) {
+        console.log(data)
+    },
+    error: function (request, status, error) {
+        console.log("code: " + request.status)
+        console.log("message: " + request.responseText)
+        console.log("error: " + error);
+    }
+});
+	
+	</script>
 	<script src="assets/js/ai1.js"></script>
+	
 </body>
 </html>

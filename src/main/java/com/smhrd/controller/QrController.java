@@ -119,7 +119,7 @@ public class QrController {
 				Mileage mileage = new Mileage();
 				mileage.setUser(member);
 				mileage.setMlAmount(777);
-				mileage.setMlType("플로깅완주");
+				mileage.setMlType("플로깅 완료");
 				mileage.setMlLog("적립");
 				mrepo.save(mileage);
 				return "redirect:/myplogging"; // 리다이렉트 사용

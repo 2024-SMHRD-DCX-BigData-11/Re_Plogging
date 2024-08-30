@@ -13,7 +13,15 @@ public interface AnalysisDetailRepository extends JpaRepository<AnalysisDetail, 
 	@Query("""
 		    select a
 		    from AnalysisDetail a
-		    where a.analysis.analIdx = :analIdx
+		    where a.analysis.analIdx = :anal_idx
 		    """)
-	public List<AnalysisDetail> findByResultText(@Param("analIdx") int analIdx);
+	public List<AnalysisDetail> findByResultText(@Param("anal_idx") int anal_idx);
+
+
+
+
+	@Query(value = "CALL getanalresult(:anal_idx)", nativeQuery = true)
+   public String getAnalResult(@Param("anal_idx") int anal_idx);
+		
+		
 }

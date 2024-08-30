@@ -12,8 +12,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Blob;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.UUID;
 
 import javax.sql.rowset.serial.SerialBlob;
@@ -22,6 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.data.cassandra.CassandraRepositoriesAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -102,12 +106,22 @@ public class AiController {
     
     
     @GetMapping("/viewAnalysisImage")
-    public String viewAnalysisImage(@RequestParam( value = "resultImageName", required = true) String resultImageName,  Model model) {
+    public String viewAnalysisImage(@RequestParam( value = "resultImageName", required = true) String resultImageName, @RequestParam( value = "anal_idx", required = true) int anal_idx,  Model model) {
     	
     	// 분석 결과 이미지 프로젝트 내부 폴더에서 가져오기
          if (!resultImageName.equals("")) {
-        	 
         	 model.addAttribute("resultImageName", resultImageName);
+        	 List<AnalysisDetail> resultText =  arepo2.findByResultText(anal_idx);
+        	 model.addAttribute("list", resultText );
+        	 model.addAttribute("count", resultText.size() );
+        	 model.addAttribute("anal_idx", anal_idx );
+        	 
+        	 
+        	 String resultNC =arepo2.getAnalResult(anal_idx);
+        	
+        	 
+        	 model.addAttribute("resultNC", resultNC);
+        	 
         	 
         	System.out.println( resultImageName );
         	
@@ -118,4 +132,7 @@ public class AiController {
         
         return "aiResult"; // aiResult.jsp로 이동
     }
+    
+    
+    
 }

@@ -1,19 +1,19 @@
 @charset "EUC-KR";
 
 @font-face {
-	font-family: 'S-CoreDream-3Light';
-	src:
-		url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
-		format('woff');
-	font-weight: 300;
-	font-style: normal;
+   font-family: 'S-CoreDream-3Light';
+   src:
+      url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+      format('woff');
+   font-weight: 300;
+   font-style: normal;
 }
 
 body, html {
-	font-family: 'S-CoreDream-3Light';
-	margin: 0;
-	padding: 0;
-	width: 100%;
+   font-family: 'S-CoreDream-3Light';
+   margin: 0;
+   padding: 0;
+   width: 100%;
 }
 
 .aiResult-container {
@@ -24,16 +24,17 @@ body, html {
 }
 
 .aiResult-container-inner {
-	max-width: 800px;
-	margin: 0 auto;
-	margin-top: 50px;
-	border: 1px solid #a1acbd;
+   max-width: 800px;
+   margin: 0 auto;
+   margin-top: 50px;
+   border: 1px solid #a1acbd;
 }
 
 .aiResult-inner {
     display: flex;
     justify-content: space-between;
     height: 300px; /* 컨테이너의 높이 설정 */
+    margin-bottom: 20px;
 }
 
 .aiResult-inner-left {
@@ -42,13 +43,24 @@ body, html {
     justify-content: center;
     align-items: center;
     padding: 20px 20px 0 20px;
+    position: relative;
+}
+
+.aiResult-inner-left::after {
+    content: '';
+    position: absolute;
+    top: 20px; /* 위쪽 여백 설정 */
+    right: 0;
+    width: 0.5px;
+    height: calc(100% - 20px); /* 위와 아래 20px씩 여백을 빼준 높이 */
+    background-color: #a1acbd; /* 선의 색상 */
 }
 
 .aiResult-inner-left img {
     width: 100%;
     height: auto;
     max-height: 100%; /* 이미지가 컨테이너를 넘지 않도록 설정 */
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .aiResult-inner-right {
@@ -61,14 +73,14 @@ body, html {
 }
 
 .chart-container {
-	width: 100%;
-	max-width: 800px;
-	margin: 0 auto;
+   width: 100%;
+   max-width: 800px;
+   margin: 0 auto;
 }
 
 canvas {
-	width: 100%;
-	height: 400px;
+   width: 100%;
+   height: 400px;
 }
 
 .inner-header {
@@ -79,25 +91,40 @@ canvas {
 }
 
 .aiResult-inner-right .inner-nomal {
+   margin-left: 10px;
     font-size: 14px !important;
     color: #00a989;
     display: block; /* span을 block으로 처리해 각 줄이 새로운 줄에 나타나도록 */
 }
 
 .aiResult-info {
-    margin-top: 20px;
-    padding: 20px;
+    padding-left: 40px; /* 좌측 여백 40px */
+    padding-right: 40px; /* 우측 여백 40px */
+    padding-top: 10px; /* 기존의 상단 여백 유지 */
+    padding-bottom: 20px; /* 기존의 하단 여백 유지 */
+    position: relative;
+}
+
+.aiResult-info::after {
+    content: '';
+    position: absolute;
+    bottom: 0; /* 선을 컨테이너의 아래쪽에 위치시킴 */
+    left: 40px; /* 좌측 여백 설정 */
+    right: 40px; /* 우측 여백 설정 */
+    height: 1px;
+    background-color: #a1acbd; /* 선의 색상 */
 }
 
 .aiResult-info-title {
     font-weight: bold;
     font-size: 18px;
+    margin-top: 5px;
     margin-bottom: 5px;
     color: #00a989;
 }
 
 #aiResult-info-commentGroup {
-	margin-left: 10px;
+   margin-left: 10px;
 }
 
 .aiResult-info-comment {
@@ -114,12 +141,14 @@ canvas {
 }
 
 .aiResult-interested {
-	margin: 20px;
-    margin-top: 20px;
+   margin: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
     padding: 15px;
     border-radius: 5px;
     border: 1px solid #a1acbd;
     text-align: center;
+    background-color: #f9fffe;
 }
 
 .aiResult-interested-p {
@@ -128,13 +157,13 @@ canvas {
 }
 
 .aiResult-point {
-	transition: background-color 0.3s ease;
-	cursor: pointer;
+   transition: background-color 0.3s ease;
+   cursor: pointer;
 }
 
 .aiResult-point:hover {
-	background-color: #00a989;
-	color: #fff;
+   background-color: #00a989;
+   color: #fff;
 }
 
 .aiResult-interested ul {
@@ -155,13 +184,13 @@ canvas {
 }
 
 .aiResult-interested ul li a:hover {
-	background-color: #00a989;
-	color: #fff;
+   background-color: #00a989;
+   color: #fff;
 }
 
 footer {
-	font-size: 13px;
-	text-align: center;
-	margin-top: 100px;
-	margin-bottom: 25px;
+   font-size: 13px;
+   text-align: center;
+   margin-top: 100px;
+   margin-bottom: 25px;
 }

@@ -1,4 +1,4 @@
-        var categoriesData = {
+/*        var categoriesData = {
             종이: 2,
             캔: 3,
             유리: 0,
@@ -7,7 +7,7 @@
             비닐: 0,
             스티로폼: 0,
             건전지: 0
-        };
+        };*/
 
 // 차트 생성
 var ctx = document.getElementById('recyclingChart').getContext('2d');

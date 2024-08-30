@@ -29,7 +29,7 @@ public class QrRestController {
         int height = 200;
         String original = "A코스(순천대학교)";
         String encoded = URLEncoder.encode(original, "UTF-8");
-        String url = "http://172.30.1.100:8096/boot/qr1Update?courseName=" + encoded;
+        String url = "http://172.30.1.59:8097/boot/qr1Update?courseName=" + encoded;
 
         // QR Code - BitMatrix: qr code 정보 생성
         BitMatrix encode = new MultiFormatWriter()
@@ -61,7 +61,7 @@ public class QrRestController {
         int height = 200;
         String original = "A코스(순천대학교)";
         String encoded = URLEncoder.encode(original, "UTF-8");
-        String url = "http://172.30.1.100:8096/boot/qr2Update?courseName=" + encoded;
+        String url = "http://172.30.1.59:8097/boot/qr2Update?courseName=" + encoded;
 
         // QR Code - BitMatrix: qr code 정보 생성
         BitMatrix encode = new MultiFormatWriter()
@@ -93,7 +93,7 @@ public class QrRestController {
         int height = 200;
         String original = "A코스(순천대학교)";
         String encoded = URLEncoder.encode(original, "UTF-8");
-        String url = "http://172.30.1.100:8096/boot/qr3Update?courseName=" + encoded;
+        String url = "http://172.30.1.59:8097/boot/qr3Update?courseName=" + encoded;
 
         // QR Code - BitMatrix: qr code 정보 생성
         BitMatrix encode = new MultiFormatWriter()
@@ -122,9 +122,9 @@ public class QrRestController {
     	// QR 정보
         int width = 200;
         int height = 200;
-        String original = "B코스(순천조례호수공원)";
+        String original = "B코스(순천 조례호수공원)";
         String encoded = URLEncoder.encode(original, "UTF-8");
-        String url = "http://172.30.1.100:8096/boot/qr1Update?courseName=B코스" + encoded;
+        String url = "http://172.30.1.59:8097/boot/qr1Update?courseName="+ encoded;
 
         // QR Code - BitMatrix: qr code 정보 생성
         BitMatrix encode = new MultiFormatWriter()
@@ -153,9 +153,9 @@ public class QrRestController {
     	// QR 정보
         int width = 200;
         int height = 200;
-        String original = "B코스(순천조례호수공원)";
+        String original = "B코스(순천 조례호수공원)";
         String encoded = URLEncoder.encode(original, "UTF-8");
-        String url = "http://172.30.1.100:8096/boot/qr2Update?courseName=" + encoded;
+        String url = "http://172.30.1.59:8097/boot/qr2Update?courseName=" + encoded;
 
         // QR Code - BitMatrix: qr code 정보 생성
         BitMatrix encode = new MultiFormatWriter()
@@ -184,9 +184,9 @@ public class QrRestController {
     	// QR 정보
         int width = 200;
         int height = 200;
-        String original = "B코스(순천조례호수공원)";
+        String original = "B코스(순천 조례호수공원)";
         String encoded = URLEncoder.encode(original, "UTF-8");
-        String url = "http://172.30.1.100:8096/boot/qr3Update?courseName=" + encoded;
+        String url = "http://172.30.1.59:8097/boot/qr3Update?courseName=" + encoded;
 
         // QR Code - BitMatrix: qr code 정보 생성
         BitMatrix encode = new MultiFormatWriter()
@@ -215,9 +215,9 @@ public class QrRestController {
     	// QR 정보
         int width = 200;
         int height = 200;
-        String original = "C코스(순천오천그린광장)";
+        String original = "C코스(순천 오천그린광장)";
         String encoded = URLEncoder.encode(original, "UTF-8");
-        String url = "http://172.30.1.100:8096/boot/qr1Update?courseName=" + encoded;
+        String url = "http://172.30.1.59:8097/boot/qr1Update?courseName=" + encoded;
 
         // QR Code - BitMatrix: qr code 정보 생성
         BitMatrix encode = new MultiFormatWriter()
@@ -247,9 +247,9 @@ public class QrRestController {
     	// QR 정보
         int width = 200;
         int height = 200;
-        String original = "C코스(순천오천그린광장)";
+        String original = "C코스(순천 오천그린광장)";
         String encoded = URLEncoder.encode(original, "UTF-8");
-        String url = "http://172.30.1.100:8096/boot/qr2Update?courseName=" + encoded;
+        String url = "http://172.30.1.59:8097/boot/qr2Update?courseName=" + encoded;
 
         // QR Code - BitMatrix: qr code 정보 생성
         BitMatrix encode = new MultiFormatWriter()
@@ -278,9 +278,9 @@ public class QrRestController {
     	// QR 정보
         int width = 200;
         int height = 200;
-        String original = "C코스(순천오천그린광장)";
+        String original = "C코스(순천 오천그린광장)";
         String encoded = URLEncoder.encode(original, "UTF-8");
-        String url = "http://172.30.1.100:8096/boot/qr3Update?courseName=" + encoded;
+        String url = "http://172.30.1.59:8097/boot/qr3Update?courseName=" + encoded;
 
         // QR Code - BitMatrix: qr code 정보 생성
         BitMatrix encode = new MultiFormatWriter()

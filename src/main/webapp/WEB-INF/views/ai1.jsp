@@ -9,10 +9,9 @@
 <head>
 <meta charset="UTF-8">
 <title>RE:PLOGGING 이미지 결과</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="assets/css/ai1.css">
+<link rel="stylesheet" href="assets/css/aiResult.css">
 </head>
 <body>
     <div class="aiResult-container">
@@ -23,13 +22,14 @@
             </div>
                 <div class="aiResult-inner-right">
                     <p class="inner-header">이미지 분석 결과</p>
-                    <canvas id="recyclingChart"></canvas>
+                    
+                    <span>몇개</span>
                     <p class="inner-header">총 적립 마일리지</p>
                     <span class="inner-nomal">300p</span>
                 </div>
         </div>
         <div class="aiResult-info">
-            <p class="aiResult-info-title">()의 분리배출 방법</p>
+            <p class="aiResult-info-title">의 분리배출 방법</p>
             <div id="aiResult-info-commentGroup"><span class="aiResult-info-comment">(내용 들어가야함)</span></div>
         </div>
         <div class="aiResult-interested">
