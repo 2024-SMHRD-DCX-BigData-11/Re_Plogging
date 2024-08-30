@@ -110,7 +110,7 @@ public class AiController {
          
          
 //          3. 플라스크로 이동(쿼리스트링)
-            return "redirect:http://localhost:5001?userIdx=" + useridx + "&fileIdx=" + fileidx;
+            return "redirect:http://127.0.0.1:5001?userIdx=" + useridx + "&fileIdx=" + fileidx;
     	} else {
     		return "redirect:/main";
     	}
@@ -127,11 +127,12 @@ public class AiController {
         	 
         	 List<AnalysisDetail> resultText =  arepo2.findByResultText(anal_idx);
         	 int totalMil = 0;
-        	 Mileage mileage = new Mileage();
+        	 
         	 for (int i = 0; i < resultText.size(); i++) {
 				totalMil += resultText.get(i).getCategory().getCategoryMileage() * resultText.get(i).getCategoryCount();
 				
 				// 마일리지 적립
+				Mileage mileage = new Mileage();
 				mileage.setMlAmount(resultText.get(i).getCategory().getCategoryMileage() * resultText.get(i).getCategoryCount());
 				mileage.setMlLog("적립");
 				mileage.setMlType(resultText.get(i).getCategory().getCategoryName() + " 객체 인식");
@@ -155,3 +156,4 @@ public class AiController {
     
     
 }
+
