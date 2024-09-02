@@ -119,7 +119,7 @@
 									<th>QR1</th>
 									<th>QR2</th>
 									<th>QR3</th>
-									<th>총 포인트 적립</th>
+									<th>적립된 마일리지</th>
 								</tr>
 							</thead>
 							<tbody>
