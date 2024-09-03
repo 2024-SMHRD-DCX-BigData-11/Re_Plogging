@@ -55,7 +55,7 @@
             <c:if test="${!empty user}">
                 <div class="aside-user">
                     <span class="aside-userNick">${user.userNick}</span><span class="asid-nim">님</span><br>
-                    <span class="aside-mileage">그린 마일리지<span class="aside-p"> ${user.totalMileage}p</span>
+                    <span class="aside-mileage">그린 마일리지 <span class="aside-p">${user.totalMileage}p</span>
                 </div>
                 <div class="aside-line"></div>
             </c:if>

@@ -54,7 +54,6 @@ public class MyPageController {
             return "redirect:/main";
         }
     }
-	
 
 	@RequestMapping("/myWrite")
 	public String MyCommunityList(HttpSession session, Model model) {
