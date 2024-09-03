@@ -129,9 +129,6 @@
 
 	<footer> © 2024 지구수호대 Korea Corporation All Rights Reserved. </footer>
 
-	<!-- Scripts -->
-	<script src="assets/js/header.js"></script>
-	<script src="assets/js/modal.js"></script>
 	<script src="assets/js/main.js"></script>
 
 </body>
