@@ -77,7 +77,7 @@ $('#user_pw_confirm').on( "focusout", function( event ) {
 
 
 
-//*/ 인증 버튼 누르면 mobile값 1개로 합치는 함수
+// 인증 버튼 누르면 mobile값 1개로 합치는 함수
 function telconfirmButton( url ) {
     // mobile1, mobile2, mobile3 값을 가져옴
     var mobile1 = document.getElementById("mobile1").value;
@@ -106,6 +106,7 @@ function telconfirmButton( url ) {
 		//결과 alert
 		if(response.code == 200){
 			alert("😊 인증번호가 발송되었습니다.");
+			document.getElementById("telconfirm").innerText = "재인증";
 		}
 		else{
 			alert("😣 인증번호 발송에 실패했습니다.");
