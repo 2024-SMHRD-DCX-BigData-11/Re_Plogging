@@ -61,7 +61,6 @@
     <tr>
         <td>데이터베이스</td>
         <td>
-          https://shields.io/badge/
             <img src="https://img.shields.io/badge/MySQL-lightgrey?logo=mysql&style=plastic&logoColor=white&labelColor=blue"/>
         </td>
     </tr>
