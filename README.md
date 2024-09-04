@@ -1,26 +1,23 @@
 # Re_Plogging
-플로깅 및 리사이클링 촉진을 위한 통합 서비스<br>
+
 
 
 ## 서비스 소개
-* 서비스명: KBO 기록 정보 확인과 야구 커뮤니티가 통합된 웹사이트<br>
-* 서비스설명: KBO 출전한 적이 있는 선수 기록(타자/투수) 확인, 팀 순위, 오늘 경기 일정 확인 가능, 팀 별 페이지를 제공해서 팀 팬들만의 소통공간 확보, 사이트 전체 이용자들이 함께 이용할 수 있는 자유게시판 제공,
-             경기 전 기대되는 선수에게 투표할 수 있는 핫플레이어 페이지 제공
+* 서비스명: 플로깅 및 쓰레기 배출 감소를 위한 웹 서비스<br>
+* 서비스설명: 플로깅 활동을 하고 싶은 사람들과 쓰레기 분리배출에 대해 궁금증을 풀고 싶은 사람들을 위한 친환경 종합 플랫폼 서비스
 <br>
 
 ## 📅 프로젝트 기간
-2024.05.10 ~ 2022.06.21 (6주)
+2024.07.01~ 2024.09.03 (9주)
 <br>
 
 ## ⭐ 주요 기능
-* 로그인/회원가입 기능 및 카카오 로그인 기능
-* 회원정보 수정 및 게시글 수정, 삭제 기능
-* KBO 출전 기록이 있는 선수 기록 확인
-* 기록 페이지에서 댓글을 작성할 수 있는 댓글창 기능
-* 자신의 응원팀 게시판에만 글을 작성할 수 있는 기능
-* 자유게시글, 팀 게시글에 댓글을 작성할 수 있는 댓글창 기능
-* 경기 시작 시간 전까지 기대되는 선수에게 투표할 수 있는 기능
-* 마음에 드는 게시글에 좋아요를 눌러서 작성자에게 포인트를 줄 수 있는 기능
+* 플로깅 소개 및 시작, QR 인증 기능
+* YOLOv8 모델을 사용한 Ai 기반 이미지 객체 인식 기능
+* 스프링부트와 플라스크 서버 연동
+* 사이트 회원들의 소통을 위한 커뮤니티 기능
+* 직접 만든 업사이클 공예품을 사고 팔 수 있는 그린마켓
+* 사이트 내에서 사용할 수 있는 그린 마일리지 제도
 <br>
 
 ## ⛏ 기술스택
@@ -49,19 +46,23 @@
         <td>개발도구</td>
         <td>
             <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=Eclipse&logoColor=white"/>
-            <img src="https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=VisualStudioCode&logoColor=white"/>
+          <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=flat-square&logo=Spring&logoColor=white"/>
+          <img src="https://img.shields.io/badge/Google_Colab-F9AB00?style=plastic&logo=google-colab&logoColor=white"/>
+            <img src="https://img.shields.io/badge/Jupyter-notebook-brightgreen"/>
         </td>
     </tr>
     <tr>
         <td>서버환경</td>
         <td>
+           <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=Flask&logoColor=white"/>
             <img src="https://img.shields.io/badge/Apache Tomcat-D22128?style=for-the-badge&logo=Apache Tomcat&logoColor=white"/>
         </td>
     </tr>
     <tr>
         <td>데이터베이스</td>
         <td>
-            <img src="https://img.shields.io/badge/Oracle 11g-F80000?style=for-the-badge&logo=Oracle&logoColor=white"/>
+          https://shields.io/badge/
+            <img src="https://img.shields.io/badge/MySQL-lightgrey?logo=mysql&style=plastic&logoColor=white&labelColor=blue"/>
         </td>
     </tr>
     <tr>
