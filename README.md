@@ -69,56 +69,49 @@
 <table>
     <tr>
         <td>
-            <br>
-            <p>$\huge{\it{\large{\color{#08917c}\#반응형\ 웹페이지}}}$</p><br>
+            <h3><em>#반응형 웹페이지</em></h3>
             <img src="https://github.com/user-attachments/assets/88f954ef-3e89-42b0-89eb-ec6d84fe859f">
         </td>
     </tr>
     <tr>
         <td>
-            <br>
-            <p>$\huge{\it{\large{\color{#08917c}\#회원가입\ 및\ 로그인\ 보안}}}$</p><br>
+            <h3><em>#회원가입&로그인 보안</em></h3>
             <img src="https://github.com/user-attachments/assets/909fd4cc-76b0-4824-96bf-4a8eb091a0c1">
         </td>
     </tr>
     <tr>
         <td>
-            <br>
-            <p>$\huge{\it{\large{\color{#08917c}\#AI\ 분리배출\ 도우미}}}$</p><br>
+            <h3><em>#AI 분리배출 도우미</em></h3>
             <img src="https://github.com/user-attachments/assets/0c6acc61-e921-4ac6-a69b-af0729cc605b">
         </td>
     </tr>
     <tr>
         <td>
-            <br>
-            <p>$\huge{\it{\large{\color{#08917c}\#이달의\ 플로킹\ 표기}}}$</p><br>
+            <h3><em>#이달의 플로킹 표기</em></h3>
             <img src="https://github.com/user-attachments/assets/20f714f6-213c-4a8c-a20f-2d6e7143b3f3">
         </td>
     </tr>
     <tr>
         <td>
-            <br>
-            <p>$\huge{\it{\large{\color{#08917c}\#플로깅\ 시작\ 및\ QR\ 인증}}}$</p><br>
+            <h3><em>#플로깅 시작&QR인증</em></h3>
             <img src="https://github.com/user-attachments/assets/4c558367-8a5a-4130-aae9-a1531e10438c">
         </td>
     </tr>
     <tr>
         <td>
-            <br>
-            <p>$\huge{\it{\large{\color{#08917c}\#플로깅\ 취소\ 및\ 완료한\ 목록\ 조회}}}$</p><br>
+            <h3><em>#플로깅 취소&완료한 목록</em></h3>
             <img src="https://github.com/user-attachments/assets/f7941688-6238-4770-990d-b585f81a3748">
         </td>
     </tr>
     <tr>
         <td>
-            <br>
-            <p>$\huge{\it{\large{\color{#08917c}\#클릭\ 기반\ 분리배출\ 안내\ 기능}}}$</p><br>
+            <h3><em>#클릭 기반 분리배출 안내 기능</em></h3>
             <img src="https://github.com/user-attachments/assets/6914ed16-c3bc-4617-86af-94ad8bb1eff2">
         </td>
     </tr>
     <tr>
         <td>
-            <p>$\huge{\it{\large{\color{#08917c}\#관리자}}}$</p><br>
+            <h3><em>#관리자 기능</em></h3>
             <img src="https://github.com/user-attachments/assets/b66b0454-6da4-4663-8b94-c61c5447b827">
         </td>
     </tr>
