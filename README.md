@@ -1,21 +1,21 @@
-# Re_Plogging
+# 🌍 Re:Plogging (지구 수호대)
+<img src="https://github.com/user-attachments/assets/adaa57ad-3923-44b8-b304-c0d257b0a834" alt="git용 표지" width="600"/>
+<br><br><br>
 
-
-
-## 서비스 소개
+## 📢 서비스 소개
 * 서비스명: 플로깅 및 쓰레기 배출 감소를 위한 웹 서비스<br>
 * 서비스설명: 플로깅 활동을 하고 싶은 사람들과 쓰레기 분리배출에 대해 궁금증을 풀고 싶은 사람들을 위한 친환경 종합 플랫폼 서비스
-<br>
+<br><br><br>
 
 ## 📅 프로젝트 기간
-2024.07.01~ 2024.09.03 (9주)
-<br>
+2024.07.01~ 2024.08.30 (8주)
+<br><br><br>
 
 ## ⭐ 주요 기능
-* 플로깅 소개 및 시작, QR 인증 기능
-* YOLOv8 모델을 사용한 Ai 기반 이미지 객체 인식 기능
+* 플로깅 소개, 플로깅 코스(A, B, C) 시작 및 QR 인증 기능
+* YOLOv8 모델을 사용한 AI 기반 이미지 객체 인식 기능
 * 스프링부트와 플라스크 서버 연동
-* 사이트 회원들의 소통을 위한 커뮤니티 기능
+* 소통을 위한 커뮤니티 기능
 * 직접 만든 업사이클 공예품을 사고 팔 수 있는 그린마켓
 * 사이트 내에서 사용할 수 있는 그린 마일리지 제도
 <br>
@@ -47,22 +47,22 @@
         <td>개발도구</td>
         <td>
             <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=Eclipse&logoColor=white"/>
-          <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=flat-square&logo=Spring&logoColor=white"/>
-          <img src="https://img.shields.io/badge/Google_Colab-F9AB00?style=plastic&logo=google-colab&logoColor=white"/>
-            <img src="https://img.shields.io/badge/Jupyter-notebook-brightgreen"/>
+            <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
+            <img src="https://img.shields.io/badge/Google Colab-F9AB00?style=for-the-badge&logo=Google Colab&logoColor=white">
+            <img src="https://img.shields.io/badge/Jupyter-notebook-brightgreen?style=for-the-badge&logo=Jupyter&logoColor=white"/>
         </td>
     </tr>
     <tr>
         <td>서버환경</td>
         <td>
            <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=Flask&logoColor=white"/>
-            <img src="https://img.shields.io/badge/Apache Tomcat-D22128?style=for-the-badge&logo=Apache Tomcat&logoColor=white"/>
+           <img src="https://img.shields.io/badge/Apache Tomcat-D22128?style=for-the-badge&logo=Apache Tomcat&logoColor=white"/>
         </td>
     </tr>
     <tr>
         <td>데이터베이스</td>
         <td>
-            <img src="https://img.shields.io/badge/MySQL-lightgrey?logo=mysql&style=plastic&logoColor=white&labelColor=blue"/>
+            <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
         </td>
     </tr>
     <tr>
@@ -74,74 +74,161 @@
 </table>
 <br>
 
-## 📌 SW유스케이스
-![라운더스 유스케이스 다이어그램](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/a4df2d02-6ea1-4fb9-a355-31c10d12b506)
-<br>
+## ⚙ 시스템 아키텍처
+![시스템 아키텍처(지구 수호대)](https://github.com/user-attachments/assets/3bfefa2e-bf0d-4117-b635-47c13d828f4c)
+<br><br><br>
 
-## 📌 ER다이어그램
-![KakaoTalk_20240621_094801503](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/41752c4e-6065-4a18-8b5c-22cf1b2c1710)
-<br>
+## 📄 SW유스케이스
+![SW유스케이스(지구 수호대)](https://github.com/user-attachments/assets/0592a6aa-3686-4ce9-a378-fe4106a364fd)
+<br><br><br>
+
+## 📄 페이지 구조도
+![페이지 구조도(지구 수호대)](https://github.com/user-attachments/assets/01da90c4-8aeb-449f-b6d6-ad8eae701617)
+<br><br><br>
+
+## 📄 E-R Diagram
+![E-R Diagram(지구 수호대)](https://github.com/user-attachments/assets/48200bed-0345-4eb0-bca2-b53dbd9d4800)
+<br><br><br>
 
 ## 🖥 화면 구성
+### *#메인 페이지*
+![메인(지구 수호대)](https://github.com/user-attachments/assets/455e7760-7d76-4ad0-806d-602b4bbe967f)
+<br><br>
 
-### 회원가입/로그인/마이페이지/내가작성한 게시물/회원정보수정/회원탈퇴/관리자 페이지/회원관리/전체게시물
-![회원가입](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/af5fd9cc-13af-465c-855d-7042035b3246)
-![로그인](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/cbc043a6-5468-4e46-98bf-ee2c2b28fcbf)
-![마이페이지](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/fb53e378-2bd9-4cdf-9d3c-73b2af08d86d)
-![내가작성한게시물](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/0e19f8e2-101b-46a5-9047-5fdcd263c9c9)
-![회원정보수정](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/bc2b82a5-e7e6-44b7-bd5a-2c9a51374eed)
-![회원탈퇴](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/6644ca81-b6e7-4538-bb78-301b491bff05)
-![관리자 페이지](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/bfac9a5d-fa3d-409a-8d87-b0c4c25d04da)
-![회원관리](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/2b9c999a-3eef-4be9-aa88-11c3aa9f321a)
-![전체게시물](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/a30a7e48-b9e4-44e6-a38c-1d2f8ce380d8)
+### *#AI 분리배출 도우미&결과*
+![AI 분리배출 도우미(지구 수호대)](https://github.com/user-attachments/assets/8c82930a-053c-4fa2-a1f3-3fb6263e334b)
+![AI 분리배출 도우미 결과(지구 수호대)](https://github.com/user-attachments/assets/80143b3d-c01d-4707-a077-4eecd3c44b18)
+<br><br>
 
-<br>
+### *#플로코스*
+![플로코스(지구 수호대)](https://github.com/user-attachments/assets/812850d3-2e05-49bb-9618-d6abbb83aae1)
+<br><br>
 
+### *#분리배출 안내*
+![분리배출(지구 수호대)](https://github.com/user-attachments/assets/bea2cc03-a75e-4d03-b1d1-8d1b957df4cd)
+<br><br>
 
-### 메인화면
-![메인](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/4f03bc6b-40a9-45d2-a9ea-7e933d6f4fea)
-<br>
+### *#커뮤니티 목록/글쓰기/글 읽기*
+![커뮤니티(지구 수호대)](https://github.com/user-attachments/assets/b3dadb6d-cdcf-4c49-8a81-cae300e1f8fb)
+![커뮤니티 글쓰기(지구 수호대)](https://github.com/user-attachments/assets/6f613358-d30c-4aed-b7f0-57d192822a29)
+![커뮤니티 글읽기(지구 수호대)](https://github.com/user-attachments/assets/8b00db7f-3ab8-42ed-9a38-848ffaac8476)
+<br><br>
 
-### 게시판(공지사항, 자유게시판) 및 팀페이지(응원하기)
-![공지사항](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/63f98f18-e744-4437-a039-593139653a36)
-![자유게시판](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/ecf14511-08ee-49e7-ae17-96aff8276aab)
-![팀페이지](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/5ba89658-de85-4021-b687-d17f0609b061)
-![응원하기](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/1cd48ece-05e8-44a0-bcbb-d4a1872b5f4f)
+### *#그린마켓 목록/글쓰기/글 읽기*
+![그린마켓(지구 수호대)](https://github.com/user-attachments/assets/75eb226e-edf3-4e1b-8d5b-c1ff3616d0a0)
+![그린마켓 글쓰기(지구 수호대)](https://github.com/user-attachments/assets/8d8dcabb-e734-4e49-b864-9e3d1638eebc)
+![그린마켓 글읽기(지구 수호대)](https://github.com/user-attachments/assets/1855e6d4-4ff5-4fb4-80af-af81840973c3)
+<br><br>
 
-<br>
+### *#마이페이지*
+![마이페이지(지구 수호대)](https://github.com/user-attachments/assets/47c5fb39-a1d0-4422-acd7-dc166788dd48)
+<br><br>
 
-### 핫플레이어
-![핫플레이어](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/6d607441-a032-4d8d-a2b5-813d6c035cbf)
+### *#회원 정보 수정*
+![회원 정보 수정(지구 수호대)](https://github.com/user-attachments/assets/57ad544b-766a-4999-afff-ad9ff907364f)
+<br><br>
 
-<br>
-## 👨‍👩‍👦‍👦 팀원 역할
+### *#나의 플로깅*
+![나의 플로깅(지구 수호대)](https://github.com/user-attachments/assets/40380dee-e303-4b3e-ba35-a3c0addfcb5e)
+<br><br>
+
+### *#작성 글 조회*
+![작성 글 조회(지구 수호대)](https://github.com/user-attachments/assets/ad888fb4-721d-4ee7-9b2d-d3775cd04e11)
+<br><br>
+
+### *#그린 마일리지 내역*
+![그린 마일리지 내역(지구 수호대)](https://github.com/user-attachments/assets/7f739646-ec5b-4488-8be4-864062f90e9a)
+<br><br>
+
+### *#회원탈퇴*
+![회원탈퇴(지구 수호대)](https://github.com/user-attachments/assets/4d32afbb-5e6d-44ee-86c2-9a0b53e2e18e)
+<br><br>
+
+### *#로그인/회원가입 모달*
+![로그인 모달(지구 수호대)](https://github.com/user-attachments/assets/a0774a0b-e549-424e-b643-f73e4b68b39e)
+![회원가입 모달(지구 수호대)](https://github.com/user-attachments/assets/ae20f60c-8174-4933-8342-660df1f028f6)
+<br><br>
+
+### *관리자*
+![관리자(지구 수호대)](https://github.com/user-attachments/assets/b7711774-b32f-438a-89e8-b6bb50b3be1b)
+<br><br><br>
+
+## 💚 팀원 역할
 <table>
   <tr>
-    <td align="center"><img src="https://item.kakaocdn.net/do/fd49574de6581aa2a91d82ff6adb6c0115b3f4e3c2033bfd702a321ec6eda72c" width="100" height="100"/></td>
-    <td align="center"><img src="https://mb.ntdtv.kr/assets/uploads/2019/01/Screen-Shot-2019-01-08-at-4.31.55-PM-e1546932545978.png" width="100" height="100"/></td>
-    <td align="center"><img src="https://mblogthumb-phinf.pstatic.net/20160127_177/krazymouse_1453865104404DjQIi_PNG/%C4%AB%C4%AB%BF%C0%C7%C1%B7%BB%C1%EE_%B6%F3%C0%CC%BE%F0.png?type=w2" width="100" height="100"/></td>
-    <td align="center"><img src="https://i.pinimg.com/236x/ed/bb/53/edbb53d4f6dd710431c1140551404af9.jpg" width="100" height="100"/></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/94c06c01-b7b5-4443-aa67-680a88f125ff" width="250" height="300"/></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/0f0e94da-0e5b-4f10-9615-f1f519885760" width="250" height="300"/></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/6e55ccce-9085-481e-b8fc-277d10a04678" width="250" height="300"/></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/edbb9547-e31d-4bd8-accf-61850bec798e" width="250" height="300"/></td>
   </tr>
   <tr>
+    <td align="center"><strong>봉소희</strong></td>
+    <td align="center"><strong>배소정</strong></td>
     <td align="center"><strong>오경석</strong></td>
-    <td align="center"><strong>전승주</strong></td>
-    <td align="center"><strong>최유리</strong></td>
-    <td align="center"><strong>황주휘</strong></td>
+    <td align="center"><strong>최석주</strong></td>
   </tr>
   <tr>
-    <td align="center"><b>Backend</b></td>
-    <td align="center"><b>Backend/Crawling</b></td>
-    <td align="center"><b>Frontend</b></td>
-    <td align="center"><b>Frontend</b></td>
+    <td align="center"><b>PM&Front-End</b></td>
+    <td align="center"><b>AI Modeling&Full-stack</b></td>
+    <td align="center"><b>Back-End</b></td>
+    <td align="center"><b>Back-End</b></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/ksks31" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/seungju1212" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/yulzzang" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/hwangjuhwi" target='_blank'>github</a></td>
+    <td align="left" text-><span>- 프로젝트 총괄</span><br>
+                       <span>- Front-End 총괄</span><br>
+                       <span>- 플로깅 관련 데이터 조회, 관리 기능 구현</span>
+    </td>
+    <td align="left"><span>- AI 이미지 데이터 수집 및 학습</span><br>
+                       <span>- 그린마켓 화면 및 기능 구현</span><br>
+                       <span>- 마일리지 기능 구현</span>
+    </td>
+    <td align="left"><span>- Back-End 총괄</span><br>
+                       <span>- QR(플로깅 코스 인증) 기능 구현</span><br>
+                       <span>- 이미지 객체 인식(플라스크, 스프링부트 연동)</span>
+    </td>
+    <td align="left"><span>- Back-End 서브</span><br>
+                       <span>- 커뮤니티 글쓰기, 수정, 삭제 댓글 기능 구현</span><br>
+                       <span>- 이미지 업로드(Blob) 기능 구현</span>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/sone6ee" target='_blank'>sone6ee</a></td>
+    <td align="center"><a href="https://github.com/yonggu2" target='_blank'>yonggu2</a></td>
+    <td align="center"><a href="https://github.com/ksks31" target='_blank'>ksks31</a></td>
+    <td align="center"><a href="https://github.com/qwer010310" target='_blank'>qwer010310</a></td>
   </tr>
 </table>
+<br><br><br>
 
-## 🤾‍♂️ 트러블슈팅
-![트러블슈팅](https://github.com/2024-SMHRD-DCX-BigData-11/Rounders/assets/106016609/058e4a82-fba9-4025-a471-ce5ceb6a6d64)
+## 🔎 트러블슈팅(문제점 설명 및 해결 방안)
+<table>
+    <tr>
+        <td>
+            <b>① AI 모델링_데이터 수집_CAUSE</b><br><br>
+            <img src="https://github.com/user-attachments/assets/28872791-ef78-490d-86b5-e5aa0f5eb2b9" alt="AI 모델링_데이터 수집(트러블 슈팅)_지구 수호대_01" width="1400"/>
+            <img src="https://github.com/user-attachments/assets/fae47a6a-3329-40b0-8619-10c399822929" alt="AI 모델링_데이터 수집(트러블 슈팅)_지구 수호대_02" width="1400"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>① AI 모델링_데이터 수집_EFFECT</b><br><br>
+            <img src="https://github.com/user-attachments/assets/6272c068-9b0d-4816-a1c6-5ab1de83651f" alt="AI 모델링_데이터 수집(트러블 슈팅)_지구 수호대_03" width="1400"/>
+            <img src="https://github.com/user-attachments/assets/25121597-7efa-45d2-b046-7d2edcd99272" alt="AI 모델링_데이터 수집(트러블 슈팅)_지구 수호대_04" width="1400"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>② 객체 인식 결과값 불러오기_CAUSE</b><br><br>
+            <img src="https://github.com/user-attachments/assets/2a13b896-b9c4-4dc4-8192-3cf4baa281a1" alt="객체 인식 결과값 불러오기(트러블 슈팅)_지구 수호대_01" width="1400"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>② 객체 인식 결과값 불러오기_EFFECT</b><br><br>
+            <img src="https://github.com/user-attachments/assets/ee19b642-842f-412c-948d-ae570b6e4698" alt="객체 인식 결과값 불러오기(트러블 슈팅)_지구 수호대_02" width="1400"/>
+        </td>
+    </tr>
+</table>
+
+
 
