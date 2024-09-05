@@ -12,13 +12,64 @@
 <br><br><br>
 
 ## ⭐ 주요 기능
-* 플로깅 소개, 플로깅 코스(A, B, C) 시작 및 QR 인증 기능
-* YOLOv8 모델을 사용한 AI 기반 이미지 객체 인식 기능
-* 스프링부트와 플라스크 서버 연동
-* 소통을 위한 커뮤니티 기능
-* 직접 만든 업사이클 공예품을 사고 팔 수 있는 그린마켓
-* 사이트 내에서 사용할 수 있는 그린 마일리지 제도
-<br>
+<table>
+    <tr>
+        <td>
+            <br>
+            <p>$\huge{\it{\large{\color{#08917c}\#반응형\ 웹페이지}}}$</p><br>
+            <img src="https://github.com/user-attachments/assets/88f954ef-3e89-42b0-89eb-ec6d84fe859f">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br>
+            <p>$\huge{\it{\large{\color{#08917c}\#회원가입\ 및\ 로그인\ 보안}}}$</p><br>
+            <img src="https://github.com/user-attachments/assets/909fd4cc-76b0-4824-96bf-4a8eb091a0c1">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br>
+            <p>$\huge{\it{\large{\color{#08917c}\#AI\ 분리배출\ 도우미}}}$</p><br>
+            <img src="https://github.com/user-attachments/assets/0c6acc61-e921-4ac6-a69b-af0729cc605b">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br>
+            <p>$\huge{\it{\large{\color{#08917c}\#이달의\ 플로킹\ 표기}}}$</p><br>
+            <img src="https://github.com/user-attachments/assets/20f714f6-213c-4a8c-a20f-2d6e7143b3f3">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br>
+            <p>$\huge{\it{\large{\color{#08917c}\#플로깅\ 시작\ 및\ QR\ 인증}}}$</p><br>
+            <img src="https://github.com/user-attachments/assets/4c558367-8a5a-4130-aae9-a1531e10438c">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br>
+            <p>$\huge{\it{\large{\color{#08917c}\#플로깅\ 취소\ 및\ 완료한\ 목록\ 조회}}}$</p><br>
+            <img src="https://github.com/user-attachments/assets/f7941688-6238-4770-990d-b585f81a3748">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br>
+            <p>$\huge{\it{\large{\color{#08917c}\#클릭\ 기반\ 분리배출\ 안내\ 기능}}}$</p><br>
+            <img src="https://github.com/user-attachments/assets/6914ed16-c3bc-4617-86af-94ad8bb1eff2">
+        </td>
+    </tr>
+    <tr>
+        <td>
+         자}}}$</p><br>
+            <img src="https://github.com/user-attachments/assets/b66b0454-6da4-4663-8b94-c61c5447b827">
+        </td>
+    </tr>
+</table>
+<br><br><br>
 
 ## ⛏ 기술스택
 <table>
@@ -72,7 +123,7 @@
         </td>
     </tr>
 </table>
-<br>
+<br><br><br>
 
 ## ⚙ 시스템 아키텍처
 ![시스템 아키텍처(지구 수호대)](https://github.com/user-attachments/assets/3bfefa2e-bf0d-4117-b635-47c13d828f4c)
@@ -158,7 +209,7 @@
   <tr>
     <td align="center"><img src="https://github.com/user-attachments/assets/94c06c01-b7b5-4443-aa67-680a88f125ff" width="250" height="300"/></td>
     <td align="center"><img src="https://github.com/user-attachments/assets/0f0e94da-0e5b-4f10-9615-f1f519885760" width="250" height="300"/></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/6e55ccce-9085-481e-b8fc-277d10a04678" width="250" height="300"/></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/866fc27b-aa3d-4c8b-b47f-6ffc09daf2bb" width="250" height="300"/></td>
     <td align="center"><img src="https://github.com/user-attachments/assets/edbb9547-e31d-4bd8-accf-61850bec798e" width="250" height="300"/></td>
   </tr>
   <tr>
