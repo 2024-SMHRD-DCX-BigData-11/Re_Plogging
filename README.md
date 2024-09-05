@@ -4,71 +4,11 @@
 
 ## 📢 서비스 소개
 * 서비스명: 플로깅 및 쓰레기 배출 감소를 위한 웹 서비스<br>
-* 서비스설명: 플로깅 활동을 하고 싶은 사람들과 쓰레기 분리배출에 대해 궁금증을 풀고 싶은 사람들을 위한 친환경 종합 플랫폼 서비스
+* 서비스 설명: 플로깅 활동을 하고 싶은 사람들과 쓰레기 분리배출에 대해 궁금증을 풀고 싶은 사람들을 위한 친환경 종합 플랫폼 서비스
 <br><br><br>
 
 ## 📅 프로젝트 기간
 2024.07.01~ 2024.08.30 (8주)
-<br><br><br>
-
-## ⭐ 주요 기능
-<table>
-    <tr>
-        <td>
-            <br>
-            <p>$\huge{\it{\large{\color{#08917c}\#반응형\ 웹페이지}}}$</p><br>
-            <img src="https://github.com/user-attachments/assets/88f954ef-3e89-42b0-89eb-ec6d84fe859f">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <br>
-            <p>$\huge{\it{\large{\color{#08917c}\#회원가입\ 및\ 로그인\ 보안}}}$</p><br>
-            <img src="https://github.com/user-attachments/assets/909fd4cc-76b0-4824-96bf-4a8eb091a0c1">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <br>
-            <p>$\huge{\it{\large{\color{#08917c}\#AI\ 분리배출\ 도우미}}}$</p><br>
-            <img src="https://github.com/user-attachments/assets/0c6acc61-e921-4ac6-a69b-af0729cc605b">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <br>
-            <p>$\huge{\it{\large{\color{#08917c}\#이달의\ 플로킹\ 표기}}}$</p><br>
-            <img src="https://github.com/user-attachments/assets/20f714f6-213c-4a8c-a20f-2d6e7143b3f3">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <br>
-            <p>$\huge{\it{\large{\color{#08917c}\#플로깅\ 시작\ 및\ QR\ 인증}}}$</p><br>
-            <img src="https://github.com/user-attachments/assets/4c558367-8a5a-4130-aae9-a1531e10438c">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <br>
-            <p>$\huge{\it{\large{\color{#08917c}\#플로깅\ 취소\ 및\ 완료한\ 목록\ 조회}}}$</p><br>
-            <img src="https://github.com/user-attachments/assets/f7941688-6238-4770-990d-b585f81a3748">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <br>
-            <p>$\huge{\it{\large{\color{#08917c}\#클릭\ 기반\ 분리배출\ 안내\ 기능}}}$</p><br>
-            <img src="https://github.com/user-attachments/assets/6914ed16-c3bc-4617-86af-94ad8bb1eff2">
-        </td>
-    </tr>
-    <tr>
-        <td>
-         자}}}$</p><br>
-            <img src="https://github.com/user-attachments/assets/b66b0454-6da4-4663-8b94-c61c5447b827">
-        </td>
-    </tr>
-</table>
 <br><br><br>
 
 ## ⛏ 기술스택
@@ -123,7 +63,67 @@
         </td>
     </tr>
 </table>
-<br><br><br>
+<br><br>
+
+## ⭐ 주요 기능
+<table>
+    <tr>
+        <td>
+            <br>
+            <p>$\huge{\it{\large{\color{#08917c}\#반응형\ 웹페이지}}}$</p><br>
+            <img src="https://github.com/user-attachments/assets/88f954ef-3e89-42b0-89eb-ec6d84fe859f">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br>
+            <p>$\huge{\it{\large{\color{#08917c}\#회원가입\ 및\ 로그인\ 보안}}}$</p><br>
+            <img src="https://github.com/user-attachments/assets/909fd4cc-76b0-4824-96bf-4a8eb091a0c1">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br>
+            <p>$\huge{\it{\large{\color{#08917c}\#AI\ 분리배출\ 도우미}}}$</p><br>
+            <img src="https://github.com/user-attachments/assets/0c6acc61-e921-4ac6-a69b-af0729cc605b">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br>
+            <p>$\huge{\it{\large{\color{#08917c}\#이달의\ 플로킹\ 표기}}}$</p><br>
+            <img src="https://github.com/user-attachments/assets/20f714f6-213c-4a8c-a20f-2d6e7143b3f3">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br>
+            <p>$\huge{\it{\large{\color{#08917c}\#플로깅\ 시작\ 및\ QR\ 인증}}}$</p><br>
+            <img src="https://github.com/user-attachments/assets/4c558367-8a5a-4130-aae9-a1531e10438c">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br>
+            <p>$\huge{\it{\large{\color{#08917c}\#플로깅\ 취소\ 및\ 완료한\ 목록\ 조회}}}$</p><br>
+            <img src="https://github.com/user-attachments/assets/f7941688-6238-4770-990d-b585f81a3748">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br>
+            <p>$\huge{\it{\large{\color{#08917c}\#클릭\ 기반\ 분리배출\ 안내\ 기능}}}$</p><br>
+            <img src="https://github.com/user-attachments/assets/6914ed16-c3bc-4617-86af-94ad8bb1eff2">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p>$\huge{\it{\large{\color{#08917c}\#관리자}}}$</p><br>
+            <img src="https://github.com/user-attachments/assets/b66b0454-6da4-4663-8b94-c61c5447b827">
+        </td>
+    </tr>
+</table>
+<br><br>
 
 ## ⚙ 시스템 아키텍처
 ![시스템 아키텍처(지구 수호대)](https://github.com/user-attachments/assets/3bfefa2e-bf0d-4117-b635-47c13d828f4c)
@@ -249,7 +249,7 @@
     <td align="center"><a href="https://github.com/qwer010310" target='_blank'>qwer010310</a></td>
   </tr>
 </table>
-<br><br><br>
+<br><br>
 
 ## 🔎 트러블슈팅(문제점 설명 및 해결 방안)
 <table>
