@@ -200,10 +200,10 @@
 ## 💚 팀원 역할
 <table>
   <tr>
-    <td align="center"><img src="https://github.com/user-attachments/assets/94c06c01-b7b5-4443-aa67-680a88f125ff" width="250" height="300"/></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/0f0e94da-0e5b-4f10-9615-f1f519885760" width="250" height="300"/></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/866fc27b-aa3d-4c8b-b47f-6ffc09daf2bb" width="250" height="300"/></td>
-    <td align="center"><img src="https://github.com/user-attachments/assets/edbb9547-e31d-4bd8-accf-61850bec798e" width="250" height="300"/></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/94c06c01-b7b5-4443-aa67-680a88f125ff" style="width: 150px;"/></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/0f0e94da-0e5b-4f10-9615-f1f519885760" style="width: 150px;"/></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/866fc27b-aa3d-4c8b-b47f-6ffc09daf2bb" style="width: 150px;"/></td>
+    <td align="center"><img src="https://github.com/user-attachments/assets/edbb9547-e31d-4bd8-accf-61850bec798e" style="width: 150px;"/></td>
   </tr>
   <tr>
     <td align="center"><strong>봉소희</strong></td>
